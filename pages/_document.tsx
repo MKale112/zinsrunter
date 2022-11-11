@@ -1,11 +1,14 @@
 import React from 'react';
-import { DocumentProps, Head, Html, Main, NextScript } from 'next/document';
+import { ColorModeScript } from '@chakra-ui/react';
+import { Head, Html, Main, NextScript } from 'next/document';
+import customTheme from '@/styles/theme';
 
-export default function Document(props: DocumentProps) {
+export default function Document() {
   return (
     <Html>
       <Head />
       <body>
+        <ColorModeScript initialColorMode={customTheme.config.initialColorMode} />
         <Main />
         <NextScript />
       </body>
