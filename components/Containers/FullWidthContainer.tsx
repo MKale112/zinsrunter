@@ -1,5 +1,5 @@
-import React, { ReactNode, HTMLProps } from "react";
-import clsx from "clsx";
+import React, { ReactNode, HTMLProps } from 'react';
+import clsx from 'clsx';
 
 export interface FullWidthContainerProps extends HTMLProps<HTMLDivElement> {
   className?: string;
@@ -18,9 +18,9 @@ export const FullWidthContainer = (props: FullWidthContainerProps) => {
         bgImgUrl
           ? {
               backgroundImage: `url(${bgImgUrl})`,
-              backgroundSize: "contain",
-              backgroundPosition: "right top",
-              backgroundRepeat: "no-repeat",
+              backgroundSize: 'contain',
+              backgroundPosition: 'right top',
+              backgroundRepeat: 'no-repeat',
             }
           : {}
       }

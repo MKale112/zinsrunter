@@ -1,5 +1,5 @@
-import React, { ReactNode } from "react";
-import clsx from "clsx";
+import React, { ReactNode } from 'react';
+import clsx from 'clsx';
 
 export interface ContainerProps {
   children: ReactNode;
@@ -10,21 +10,17 @@ export interface ContainerProps {
 }
 
 export const Container = (props: ContainerProps) => {
-  const { className, bgImgUrl, bgImgPosition, bgImgRepeat, children, ...rest } =
-    props;
+  const { className, bgImgUrl, bgImgPosition, bgImgRepeat, children, ...rest } = props;
   return (
     <div
-      className={clsx(
-        "px-4 mobile:px-[5vw] widescreen:px-24 mx-auto widescreen:container",
-        className
-      )}
+      className={clsx('px-4 mobile:px-[5vw] widescreen:px-24 mx-auto widescreen:container', className)}
       style={
         bgImgUrl
           ? {
               backgroundImage: `url(${bgImgUrl})`,
-              backgroundSize: "contain",
-              backgroundPosition: `${bgImgPosition ? bgImgPosition : ""}`,
-              backgroundRepeat: `${bgImgRepeat ? bgImgRepeat : "no-repeat"}`,
+              backgroundSize: 'contain',
+              backgroundPosition: `${bgImgPosition ? bgImgPosition : ''}`,
+              backgroundRepeat: `${bgImgRepeat ? bgImgRepeat : 'no-repeat'}`,
             }
           : {}
       }
