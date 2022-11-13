@@ -18,7 +18,7 @@ const customTheme = extendTheme({
   components: {
     Button: {
       variants: {
-        base: {
+        accent: {
           bg: colors.primary.teal,
           color: colors.primary.white,
           _hover: {

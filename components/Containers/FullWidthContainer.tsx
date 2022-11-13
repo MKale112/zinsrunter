@@ -1,8 +1,7 @@
-import React, { ReactNode, HTMLProps } from 'react';
-import clsx from 'clsx';
+import React, { ReactNode } from 'react';
+import { Box } from '@chakra-ui/react';
 
-export interface FullWidthContainerProps extends HTMLProps<HTMLDivElement> {
-  className?: string;
+export interface FullWidthContainerProps {
   bgImgUrl?: string;
   bgImgPosition?: string;
   bgImgRepeat?: string;
@@ -10,24 +9,11 @@ export interface FullWidthContainerProps extends HTMLProps<HTMLDivElement> {
 }
 
 export const FullWidthContainer = (props: FullWidthContainerProps) => {
-  const { className, bgImgUrl, children, ...rest } = props;
+  const { bgImgUrl, children, ...rest } = props;
   return (
-    <div
-      className={clsx(className)}
-      style={
-        bgImgUrl
-          ? {
-              backgroundImage: `url(${bgImgUrl})`,
-              backgroundSize: 'contain',
-              backgroundPosition: 'right top',
-              backgroundRepeat: 'no-repeat',
-            }
-          : {}
-      }
-      {...rest}
-    >
+    <Box bgImage={bgImgUrl} bgSize='contain' bgRepeat='no-repeat' {...rest}>
       {children}
-    </div>
+    </Box>
   );
 };
 

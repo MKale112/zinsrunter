@@ -1,34 +1,20 @@
 import React, { ReactNode } from 'react';
-import clsx from 'clsx';
+import { Container } from '@chakra-ui/react';
 
 export interface ContainerProps {
   children: ReactNode;
   bgImgUrl?: string;
-  bgImgPosition?: string;
+
   bgImgRepeat?: string;
-  className?: string;
 }
 
-export const Container = (props: ContainerProps) => {
-  const { className, bgImgUrl, bgImgPosition, bgImgRepeat, children, ...rest } = props;
+export const ResponsiveContainer = (props: ContainerProps) => {
+  const { bgImgUrl, bgImgRepeat, children, ...rest } = props;
   return (
-    <div
-      className={clsx('px-4 mobile:px-[5vw] widescreen:px-24 mx-auto widescreen:container', className)}
-      style={
-        bgImgUrl
-          ? {
-              backgroundImage: `url(${bgImgUrl})`,
-              backgroundSize: 'contain',
-              backgroundPosition: `${bgImgPosition ? bgImgPosition : ''}`,
-              backgroundRepeat: `${bgImgRepeat ? bgImgRepeat : 'no-repeat'}`,
-            }
-          : {}
-      }
-      {...rest}
-    >
+    <Container px={[4, 12, 16, 20]} bgImage={bgImgUrl} bgSize='contain' bgRepeat={bgImgRepeat} {...rest}>
       {children}
-    </div>
+    </Container>
   );
 };
 
-export default Container;
+export default ResponsiveContainer;
