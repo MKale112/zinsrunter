@@ -6,10 +6,10 @@ import Image from 'next/image';
 import { FullWidthContainer, ResponsiveContainer } from '../Containers';
 
 const Nav = ({ navLinks }: { navLinks: Array<{ id: number; label: string; href: string }> }) => {
-  const isMobile = useMediaQuery('600px');
+  const [isMobile] = useMediaQuery('(max-width: 640px)');
   const links = navLinks.map((entry) => (
     <a key={entry.id} href={entry.href} target='_blank' rel='noreferrer'>
-      <Button>{entry.label}</Button>
+      <Button variant='ghost'>{entry.label}</Button>
     </a>
   ));
 
@@ -23,6 +23,7 @@ const Nav = ({ navLinks }: { navLinks: Array<{ id: number; label: string; href: 
       />
       <HStack px={4}>
         {/* <SearchBar /> */}
+        {/* <Box w={50} h={20} bg='red.200' /> */}
         {links}
       </HStack>
     </HStack>
@@ -37,7 +38,7 @@ const Header = () => {
     <FullWidthContainer>
       <ResponsiveContainer>
         <Nav navLinks={navLinks} />
-        <Tabs className=''>
+        <Tabs h={[25, 50]}>
           <TabList>{tabs}</TabList>
           <TabPanels>{tabPanels}</TabPanels>
         </Tabs>
