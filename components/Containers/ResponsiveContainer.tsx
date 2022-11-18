@@ -1,12 +1,10 @@
 import React, { ReactNode } from 'react';
 import { Container } from '@chakra-ui/react';
-
 export interface ContainerProps {
   children: ReactNode;
   bgImgUrl?: string;
   bgImgRepeat?: string;
 }
-
 export const ResponsiveContainer = (props: ContainerProps) => {
   const { bgImgUrl, bgImgRepeat, children, ...rest } = props;
   return (
@@ -22,5 +20,4 @@ export const ResponsiveContainer = (props: ContainerProps) => {
     </Container>
   );
 };
-
 export default ResponsiveContainer;
