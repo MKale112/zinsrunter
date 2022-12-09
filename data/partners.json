@@ -1,0 +1,56 @@
+{
+  "partners": [
+    {
+      "id": "allianz-logo",
+      "path": "/partners/allianz.png"
+    },
+    {
+      "id": "psd-bank-logo",
+      "path": "/partners/psd-bank.png"
+    },
+    {
+      "id": "ing-logo",
+      "path": "/partners/ing.png"
+    },
+    {
+      "id": "commerzbank-logo",
+      "path": "/partners/commerzbank.png"
+    },
+    {
+      "id": "deutsche-bank-logo",
+      "path": "/partners/deutsche-bank.png"
+    },
+    {
+      "id": "deutsche-kreditbank-logo",
+      "path": "/partners/deutsche-kreditbank.png"
+    },
+    {
+      "id": "degussa-bank-logo",
+      "path": "/partners/degussa-bank.png"
+    },
+    {
+      "id": "axa-logo",
+      "path": "/partners/axa.png"
+    },
+    {
+      "id": "hypo-vereinsbank-logo",
+      "path": "/partners/hypo-vereinsbank.png"
+    },
+    {
+      "id": "alte-leipziger-logo",
+      "path": "/partners/alte-leipziger.png"
+    },
+    {
+      "id": "deutsche-apotheker-und-arztebank-logo",
+      "path": "/partners/deutsche-apotheker-und-arztebank.png"
+    },
+    {
+      "id": "ergo-logo",
+      "path": "/partners/ergo.png"
+    },
+    {
+      "id": "huk-coburg-logo",
+      "path": "/partners/huk-coburg.png"
+    }
+  ]
+}

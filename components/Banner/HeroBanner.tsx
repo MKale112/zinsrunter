@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
-import { Flex } from '@chakra-ui/react';
 import BannerText from './BannerText';
-import { ResponsiveContainer } from '../Containers';
+import { FullWidthContainer, ResponsiveContainer } from '../Containers';
 
 const defaultHeroBannerImage = '/defaultHeroBanner.png';
 
@@ -20,19 +19,13 @@ export interface HeroBannerProps {
 export const HeroBanner = (props: HeroBannerProps) => {
   const { heroImage = defaultHeroBannerImage, contentPosition = ContentPosition.RIGHT, children, ...rest } = props;
   return (
-    <ResponsiveContainer>
-      <Flex
-        justifyContent={contentPosition}
-        bgImage={heroImage}
-        alignItems={'center'}
-        h='20rem'
-        bgRepeat={'no-repeat'}
-        bgSize={'cover'}
-        {...rest}
-      >
-        <BannerText>{children}</BannerText>
-      </Flex>
-    </ResponsiveContainer>
+    <FullWidthContainer bgImgUrl={heroImage} bgRepeat={'no-repeat'} bgSize='cover' h={['10rem', '42rem']}>
+      <ResponsiveContainer h='full' display='flex' justifyContent={contentPosition} alignItems='center' {...rest}>
+        <BannerText spacing={6} w={['100%', '100%', '75%', '50%']} ml='auto'>
+          {children}
+        </BannerText>
+      </ResponsiveContainer>
+    </FullWidthContainer>
   );
 };
 

@@ -1,7 +1,7 @@
 export const navLinks = [
-  { id: 1, label: 'Top Nav 1', href: '#' },
-  { id: 2, label: 'Top Nav 2', href: '#' },
-  { id: 3, label: 'Top Nav 3', href: '#' },
+  { id: 1, label: 'TopNav 1', href: '#' },
+  { id: 2, label: 'TopNav 2', href: '#' },
+  { id: 3, label: 'TopNav 3', href: '#' },
 ];
 
 export const tabLinks = [

@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
-import { Box } from '@chakra-ui/react';
+import { Box, BoxProps } from '@chakra-ui/react';
 
-export interface FullWidthContainerProps {
+export interface FullWidthContainerProps extends BoxProps {
   bgImgUrl?: string;
   bgImgPosition?: string;
   bgImgRepeat?: string;

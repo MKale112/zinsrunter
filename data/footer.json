@@ -1,0 +1,66 @@
+{
+  "links": [
+    {
+      "id": "footer-impressum",
+      "label": "Impressum",
+      "href": "#"
+    },
+    {
+      "id": "footer-agb",
+      "label": "AGB",
+      "href": "#"
+    },
+    {
+      "id": "footer-datenschutz",
+      "label": "Datenschutz",
+      "href": "#"
+    },
+    {
+      "id": "footer-uber-uns",
+      "label": "Über uns",
+      "href": "#"
+    },
+    {
+      "id": "footer-sitemap",
+      "label": "Sitemap",
+      "href": "#"
+    },
+    {
+      "id": "footer-erstinformation",
+      "label": "Erstinformation",
+      "href": "#"
+    }
+  ],
+  "brands": [
+    {
+      "id": "logo-google",
+      "path": "/brands/google.png",
+      "alt": "google's logo"
+    },
+    {
+      "id": "logo-yahoo",
+      "path": "/brands/yahoo.png",
+      "alt": "yahoo's logo"
+    },
+    {
+      "id": "logo-bing",
+      "path": "/brands/bing.png",
+      "alt": "bing's logo"
+    },
+    {
+      "id": "logo-xing",
+      "path": "/brands/xing.png",
+      "alt": "xing's logo"
+    },
+    {
+      "id": "logo-ihk",
+      "path": "/brands/ihk.png",
+      "alt": "IHK's logo"
+    },
+    {
+      "id": "logo-menschen",
+      "path": "/brands/menschen.png",
+      "alt": "Menshcen's logo"
+    }
+  ]
+}

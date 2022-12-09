@@ -1,14 +1,21 @@
 import React, { ReactNode } from 'react';
-import { VStack } from '@chakra-ui/react';
+import { StackProps, VStack } from '@chakra-ui/react';
 
-export interface BannerTextProps {
+export interface BannerTextProps extends StackProps {
   children: ReactNode;
 }
 
 export const BannerText = (props: BannerTextProps) => {
   const { children, ...rest } = props;
   return (
-    <VStack backdropFilter={'blur(2px)'} fontWeight={'bold'} textShadow={'2px 1px black'} padding={'10'} {...rest}>
+    <VStack
+      w={'50%'}
+      backdropFilter={'blur(2px)'}
+      fontWeight={'bold'}
+      textShadow={'2px 1px black'}
+      padding={10}
+      {...rest}
+    >
       {children}
     </VStack>
   );

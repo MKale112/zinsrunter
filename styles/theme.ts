@@ -49,6 +49,8 @@ const customTheme = extendTheme({
         accent: {
           bg: colors.primary.teal,
           color: colors.primary.white,
+          fontSize: ['lg', 'xl'],
+          padding: ['4', '6'],
           _hover: {
             bg: colors.primary.darkTeal,
           },

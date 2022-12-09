@@ -1,29 +1,35 @@
 import React from 'react';
-import { Tabs, TabList, TabPanels, Tab, useMediaQuery, HStack, Button } from '@chakra-ui/react';
+import { Tabs, TabList, TabPanels, Tab, HStack, Button, Heading, Text } from '@chakra-ui/react';
 import PanelLinks from './PanelLinks';
 import { tabLinks, navLinks } from '../../data/navigationLinks';
-import Image from 'next/image';
 import { FullWidthContainer, ResponsiveContainer } from '../Containers';
 
 const Nav = ({ navLinks }: { navLinks: Array<{ id: number; label: string; href: string }> }) => {
-  const [isMobile] = useMediaQuery('(max-width: 640px)');
+  // const [isMobile] = useMediaQuery('(max-width: 640px)');
   const links = navLinks.map((entry) => (
     <a key={entry.id} href={entry.href} target='_blank' rel='noreferrer'>
-      <Button variant='ghost'>{entry.label}</Button>
+      <Button variant='link'>{entry.label}</Button>
     </a>
   ));
 
   return (
-    <HStack h={[50, 75]} justify='space-between'>
-      <Image
+    <HStack py={[4, 10]} justify='space-between'>
+      {/* <Image
         src={isMobile ? '/mobile-logo.svg' : '/logo.svg'}
         alt={'Logo Image'}
         width={isMobile ? 50 : 100}
         height={isMobile ? 50 : 100}
-      />
-      <HStack px={4}>
+      /> */}
+      <HStack alignItems='flex-end' spacing={10}>
+        <Heading as={'h1'} fontSize={['lg', '2xl', '4xl']}>
+          Zins-runter
+        </Heading>
+        <Text as='b' fontSize={['md', 'xl', 'xl']}>
+          Das ist kein Versprechen - sondern unsere Motivation!
+        </Text>
+      </HStack>
+      <HStack px={4} spacing={8}>
         {/* <SearchBar /> */}
-        {/* <Box w={50} h={20} bg='red.200' /> */}
         {links}
       </HStack>
     </HStack>
@@ -38,7 +44,7 @@ const Header = () => {
     <FullWidthContainer>
       <ResponsiveContainer>
         <Nav navLinks={navLinks} />
-        <Tabs h={[25, 50]}>
+        <Tabs>
           <TabList>{tabs}</TabList>
           <TabPanels>{tabPanels}</TabPanels>
         </Tabs>

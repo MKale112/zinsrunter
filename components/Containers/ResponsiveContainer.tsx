@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react';
-import { Container } from '@chakra-ui/react';
-export interface ContainerProps {
+import { Container, ContainerProps } from '@chakra-ui/react';
+export interface ResponsiveContainerProps extends ContainerProps {
   children: ReactNode;
   bgImgUrl?: string;
   bgImgRepeat?: string;
 }
-export const ResponsiveContainer = (props: ContainerProps) => {
+export const ResponsiveContainer = (props: ResponsiveContainerProps) => {
   const { bgImgUrl, bgImgRepeat, children, ...rest } = props;
   return (
     <Container
