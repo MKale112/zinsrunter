@@ -2,6 +2,9 @@ import React from 'react';
 import HeroBanner from '@/components/Banner/HeroBanner';
 import { Button, Heading, Text } from '@chakra-ui/react';
 import { Footer, Header } from '../components/Navigation';
+import Partners from '@/components/SealsAndPartners/Partners';
+import Seals from '@/components/SealsAndPartners/Seals';
+import Highlights from '@/components/Highlights/Highlights';
 
 export default function Home() {
   return (
@@ -21,6 +24,9 @@ export default function Home() {
         </Text>
         <Button variant='accent'>Unverbindlich Anfragen</Button>
       </HeroBanner>
+      <Highlights />
+      <Partners />
+      <Seals />
       <Footer />
     </>
   );

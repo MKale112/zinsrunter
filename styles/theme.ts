@@ -1,4 +1,4 @@
-import { extendTheme, theme } from '@chakra-ui/react';
+import { extendTheme, theme as baseTheme } from '@chakra-ui/react';
 
 const colors = {
   primary: {
@@ -11,12 +11,14 @@ const colors = {
     sky: '#e3fffc',
     cloud: '#e8f3f1',
   },
+  primaryFontColor: baseTheme.colors.gray['800'],
+  secondaryFontColor: baseTheme.colors.gray['600'],
 };
 
 const customTheme = extendTheme({
   colors,
   sizes: {
-    ...theme.space,
+    ...baseTheme.space,
     max: 'max-content',
     min: 'min-content',
     full: '100%',
