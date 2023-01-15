@@ -1,4 +1,5 @@
-import { Box, Button, Heading, Progress, SimpleGrid, Text, VStack } from '@chakra-ui/react';
+import { Box, Button, Center, Heading, Progress, SimpleGrid, Text, VStack } from '@chakra-ui/react';
+import { financeOffer } from 'data/form';
 import React, { useState } from 'react';
 import { FullWidthContainer, ResponsiveContainer } from '../Containers';
 
@@ -66,12 +67,25 @@ const Formular = () => {
               Kostenloses Finanzierungsangebot
             </Heading>
             <SimpleGrid columns={3} spacing='50px' w='full'>
-              <Box bg='white' borderRadius='2xl' border='1px' borderColor='gray.300' height='100px' w={300}></Box>
-              <Box bg='white' borderRadius='2xl' border='1px' borderColor='gray.300' height='100px' w={300}></Box>
-              <Box bg='white' borderRadius='2xl' border='1px' borderColor='gray.300' height='100px' w={300}></Box>
-              <Box bg='white' borderRadius='2xl' border='1px' borderColor='gray.300' height='100px' w={300}></Box>
-              <Box bg='white' borderRadius='2xl' border='1px' borderColor='gray.300' height='100px' w={300}></Box>
-              <Box bg='white' borderRadius='2xl' border='1px' borderColor='gray.300' height='100px' w={300}></Box>
+              {financeOffer.map((entry) => {
+                return (
+                  <Center
+                    key={entry.key}
+                    bg='white'
+                    borderRadius='2xl'
+                    border='1px'
+                    borderColor='gray.300'
+                    height='100px'
+                    w={300}
+                    _hover={{ cursor: 'pointer' }}
+                  >
+                    <VStack>
+                      {React.createElement(entry.icon, { h: '24px', w: '24px' })}
+                      <Text>{entry.text}</Text>
+                    </VStack>
+                  </Center>
+                );
+              })}
             </SimpleGrid>
           </VStack>
         </VStack>
