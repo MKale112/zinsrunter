@@ -10,7 +10,8 @@ export const BannerText = (props: BannerTextProps) => {
   return (
     <VStack
       w={'50%'}
-      backdropFilter={'blur(2px)'}
+      // backdropFilter={'blur(2px)'}
+      // backgroundColor='blackAlpha.400'
       fontWeight={'bold'}
       textShadow={'2px 1px black'}
       padding={10}

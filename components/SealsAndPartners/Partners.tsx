@@ -1,4 +1,4 @@
-import { VStack, Heading, HStack, Text, useMediaQuery } from '@chakra-ui/react';
+import { VStack, Heading, HStack, Text, useMediaQuery, keyframes } from '@chakra-ui/react';
 import React from 'react';
 import Image from 'next/image';
 import { FullWidthContainer, ResponsiveContainer } from '../Containers';
@@ -10,14 +10,31 @@ const Partners = () => {
     <Image key={entry.id} src={entry.path} alt={entry.id} width={isMobile ? 100 : 150} height={100} />
   ));
 
+  const movement = keyframes`
+  0% {
+		opacity: 0;
+		transform: translateX(-50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+  `;
+
   return (
-    <FullWidthContainer py={[4, 12]}>
+    <FullWidthContainer id='section-partners' py={[16, 24]}>
       <ResponsiveContainer>
-        <VStack spacing={[6, 12]}>
+        <VStack spacing={[6, 12]} animation={`${movement} 2s ease 0s 1 normal forwards`}>
           <Heading as='h2' fontSize={['xl', '3xl']}>
             Unsere Partner
           </Heading>
-          <Text width={{ base: '80%', md: '75%', lg: '60%' }} textAlign='center'>
+          <Text
+            width={{ base: '80%', md: '75%', lg: '60%' }}
+            textAlign='center'
+            fontSize={['md', 'xl']}
+            color='secondaryFontColor'
+          >
             Hier sehen Sie eine kleine Auswahl unserer Partner. Als unabhängiger Immobilienfinanzierungsvermittler sind
             wir an keinen Anbieter gebunden und können so aus einem Pool von über 500 Finanzierungsgebern vermitteln.
           </Text>

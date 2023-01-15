@@ -9,7 +9,7 @@ export const ResponsiveContainer = (props: ResponsiveContainerProps) => {
   const { bgImgUrl, bgImgRepeat, children, ...rest } = props;
   return (
     <Container
-      px={[4, 12, 16, 20]}
+      px={[4, 8, 16, 20]}
       maxWidth={['container.sm', 'container.md', 'container.xl', 'container.2xl']}
       bgImage={bgImgUrl}
       bgSize='contain'

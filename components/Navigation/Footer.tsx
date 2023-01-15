@@ -14,6 +14,7 @@ const Footer = () => {
       href={entry.href}
       target={entry.label !== 'Zinsrunter' ? '_blank' : '_self'}
       rel='noreferrer'
+      fontSize={['xs', 'md']}
     >
       <Button variant='link'>{entry.label}</Button>
     </Link>
@@ -22,10 +23,10 @@ const Footer = () => {
     <Image key={entry.id} src={entry.path} alt={entry.alt} width={isMobile ? 100 : 150} height={100} />
   ));
   return (
-    <FullWidthContainer pt={[4, 8]} pb={[2, 4]}>
+    <FullWidthContainer pt={[8, 0]} pb={[2, 4]}>
       <ResponsiveContainer>
         <Stack
-          py={[4, 8, 10]}
+          py={[4, 8, 10, 12, 16]}
           direction={'row'}
           justifyContent={isMobile ? 'space-evenly' : 'center'}
           alignItems={'center'}
@@ -34,10 +35,10 @@ const Footer = () => {
         >
           {brands}
         </Stack>
-        <VStack>
+        <VStack pt={[8, 0]}>
           <VStack spacing={8} alignItems='start'>
             {isMobile ? (
-              <VStack>
+              <VStack py={2}>
                 <VStack spacing={4}>
                   <Heading as={'h5'}>About Zinsrunter</Heading>
                   <Text fontSize={['md']} color='primaryFontColor'>
@@ -62,7 +63,7 @@ const Footer = () => {
                   <SimpleGrid
                     py={4}
                     spacing={2}
-                    columns={3}
+                    columns={2}
                     justifyContent='center'
                     alignItems='center'
                     textAlign='center'
@@ -79,12 +80,12 @@ const Footer = () => {
                     <Heading as={'h2'} fontSize={['lg', 'xl']} alignSelf='start'>
                       About Zinsrunter
                     </Heading>
-                    <Text fontSize={['xs', 'sm', 'md']}>
+                    <Text fontSize={['xs', 'sm', 'md']} color='secondaryFontColor'>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
                       nisi ut aliquip ex ea commodo consequat.
                     </Text>
-                    <Text fontSize={['xs', 'sm', 'md']}>
+                    <Text fontSize={['xs', 'sm', 'md']} color='secondaryFontColor'>
                       Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
                       pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
                       mollit anim id est laborum.
@@ -102,9 +103,9 @@ const Footer = () => {
                     </HStack>
                   </VStack>
                 </VStack>
-                <VStack w='40%' h='full' justifyContent='space-around'>
+                <VStack w='40%' h='full' justifyContent='space-between'>
                   <SimpleGrid
-                    py={4}
+                    pb={10}
                     spacing={4}
                     columns={3}
                     justifyContent='center'
@@ -120,12 +121,11 @@ const Footer = () => {
           </VStack>
           <Stack direction={isMobile ? 'column' : 'row'} justify='space-between' alignItems='center'>
             <Text fontSize={['sm', 'md']}>
-              2022 ©{' '}
+              {new Date().getFullYear()} ©{' '}
               <a href='/'>
                 <Button variant='link'>Zinsrunter.de</Button>
               </a>
             </Text>
-            {/* <HStack>{items}</HStack> */}
           </Stack>
         </VStack>
       </ResponsiveContainer>

@@ -5,13 +5,14 @@ export interface FullWidthContainerProps extends BoxProps {
   bgImgUrl?: string;
   bgImgPosition?: string;
   bgImgRepeat?: string;
+  bgImgSize?: string;
   children: ReactNode;
 }
 
 export const FullWidthContainer = (props: FullWidthContainerProps) => {
-  const { bgImgUrl, children, ...rest } = props;
+  const { bgImgUrl, bgImgPosition, bgImgRepeat, bgImgSize = 'cover', children, ...rest } = props;
   return (
-    <Box bgImage={bgImgUrl} bgSize='contain' bgRepeat='no-repeat' {...rest}>
+    <Box bgImage={bgImgUrl} bgSize={bgImgSize} bgRepeat={bgImgRepeat} bgPosition={bgImgPosition} {...rest}>
       {children}
     </Box>
   );

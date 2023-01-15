@@ -8,6 +8,10 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
     Helvetica Neue, sans-serif;
+  /* TODO: figure out why this requires "!important" to work at all (doesn't without it!) */
+  scroll-behavior: smooth !important;
+  -webkit-overflow-scrolling: touch;
+  -webkit-scroll-snap-type: mandatory;
 }
 
 a {

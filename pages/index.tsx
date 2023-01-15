@@ -5,6 +5,7 @@ import { Footer, Header } from '../components/Navigation';
 import Partners from '@/components/SealsAndPartners/Partners';
 import Seals from '@/components/SealsAndPartners/Seals';
 import Highlights from '@/components/Highlights/Highlights';
+import ChakraLink from '@/components/Link/ChakraLink';
 
 export default function Home() {
   return (
@@ -22,7 +23,9 @@ export default function Home() {
         <Text fontSize={['sm', 'md']} color='white'>
           Individuelles & transparentes Angebot in der Regel binnen 24 Stunden
         </Text>
-        <Button variant='accent'>Unverbindlich Anfragen</Button>
+        <ChakraLink href='/formular'>
+          <Button variant='accent'>Unverbindlich Anfragen</Button>
+        </ChakraLink>
       </HeroBanner>
       <Highlights />
       <Partners />

@@ -1,0 +1,20 @@
+{
+  "topNav": [{ "id": "formular_link_id", "label": "FORMULAR", "href": "/formular" }],
+  "subNav": [
+    {
+      "id": "navbar-highlights",
+      "label": "HIGHLIGHTS",
+      "href": "#section-highlights"
+    },
+    {
+      "id": "navbar-partners",
+      "label": "PARTNERS",
+      "href": "#section-partners"
+    },
+    {
+      "id": "navbar-seals",
+      "label": "SEALS",
+      "href": "#section-seals"
+    }
+  ]
+}

@@ -6,6 +6,11 @@ const colors = {
     black: '#000',
     teal: '#3fd2c7',
     darkTeal: '#539D96',
+    blue: '#143474',
+    darkBlue: '#1c3c6c',
+    mutedBlue: '#2c5464',
+    acid: '#9bc31c',
+    darkAcid: '#5c8444',
   },
   secondary: {
     sky: '#e3fffc',
@@ -13,6 +18,7 @@ const colors = {
   },
   primaryFontColor: baseTheme.colors.gray['800'],
   secondaryFontColor: baseTheme.colors.gray['600'],
+  ternaryFontColor: baseTheme.colors.gray['400'],
 };
 
 const customTheme = extendTheme({
@@ -49,18 +55,30 @@ const customTheme = extendTheme({
     Button: {
       variants: {
         accent: {
-          bg: colors.primary.teal,
+          bg: colors.primary.acid,
           color: colors.primary.white,
-          fontSize: ['lg', 'xl'],
-          padding: ['4', '6'],
+          fontSize: ['xl', '2xl'],
+          padding: [6, 8],
           _hover: {
-            bg: colors.primary.darkTeal,
+            bg: colors.primary.darkAcid,
+          },
+        },
+        link: {
+          fontSize: ['lg', 'xl'],
+          _hover: {
+            color: colors.primary.blue,
+            textDecoration: 'none',
           },
         },
       },
     },
     Heading: {
       color: colors.primary.darkTeal,
+    },
+    Link: {
+      _hover: {
+        // color: colors.primary.teal,
+      },
     },
   },
 });
