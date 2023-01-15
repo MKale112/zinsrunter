@@ -12,32 +12,32 @@ export const financeOffer = {
     {
       key: 'buyPropery',
       icon: LockIcon,
-      text: 'buying a property',
+      text: 'Buying a property',
     },
     {
       key: 'landPurchase',
       icon: LockIcon,
-      text: 'land purchase only',
+      text: 'Land purchase only',
     },
     {
       key: 'constructionProject',
       icon: LockIcon,
-      text: 'own construction project',
+      text: 'Own construction project',
     },
     {
       key: 'followUpFinance',
       icon: LockIcon,
-      text: 'follow-up financing',
+      text: 'Follow-up financing',
     },
     {
       key: 'modernize',
       icon: LockIcon,
-      text: 'modernize',
+      text: 'Modernize',
     },
     {
       key: 'raisingCapital',
       icon: LockIcon,
-      text: 'raising capital',
+      text: 'Raising capital',
     },
   ],
 };
@@ -48,27 +48,27 @@ export const estate = {
     {
       key: 'condominium',
       icon: LockIcon,
-      text: 'condominium',
+      text: 'Condominium',
     },
     {
       key: 'detachedHouse',
       icon: LockIcon,
-      text: 'detached house',
+      text: 'Detached house',
     },
     {
       key: 'plotOnly',
       icon: LockIcon,
-      text: 'plot only',
+      text: 'Plot only',
     },
     {
       key: 'semiDetachedHouse',
       icon: LockIcon,
-      text: 'semi-detached house',
+      text: 'Semi-detached house',
     },
     {
       key: 'twoFamilyHouse',
       icon: LockIcon,
-      text: 'two-family house',
+      text: 'Two-family house',
     },
     {
       key: 'midTerraceHouse',
@@ -78,17 +78,17 @@ export const estate = {
     {
       key: 'terracedHouse',
       icon: LockIcon,
-      text: 'terraced house',
+      text: 'Terraced house',
     },
     {
       key: 'apartmentBuilding',
       icon: LockIcon,
-      text: 'apartment building',
+      text: 'Apartment building',
     },
     {
       key: 'residentialCommercialBuilding',
       icon: LockIcon,
-      text: 'residential/commercial building',
+      text: 'Residential/commercial building',
     },
   ],
 };

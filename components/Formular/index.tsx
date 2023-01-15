@@ -1,6 +1,7 @@
 import { Box, Heading, Progress, SimpleGrid, Text, VStack } from '@chakra-ui/react';
 import { FormState } from 'data/form';
-import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
 import { FullWidthContainer, ResponsiveContainer } from '../Containers';
 import { Estate } from './estate';
 import { FinanceOffer } from './financeOffer';
@@ -11,15 +12,19 @@ const formSteps = ['financeOffer', 'estate', 'propertyUse'];
 const form = [FinanceOffer, Estate, PropertyUse];
 
 const Formular = () => {
-  const [step, setStep] = useState<number>(0);
-  const [fullFormData, setFullFormData] = useState<FormValues>();
-  const numberOfSteps = 5;
-  const progress = (step + 1 / numberOfSteps) * 100;
+  const router = useRouter();
+  const formStep = router.query.step?.toString();
+  const stepByUrl = formSteps.indexOf(formStep || 'financeOffer');
 
-  const handleStepChange = (step: number) => {
-    setStep(step);
-    console.log(fullFormData);
-  };
+  const [step, setStep] = useState<number>(stepByUrl);
+  const [fullFormData, setFullFormData] = useState<FormValues>();
+  const numberOfSteps = formSteps.length;
+  const progress = ((stepByUrl + 1) / numberOfSteps) * 100;
+  console.log(fullFormData);
+
+  useEffect(() => {
+    router.push(`${formSteps[step]}`);
+  }, [step]);
 
   return (
     <>
@@ -48,13 +53,13 @@ const Formular = () => {
               )}
               <VStack py={10} w='full'>
                 <Heading as='h3' fontSize={['lg', 'xl']} pb={8}>
-                  {FormState[formSteps[step] as keyof typeof FormState]}
+                  {FormState[formSteps[stepByUrl] as keyof typeof FormState]}
                 </Heading>
                 <SimpleGrid columns={3} spacing={4} justifyItems={'center'}>
                   <>
-                    {React.createElement(form[step], {
+                    {React.createElement(form[stepByUrl], {
                       setFullFormData: setFullFormData,
-                      setStep: handleStepChange,
+                      setStep: setStep,
                     } as TilePropDrill)}
                   </>
                 </SimpleGrid>
