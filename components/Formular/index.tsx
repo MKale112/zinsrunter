@@ -10,15 +10,22 @@ import { FullWidthContainer, ResponsiveContainer } from '../Containers';
 //         Die Immobilie
 //       </Heading>
 //       <SimpleGrid columns={3} spacing='50px' w='full'>
-//         <Box bg='white' borderRadius='2xl' border='1px' borderColor='gray.300' height='100px' w={300}></Box>
-//         <Box bg='white' borderRadius='2xl' border='1px' borderColor='gray.300' height='100px' w={300}></Box>
-//         <Box bg='white' borderRadius='2xl' border='1px' borderColor='gray.300' height='100px' w={300}></Box>
-//         <Box bg='white' borderRadius='2xl' border='1px' borderColor='gray.300' height='100px' w={300}></Box>
-//         <Box bg='white' borderRadius='2xl' border='1px' borderColor='gray.300' height='100px' w={300}></Box>
-//         <Box bg='white' borderRadius='2xl' border='1px' borderColor='gray.300' height='100px' w={300}></Box>
-//         <Box bg='white' borderRadius='2xl' border='1px' borderColor='gray.300' height='100px' w={300}></Box>
-//         <Box bg='white' borderRadius='2xl' border='1px' borderColor='gray.300' height='100px' w={300}></Box>
-//         <Box bg='white' borderRadius='2xl' border='1px' borderColor='gray.300' height='100px' w={300}></Box>
+//         {estate.map((entry) => (
+//           <Center
+//             key={entry.key}
+//             bg='white'
+//             borderRadius='2xl'
+//             border='1px'
+//             borderColor='gray.300'
+//             height='100px'
+//             w={300}
+//           >
+//             <VStack>
+//               {React.createElement(entry.icon, { h: '24px', w: '24px' })}
+//               <Text>{entry.text}</Text>
+//             </VStack>
+//           </Center>
+//         ))}
 //       </SimpleGrid>
 //     </VStack>
 //   );
