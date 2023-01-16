@@ -80,6 +80,44 @@ const customTheme = extendTheme({
         // color: colors.primary.teal,
       },
     },
+    Checkbox: {
+      baseStyle: {
+        control: {
+          width: '20px',
+          height: '20px',
+          borderColor: 'primary.acid',
+          borderWidth: '2px',
+          mr: 'xxs',
+          _checked: {
+            bg: 'primary.acid',
+            border: 'none',
+          },
+          _disabled: {
+            _checked: {
+              border: 'none',
+              bg: 'gray.300',
+            },
+            borderColor: 'gray.500',
+            bg: 'white',
+          },
+          _focus: {
+            _checked: {
+              border: 'none',
+              bg: 'primary.acid',
+            },
+            borderColor: 'primary.acid',
+            boxShadow: 'none',
+          },
+        },
+        label: {
+          mx: '4',
+          fontWeight: 'medium',
+          _disabled: {
+            opacity: 1,
+          },
+        },
+      },
+    },
   },
 });
 

@@ -1,9 +1,11 @@
 import React from 'react';
-import { Box, Button, Center, SelectField, SimpleGrid, VStack, Text } from '@chakra-ui/react';
+import { Box, Button, Center, SimpleGrid, VStack, Text } from '@chakra-ui/react';
 import { errorMessages } from 'data/errorMessages';
 import { Formik, Form, Field } from 'formik';
 import InputField from './FormModels/InputField';
 import * as yup from 'yup';
+import SelectField from './FormModels/SelectField';
+import CheckboxField from './FormModels/CheckboxField';
 
 const Offer = () => {
   const validationSchema = yup.object().shape({
@@ -14,6 +16,9 @@ const Offer = () => {
     phone: yup.number().required(errorMessages.fieldRequired),
     email: yup.string().email(),
     mainEarnerOccupation: yup.string().required(),
+    newsletter: yup.boolean(),
+    dataSharing: yup.boolean(),
+    permissionToCall: yup.boolean(),
   });
   const initialValues = {
     salutation: undefined,
@@ -23,10 +28,13 @@ const Offer = () => {
     phone: undefined,
     email: undefined,
     mainEarnerOccupation: undefined,
+    newsletter: false,
+    dataSharing: false,
+    permissionToCall: false,
   };
 
   return (
-    <Center w={'75%'}>
+    <Center w={['100%', '100%', '80%', '80%', '65%']}>
       <Formik
         // eslint-disable-next-line
         initialValues={initialValues}
@@ -48,7 +56,7 @@ const Offer = () => {
               borderColor='gray.200'
               spacing={6}
             >
-              <SimpleGrid columns={2} spacing={6}>
+              <SimpleGrid w='full' columns={2} spacing={6}>
                 <Field
                   component={SelectField}
                   name='salutation'
@@ -117,27 +125,38 @@ const Offer = () => {
 
               <Box bgColor='gray.400' w='100%' h='1px' />
 
-              <Text fontSize={14} mb={4}>
-                Evaluation of advice and news
-              </Text>
+              <Box alignSelf='flex-start'>
+                <Field component={CheckboxField} name='newsletter' label='Evaluation of advice and news' />
+                <Text fontSize={14}>
+                  Yes, Zinsrunter can send me a request for an evaluation of the financing advice, further information
+                  and offers by email. I can revoke this consent at any time with effect for the future.
+                </Text>
+              </Box>
 
-              <Text fontSize={14} mb={4}>
-                Data sharing
-              </Text>
+              <Box alignSelf='flex-start'>
+                <Field component={CheckboxField} name='dataSharing' label='Data sharing' />
+                <Text fontSize={14}>
+                  Yes, I revocably consent to the transfer of my entered data to Zinsrunter and my future financing
+                  advisor for the creation of my offer (please note the data protection declaration ).
+                </Text>
+              </Box>
 
-              <Text fontSize={14} mb={4}>
-                Call permission
-              </Text>
+              <Box alignSelf='flex-start'>
+                <Field component={CheckboxField} name='permissionToCall' label='Permission to call' />
+                <Text fontSize={14}>
+                  Yes, my advisor can contact me by phone. An optimal offer and/or advice is only possible if the
+                  financing advisor responsible for you can consult with you.
+                </Text>
+              </Box>
 
               <Box bgColor='gray.400' w='100%' h='1px' />
 
-              <Text fontSize={20} mb={4}>
-                Is everything right?
-              </Text>
-
-              <Button variant='accent' type='submit' padding={6} fontSize={20}>
-                Request an offer now
-              </Button>
+              <VStack>
+                <Text fontSize={20}>Is everything alright?</Text>
+                <Button variant='accent' type='submit' padding={6} fontSize={20}>
+                  Request an offer now
+                </Button>
+              </VStack>
             </VStack>
           </Form>
         )}

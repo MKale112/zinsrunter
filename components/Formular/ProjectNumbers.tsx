@@ -1,9 +1,14 @@
 import React from 'react';
-import { Center, VStack, SelectField, Button, Text, Box } from '@chakra-ui/react';
+import { Center, VStack, Button, Text, Box, HStack } from '@chakra-ui/react';
 import { errorMessages } from 'data/errorMessages';
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
-import InputField from './FormModels/InputField';
+import HInputField from './FormModels/HInputField';
+import { IconObject } from '../icons/iconObject';
+import HSelectField from './FormModels/HSelectField';
+import { AddIcon } from '@chakra-ui/icons';
+import { EuroIcon } from '../icons/EuroIcon';
+import { EqualsIcon } from '../icons/EqualsIcon';
 
 interface ProjectNumbersData {
   landPrice: number | undefined;
@@ -30,7 +35,7 @@ const ProjectNumbers = () => {
   };
 
   return (
-    <Center w='35%'>
+    <Center w='60%'>
       <Formik
         // eslint-disable-next-line
         initialValues={initialValues}
@@ -51,57 +56,125 @@ const ProjectNumbers = () => {
               border='1px'
               borderColor='gray.200'
               spacing={6}
+              alignItems='flex-start'
             >
               <Field
-                component={InputField}
+                component={HInputField}
                 name='landPrice'
                 type='number'
                 label='Land price'
                 placeholder='Please specify'
+                width='50%'
+                backIcon={IconObject.euro}
               />
 
               <Field
-                component={SelectField}
+                component={HSelectField}
                 name='paid'
                 type='select'
                 label='Already paid?'
                 default='No'
                 options={['No', 'Yes - paid with equity', 'Yes - paid with a bank financing']}
                 placeholder='Please select'
+                width='50%'
               />
 
               <Field
-                component={InputField}
+                component={HInputField}
                 name='buildingCosts'
                 type='text'
                 label='Building costs'
                 placeholder='Please enter'
+                width='50%'
+                frontIcon={IconObject.plus}
+                backIcon={IconObject.euro}
               />
 
-              <Field component={InputField} name='broker' type='number' label='Broker' placeholder='Please enter' />
+              <HStack w='full'>
+                <Box w='5%'>
+                  <AddIcon />
+                </Box>
+                <HStack justifyContent='space-between' w={'full'}>
+                  <Text>Notary & land register</Text>
+                  <HStack>
+                    <Text fontSize={12}>(2.00%)</Text>
+                    <Text>0</Text>
+                    <Box w='5%'>
+                      <EuroIcon />
+                    </Box>
+                  </HStack>
+                </HStack>
+              </HStack>
 
-              <Text fontSize={14} mb={4}>
+              <HStack w='full'>
+                <Box w='5%'>
+                  <AddIcon />
+                </Box>
+                <HStack justifyContent='space-between' w={'full'}>
+                  <Text>Property transfer tax</Text>
+                  <HStack>
+                    <Text fontSize={12}>(4.50%)</Text>
+                    <Text>0</Text>
+                    <Box w='5%'>
+                      <EuroIcon />
+                    </Box>
+                  </HStack>
+                </HStack>
+              </HStack>
+              <Text fontSize={11} mb={4}>
+                These amounts are for the state Hamburg stipulated by law and are therefore determined automatically.
+              </Text>
+
+              <Field
+                component={HInputField}
+                name='broker'
+                type='number'
+                label='Broker'
+                placeholder='Please enter'
+                frontIcon={IconObject.plus}
+                backIcon={IconObject.euro}
+                width='50%'
+              />
+
+              <Text fontSize={11} mb={4}>
                 The suggested brokerage fee corresponds to the usual regional level. However, you can change them if
                 necessary or even omit them completely.
               </Text>
 
               <Field
-                component={InputField}
+                component={HInputField}
                 name='equityCapital'
                 type='number'
                 label='Equity capital'
                 placeholder='Please enter'
+                frontIcon={IconObject.plus}
+                backIcon={IconObject.euro}
+                width='50%'
               />
 
               <Box w='full' h='2px' bgColor='primary.acid' />
 
-              <Text fontSize={14} mb={4}>
-                Loan amount
+              <HStack w='full'>
+                <Box w='5%'>
+                  <EqualsIcon />
+                </Box>
+                <HStack justifyContent='space-between' w={'full'}>
+                  <Text>Loan amount</Text>
+                  <HStack>
+                    <Text>0</Text>
+                    <Box w='5%'>
+                      <EuroIcon />
+                    </Box>
+                  </HStack>
+                </HStack>
+              </HStack>
+              <Text fontSize={11} mb={4}>
+                Loan amounts are rounded to the nearest 1,000 euros.
               </Text>
 
-              <Box bgColor='gray.400' w='75%' h='1px' />
+              <Box bgColor='gray.400' w='full' h='1px' />
 
-              <Button variant='accent' type='submit' padding={6} fontSize={20}>
+              <Button alignSelf='center' variant='accent' type='submit' py={6} px={16} fontSize={20}>
                 Accept values and continue to the last step
               </Button>
             </VStack>
