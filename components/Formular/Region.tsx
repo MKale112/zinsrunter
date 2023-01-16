@@ -1,19 +1,13 @@
-import React from 'react';
-import { Center, VStack, SelectField, Button, Text } from '@chakra-ui/react';
+import React, { FC } from 'react';
+import { Center, VStack, Button, Text } from '@chakra-ui/react';
 import { errorMessages } from 'data/errorMessages';
 import { Formik, Form, Field } from 'formik';
 import InputField from './FormModels/InputField';
 import * as yup from 'yup';
+import { FormValues, RegionData, TilePropDrill } from './types';
+import SelectField from './FormModels/SelectField';
 
-interface RegionData {
-  zipcode: number | undefined;
-  location: string | undefined;
-  searchStatus: string | undefined;
-  householdNetMonthly: number | undefined;
-  netRentalIncomeMonthly: number | undefined;
-}
-
-const Region = () => {
+export const Region: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
   const validationSchema = yup.object().shape({
     zipcode: yup
       .number()
@@ -32,11 +26,11 @@ const Region = () => {
     netRentalIncomeMonthly: yup.number().required(errorMessages.fieldRequired).positive().integer(),
   });
   const initialValues: RegionData = {
-    zipcode: undefined,
-    location: undefined,
-    searchStatus: undefined,
-    householdNetMonthly: undefined,
-    netRentalIncomeMonthly: undefined,
+    zipcode: null,
+    location: '',
+    searchStatus: '',
+    householdNetMonthly: null,
+    netRentalIncomeMonthly: null,
   };
   return (
     <Center w='35%'>
@@ -47,7 +41,8 @@ const Region = () => {
         validateOnChange={true}
         validateOnBlur={false}
         onSubmit={(values) => {
-          console.log(values);
+          setFullFormData((prevValues: FormValues) => ({ ...prevValues, region: values }));
+          setStep(4);
         }}
       >
         {({ handleSubmit }) => (
@@ -120,5 +115,3 @@ const Region = () => {
     </Center>
   );
 };
-
-export default Region;

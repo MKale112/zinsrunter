@@ -15,9 +15,8 @@ interface Props extends FieldProps {
 
 const SelectFieldItems: FC<Props> = ({ label, options, field }) => (
   <FormControl mb='5'>
-    {console.log(options[0])}
     <FormLabel>{label}: </FormLabel>
-    <Select {...field} defaultValue=''>
+    <Select {...field}>
       {options.map((option) => (
         <option key={option.name} value={option.name}>
           {`${option.name} : ${option.description}`}

@@ -1,15 +1,17 @@
-import { Box, Heading, Progress, SimpleGrid, Text, VStack } from '@chakra-ui/react';
+import { Box, Heading, Progress, Text, VStack } from '@chakra-ui/react';
 import { FormState } from 'data/form';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { FullWidthContainer, ResponsiveContainer } from '../Containers';
-import { Estate } from './estate';
-import { FinanceOffer } from './financeOffer';
-import { PropertyUse } from './propertyUse';
+import { Estate } from './Estate';
+import { FinanceOffer } from './FinanceOffer';
+import { NegativeSCHUFA } from './NegativeSCHUFA';
+import { PropertyUse } from './PropertyUse';
+import { Region } from './Region';
 import { FormValues, TilePropDrill } from './types';
 
-const formSteps = ['financeOffer', 'estate', 'propertyUse'];
-const form = [FinanceOffer, Estate, PropertyUse];
+const formSteps = ['financeOffer', 'estate', 'propertyUse', 'region', 'negativeSCHUFA'];
+const form = [FinanceOffer, Estate, PropertyUse, Region, NegativeSCHUFA];
 
 const Formular = () => {
   const router = useRouter();
@@ -55,14 +57,12 @@ const Formular = () => {
                 <Heading as='h3' fontSize={['lg', 'xl']} pb={8}>
                   {FormState[formSteps[stepByUrl] as keyof typeof FormState]}
                 </Heading>
-                <SimpleGrid columns={3} spacing={4} justifyItems={'center'}>
-                  <>
-                    {React.createElement(form[stepByUrl], {
-                      setFullFormData: setFullFormData,
-                      setStep: setStep,
-                    } as TilePropDrill)}
-                  </>
-                </SimpleGrid>
+                <>
+                  {React.createElement(form[stepByUrl], {
+                    setFullFormData: setFullFormData,
+                    setStep: setStep,
+                  } as TilePropDrill)}
+                </>
               </VStack>
             </VStack>
           </ResponsiveContainer>

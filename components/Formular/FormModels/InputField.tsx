@@ -12,7 +12,7 @@ export interface Props extends FieldProps {
 const InputField: FC<Props> = ({ placeholder = '', label, width, field }) => (
   <FormControl>
     <FormLabel fontSize={14} mb={0}>
-      {label}:{' '}
+      {label}:
     </FormLabel>
     <Input
       width={width}

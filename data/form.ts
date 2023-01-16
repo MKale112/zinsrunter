@@ -4,6 +4,7 @@ export enum FormState {
   financeOffer = 'What would you like to finance?',
   estate = 'Estate',
   propertyUse = 'How is the property used?',
+  negativeSCHUFA = 'Are there negative entries in the SCHUFA?',
 }
 
 export const financeOffer = {
@@ -110,6 +111,27 @@ export const propertyUse = {
       key: 'partlyRented',
       icon: LockIcon,
       text: 'Partly rented',
+    },
+  ],
+};
+
+export const negativeSCHUFA = {
+  key: 'negativeSCHUFA',
+  data: [
+    {
+      key: 'no',
+      icon: LockIcon,
+      text: 'No, everything is fine.',
+    },
+    {
+      key: 'yes-done',
+      icon: LockIcon,
+      text: 'Yes, but done.',
+    },
+    {
+      key: 'yes-not-done',
+      icon: LockIcon,
+      text: 'Yes, not done.',
     },
   ],
 };

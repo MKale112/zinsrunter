@@ -1,4 +1,4 @@
-import { Center, VStack, Text } from '@chakra-ui/react';
+import { Center, VStack, Text, SimpleGrid } from '@chakra-ui/react';
 import { financeOffer } from 'data/form';
 import React, { FC } from 'react';
 import { FormValues, TilePropDrill } from './types';
@@ -9,7 +9,7 @@ export const FinanceOffer: FC<TilePropDrill> = ({ setFullFormData, setStep }) =>
     setStep(1);
   };
   return (
-    <>
+    <SimpleGrid columns={3} spacing={4} justifyItems={'center'}>
       {financeOffer.data.map((entry) => (
         <Center
           key={entry.key}
@@ -28,6 +28,6 @@ export const FinanceOffer: FC<TilePropDrill> = ({ setFullFormData, setStep }) =>
           </VStack>
         </Center>
       ))}
-    </>
+    </SimpleGrid>
   );
 };
