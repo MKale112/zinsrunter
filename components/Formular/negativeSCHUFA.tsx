@@ -1,6 +1,7 @@
-import { Center, VStack, Text, SimpleGrid, Box, UnorderedList, ListItem } from '@chakra-ui/react';
+import { Center, VStack, Text, SimpleGrid, UnorderedList, ListItem } from '@chakra-ui/react';
 import { negativeSCHUFA } from 'data/form';
 import React, { FC } from 'react';
+import { ResponsiveContainer } from '../Containers';
 import { FormValues, TilePropDrill } from './types';
 
 export const NegativeSCHUFA: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
@@ -10,7 +11,7 @@ export const NegativeSCHUFA: FC<TilePropDrill> = ({ setFullFormData, setStep }) 
   };
   return (
     <>
-      <SimpleGrid columns={3} spacing={4} justifyItems={'center'} pb={10}>
+      <SimpleGrid columns={[1, 2, 3, 3]} spacing={4} justifyItems={'center'} pb={10}>
         {negativeSCHUFA.data.map((entry) => (
           <Center
             key={entry.key}
@@ -19,7 +20,7 @@ export const NegativeSCHUFA: FC<TilePropDrill> = ({ setFullFormData, setStep }) 
             border='1px'
             borderColor='gray.300'
             height='100px'
-            w={300}
+            w={[300, 200, 200, 300]}
             _hover={{ cursor: 'pointer' }}
             onClick={() => handleTileClick(entry.text)}
           >
@@ -30,15 +31,15 @@ export const NegativeSCHUFA: FC<TilePropDrill> = ({ setFullFormData, setStep }) 
           </Center>
         ))}
       </SimpleGrid>
-      <Box bg='white' borderRadius='2xl' p={10} w={930}>
-        <Text fontSize={'2xl'} fontWeight={'bold'}>
+      <ResponsiveContainer bg='white' borderRadius='2xl' p={[5, 5, 10]} w={{ lg: 930 }}>
+        <Text fontSize={['xl', 'xl', '2xl']} fontWeight={'bold'}>
           Notes on this question
         </Text>
-        <UnorderedList pl={10} mt={5} fontSize={'xl'} spacing={4}>
+        <UnorderedList pl={[2, 7]} mt={5} fontSize={['m', 'm', 'xl']} spacing={4}>
           <ListItem>
             <Text>
-              As part of this request, <strong>we do not retrieve any data</strong> and do not
-              <strong>send any</strong> to <strong>SCHUFA</strong>.
+              As part of this request, <strong>we do not retrieve any data</strong> and do not <strong>send any</strong>{' '}
+              to <strong>SCHUFA</strong>.
             </Text>
           </ListItem>
           <ListItem>
@@ -68,7 +69,7 @@ export const NegativeSCHUFA: FC<TilePropDrill> = ({ setFullFormData, setStep }) 
             </Text>
           </ListItem>
         </UnorderedList>
-      </Box>
+      </ResponsiveContainer>
     </>
   );
 };

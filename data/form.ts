@@ -4,6 +4,7 @@ export enum FormState {
   financeOffer = 'What would you like to finance?',
   estate = 'Estate',
   propertyUse = 'How is the property used?',
+  region = 'In which region do you live?',
   negativeSCHUFA = 'Are there negative entries in the SCHUFA?',
 }
 

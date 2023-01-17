@@ -9,7 +9,7 @@ export const PropertyUse: FC<TilePropDrill> = ({ setFullFormData, setStep }) => 
     setStep(3);
   };
   return (
-    <SimpleGrid columns={3} spacing={4} justifyItems={'center'}>
+    <SimpleGrid columns={[1, 2, 3, 3]} spacing={4} justifyItems={'center'} textAlign='center'>
       {propertyUse.data.map((entry) => (
         <Center
           key={entry.key}
@@ -18,7 +18,7 @@ export const PropertyUse: FC<TilePropDrill> = ({ setFullFormData, setStep }) => 
           border='1px'
           borderColor='gray.300'
           height='100px'
-          w={300}
+          w={[300, 200, 200, 300]}
           _hover={{ cursor: 'pointer' }}
           onClick={() => handleTileClick(entry.text)}
         >
