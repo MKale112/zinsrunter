@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Box, Button, Center, SimpleGrid, VStack, Text } from '@chakra-ui/react';
 import { errorMessages } from 'data/errorMessages';
 import { Formik, Form, Field } from 'formik';
@@ -6,8 +6,9 @@ import InputField from './FormModels/InputField';
 import * as yup from 'yup';
 import SelectField from './FormModels/SelectField';
 import CheckboxField from './FormModels/CheckboxField';
+import { FormValues, OfferData, TilePropDrill } from './types';
 
-const Offer = () => {
+const Offer: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
   const validationSchema = yup.object().shape({
     salutation: yup.string().required(errorMessages.fieldRequired),
     title: yup.string().required(errorMessages.fieldRequired),
@@ -20,14 +21,14 @@ const Offer = () => {
     dataSharing: yup.boolean(),
     permissionToCall: yup.boolean(),
   });
-  const initialValues = {
-    salutation: undefined,
-    title: undefined,
-    firstName: undefined,
-    lastName: undefined,
-    phone: undefined,
-    email: undefined,
-    mainEarnerOccupation: undefined,
+  const initialValues: OfferData = {
+    salutation: '',
+    title: '',
+    firstName: '',
+    lastName: '',
+    phone: '',
+    email: '',
+    mainEarnerOccupation: '',
     newsletter: false,
     dataSharing: false,
     permissionToCall: false,
@@ -42,7 +43,8 @@ const Offer = () => {
         validateOnChange={true}
         validateOnBlur={false}
         onSubmit={(values) => {
-          console.log(values);
+          setFullFormData((prevValues: FormValues) => ({ ...prevValues, offer: values }));
+          setStep(7);
         }}
       >
         {({ handleSubmit }) => (

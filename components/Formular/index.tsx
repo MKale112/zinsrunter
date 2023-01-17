@@ -6,12 +6,14 @@ import { FullWidthContainer, ResponsiveContainer } from '../Containers';
 import { Estate } from './Estate';
 import { FinanceOffer } from './FinanceOffer';
 import { NegativeSCHUFA } from './NegativeSCHUFA';
+import Offer from './Offer';
+import ProjectNumbers from './ProjectNumbers';
 import { PropertyUse } from './PropertyUse';
 import { Region } from './Region';
 import { FormValues, TilePropDrill } from './types';
 
-const formSteps = ['financeOffer', 'estate', 'propertyUse', 'region', 'negativeSCHUFA'];
-const form = [FinanceOffer, Estate, PropertyUse, Region, NegativeSCHUFA];
+const formSteps = ['financeOffer', 'estate', 'propertyUse', 'region', 'negativeSCHUFA', 'projectNumbers', 'offer'];
+const form = [FinanceOffer, Estate, PropertyUse, Region, NegativeSCHUFA, ProjectNumbers, Offer];
 
 const Formular = () => {
   const router = useRouter();

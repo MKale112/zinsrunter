@@ -6,6 +6,9 @@ export enum FormState {
   propertyUse = 'How is the property used?',
   region = 'In which region do you live?',
   negativeSCHUFA = 'Are there negative entries in the SCHUFA?',
+  projectNumbers = 'The project in numbers',
+  region = 'In which region do you live?',
+  offer = 'Who should receive the offer?',
 }
 
 export const financeOffer = {

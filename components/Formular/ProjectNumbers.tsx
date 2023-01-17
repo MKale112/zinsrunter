@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Center, VStack, Button, Text, Box, HStack } from '@chakra-ui/react';
 import { errorMessages } from 'data/errorMessages';
 import { Formik, Form, Field } from 'formik';
@@ -9,16 +9,9 @@ import HSelectField from './FormModels/HSelectField';
 import { AddIcon } from '@chakra-ui/icons';
 import { EuroIcon } from '../icons/EuroIcon';
 import { EqualsIcon } from '../icons/EqualsIcon';
+import { FormValues, ProjectNumbersData, TilePropDrill } from './types';
 
-interface ProjectNumbersData {
-  landPrice: number | undefined;
-  paid: string | undefined;
-  buildingCosts: number | undefined;
-  broker: number | undefined;
-  equityCapital: number | undefined;
-}
-
-const ProjectNumbers = () => {
+const ProjectNumbers: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
   const validationSchema = yup.object().shape({
     landPrice: yup.number().required(errorMessages.fieldRequired).positive().integer(),
     paid: yup.string().required(errorMessages.fieldRequired),
@@ -27,11 +20,11 @@ const ProjectNumbers = () => {
     equityCapital: yup.number().required(errorMessages.fieldRequired).positive().integer(),
   });
   const initialValues: ProjectNumbersData = {
-    landPrice: undefined,
-    paid: undefined,
+    landPrice: null,
+    paid: '',
     buildingCosts: 0,
-    broker: undefined,
-    equityCapital: undefined,
+    broker: null,
+    equityCapital: null,
   };
 
   return (
@@ -43,7 +36,8 @@ const ProjectNumbers = () => {
         validateOnChange={true}
         validateOnBlur={false}
         onSubmit={(values) => {
-          console.log(values);
+          setFullFormData((prevValues: FormValues) => ({ ...prevValues, projectNumbers: values }));
+          setStep(6);
         }}
       >
         {({ handleSubmit }) => (
