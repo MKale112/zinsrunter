@@ -76,7 +76,9 @@ const Header = () => {
       <ResponsiveContainer>
         <HStack py={isMobile ? 2 : 4} justify='space-between'>
           <HStack spacing={6} alignItems='flex-end'>
-            <Image src='/logo.png' alt={'Logo Image'} width={isMobile ? 120 : 150} />
+            <ChakraLink href='/'>
+              <Image src='/logo.png' alt={'Logo Image'} width={isMobile ? 120 : 150} />
+            </ChakraLink>
             {!isTablet && (
               <Text as='b' fontSize={['xs', 'md', 'lg', 'lg']} color='secondaryFontColor'>
                 Das ist kein Versprechen - sondern unsere Motivation!
