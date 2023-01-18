@@ -2,6 +2,8 @@ import React, { ReactNode } from 'react';
 import BannerText from './BannerText';
 import { FullWidthContainer, ResponsiveContainer } from '../Containers';
 
+const ReactReveal = require('react-reveal');
+
 const defaultHeroBannerImage = '/hero-min.webp';
 
 export enum ContentPosition {
@@ -21,9 +23,11 @@ export const HeroBanner = (props: HeroBannerProps) => {
   return (
     <FullWidthContainer bgImgUrl={heroImage} bgImgRepeat={'no-repeat'} bgImgSize='cover' h={['28rem', '42rem']}>
       <ResponsiveContainer h='full' display='flex' justifyContent={contentPosition} alignItems='center' {...rest}>
-        <BannerText spacing={6} w={['100%', '100%', '75%', '40%']} ml='auto'>
-          {children}
-        </BannerText>
+        <ReactReveal.Fade right>
+          <BannerText spacing={6} w={['100%', '100%', '75%']} ml='auto'>
+            {children}
+          </BannerText>
+        </ReactReveal.Fade>
       </ResponsiveContainer>
     </FullWidthContainer>
   );
