@@ -1,5 +1,6 @@
 import { Center, VStack, Text, SimpleGrid } from '@chakra-ui/react';
 import { financeOffer } from 'data/form';
+import Image from 'next/image';
 import React, { FC } from 'react';
 import { FormValues, TilePropDrill } from './types';
 
@@ -8,8 +9,9 @@ export const FinanceOffer: FC<TilePropDrill> = ({ setFullFormData, setStep }) =>
     setFullFormData((prevValues: FormValues) => ({ ...prevValues, financeOffer: tileText }));
     setStep(1);
   };
+
   return (
-    <SimpleGrid columns={[1, 2, 3, 3]} spacing={4} justifyItems={'center'} textAlign='center'>
+    <SimpleGrid columns={[1, 2, 3, 3]} spacing={6} justifyItems={'center'} textAlign='center'>
       {financeOffer.data.map((entry) => (
         <Center
           key={entry.key}
@@ -17,14 +19,23 @@ export const FinanceOffer: FC<TilePropDrill> = ({ setFullFormData, setStep }) =>
           borderRadius='2xl'
           border='1px'
           borderColor='gray.300'
-          height='100px'
+          height='150px'
+          transform='translateY(0px)'
+          transition='all 0.4s ease-in-out'
           w={[300, 200, 200, 300]}
-          _hover={{ cursor: 'pointer' }}
+          _hover={{
+            cursor: 'pointer',
+            // color: 'white',
+            bgColor: 'primary.acid',
+            boxShadow: '2xl',
+            transition: 'all 0.4s ease-in-out',
+            transform: 'translateY(-10px)',
+          }}
           onClick={() => handleTileClick(entry.text)}
         >
           <VStack>
-            {React.createElement(entry.icon, { h: '24px', w: '24px' })}
-            <Text>{entry.text}</Text>
+            <Image src={entry.icon} alt={entry.text} height={64} width={64} />
+            <Text fontSize={['sm', 'md', 'lg']}>{entry.text}</Text>
           </VStack>
         </Center>
       ))}

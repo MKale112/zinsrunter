@@ -35,8 +35,8 @@ const Tabs = ({ color = 'primary.blue', hoverObj = { color: 'primary.mutedBlue' 
       <Button
         variant='link'
         px={[4, 8, 12, 16]}
-        py={4}
-        fontSize={['2xl', '3xl', '4xl', '2xl', '2xl', '2xl']}
+        py={3}
+        fontSize={['2xl', '3xl', '4xl', 'lg']}
         color={color}
         _hover={hoverObj}
       >
@@ -63,7 +63,7 @@ const Header = () => {
         color='primary.acid'
         _hover={{ bgColor: 'primary.acid', color: 'white' }}
         fontWeight='bold'
-        fontSize='lg'
+        fontSize={['md', 'lg']}
         p={6}
       >
         {entry.label}

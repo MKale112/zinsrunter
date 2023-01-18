@@ -1,5 +1,6 @@
-import { Center, VStack, Text, SimpleGrid, UnorderedList, ListItem } from '@chakra-ui/react';
+import { Center, VStack, Text, SimpleGrid, UnorderedList, ListItem, Image } from '@chakra-ui/react';
 import { negativeSCHUFA } from 'data/form';
+
 import React, { FC } from 'react';
 import { ResponsiveContainer } from '../Containers';
 import { FormValues, TilePropDrill } from './types';
@@ -9,24 +10,37 @@ export const NegativeSCHUFA: FC<TilePropDrill> = ({ setFullFormData, setStep }) 
     setFullFormData((prev: FormValues) => ({ ...prev, negativeSCHUFA: tileText }));
     setStep(5);
   };
+
   return (
     <>
       <SimpleGrid columns={[1, 2, 3, 3]} spacing={4} justifyItems={'center'} pb={10}>
         {negativeSCHUFA.data.map((entry) => (
           <Center
+            data-group
             key={entry.key}
             bg='white'
             borderRadius='2xl'
             border='1px'
             borderColor='gray.300'
-            height='100px'
+            height='150px'
+            transform='translateY(0px)'
+            transition='all 0.4s ease-in-out'
             w={[300, 200, 200, 300]}
-            _hover={{ cursor: 'pointer' }}
+            _hover={{
+              cursor: 'pointer',
+              // color: 'white',
+              bgColor: 'primary.acid',
+              boxShadow: '2xl',
+              transition: 'all 0.4s ease-in-out',
+              transform: 'translateY(-10px)',
+            }}
             onClick={() => handleTileClick(entry.text)}
           >
-            <VStack>
-              {React.createElement(entry.icon, { h: '24px', w: '24px' })}
-              <Text>{entry.text}</Text>
+            <VStack _groupHover={{ filter: 'brightness(0) invert(1)' }}>
+              <Image src={entry.icon} alt={entry.text} height={16} width={16} />
+              <Text fontSize={['sm', 'md', 'lg']} fontWeight='medium'>
+                {entry.text}
+              </Text>
             </VStack>
           </Center>
         ))}

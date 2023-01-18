@@ -1,5 +1,3 @@
-import { LockIcon } from '@chakra-ui/icons';
-
 export enum FormState {
   financeOffer = 'What would you like to finance?',
   estate = 'Estate',
@@ -7,7 +5,6 @@ export enum FormState {
   region = 'In which region do you live?',
   negativeSCHUFA = 'Are there negative entries in the SCHUFA?',
   projectNumbers = 'The project in numbers',
-  region = 'In which region do you live?',
   offer = 'Who should receive the offer?',
 }
 
@@ -16,32 +13,32 @@ export const financeOffer = {
   data: [
     {
       key: 'buyPropery',
-      icon: LockIcon,
+      icon: '/icons/buying-a-property.png',
       text: 'Buying a property',
     },
     {
       key: 'landPurchase',
-      icon: LockIcon,
+      icon: '/icons/land-purchase-only.png',
       text: 'Land purchase only',
     },
     {
       key: 'constructionProject',
-      icon: LockIcon,
+      icon: '/icons/own-construction-project.png',
       text: 'Own construction project',
     },
     {
       key: 'followUpFinance',
-      icon: LockIcon,
+      icon: '/icons/follow-up-financing.png',
       text: 'Follow-up financing',
     },
     {
       key: 'modernize',
-      icon: LockIcon,
+      icon: '/icons/modernize.png',
       text: 'Modernize',
     },
     {
       key: 'raisingCapital',
-      icon: LockIcon,
+      icon: '/icons/raising-capital.png',
       text: 'Raising capital',
     },
   ],
@@ -52,47 +49,47 @@ export const estate = {
   data: [
     {
       key: 'condominium',
-      icon: LockIcon,
+      icon: '/icons/condominium.png',
       text: 'Condominium',
     },
     {
       key: 'detachedHouse',
-      icon: LockIcon,
+      icon: '/icons/detached-house.png',
       text: 'Detached house',
     },
     {
       key: 'plotOnly',
-      icon: LockIcon,
+      icon: '/icons/land-purchase-only.png',
       text: 'Plot only',
     },
     {
       key: 'semiDetachedHouse',
-      icon: LockIcon,
+      icon: '/icons/semi-detached-house.png',
       text: 'Semi-detached house',
     },
     {
       key: 'twoFamilyHouse',
-      icon: LockIcon,
+      icon: '/icons/two-family-house.png',
       text: 'Two-family house',
     },
     {
       key: 'midTerraceHouse',
-      icon: LockIcon,
+      icon: '/icons/terraced-house.png',
       text: 'Mid-terrace house',
     },
     {
       key: 'terracedHouse',
-      icon: LockIcon,
+      icon: '/icons/terraced-house.png',
       text: 'Terraced house',
     },
     {
       key: 'apartmentBuilding',
-      icon: LockIcon,
+      icon: '/icons/condominium.png',
       text: 'Apartment building',
     },
     {
       key: 'residentialCommercialBuilding',
-      icon: LockIcon,
+      icon: '/icons/residential-building.png',
       text: 'Residential/commercial building',
     },
   ],
@@ -103,17 +100,17 @@ export const propertyUse = {
   data: [
     {
       key: 'selfInhabited',
-      icon: LockIcon,
+      icon: '/icons/self-inhabited.png',
       text: 'Self inhabited',
     },
     {
       key: 'rented',
-      icon: LockIcon,
+      icon: '/icons/rented.png',
       text: 'Rented',
     },
     {
       key: 'partlyRented',
-      icon: LockIcon,
+      icon: '/icons/partly-rented.png',
       text: 'Partly rented',
     },
   ],
@@ -124,17 +121,17 @@ export const negativeSCHUFA = {
   data: [
     {
       key: 'no',
-      icon: LockIcon,
+      icon: '/icons/fine.png',
       text: 'No, everything is fine.',
     },
     {
       key: 'yes-done',
-      icon: LockIcon,
+      icon: '/icons/neutral.png',
       text: 'Yes, but done.',
     },
     {
       key: 'yes-not-done',
-      icon: LockIcon,
+      icon: '/icons/nein.png',
       text: 'Yes, not done.',
     },
   ],

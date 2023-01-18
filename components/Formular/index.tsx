@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { FullWidthContainer, ResponsiveContainer } from '../Containers';
 import { Estate } from './Estate';
 import { FinanceOffer } from './FinanceOffer';
+import { ThankYou } from './FormModels/ThankYou';
 import { NegativeSCHUFA } from './NegativeSCHUFA';
 import Offer from './Offer';
 import ProjectNumbers from './ProjectNumbers';
@@ -12,8 +13,17 @@ import { PropertyUse } from './PropertyUse';
 import { Region } from './Region';
 import { FormValues, TilePropDrill } from './types';
 
-const formSteps = ['financeOffer', 'estate', 'propertyUse', 'region', 'negativeSCHUFA', 'projectNumbers', 'offer'];
-const form = [FinanceOffer, Estate, PropertyUse, Region, NegativeSCHUFA, ProjectNumbers, Offer];
+const formSteps = [
+  'financeOffer',
+  'estate',
+  'propertyUse',
+  'region',
+  'negativeSCHUFA',
+  'projectNumbers',
+  'offer',
+  'thankYou',
+];
+const form = [FinanceOffer, Estate, PropertyUse, Region, NegativeSCHUFA, ProjectNumbers, Offer, ThankYou];
 
 const Formular = () => {
   const router = useRouter();
@@ -34,7 +44,7 @@ const Formular = () => {
     <FullWidthContainer bg={'gray.100'}>
       <Progress bgColor='gray.200' colorScheme='green' size='sm' hasStripe={step != numberOfSteps} value={progress} />
       <ResponsiveContainer>
-        <VStack minHeight='75vh' py={!step ? 16 : 0}>
+        <VStack minHeight='65vh' h='fit-content' py={!step ? 16 : 0} justifyContent='center'>
           {!step && (
             <>
               <VStack py={10} textAlign='center'>
@@ -48,7 +58,7 @@ const Formular = () => {
             </>
           )}
           <VStack py={10} w='full'>
-            <Heading as='h3' fontSize={['lg', 'xl']} pb={8}>
+            <Heading as='h3' fontSize={['lg', 'xl', 'xl', '3xl']} pb={8}>
               {FormState[formSteps[stepByUrl] as keyof typeof FormState]}
             </Heading>
             <>
