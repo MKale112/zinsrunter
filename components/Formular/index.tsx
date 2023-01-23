@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { FullWidthContainer, ResponsiveContainer } from '../Containers';
 import { Estate } from './Estate';
 import { FinanceOffer } from './FinanceOffer';
-import { ThankYou } from './FormModels/ThankYou';
+import { ThankYou } from './ThankYou';
 import { NegativeSCHUFA } from './NegativeSCHUFA';
 import Offer from './Offer';
 import ProjectNumbers from './ProjectNumbers';

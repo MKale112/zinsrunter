@@ -1,36 +1,23 @@
-import { VStack, Heading, HStack, Text, useMediaQuery, keyframes } from '@chakra-ui/react';
+import { VStack, Heading, HStack, Text, useMediaQuery } from '@chakra-ui/react';
 import React from 'react';
 import Image from 'next/image';
 import { FullWidthContainer, ResponsiveContainer } from '../Containers';
 import partnerData from '../../data/partners.json';
-
 const ReactReveal = require('react-reveal');
 
 const Partners = () => {
   const [isMobile] = useMediaQuery('(max-width: 640px)');
   const partners = partnerData.partners.map((entry, index) => (
-    <ReactReveal.Fade bottom delay={index * 200} key={entry.id}>
+    <ReactReveal.Fade bottom delay={index * 100} key={entry.id}>
       <Image src={entry.path} alt={entry.id} width={isMobile ? 100 : 150} height={100} />
     </ReactReveal.Fade>
   ));
-
-  const movement = keyframes`
-  0% {
-		opacity: 0;
-		transform: translateX(-50px);
-	}
-
-	100% {
-		opacity: 1;
-		transform: translateX(0);
-	}
-  `;
 
   return (
     <FullWidthContainer id='section-partners' py={[16, 24]}>
       <ResponsiveContainer>
         <ReactReveal.Fade bottom>
-          <VStack spacing={[6, 12]} animation={`${movement} 2s ease 0s 1 normal forwards`}>
+          <VStack spacing={[6, 12]}>
             <Heading as='h2' fontSize={['xl', '3xl']}>
               Unsere Partner
             </Heading>
