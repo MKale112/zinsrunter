@@ -47,7 +47,11 @@ export const Financing = () => {
                   <ListItem fontSize={['md', 'xl']} color='secondaryFontColor'>
                     <ListIcon as={CheckCircleIcon} color='primary.blue' />
                     Mehrfamilienhäuser (
-                    <a href='https://www.ehyp.de/ehyp/b2b/PH_Investorenfinanzierungen.pdf' target='_blank' rel="noreferrer">
+                    <a
+                      href='https://www.ehyp.de/ehyp/b2b/PH_Investorenfinanzierungen.pdf'
+                      target='_blank'
+                      rel='noreferrer'
+                    >
                       Hinweise beachten
                     </a>
                     )
@@ -55,7 +59,11 @@ export const Financing = () => {
                   <ListItem fontSize={['md', 'xl']} color='secondaryFontColor'>
                     <ListIcon as={CheckCircleIcon} color='primary.blue' />
                     Teilgewerblich genutzte Objekte (max. 50%,{' '}
-                    <a href='https://www.ehyp.de/ehyp/b2b/PH_Investorenfinanzierungen.pdf' target='_blank' rel="noreferrer">
+                    <a
+                      href='https://www.ehyp.de/ehyp/b2b/PH_Investorenfinanzierungen.pdf'
+                      target='_blank'
+                      rel='noreferrer'
+                    >
                       bitte Einschränkungen beachten
                     </a>
                     )
