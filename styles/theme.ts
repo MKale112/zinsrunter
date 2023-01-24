@@ -66,9 +66,6 @@ const customTheme = extendTheme({
         },
       },
     },
-    Heading: {
-      color: colors.primary.darkTeal,
-    },
     Link: {
       _hover: {
         // color: colors.primary.teal,
