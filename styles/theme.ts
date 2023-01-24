@@ -4,17 +4,11 @@ const colors = {
   primary: {
     white: '#FFF',
     black: '#000',
-    teal: '#3fd2c7',
-    darkTeal: '#539D96',
     blue: '#143474',
     darkBlue: '#1c3c6c',
     mutedBlue: '#2c5464',
     acid: '#9bc31c',
     darkAcid: '#5c8444',
-  },
-  secondary: {
-    sky: '#e3fffc',
-    cloud: '#e8f3f1',
   },
   primaryFontColor: baseTheme.colors.gray['800'],
   secondaryFontColor: baseTheme.colors.gray['600'],
