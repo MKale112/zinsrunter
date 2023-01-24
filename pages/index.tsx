@@ -6,6 +6,7 @@ import Partners from '@/components/SealsAndPartners/Partners';
 import Seals from '@/components/SealsAndPartners/Seals';
 import Highlights from '@/components/Highlights/Highlights';
 import ChakraLink from '@/components/Link/ChakraLink';
+import { Financing } from '@/components/Financing/Financing';
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
           <Button variant='accent'>Unverbindlich Anfragen</Button>
         </ChakraLink>
       </HeroBanner>
+      <Financing />
       <Highlights />
       <Partners />
       <Seals />

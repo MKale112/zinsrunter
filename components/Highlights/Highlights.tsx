@@ -14,7 +14,6 @@ import {
 import React from 'react';
 import { FullWidthContainer, ResponsiveContainer } from '../Containers';
 import highlightStepsData from '../../data/highlights.json';
-
 const ReactReveal = require('react-reveal');
 
 const Highlights = () => {
@@ -31,36 +30,37 @@ const Highlights = () => {
 	}
   `;
 
-  const highlights = highlightStepsData.steps.map((entry, index) => (
-    <ReactReveal.Fade collapse text left delay={index * 200} key={entry.id}>
-      <AccordionItem
-        my={[4, 6]}
-        borderTopWidth={0}
-        animation={`${movement} 3s ease 0s 1 normal forwards`}
-        dropShadow='2xl'
-      >
-        <Heading as='h2'>
-          <AccordionButton
-            py={[4, 6, 8]}
-            borderRadius='3xl'
-            bgColor='white'
-            _hover={{ backgroundColor: 'primary.acid', color: 'white' }}
-            _expanded={{ backgroundColor: 'primary.acid', color: 'white' }}
-          >
-            <Box flex='1' textAlign='left' ml={isMobile ? 2 : 4}>
-              <Heading as='h2' fontSize={['sm', '2xl']}>
-                {entry.title}
-              </Heading>
-            </Box>
-            <AccordionIcon boxSize={isMobile ? 8 : 10} />
-          </AccordionButton>
-        </Heading>
+  const highlights = highlightStepsData.steps.map((entry) => (
+    <AccordionItem
+      key={entry.id}
+      my={[4, 6]}
+      borderTopWidth={0}
+      animation={`${movement} 3s ease 0s 1 normal forwards`}
+      dropShadow='2xl'
+    >
+      <Heading as='h2'>
+        <AccordionButton
+          py={[4, 6, 8]}
+          borderRadius='3xl'
+          bgColor='white'
+          _hover={
+            isMobile ? { backgroundColor: 'white', color: 'base' } : { backgroundColor: 'primary.acid', color: 'white' }
+          }
+          _expanded={{ backgroundColor: 'primary.acid', color: 'white' }}
+        >
+          <Box flex='1' textAlign='left' ml={isMobile ? 2 : 4}>
+            <Heading as='h2' fontSize={['sm', '2xl']}>
+              {entry.title}
+            </Heading>
+          </Box>
+          <AccordionIcon boxSize={isMobile ? 8 : 10} />
+        </AccordionButton>
+      </Heading>
 
-        <AccordionPanel py={[2, 4]} ml={4} fontSize={['sm', '2xl']}>
-          {entry.text}
-        </AccordionPanel>
-      </AccordionItem>
-    </ReactReveal.Fade>
+      <AccordionPanel py={[2, 4]} ml={4} fontSize={['sm', '2xl']}>
+        {entry.text}
+      </AccordionPanel>
+    </AccordionItem>
   ));
 
   return (

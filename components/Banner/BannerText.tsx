@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { StackProps, VStack } from '@chakra-ui/react';
+import { StackProps, useMediaQuery, VStack } from '@chakra-ui/react';
 
 export interface BannerTextProps extends StackProps {
   children: ReactNode;
@@ -7,11 +7,12 @@ export interface BannerTextProps extends StackProps {
 
 export const BannerText = (props: BannerTextProps) => {
   const { children, ...rest } = props;
+  const [isMobile] = useMediaQuery('(max-width: 640px)');
   return (
     <VStack
       w={'50%'}
       backdropFilter={'blur(2px)'}
-      backgroundColor='blackAlpha.300'
+      backgroundColor={isMobile ? 'blackAlpha.600' : 'blackAlpha.400'}
       fontWeight={'bold'}
       textShadow={'2px 1px black'}
       padding={10}

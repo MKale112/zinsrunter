@@ -13,6 +13,7 @@ export const PropertyUse: FC<TilePropDrill> = ({ setFullFormData, setStep }) => 
     <SimpleGrid columns={[1, 2, 3, 3]} spacing={4} justifyItems={'center'} textAlign='center'>
       {propertyUse.data.map((entry) => (
         <Center
+          data-group
           key={entry.key}
           bg='white'
           borderRadius='2xl'
@@ -32,9 +33,11 @@ export const PropertyUse: FC<TilePropDrill> = ({ setFullFormData, setStep }) => 
           }}
           onClick={() => handleTileClick(entry.text)}
         >
-          <VStack>
+          <VStack _groupHover={{ filter: 'brightness(0) invert(1)' }}>
             <Image src={entry.icon} alt={entry.text} height={64} width={64} />
-            <Text fontSize={['sm', 'md', 'lg']}>{entry.text}</Text>
+            <Text fontSize={['sm', 'md', 'lg']} fontWeight='medium'>
+              {entry.text}
+            </Text>
           </VStack>
         </Center>
       ))}

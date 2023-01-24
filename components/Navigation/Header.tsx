@@ -22,6 +22,7 @@ import { HamburgerIcon } from '@chakra-ui/icons';
 import navigationJSON from '../../data/navigationLinks.json';
 import { FullWidthContainer, ResponsiveContainer } from '../Containers';
 import ChakraLink from '../Link/ChakraLink';
+import { useRouter } from 'next/router';
 
 interface TabsInterface {
   color?: string;
@@ -52,6 +53,7 @@ const Header = () => {
   const [isMobile] = useMediaQuery('(max-width: 640px)');
   const [isTablet] = useMediaQuery('(max-width: 1000px)');
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const willRenderNav = useRouter();
 
   const links = navigationJSON.topNav.map((entry) => (
     <ChakraLink key={entry.id} href={entry.href} rel='noreferrer'>
@@ -87,14 +89,16 @@ const Header = () => {
           </HStack>
           {isTablet ? (
             <>
-              <HamburgerIcon
-                onClick={onOpen}
-                boxSize='12'
-                border='1px'
-                borderRadius='lg'
-                borderColor={'gray.300'}
-                padding={2}
-              ></HamburgerIcon>
+              {willRenderNav.pathname === '/' && (
+                <HamburgerIcon
+                  onClick={onOpen}
+                  boxSize='12'
+                  border='1px'
+                  borderRadius='lg'
+                  borderColor={'gray.300'}
+                  padding={2}
+                />
+              )}
               <Drawer isOpen={isOpen} placement='right' onClose={onClose} size={isMobile ? 'xs' : 'md'}>
                 <DrawerOverlay />
                 <DrawerContent overflowY='scroll'>
@@ -138,7 +142,7 @@ const Header = () => {
       {!isTablet && (
         <Flex bgColor='primary.blue' direction='row' justifyContent='center' alignItems='center'>
           <ResponsiveContainer display='flex' flexDirection='row' justifyContent='center' alignItems='center'>
-            <Tabs color='primary.white' hoverObj={{ color: 'primary.acid' }} />
+            {willRenderNav.pathname === '/' && <Tabs color='primary.white' hoverObj={{ color: 'primary.acid' }} />}
           </ResponsiveContainer>
         </Flex>
       )}

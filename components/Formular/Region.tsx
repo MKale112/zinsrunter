@@ -34,7 +34,7 @@ export const Region: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
     netRentalIncomeMonthly: null,
   };
   return (
-    <Center w={['95%', '95%', '80%', '50%', '40%']}>
+    <Center w={['95%', '95%', '80%', '50%']}>
       <Formik
         // eslint-disable-next-line
         initialValues={initialValues}

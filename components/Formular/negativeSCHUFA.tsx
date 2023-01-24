@@ -1,6 +1,5 @@
 import { Center, VStack, Text, SimpleGrid, UnorderedList, ListItem, Image } from '@chakra-ui/react';
 import { negativeSCHUFA } from 'data/form';
-
 import React, { FC } from 'react';
 import { ResponsiveContainer } from '../Containers';
 import { FormValues, TilePropDrill } from './types';

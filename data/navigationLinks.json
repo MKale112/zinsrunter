@@ -15,6 +15,11 @@
       "id": "navbar-seals",
       "label": "SEALS",
       "href": "#section-seals"
+    },
+    {
+      "id": "navbar-financing",
+      "label": "FINANCING",
+      "href": "#section-financing-options"
     }
   ]
 }
