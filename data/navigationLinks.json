@@ -1,25 +1,33 @@
 {
-  "topNav": [{ "id": "formular_link_id", "label": "FORMULAR", "href": "/formular" }],
+  "topNav": [
+    { "id": "formular_link_id", "label": "Angebot anfordern", "href": "/formular" },
+    { "id": "kontakt_link_id", "label": "Kontakt", "href": "/kontakt" }
+  ],
   "subNav": [
     {
-      "id": "navbar-highlights",
-      "label": "HIGHLIGHTS",
-      "href": "#section-highlights"
+      "id": "navbar-finanzierungen",
+      "label": "FINANZIERUNGEN",
+      "href": "#section-finanzierungen"
     },
     {
       "id": "navbar-partners",
-      "label": "PARTNERS",
+      "label": "PARTNER",
       "href": "#section-partners"
     },
     {
-      "id": "navbar-seals",
-      "label": "SEALS",
-      "href": "#section-seals"
+      "id": "navbar-steps",
+      "label": "SO FUNKTIONIERT'S",
+      "href": "#section-steps"
     },
     {
-      "id": "navbar-financing",
-      "label": "FINANCING",
-      "href": "#section-financing-options"
+      "id": "navbar-mehrwert",
+      "label": "UNSER MEHRWERT",
+      "href": "#section-mehrwert"
+    },
+    {
+      "id": "navbar-our-site",
+      "label": "ÜBER UNS",
+      "href": "/kontakt"
     }
   ]
 }

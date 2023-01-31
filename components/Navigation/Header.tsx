@@ -14,7 +14,6 @@ import {
   useDisclosure,
   Flex,
   Image,
-  Center,
   VStack,
   SystemStyleObject,
 } from '@chakra-ui/react';
@@ -36,7 +35,7 @@ const Tabs = ({ color = 'primary.blue', hoverObj = { color: 'primary.mutedBlue' 
       <Button
         variant='link'
         px={[4, 8, 12, 16]}
-        py={3}
+        py={2}
         fontSize={['2xl', '3xl', '4xl', 'lg']}
         color={color}
         _hover={hoverObj}
@@ -56,7 +55,7 @@ const Header = () => {
   const willRenderNav = useRouter();
 
   const links = navigationJSON.topNav.map((entry) => (
-    <ChakraLink key={entry.id} href={entry.href} rel='noreferrer'>
+    <ChakraLink key={entry.id} href={entry.href} rel='noreferrer' w={isMobile ? '100%' : 'fit-content'}>
       <Button
         variant='outline'
         borderRadius='2xl'
@@ -66,6 +65,7 @@ const Header = () => {
         _hover={{ bgColor: 'primary.acid', color: 'white' }}
         fontWeight='bold'
         fontSize={['md', 'lg']}
+        w='full'
         p={6}
       >
         {entry.label}
@@ -76,13 +76,13 @@ const Header = () => {
   return (
     <FullWidthContainer>
       <ResponsiveContainer>
-        <HStack py={isMobile ? 2 : 4} justify='space-between'>
+        <HStack py={{ base: 2, lg: 4 }} justify='space-between'>
           <HStack spacing={6} alignItems='flex-end'>
             <ChakraLink href='/'>
               <Image src='/logo.png' alt={'Logo Image'} width={isMobile ? 120 : 150} />
             </ChakraLink>
             {!isTablet && (
-              <Text as='b' fontSize={['xs', 'md', 'lg', 'lg']} color='secondaryFontColor'>
+              <Text as='b' fontSize={['xs', 'md', 'lg', 'lg', 'xl', '2xl']} color='secondaryFontColor'>
                 Das ist kein Versprechen - sondern unsere Motivation!
               </Text>
             )}
@@ -110,15 +110,14 @@ const Header = () => {
                       <VStack h='50%'>
                         <Tabs closeDrawer={onClose} hoverObj={{ color: 'primary.acid' }} />
                       </VStack>
-                      <Center>{links}</Center>
+                      <VStack>{links}</VStack>
                     </VStack>
-                    {/* <Input placeholder='Type here...' /> */}
                   </DrawerBody>
 
                   <DrawerFooter justifyContent='center'>
                     {new Date().getFullYear()} ©{' '}
                     <a href='/'>
-                      <Button variant='link'>Zinsrunter.de</Button>
+                      <Button variant='link'>Zins-runter.de</Button>
                     </a>
                   </DrawerFooter>
                 </DrawerContent>
@@ -133,7 +132,7 @@ const Header = () => {
         </HStack>
         {isTablet && (
           <Flex py={1}>
-            <Text as='b' fontSize={['xs', 'md', 'lg', 'lg']} color='secondaryFontColor'>
+            <Text as='b' fontSize={['sm', 'lg', 'lg', 'xl']} color='secondaryFontColor'>
               Das ist kein Versprechen - sondern unsere Motivation!
             </Text>
           </Flex>

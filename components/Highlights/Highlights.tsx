@@ -64,12 +64,12 @@ const Highlights = () => {
   ));
 
   return (
-    <FullWidthContainer id='section-highlights' py={[16, 24]} bg='gray.100'>
+    <FullWidthContainer id='section-steps' py={[16, 24]} bg='gray.100'>
       <ResponsiveContainer>
         <ReactReveal.Fade bottom>
           <VStack spacing={[6, 12]}>
             <Heading as='h2' fontSize={['xl', '3xl']} textAlign='center' w='80%'>
-              Ihre Baufinan¬zierung mit uns in nur 5 Schritten
+              Ihre Baufinanzierung mit uns in nur 5 Schritten
             </Heading>
             <Text
               width={{ base: '80%', md: '75%', lg: '60%' }}

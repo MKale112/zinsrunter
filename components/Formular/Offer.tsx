@@ -130,7 +130,7 @@ const Offer: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
               <Box alignSelf='flex-start'>
                 <Field component={CheckboxField} name='newsletter' label='Evaluation of advice and news' />
                 <Text fontSize={14}>
-                  Yes, Zinsrunter can send me a request for an evaluation of the financing advice, further information
+                  Yes, Zins-runter can send me a request for an evaluation of the financing advice, further information
                   and offers by email. I can revoke this consent at any time with effect for the future.
                 </Text>
               </Box>
@@ -138,7 +138,7 @@ const Offer: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
               <Box alignSelf='flex-start'>
                 <Field component={CheckboxField} name='dataSharing' label='Data sharing' />
                 <Text fontSize={14}>
-                  Yes, I revocably consent to the transfer of my entered data to Zinsrunter and my future financing
+                  Yes, I revocably consent to the transfer of my entered data to ZinsRunter and my future financing
                   advisor for the creation of my offer (please note the data protection declaration ).
                 </Text>
               </Box>

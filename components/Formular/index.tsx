@@ -57,8 +57,8 @@ const Formular = () => {
           <VStack minHeight='65vh' h='fit-content' py={!step ? 16 : 0} justifyContent='center'>
             {!step && (
               <>
-                <VStack py={10} textAlign='center'>
-                  <Heading as='h3' fontSize={['xl', '2xl']} pb={8}>
+                <VStack py={6} textAlign='center'>
+                  <Heading as='h3' fontSize={['xl', '2xl']} pb={3}>
                     Free financing offer
                   </Heading>
                   <Text color='secondaryFontColor'>Compare more than 450 mortgage lending providers with us.</Text>

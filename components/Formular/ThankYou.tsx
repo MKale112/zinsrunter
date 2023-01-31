@@ -15,14 +15,14 @@ export const ThankYou = () => {
       w={['95%', '95%', '80%', '50%', '40%']}
     >
       <Heading as='h3' fontSize={['xl', '2xl', '2xl', '3xl']}>
-        Thank you for submitting.
+        Vielen Dank für die Übermittlung.
       </Heading>
       <Heading as='h3' fontSize={['lg', 'lg', 'xl', 'xl']} color='secondaryFontColor'>
-        We&apos;ll get back to you soon!
+        Wir melden uns bald bei Ihnen!
       </Heading>
       <ChakraLink href='/'>
         <Button variant='accent' padding={6}>
-          Back to Zinsrunter
+          Zurück zur Startseite
         </Button>
       </ChakraLink>
     </VStack>
