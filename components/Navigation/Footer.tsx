@@ -9,9 +9,12 @@ const Footer = () => {
   const [isMobile] = useMediaQuery('(max-width: 640px)');
   const items = footerItems.links.map((entry) => (
     <Link
+      color='primary.blue'
+      fontWeight='semibold'
+      _hover={{ textDecoration: 'underline' }}
       key={`${entry.label}${entry.id}`}
       href={entry.href}
-      target={entry.label !== 'Zinsrunter' ? '_blank' : '_self'}
+      target='_self'
       rel='noreferrer'
       fontSize={['xs', 'md']}
     >

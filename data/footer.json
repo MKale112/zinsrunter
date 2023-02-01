@@ -3,12 +3,12 @@
     {
       "id": "footer-impressum",
       "label": "Impressum",
-      "href": "#"
+      "href": "/impressum"
     },
     {
       "id": "footer-agb",
       "label": "AGB",
-      "href": "#"
+      "href": "/agb"
     },
     {
       "id": "footer-datenschutz",

@@ -7,8 +7,7 @@ const AGB = () => {
   return (
     <>
       <Header />
-      <Footer />
-      <FullWidthContainer>
+      <FullWidthContainer py={[4, 12]} bgColor='gray.100'>
         <ResponsiveContainer>
           <VStack spacing={[4, 6, 10, 12]} alignItems='flex-start' justifyContent='flex-start'>
             <VStack alignItems='flex-start'>
@@ -17,11 +16,19 @@ const AGB = () => {
               </Heading>
               <Text>
                 Andere Vergleichsrechner auf dieser Seite unterliegen gesonderten Bedingungen, die Sie{' '}
-                <Link href='#'>hier aufrufen</Link> können.
+                <Link
+                  color='primary.blue'
+                  fontWeight='semibold'
+                  _hover={{ textDecoration: 'underline' }}
+                  href='https://www.versicherungstarife.info/impressum.htm'
+                >
+                  hier aufrufen
+                </Link>{' '}
+                können.
               </Text>
             </VStack>
 
-            <VStack>
+            <VStack alignItems={'flex-start'}>
               <Heading as={'h2'} fontSize={['md', 'lg', 'lg', 'xl']}>
                 1. Geltungsbereich, vorrangige Abreden, Geltung von Bedingungen von Drittanbietern
               </Heading>
@@ -40,17 +47,17 @@ const AGB = () => {
                   Oberbayern.
                 </Text>
               </VStack>
-              <VStack>
+              <VStack alignItems={'flex-start'}>
                 <Text>
                   1.2. SIGURON schließt Verträge nur mit Verbrauchern im Sinne von § 13 BGB ab, die mindestens das 18.
                   Lebensjahr vollendet haben, unbeschränkt geschäftsfähig sind und ausschließlich auf eigene Rechnung
                   handeln.
                 </Text>
               </VStack>
-              <VStack>
+              <VStack alignItems={'flex-start'}>
                 <Text>1.3. Individuelle Abreden zwischen dem Kunden und SIGURON gehen diesen AGB vor.</Text>
               </VStack>
-              <VStack>
+              <VStack alignItems={'flex-start'}>
                 <Text>
                   1.4. Für bestimmte Leistungen bedient sich SIGURON eines externen Partners, dem Europace-Martplatz
                   und/oder der Prohyp Plattform, die eigenständig und eigenverantwortlich Dienstleistungen SIGURON
@@ -59,7 +66,7 @@ const AGB = () => {
               </VStack>
             </VStack>
 
-            <VStack>
+            <VStack alignItems={'flex-start'}>
               <Heading as={'h2'} fontSize={['md', 'lg', 'lg', 'xl']}>
                 2. Vertragsschluss, Leistungsgegenstand, Vertragspartner
               </Heading>
@@ -76,7 +83,7 @@ const AGB = () => {
                   zukünftige Vertragspartner des Kunden.
                 </Text>
               </VStack>
-              <VStack>
+              <VStack alignItems={'flex-start'}>
                 <Text>
                   2.2. SIGURON wird die vom Kunden mitgeteilten Angaben hinsichtlich des Finanzierungsobjektes und
                   seiner persönlichen und wirtschaftlichen Verhältnisse nicht prüfen. Die Prüfung und Bewertung obliegt
@@ -84,7 +91,7 @@ const AGB = () => {
                   Kunden.
                 </Text>
               </VStack>
-              <VStack>
+              <VStack alignItems={'flex-start'}>
                 <Text>
                   2.3. SIGURON gewährt dem Kunden selbst keine Darlehen. SIGURON tritt ausschließlich als Vermittler von
                   Darlehen auf. Im Falle einer Gewährung eines Darlehens kommt ein Darlehensvertrag ausschließlich
@@ -92,12 +99,12 @@ const AGB = () => {
                   Vertragsbedingungen / Allgemeinen Geschäftsbedingungen des jeweiligen Finanzierungspartners.
                 </Text>
               </VStack>
-              <VStack>
+              <VStack alignItems={'flex-start'}>
                 <Text>2.4. Der Kunde hat keinen Anspruch auf Abschluss eines Darlehensvertrags.</Text>
               </VStack>
             </VStack>
 
-            <VStack>
+            <VStack alignItems={'flex-start'}>
               <Heading as={'h2'} fontSize={['md', 'lg', 'lg', 'xl']}>
                 3. Leistungen von SIGURON, kooperierende Finanzierungspartner
               </Heading>
@@ -111,7 +118,7 @@ const AGB = () => {
                   Kunden zur Erstellung eines Finanzierungsvorschlags oder Finanzierungsantrags.
                 </Text>
               </VStack>
-              <VStack>
+              <VStack alignItems={'flex-start'}>
                 <Text>
                   3.2. SIGURON erbringt für den Kunden hinsichtlich seiner individuellen Finanzierungsbedürfnisse
                   persönliche Vermittlungs- und Beratungsleistungen, nämlich:
@@ -147,26 +154,26 @@ const AGB = () => {
                   Gültigkeitsdauern auftreten.
                 </Text>
               </VStack>
-              <VStack>
+              <VStack alignItems={'flex-start'}>
                 <Text>
                   3.3. Der Kunde ist explizit nicht zum Abschluss eines Darlehensvertrags verpflichtet, auch wenn er
                   Vermittlungs- und Beratungsleistungen von SIGURON in Anspruch nimmt.
                 </Text>
               </VStack>
-              <VStack>
+              <VStack alignItems={'flex-start'}>
                 <Text>
                   3.4. SIGURON kann den Kunden zur Erbringung der Vermittlungs- und Beratungsleistungen per E-Mail, per
                   SMS oder anderer Kurznachricht, telefonisch oder postalisch kontaktieren.
                 </Text>
               </VStack>
-              <VStack>
+              <VStack alignItems={'flex-start'}>
                 <Text>
                   3.5. SIGURON ist nicht befugt, im Zusammenhang mit dem Vertrag erlangte Kenntnisse an unbeteiligte
                   Dritte weiterzugeben, außer eine Weitergabe ist zur Erfüllung von gesetzlichen Anforderungen oder
                   vertraglichen Pflichten von SIGURON erforderlich.
                 </Text>
               </VStack>
-              <VStack>
+              <VStack alignItems={'flex-start'}>
                 <Text>
                   In diesem Kundenkonto kann sich der Kunde jederzeit über seine Darlehensanfragen,
                   Finanzierungsvorschläge und abgeschlossene Darlehensverträge informieren, seinen persönlichen SIGURON
@@ -188,7 +195,7 @@ const AGB = () => {
               </VStack>
             </VStack>
 
-            <VStack>
+            <VStack alignItems={'flex-start'}>
               <Heading as={'h2'} fontSize={['md', 'lg', 'lg', 'xl']}>
                 4. Leistungen von dem Europace-Marktplatz
               </Heading>
@@ -197,7 +204,14 @@ const AGB = () => {
                   Der Europace-Marktplatz ist eine europäische Plattform für den Vertrieb von Finanzierungsleistungen
                   und ein gemeinschaftliches Angebot der Europace AG und der Hypoport Mortgage Market. Die zugehörigen
                   Datenschutzhinweise können hier eingesehen werden:{' '}
-                  <Link>https://neu.europace.de/datenschutzerklaerung/</Link>
+                  <Link
+                    color='primary.blue'
+                    fontWeight='semibold'
+                    _hover={{ textDecoration: 'underline' }}
+                    href='https://neu.europace.de/datenschutzerklaerung/'
+                  >
+                    https://neu.europace.de/datenschutzerklaerung/
+                  </Link>
                   <br />
                   Der Europlatz-Marktplatz erbringt für SIGURON eigenständig und eigenverantwortlich Leistungen zum
                   Zweck der Produktauswahl, Vorbereitung und Beantragung des Darlehens, nämlich:
@@ -217,7 +231,7 @@ const AGB = () => {
               </VStack>
             </VStack>
 
-            <VStack>
+            <VStack alignItems={'flex-start'}>
               <Heading as={'h2'} fontSize={['md', 'lg', 'lg', 'xl']}>
                 5. Pflichten des Kunden, keine gewerbliche Nutzung, Vertragsstrafe
               </Heading>
@@ -252,7 +266,7 @@ const AGB = () => {
               </VStack>
             </VStack>
 
-            <VStack>
+            <VStack alignItems={'flex-start'}>
               <Heading as={'h2'} fontSize={['md', 'lg', 'lg', 'xl']}>
                 6. Kosten
               </Heading>
@@ -269,7 +283,7 @@ const AGB = () => {
               </VStack>
             </VStack>
 
-            <VStack>
+            <VStack alignItems={'flex-start'}>
               <Heading as={'h2'} fontSize={['md', 'lg', 'lg', 'xl']}>
                 7. Datenschultz
               </Heading>
@@ -278,12 +292,19 @@ const AGB = () => {
                   Die vom Kunden erfassten oder übermittelten Daten werden ausschließlich für die Zwecke der
                   vertraglichen Vermittlungs- und Beratungsleistungen verarbeitet. Weitergehende Informationen entnehmen
                   Sie bitte den Datenschutzhinweisen:{' '}
-                  <Link href='zins-runter.de/datenschutz'>zins-runter.de/datenschutz</Link>
+                  <Link
+                    color='primary.blue'
+                    fontWeight='semibold'
+                    _hover={{ textDecoration: 'underline' }}
+                    href='zins-runter.de/datenschutz'
+                  >
+                    zins-runter.de/datenschutz
+                  </Link>
                 </Text>
               </VStack>
             </VStack>
 
-            <VStack>
+            <VStack alignItems={'flex-start'}>
               <Heading as={'h2'} fontSize={['md', 'lg', 'lg', 'xl']}>
                 8. Haftung
               </Heading>
@@ -308,7 +329,7 @@ const AGB = () => {
               </VStack>
             </VStack>
 
-            <VStack>
+            <VStack alignItems={'flex-start'}>
               <Heading as={'h2'} fontSize={['md', 'lg', 'lg', 'xl']}>
                 9. Textform, Teilunwirksamkeit, anwendbares Recht
               </Heading>
@@ -332,7 +353,7 @@ const AGB = () => {
               </VStack>
             </VStack>
 
-            <VStack>
+            <VStack alignItems={'flex-start'}>
               <Heading as={'h2'} fontSize={['md', 'lg', 'lg', 'xl']}>
                 10. Hinweis zur Streitschlichtung bei dem Versicherungsombudsmann und zur Streitbeilegung gemäß
                 Verbraucherstreitbeilegungsgesetz
@@ -354,9 +375,25 @@ const AGB = () => {
                   <br />
                   Telefon: 030 / 2060 58-0
                   <br />
-                  E-Mail: beschwerde@versicherungsombudsmann.de
+                  E-Mail:{' '}
+                  <Link
+                    color='primary.blue'
+                    fontWeight='semibold'
+                    _hover={{ textDecoration: 'underline' }}
+                    href='mailto: beschwerde@versicherungsombudsmann.de'
+                  >
+                    beschwerde@versicherungsombudsmann.de
+                  </Link>
                   <br />
-                  Internet: www.versicherungsombudsmann.de
+                  Internet:{' '}
+                  <Link
+                    color='primary.blue'
+                    fontWeight='semibold'
+                    _hover={{ textDecoration: 'underline' }}
+                    href='www.versicherungsombudsmann.de'
+                  >
+                    www.versicherungsombudsmann.de
+                  </Link>
                   <br />
                 </Text>
                 <Text>
@@ -374,23 +411,47 @@ const AGB = () => {
                   <br />
                   Telefon +49(0)4069650890
                   <br />
-                  E-Mail: kontakt@schlichtung-finanzberatung.de
+                  E-Mail:{' '}
+                  <Link
+                    color='primary.blue'
+                    fontWeight='semibold'
+                    _hover={{ textDecoration: 'underline' }}
+                    href='mailto: kontakt@schlichtung-finanzberatung.de'
+                  >
+                    kontakt@schlichtung-finanzberatung.de
+                  </Link>
                   <br />
-                  Website: www.schlichtung-finanzberatung.de
+                  Website:{' '}
+                  <Link
+                    color='primary.blue'
+                    fontWeight='semibold'
+                    _hover={{ textDecoration: 'underline' }}
+                    href='www.schlichtung-finanzberatung.de'
+                  >
+                    www.schlichtung-finanzberatung.de
+                  </Link>
                   <br />
                 </Text>
                 <Text>
                   Für sämtliche andere Streitigkeiten, die im Zusammenhang mit der Vermittlertätigkeit von SIGURON
                   Vergleichsportal Baufinanzierung GmbH gegenüber einem Verbraucher im Rahmen eines Vertragsabschlusses
                   stehen, stellt die Europäische Kommission eine Plattform für die außergerichtliche
-                  Online-Streitbeilegung (OS-Plattform) bereit, aufrufbar unter http://ec.europa.eu/odr. Wir weisen
-                  darauf hin, dass wir weder bereit noch verpflichtet sind, an Streitbeilegungsverfahren vor einer
-                  Verbraucherschlichtungsstelle teilzunehmen.
+                  Online-Streitbeilegung (OS-Plattform) bereit, aufrufbar unter{' '}
+                  <Link
+                    color='primary.blue'
+                    fontWeight='semibold'
+                    _hover={{ textDecoration: 'underline' }}
+                    href='http://ec.europa.eu/odr'
+                  >
+                    http://ec.europa.eu/odr
+                  </Link>
+                  . Wir weisen darauf hin, dass wir weder bereit noch verpflichtet sind, an Streitbeilegungsverfahren
+                  vor einer Verbraucherschlichtungsstelle teilzunehmen.
                 </Text>
               </VStack>
             </VStack>
 
-            <VStack>
+            <VStack alignItems={'flex-start'}>
               <Heading as={'h2'} fontSize={['md', 'lg', 'lg', 'xl']}>
                 11. Widerrufsbelehrung
               </Heading>
@@ -495,6 +556,7 @@ const AGB = () => {
           </VStack>
         </ResponsiveContainer>
       </FullWidthContainer>
+      <Footer />
     </>
   );
 };
