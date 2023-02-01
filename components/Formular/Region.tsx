@@ -61,53 +61,53 @@ export const Region: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
                 component={InputField}
                 name='zipcode'
                 type='number'
-                label='ZIP code place of residence today'
-                placeholder='Please enter'
+                label='Postleitzahl Wohnort heute'
+                placeholder='Bitte eingeben'
               />
 
-              <Field component={InputField} name='location' type='text' label='Location' placeholder='Please enter' />
+              <Field component={InputField} name='location' type='text' label='Ort' placeholder='Wird vorgeschlagen' />
 
               <Field
                 component={SelectField}
                 name='searchStatus'
                 type='select'
-                label='Real estate search status'
+                label='Stand der Immobiliensuche'
                 options={[
-                  'Still looking for a property',
-                  'Interesting object found',
-                  'Decision for object has been made',
-                  'Notary appointment is planned',
+                  'Noch auf Objektsuche',
+                  'Interessantes Objekt gefunden',
+                  'Entscheidung für Objekt ist gefallen',
+                  'Notartermin wird geplant',
                 ]}
-                placeholder='Please select'
+                placeholder='Bitte auswählen'
               />
 
               <Field
                 component={InputField}
                 name='householdNetMonthly'
                 type='number'
-                label='Household net monthly'
-                placeholder='Please enter'
+                label='Haushaltsnetto monatlich'
+                placeholder='Bitte eingeben'
               />
 
               <Text fontSize={14} mb={4}>
-                Please enter the monthly net income of the entire household here. Please state only regularly recurring
-                income.
+                Bitte geben Sie hier das monatliche Nettoeinkommmen des gesamten Haushalts ein. Bitte geben Sie nur
+                regelmäßig wiederkehrende Einkünfte an.
               </Text>
 
               <Field
                 component={InputField}
                 name='netRentalIncomeMonthly'
                 type='number'
-                label='Net rental income monthly'
-                placeholder='Please enter'
+                label='Netto-Mieteinnahme monatlich'
+                placeholder='Bitte eingeben'
               />
               <Text fontSize={14} mb={4}>
-                Please enter the rental income of the property to be rented here. If there is no rental contract yet,
-                please state the expected income.
+                Bitte geben Sie hier die Mieteinnahme des zu vermietenden Objektes ein. Falls noch kein Mietvertrag
+                besteht, geben Sie bitte die zu erwartende Einnahme an.
               </Text>
 
               <Button variant='accent' type='submit' padding={6} fontSize={20}>
-                Continue
+                Weiter
               </Button>
             </VStack>
           </Form>

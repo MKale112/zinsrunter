@@ -56,7 +56,7 @@ const ProjectNumbers: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
                 component={HInputField}
                 name='landPrice'
                 type='number'
-                label='Land price'
+                label='Kaufpreis'
                 placeholder='Please specify'
                 width='50%'
                 backIcon={IconObject.euro}
@@ -89,7 +89,7 @@ const ProjectNumbers: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
                   <AddIcon />
                 </Box>
                 <HStack justifyContent='space-between' w={'full'}>
-                  <Text>Notary & land register</Text>
+                  <Text>Notar & Grundbuch</Text>
                   <HStack>
                     <Text fontSize={12}>(2.00%)</Text>
                     <Text>0</Text>
@@ -105,7 +105,7 @@ const ProjectNumbers: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
                   <AddIcon />
                 </Box>
                 <HStack justifyContent='space-between' w={'full'}>
-                  <Text>Property transfer tax</Text>
+                  <Text>Grunderwerbsteuer</Text>
                   <HStack>
                     <Text fontSize={12}>(4.50%)</Text>
                     <Text>0</Text>
@@ -116,14 +116,15 @@ const ProjectNumbers: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
                 </HStack>
               </HStack>
               <Text fontSize={11} mb={4}>
-                These amounts are for the state Hamburg stipulated by law and are therefore determined automatically.
+                Diese Beträge sind für das Bundesland ###### gesetzlich vorgegeben und werden deshalb automatisch
+                ermittelt.
               </Text>
 
               <Field
                 component={HInputField}
                 name='broker'
                 type='number'
-                label='Broker'
+                label='Makler'
                 placeholder='Please enter'
                 frontIcon={IconObject.plus}
                 backIcon={IconObject.euro}
@@ -131,15 +132,15 @@ const ProjectNumbers: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
               />
 
               <Text fontSize={11} mb={4}>
-                The suggested brokerage fee corresponds to the usual regional level. However, you can change them if
-                necessary or even omit them completely.
+                Die vorgeschlagene Maklercourtage entspricht der regional üblichen Höhe. Sie können diese jedoch bei
+                Bedarf verändern oder auch komplett entfallen lassen.
               </Text>
 
               <Field
                 component={HInputField}
                 name='equityCapital'
                 type='number'
-                label='Equity capital'
+                label='Eigenkapital'
                 placeholder='Please enter'
                 frontIcon={IconObject.plus}
                 backIcon={IconObject.euro}
@@ -153,7 +154,7 @@ const ProjectNumbers: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
                   <EqualsIcon />
                 </Box>
                 <HStack justifyContent='space-between' w={'full'}>
-                  <Text>Loan amount</Text>
+                  <Text>Darlehensbetrag</Text>
                   <HStack>
                     <Text>0</Text>
                     <Box w='5%'>
@@ -163,13 +164,13 @@ const ProjectNumbers: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
                 </HStack>
               </HStack>
               <Text fontSize={11} mb={4}>
-                Loan amounts are rounded to the nearest 1,000 euros.
+                Darlehensbeträge werden auf volle 1.000 Euro gerundet.
               </Text>
 
               <Box bgColor='gray.400' w='full' h='1px' />
 
               <Button alignSelf='center' variant='accent' type='submit' py={6} px={16} fontSize={20}>
-                Accept values and continue to the last step
+                Werte übernehmen und weiter zum letzten Schritt
               </Button>
             </VStack>
           </Form>

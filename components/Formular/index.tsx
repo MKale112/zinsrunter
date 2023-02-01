@@ -59,10 +59,12 @@ const Formular = () => {
               <>
                 <VStack py={6} textAlign='center'>
                   <Heading as='h3' fontSize={['xl', '2xl']} pb={3}>
-                    Free financing offer
+                    Kostenloses Finanzierungsangebot
                   </Heading>
-                  <Text color='secondaryFontColor'>Compare more than 450 mortgage lending providers with us.</Text>
-                  <Text color='secondaryFontColor'>Benefit from low interest rates and competent advice.</Text>
+                  <Text color='secondaryFontColor'>
+                    Vergleichen Sie mit uns mehr als 450 Anbieter für Baufinanzierungen.
+                  </Text>
+                  <Text color='secondaryFontColor'>Profitieren Sie von günstigen Zinsen und kompetenter Beratung.</Text>
                 </VStack>
                 <Box bgColor='gray.400' w='75%' h='1px' />
               </>

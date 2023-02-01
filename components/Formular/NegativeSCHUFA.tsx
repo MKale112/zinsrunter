@@ -46,39 +46,39 @@ export const NegativeSCHUFA: FC<TilePropDrill> = ({ setFullFormData, setStep }) 
       </SimpleGrid>
       <ResponsiveContainer bg='white' borderRadius='2xl' p={[5, 5, 10]} w={{ lg: 930 }}>
         <Text fontSize={['xl', 'xl', '2xl']} fontWeight={'bold'}>
-          Notes on this question
+          Hinweise zu dieser Frage
         </Text>
         <UnorderedList pl={[2, 7]} mt={5} fontSize={['m', 'm', 'xl']} spacing={4}>
           <ListItem>
             <Text>
-              As part of this request, <strong>we do not retrieve any data</strong> and do not <strong>send any</strong>{' '}
-              to <strong>SCHUFA</strong>.
+              Im Rahmen dieser Anfrage <strong>rufen wir keine Daten ab</strong> und <strong>senden auch keine</strong>{' '}
+              an die <strong>SCHUFA</strong>.
             </Text>
           </ListItem>
           <ListItem>
             <Text>
-              We need an answer to this question because any negative entries that may exist require a different
-              advisory approach and the banks are also selected according to different criteria.
+              Wir benötigen eine Antwort auf diese Frage, weil ggf. vorhandene negative Einträge einen anderen
+              Beratungsansatz erfordern und auch die Auswahl der Banken nach anderen Kriterien erfolgt.
             </Text>
           </ListItem>
           <ListItem>
             <Text>
-              Schufa stores information about contractual relationships based on reports from banks and other
-              institutions. In this respect, Schufa entries are completely normal. Existing loans are therefore not
-              negative entries.
+              Die Schufa speichert aufgrund der Meldung von Banken und anderen Instituten, Informationen über
+              Vertragsverhältnisse. Insofern sind Schufa-Einträge völlig normal. Vorhandene Kredite sind also keine
+              Negativeinträge.
             </Text>
           </ListItem>
           <ListItem>
             <Text>
-              If there is a disruption in the contractual relationship, this is noted in the Schufa. These entries are
-              considered negative entries.
+              Kommt es zu einer Störung des Vertragsverhältnisses, wird das in der Schufa vermerkt. Diese Einträge
+              gelten als Negativeinträge.
             </Text>
           </ListItem>
           <ListItem>
             <Text>
-              For example, terminated loans or accounts as well as other characteristics (insolvency, submission of the
-              affidavit) that have arisen due to persistent payment difficulties and have led to a termination of the
-              contractual relationship are described as negative.
+              Als negativ werden zum Beispiel gekündigte Kredite oder Konten sowie andere Merkmale (Insolvenz, Abgabe
+              der eidesstattlichen Versicherung) bezeichnet, die durch anhaltende Zahlungsschwierigkeiten entstanden
+              sind und zu einer Kündigung des Vertragsverhältnisses geführt haben.
             </Text>
           </ListItem>
         </UnorderedList>

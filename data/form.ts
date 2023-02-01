@@ -14,32 +14,32 @@ export const financeOffer = {
     {
       key: 'buyPropery',
       icon: '/icons/buying-a-property.png',
-      text: 'Buying a property',
+      text: 'Kauf einer Immobilie',
     },
     {
       key: 'landPurchase',
       icon: '/icons/land-purchase-only.png',
-      text: 'Land purchase only',
+      text: 'Nur Grundstückskauf',
     },
     {
       key: 'constructionProject',
       icon: '/icons/own-construction-project.png',
-      text: 'Own construction project',
+      text: 'Eigenes Bauvorhaben',
     },
     {
       key: 'followUpFinance',
       icon: '/icons/follow-up-financing.png',
-      text: 'Follow-up financing',
+      text: 'Anschluss­finanzierung',
     },
     {
       key: 'modernize',
       icon: '/icons/modernize.png',
-      text: 'Modernize',
+      text: 'Modernisieren',
     },
     {
       key: 'raisingCapital',
       icon: '/icons/raising-capital.png',
-      text: 'Raising capital',
+      text: 'Kapital­beschaffung',
     },
   ],
 };
@@ -50,47 +50,47 @@ export const estate = {
     {
       key: 'condominium',
       icon: '/icons/condominium.png',
-      text: 'Condominium',
+      text: 'Eigentumswohnung',
     },
     {
       key: 'detachedHouse',
       icon: '/icons/detached-house.png',
-      text: 'Detached house',
+      text: 'Einfamilienhaus',
     },
     {
       key: 'plotOnly',
       icon: '/icons/land-purchase-only.png',
-      text: 'Plot only',
+      text: 'Nur Grundstück',
     },
     {
       key: 'semiDetachedHouse',
       icon: '/icons/semi-detached-house.png',
-      text: 'Semi-detached house',
+      text: 'Doppelhaushälfte',
     },
     {
       key: 'twoFamilyHouse',
       icon: '/icons/two-family-house.png',
-      text: 'Two-family house',
+      text: 'Zweifamilienhaus',
     },
     {
       key: 'midTerraceHouse',
       icon: '/icons/terraced-house.png',
-      text: 'Mid-terrace house',
+      text: 'Reihenmittelhaus',
     },
     {
       key: 'terracedHouse',
       icon: '/icons/terraced-house.png',
-      text: 'Terraced house',
+      text: 'Reiheneckhaus',
     },
     {
       key: 'apartmentBuilding',
       icon: '/icons/condominium.png',
-      text: 'Apartment building',
+      text: 'Mehrfamilienhaus',
     },
     {
       key: 'residentialCommercialBuilding',
       icon: '/icons/residential-building.png',
-      text: 'Residential/commercial building',
+      text: 'Wohn/Geschäftshaus',
     },
   ],
 };
@@ -101,17 +101,17 @@ export const propertyUse = {
     {
       key: 'selfInhabited',
       icon: '/icons/self-inhabited.png',
-      text: 'Self inhabited',
+      text: 'Selbst bewohnt',
     },
     {
       key: 'rented',
       icon: '/icons/rented.png',
-      text: 'Rented',
+      text: 'Vermietet',
     },
     {
       key: 'partlyRented',
       icon: '/icons/partly-rented.png',
-      text: 'Partly rented',
+      text: 'Teilweise vermietet',
     },
   ],
 };
@@ -122,17 +122,17 @@ export const negativeSCHUFA = {
     {
       key: 'no',
       icon: '/icons/fine.png',
-      text: 'No, everything is fine.',
+      text: 'Nein, alles bestens.',
     },
     {
       key: 'yes-done',
       icon: '/icons/neutral.png',
-      text: 'Yes, but done.',
+      text: 'Ja, aber erledigt.',
     },
     {
       key: 'yes-not-done',
       icon: '/icons/nein.png',
-      text: 'Yes, not done.',
+      text: 'Ja, nicht erledigt',
     },
   ],
 };

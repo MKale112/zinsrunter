@@ -128,35 +128,38 @@ const Offer: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
               <Box bgColor='gray.400' w='100%' h='1px' />
 
               <Box alignSelf='flex-start'>
-                <Field component={CheckboxField} name='newsletter' label='Evaluation of advice and news' />
+                <Field component={CheckboxField} name='newsletter' label='Bewertung der Beratung und News' />
                 <Text fontSize={14}>
-                  Yes, Zins-runter can send me a request for an evaluation of the financing advice, further information
-                  and offers by email. I can revoke this consent at any time with effect for the future.
+                  Ja, Zins-runter darf mir eine Bitte um Bewertung der Finanzierungsberatung, weiterführende
+                  Informationen und Angebote per Email schicken. Ich kann diese Einwilligung jederzeit mit Wirkung für
+                  die Zukunft widerrufen.
                 </Text>
               </Box>
 
               <Box alignSelf='flex-start'>
-                <Field component={CheckboxField} name='dataSharing' label='Data sharing' />
+                <Field component={CheckboxField} name='dataSharing' label='Datenweitergabe' />
                 <Text fontSize={14}>
-                  Yes, I revocably consent to the transfer of my entered data to ZinsRunter and my future financing
-                  advisor for the creation of my offer (please note the data protection declaration ).
+                  Ja, ich stimme für die Erstellung meines Angebotes widerruflich der Weitergabe meiner eingegebenen
+                  Daten an die Baufi24 Baufinanzierung AG und meinen zukünftigen Finanzierungsberater zu (bitte beachten
+                  Sie hierzu die Datenschutzerklärung).
                 </Text>
               </Box>
 
               <Box alignSelf='flex-start'>
-                <Field component={CheckboxField} name='permissionToCall' label='Permission to call' />
+                <Field component={CheckboxField} name='permissionToCall' label='Anruferlaubnis' />
                 <Text fontSize={14}>
-                  Yes, my advisor can contact me by phone. An optimal offer and/or advice is only possible if the
-                  financing advisor responsible for you can consult with you.
+                  Ja, mein Berater darf mich telefonisch kontaktieren. Eine optimale Angebotserstellung und/oder
+                  Beratung ist nur dann möglich, wenn der für Sie zuständige Finanzierungsberater mit Ihnen Rücksprache
+                  halten kann.
                 </Text>
               </Box>
 
               <Box bgColor='gray.400' w='100%' h='1px' />
 
               <VStack>
-                <Text fontSize={20}>Is everything alright?</Text>
+                <Text fontSize={20}>Stimmt so alles?</Text>
                 <Button variant='accent' type='submit' padding={6} fontSize={20}>
-                  Request an offer now
+                  Jetzt Angebot anfordern
                 </Button>
               </VStack>
             </VStack>
