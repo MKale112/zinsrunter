@@ -1,7 +1,6 @@
 import React from 'react';
 import HeroBanner from '@/components/Banner/HeroBanner';
 import { Button, Heading, Text } from '@chakra-ui/react';
-import { Footer, Header } from '../components/Navigation';
 import Partners from '@/components/SealsAndPartners/Partners';
 import Seals from '@/components/SealsAndPartners/Seals';
 import Highlights from '@/components/Highlights/Highlights';
@@ -11,7 +10,6 @@ import { Financing } from '@/components/Financing/Financing';
 export default function Home() {
   return (
     <>
-      <Header />
       <HeroBanner>
         <Heading as={'h2'} fontSize={['lg', '4xl']} color='white'>
           Baufinanzierung vergleichen - einfach & sicher
@@ -32,7 +30,6 @@ export default function Home() {
       <Partners />
       <Highlights />
       <Seals />
-      <Footer />
     </>
   );
 }

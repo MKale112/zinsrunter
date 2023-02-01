@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import { Footer, Header } from '../Navigation';
 
 const Layout = ({ children }: React.PropsWithChildren<any>) => (
   <>
@@ -9,7 +10,9 @@ const Layout = ({ children }: React.PropsWithChildren<any>) => (
       <meta name='viewport' content='width=device-width, initial-scale=1' />
       <meta property='og:title' content='' key='title' />
     </Head>
-    {children}
+    <Header />
+    <main>{children}</main>
+    <Footer />
   </>
 );
 
