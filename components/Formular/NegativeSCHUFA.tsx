@@ -50,39 +50,36 @@ export const NegativeSCHUFA = () => {
       </SimpleGrid>
       <ResponsiveContainer bg='white' borderRadius='2xl' p={[5, 5, 10]} w={{ lg: 930 }}>
         <Text fontSize={['xl', 'xl', '2xl']} fontWeight={'bold'}>
-          Hinweise zu dieser Frage
+          Wichtige Hinweise zu dieser Frage
         </Text>
         <UnorderedList pl={[2, 7]} mt={5} fontSize={['m', 'm', 'xl']} spacing={4}>
           <ListItem>
             <Text>
-              Im Rahmen dieser Anfrage <strong>rufen wir keine Daten ab</strong> und <strong>senden auch keine</strong>{' '}
-              an die <strong>SCHUFA</strong>.
+              <strong>Im Rahmen dieser Anfrage werden wir keine SCHUFA Daten von Ihnen abrufen.</strong>
             </Text>
           </ListItem>
           <ListItem>
             <Text>
-              Wir benötigen eine Antwort auf diese Frage, weil ggf. vorhandene negative Einträge einen anderen
-              Beratungsansatz erfordern und auch die Auswahl der Banken nach anderen Kriterien erfolgt.
+              <strong>Ebenso senden wir garantiert keine Daten an die SCHUFA.</strong>
             </Text>
           </ListItem>
           <ListItem>
             <Text>
-              Die Schufa speichert aufgrund der Meldung von Banken und anderen Instituten, Informationen über
-              Vertragsverhältnisse. Insofern sind Schufa-Einträge völlig normal. Vorhandene Kredite sind also keine
-              Negativeinträge.
+              Wir benötigen eine Antwort auf diese Frage, weil ggf. vorhandene negative Einträge wichtig sind bei der
+              Auswahl der Banken, die dann nach anderen Kriterien erfolgt.
             </Text>
           </ListItem>
           <ListItem>
             <Text>
-              Kommt es zu einer Störung des Vertragsverhältnisses, wird das in der Schufa vermerkt. Diese Einträge
-              gelten als Negativeinträge.
+              Die Schufa speichert in der Regel aufgrund der Meldung Informationen über Vertragsverhältnisse. Diese
+              Meldungen werden von Banken und anderen Instituten der SCHUFA übermittelt.{' '}
+              <strong>Insofern sind Schufa-Einträge völlig normal.</strong>
             </Text>
           </ListItem>
           <ListItem>
             <Text>
-              Als negativ werden zum Beispiel gekündigte Kredite oder Konten sowie andere Merkmale (Insolvenz, Abgabe
-              der eidesstattlichen Versicherung) bezeichnet, die durch anhaltende Zahlungsschwierigkeiten entstanden
-              sind und zu einer Kündigung des Vertragsverhältnisses geführt haben.
+              Als negativer Eintrag werden zum Beispiel gekündigte Kredite oder Konten, Insolvenz, die Abgabe der
+              eidesstattlichen Versicherung usw. bezeichnet.
             </Text>
           </ListItem>
         </UnorderedList>

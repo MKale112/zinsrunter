@@ -59,9 +59,11 @@ const Formular = () => {
                   Kostenloses Finanzierungsangebot
                 </Heading>
                 <Text color='secondaryFontColor'>
-                  Vergleichen Sie mit uns mehr als 450 Anbieter für Baufinanzierungen.
+                  Nehmen Sie sich ein paar Minuten Zeit. Einfach das Formular ausfüllen und abschicken. Ihr persönlicher
+                  Berater wird sich danach bei Ihnen melden.
+                  <br />
+                  Unverbindlich und garantiert kostenfrei. So einfach geht Baufinanzierung.
                 </Text>
-                <Text color='secondaryFontColor'>Profitieren Sie von günstigen Zinsen und kompetenter Beratung.</Text>
               </VStack>
               <Box bgColor='gray.400' w='75%' h='1px' />
             </>

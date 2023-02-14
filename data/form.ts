@@ -1,11 +1,11 @@
 export enum FormState {
-  financeOffer = 'What would you like to finance?',
-  estate = 'Estate',
-  propertyUse = 'How is the property used?',
-  region = 'In which region do you live?',
-  negativeSCHUFA = 'Are there negative entries in the SCHUFA?',
-  projectNumbers = 'The project in numbers',
-  offer = 'Who should receive the offer?',
+  financeOffer = 'Was möchten Sie genau finanzieren?',
+  estate = 'Um was für eine Immobilie handelt es sich?',
+  propertyUse = 'Sie möchten…',
+  region = 'Persönliche Angaben',
+  negativeSCHUFA = 'Gibt oder gab es bei Ihnen negative SCHUFA Einträge?',
+  projectNumbers = 'Die Finanzierung in Zahlen',
+  offer = 'Persönliche Angaben',
 }
 
 export const financeOffer = {
@@ -13,32 +13,32 @@ export const financeOffer = {
   data: [
     {
       key: 'buyPropery',
-      icon: '/icons/buying-a-property.png',
+      icon: '/icons/buying-a-property.webp',
       text: 'Kauf einer Immobilie',
     },
     {
       key: 'landPurchase',
-      icon: '/icons/land-purchase-only.png',
-      text: 'Nur Grundstückskauf',
+      icon: '/icons/land-purchase-only.webp',
+      text: 'Grundstückskauf',
     },
     {
       key: 'constructionProject',
-      icon: '/icons/own-construction-project.png',
+      icon: '/icons/own-construction-project.webp',
       text: 'Eigenes Bauvorhaben',
     },
     {
       key: 'followUpFinance',
-      icon: '/icons/follow-up-financing.png',
+      icon: '/icons/follow-up-financing.webp',
       text: 'Anschluss­finanzierung',
     },
     {
       key: 'modernize',
-      icon: '/icons/modernize.png',
+      icon: '/icons/modernize.webp',
       text: 'Modernisieren',
     },
     {
       key: 'raisingCapital',
-      icon: '/icons/raising-capital.png',
+      icon: '/icons/raising-capital.webp',
       text: 'Kapital­beschaffung',
     },
   ],
@@ -49,47 +49,47 @@ export const estate = {
   data: [
     {
       key: 'condominium',
-      icon: '/icons/condominium.png',
+      icon: '/icons/condominium.webp',
       text: 'Eigentumswohnung',
     },
     {
       key: 'detachedHouse',
-      icon: '/icons/detached-house.png',
+      icon: '/icons/detached-house.webp',
       text: 'Einfamilienhaus',
     },
     {
       key: 'plotOnly',
-      icon: '/icons/land-purchase-only.png',
-      text: 'Nur Grundstück',
+      icon: '/icons/land-purchase-only.webp',
+      text: 'Grundstück',
     },
     {
       key: 'semiDetachedHouse',
-      icon: '/icons/semi-detached-house.png',
+      icon: '/icons/semi-detached-house.webp',
       text: 'Doppelhaushälfte',
     },
     {
       key: 'twoFamilyHouse',
-      icon: '/icons/two-family-house.png',
+      icon: '/icons/two-family-house.webp',
       text: 'Zweifamilienhaus',
     },
     {
       key: 'midTerraceHouse',
-      icon: '/icons/terraced-house.png',
+      icon: '/icons/terraced-house.webp',
       text: 'Reihenmittelhaus',
     },
     {
       key: 'terracedHouse',
-      icon: '/icons/terraced-house.png',
+      icon: '/icons/terraced-house.webp',
       text: 'Reiheneckhaus',
     },
     {
       key: 'apartmentBuilding',
-      icon: '/icons/condominium.png',
+      icon: '/icons/condominium.webp',
       text: 'Mehrfamilienhaus',
     },
     {
       key: 'residentialCommercialBuilding',
-      icon: '/icons/residential-building.png',
+      icon: '/icons/apartment.webp',
       text: 'Wohn/Geschäftshaus',
     },
   ],
@@ -100,18 +100,18 @@ export const propertyUse = {
   data: [
     {
       key: 'selfInhabited',
-      icon: '/icons/self-inhabited.png',
-      text: 'Selbst bewohnt',
+      icon: '/icons/self-inhabited.webp',
+      text: 'Selbst nutzen',
     },
     {
       key: 'rented',
-      icon: '/icons/rented.png',
-      text: 'Vermietet',
+      icon: '/icons/rented.webp',
+      text: 'Vermieten',
     },
     {
       key: 'partlyRented',
-      icon: '/icons/partly-rented.png',
-      text: 'Teilweise vermietet',
+      icon: '/icons/partly-rented.webp',
+      text: 'Teilweise vermieten',
     },
   ],
 };

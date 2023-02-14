@@ -16,14 +16,11 @@ const RadioField: FC<Props> = ({ label, name, field }) => {
       <FormLabel>{label}: </FormLabel>
       <RadioGroup {...rest} name={name}>
         <Stack direction='row'>
-          <Radio {...field} value='male' onChange={onChange}>
-            Male
+          <Radio {...field} value='ja' onChange={onChange}>
+            Ja
           </Radio>
-          <Radio {...field} value='female' onChange={onChange}>
-            Female
-          </Radio>
-          <Radio {...field} value='other' onChange={onChange}>
-            Other
+          <Radio {...field} value='nein' onChange={onChange}>
+            Nein
           </Radio>
         </Stack>
       </RadioGroup>

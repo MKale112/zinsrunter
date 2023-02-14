@@ -1,12 +1,13 @@
 import { CheckCircleIcon } from '@chakra-ui/icons';
-import { Heading, HStack, Link, List, ListIcon, Text, VStack } from '@chakra-ui/react';
+import { Button, Heading, HStack, Link, List, ListIcon, Text, VStack } from '@chakra-ui/react';
 import React from 'react';
 import { FullWidthContainer, ResponsiveContainer } from '../Containers';
+import ChakraLink from '../Link/ChakraLink';
 const ReactReveal = require('react-reveal');
 
 export const Financing = () => {
   return (
-    <FullWidthContainer id='section-finanzierungen-options' py={[16, 24]} bgColor='gray.100'>
+    <FullWidthContainer id='section-finanzierungen' py={[16, 24]} bgColor='gray.100'>
       <ResponsiveContainer>
         <ReactReveal.Fade bottom>
           <VStack spacing={[10, 20]}>
@@ -78,6 +79,9 @@ export const Financing = () => {
                     </Text>
                   </HStack>
                 </List>
+                <ChakraLink href='/formular' mt={2}>
+                  <Button variant='accent'>Jetzt unverbindlich anfragen!</Button>
+                </ChakraLink>
               </VStack>
             </ReactReveal.Fade>
           </VStack>

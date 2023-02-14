@@ -1,0 +1,32 @@
+{
+  "cards": [
+    {
+      "id": "website-1",
+      "title": "2005 der Website Launch",
+      "text": "Die Website www.Versicherungstarife.info wurde im Jahr 2005 programmiert und wird seit 2008 von der Siguron GmbH erfolgreich betrieben. Damals gehörte das Portal zu den Pionieren der &quot;Online Makler&quot; im Internet.",
+      "alt": "Versicherungstarife.info 2005",
+      "src": "/unter-uns/2005-website.webp"
+    },
+    {
+      "id": "website-2",
+      "title": "2007 das erste große Redesign",
+      "text": "Mit der übersichtlichen und intuitiv verständlichen Navigation und dem optischen Redesign der Website haben wir die Benutzerfreundlichkeit deutlich verbessert. Neue Integration von Datenbank und Serverstruktur.",
+      "alt": "Versicherungstarife.info 2007",
+      "src": "/unter-uns/2007-website.webp"
+    },
+    {
+      "id": "website-3",
+      "title": "Alles Neu - 2016 Website Relaunch",
+      "text": "Die Website wurde technisch umfangreich überarbeitet und grafisch neu gestaltet. Sowohl die Benutzerfreundlichkeit als auch der Inhalt der Website wurden weitreichend optimiert.",
+      "alt": "Versicherungstarife.info 2016",
+      "src": "/unter-uns/2016-website.webp"
+    },
+    {
+      "id": "website-4",
+      "title": "2019 Mobile First Neuentwicklung",
+      "text": "Mobile First lässt sich als neuer Denkansatz im Webdesign definieren. Smartphones sind zum Standard geworden. Das neue Design ist responsiv entwickelt. Die optimale Anzeige und Nutzung von Webinhalten auf mobilen Endgeräten wurden realisiert.",
+      "alt": "Versicherungstarife.info 2019",
+      "src": "/unter-uns/2019-website.webp"
+    }
+  ]
+}

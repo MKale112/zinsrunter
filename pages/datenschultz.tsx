@@ -1,11 +1,12 @@
 import { FullWidthContainer, ResponsiveContainer } from '@/components/Containers';
-import { Heading, Link, ListItem, Text, UnorderedList, VStack } from '@chakra-ui/react';
+import { Box, Heading, Link, ListItem, Text, UnorderedList, VStack } from '@chakra-ui/react';
 import React from 'react';
 
 const Datenschultz = () => {
   return (
-    <FullWidthContainer py={[4, 12]} bgColor='gray.100'>
-      <ResponsiveContainer>
+    <FullWidthContainer>
+      <Box h={10} bgColor='primary.blue' />
+      <ResponsiveContainer py={[4, 12]} bgColor='white'>
         <VStack alignItems='flex-start' spacing={[4, 6]}>
           <VStack alignItems='flex-start'>
             <Heading as='h1' fontSize={['md', 'lg', 'lg', '2xl']}>
@@ -915,6 +916,7 @@ const Datenschultz = () => {
           </VStack>
         </VStack>
       </ResponsiveContainer>
+      <Box h={10} bgColor='gray.100' />
     </FullWidthContainer>
   );
 };

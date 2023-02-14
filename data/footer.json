@@ -18,7 +18,7 @@
     {
       "id": "footer-uber-uns",
       "label": "Über uns",
-      "href": "#"
+      "href": "/uber-uns"
     },
     {
       "id": "footer-sitemap",
@@ -34,12 +34,12 @@
   "brands": [
     {
       "id": "logo-google",
-      "path": "/brands/google.png",
+      "path": "/brands/google.webp",
       "alt": "google's logo"
     },
     {
       "id": "logo-yahoo",
-      "path": "/brands/yahoo.png",
+      "path": "/brands/yahoo.webp",
       "alt": "yahoo's logo"
     },
     {
@@ -49,7 +49,7 @@
     },
     {
       "id": "logo-xing",
-      "path": "/brands/xing.png",
+      "path": "/brands/xing.webp",
       "alt": "xing's logo"
     },
     {

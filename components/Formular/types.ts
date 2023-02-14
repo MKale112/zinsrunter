@@ -10,7 +10,6 @@ export interface RegionData {
 
 export interface ProjectNumbersData {
   landPrice: number | null;
-  paid: string | undefined;
   buildingCosts: number | null;
   broker: number | null;
   equityCapital: number | null;
@@ -24,9 +23,10 @@ export interface OfferData {
   phone: string;
   email: string;
   mainEarnerOccupation: string;
+  anmerkungen: string;
+  videoBeratung: string;
   newsletter: boolean;
   dataSharing: boolean;
-  permissionToCall: boolean;
 }
 
 export type FormValues = {

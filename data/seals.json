@@ -4,25 +4,25 @@
       "id": "seal-1",
       "title": "Unabhängige Anbieter",
       "text": "Wir haben mehr als 500 deutsche Kreditinstitute im direkten Angebot und können deren Produkte und Dienstleistungen vergleichen.",
-      "images": ["/seals/losungen.png"]
+      "images": ["/seals/losungen.webp"]
     },
     {
       "id": "seal-2",
       "title": "Hervorragende Konditionen",
       "text": "Wir finden günstige Konditionen und die passende Fördermöglichkeiten.",
-      "images": ["/seals/ziele.png"]
+      "images": ["/seals/ziele.webp"]
     },
     {
       "id": "seal-3",
       "title": "Erfahrene Baufinanzierungsspezialisten",
       "text": "Als Immobilienfinanzierungsvermittler nach §34i zugelassen und kompetent in der Beratung.",
-      "images": ["/seals/beratung.png"]
+      "images": ["/seals/beratung.webp"]
     },
     {
       "id": "seal-4",
       "title": "Ganzheitlicher Service",
       "text": "Wir übernehmen die komplette Kreditabwicklung für Sie.",
-      "images": ["/seals/planung.png", "/seals/erfahrung.png", "/seals/qualitat.png"]
+      "images": ["/seals/planung.webp", "/seals/erfahrung.webp", "/seals/qualitat.webp"]
     }
   ]
 }

@@ -56,11 +56,17 @@ const Seals = () => {
   });
 
   return (
-    <FullWidthContainer id='section-mehrwert' py={[16, 24]} bg={'white'}>
+    <FullWidthContainer id='section-mehrwert' py={[16, 24]} bg='primary.mutedBlue'>
       <ResponsiveContainer>
         <ReactReveal.Fade bottom>
           <VStack spacing={[12, 16]}>
-            <Heading as='h2' fontSize={['xl', '3xl']} textAlign='center'>
+            <Heading
+              as='h2'
+              fontSize={['xl', '3xl']}
+              textAlign='center'
+              color='white
+            '
+            >
               Garantierter Mehrwert durch den Vergleich
             </Heading>
             {isMobile ? (
