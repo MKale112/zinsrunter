@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Center, VStack, Button, Text, Box, HStack } from '@chakra-ui/react';
 import { errorMessages } from 'data/errorMessages';
 import { Formik, Form, Field } from 'formik';
@@ -9,9 +9,13 @@ import HSelectField from './FormModels/HSelectField';
 import { AddIcon } from '@chakra-ui/icons';
 import { EuroIcon } from '../icons/EuroIcon';
 import { EqualsIcon } from '../icons/EqualsIcon';
-import { FormValues, ProjectNumbersData, TilePropDrill } from './types';
+import { ProjectNumbersData } from './types';
+import { useRecoilState } from 'recoil';
+import { stepState } from '@/core/atoms';
 
-const ProjectNumbers: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
+const ProjectNumbers = () => {
+  const [_step, setStep] = useRecoilState(stepState);
+
   const validationSchema = yup.object().shape({
     landPrice: yup.number().required(errorMessages.fieldRequired).positive().integer(),
     paid: yup.string().required(errorMessages.fieldRequired),
@@ -36,8 +40,7 @@ const ProjectNumbers: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
         validateOnChange={true}
         validateOnBlur={false}
         onSubmit={(values) => {
-          setFullFormData((prevValues: FormValues) => ({ ...prevValues, projectNumbers: values }));
-          setStep(6);
+          setStep((currValue) => [6, { ...currValue[1], projectNumbers: values }]);
         }}
       >
         {({ handleSubmit }) => (

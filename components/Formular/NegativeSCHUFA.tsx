@@ -1,13 +1,14 @@
+import { stepState } from '@/core/atoms';
 import { Center, VStack, Text, SimpleGrid, UnorderedList, ListItem, Image } from '@chakra-ui/react';
 import { negativeSCHUFA } from 'data/form';
-import React, { FC } from 'react';
+import React from 'react';
+import { useRecoilState } from 'recoil';
 import { ResponsiveContainer } from '../Containers';
-import { FormValues, TilePropDrill } from './types';
 
-export const NegativeSCHUFA: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
+export const NegativeSCHUFA = () => {
+  const [step, setStep] = useRecoilState(stepState);
   const handleTileClick = (tileText: string) => {
-    setFullFormData((prev: FormValues) => ({ ...prev, negativeSCHUFA: tileText }));
-    setStep(5);
+    setStep((currValue) => [5, { ...currValue[1], negativeSCHUFA: tileText }]);
   };
 
   return (
@@ -25,9 +26,9 @@ export const NegativeSCHUFA: FC<TilePropDrill> = ({ setFullFormData, setStep }) 
             transform='translateY(0px)'
             transition='all 0.4s ease-in-out'
             w={[300, 200, 200, 300]}
+            sx={step[1].negativeSCHUFA === entry.text ? { bgColor: 'primary.acid', boxShadow: '2xl' } : {}}
             _hover={{
               cursor: 'pointer',
-              // color: 'white',
               bgColor: 'primary.acid',
               boxShadow: '2xl',
               transition: 'all 0.4s ease-in-out',
@@ -35,7 +36,10 @@ export const NegativeSCHUFA: FC<TilePropDrill> = ({ setFullFormData, setStep }) 
             }}
             onClick={() => handleTileClick(entry.text)}
           >
-            <VStack _groupHover={{ filter: 'brightness(0) invert(1)' }}>
+            <VStack
+              _groupHover={{ filter: 'brightness(0) invert(1)' }}
+              sx={step[1].negativeSCHUFA === entry.text ? { filter: 'brightness(0) invert(1)' } : {}}
+            >
               <Image src={entry.icon} alt={entry.text} height={16} width={16} />
               <Text fontSize={['sm', 'md', 'lg']} fontWeight='medium'>
                 {entry.text}

@@ -1,13 +1,14 @@
+import { stepState } from '@/core/atoms';
 import { Center, VStack, Text, SimpleGrid } from '@chakra-ui/react';
 import { financeOffer } from 'data/form';
 import Image from 'next/image';
-import React, { FC } from 'react';
-import { FormValues, TilePropDrill } from './types';
+import React from 'react';
+import { useRecoilState } from 'recoil';
 
-export const FinanceOffer: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
+export const FinanceOffer = () => {
+  const [step, setStep] = useRecoilState(stepState);
   const handleTileClick = (tileText: string) => {
-    setFullFormData((prevValues: FormValues) => ({ ...prevValues, financeOffer: tileText }));
-    setStep(1);
+    setStep((currValue) => [1, { ...currValue[1], financeOffer: tileText }]);
   };
 
   return (
@@ -24,9 +25,9 @@ export const FinanceOffer: FC<TilePropDrill> = ({ setFullFormData, setStep }) =>
           transform='translateY(0px)'
           transition='all 0.4s ease-in-out'
           w={[300, 200, 200, 300]}
+          sx={step[1].financeOffer === entry.text ? { bgColor: 'primary.acid', boxShadow: '2xl' } : {}}
           _hover={{
             cursor: 'pointer',
-            // color: 'white',
             bgColor: 'primary.acid',
             boxShadow: '2xl',
             transition: 'all 0.4s ease-in-out',
@@ -34,7 +35,10 @@ export const FinanceOffer: FC<TilePropDrill> = ({ setFullFormData, setStep }) =>
           }}
           onClick={() => handleTileClick(entry.text)}
         >
-          <VStack _groupHover={{ filter: 'brightness(0) invert(1)' }}>
+          <VStack
+            _groupHover={{ filter: 'brightness(0) invert(1)' }}
+            sx={step[1].financeOffer === entry.text ? { filter: 'brightness(0) invert(1)' } : {}}
+          >
             <Image src={entry.icon} alt={entry.text} height={64} width={64} />
             <Text fontSize={['sm', 'md', 'lg']} fontWeight='medium'>
               {entry.text}

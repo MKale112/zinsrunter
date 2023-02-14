@@ -1,14 +1,17 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Center, VStack, Button, Text } from '@chakra-ui/react';
 import { errorMessages } from 'data/errorMessages';
 import { Formik, Form, Field } from 'formik';
 import InputField from './FormModels/InputField';
 
 import * as yup from 'yup';
-import { FormValues, RegionData, TilePropDrill } from './types';
+import { RegionData } from './types';
 import SelectField from './FormModels/SelectField';
+import { useRecoilState } from 'recoil';
+import { stepState } from '@/core/atoms';
 
-export const Region: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
+export const Region = () => {
+  const [_step, setStep] = useRecoilState(stepState);
   const validationSchema = yup.object().shape({
     zipcode: yup
       .number()
@@ -42,8 +45,7 @@ export const Region: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
         validateOnChange={true}
         validateOnBlur={false}
         onSubmit={(values) => {
-          setFullFormData((prevValues: FormValues) => ({ ...prevValues, region: values }));
-          setStep(4);
+          setStep((currValue) => [4, { ...currValue[1], region: values }]);
         }}
       >
         {({ handleSubmit }) => (

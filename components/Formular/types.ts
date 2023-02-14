@@ -1,4 +1,4 @@
-import { SetStateAction } from 'react';
+import { SetterOrUpdater } from 'recoil';
 
 export interface RegionData {
   zipcode: number | null;
@@ -40,6 +40,5 @@ export type FormValues = {
 };
 
 export interface TilePropDrill {
-  setFullFormData: (value: any) => SetStateAction<FormValues>;
-  setStep: (value: number) => SetStateAction<number>;
+  setStep: SetterOrUpdater<[number, FormValues]>;
 }

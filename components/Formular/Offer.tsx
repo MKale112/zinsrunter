@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Box, Button, Center, SimpleGrid, VStack, Text } from '@chakra-ui/react';
 import { errorMessages } from 'data/errorMessages';
 import { Formik, Form, Field } from 'formik';
@@ -6,9 +6,13 @@ import InputField from './FormModels/InputField';
 import * as yup from 'yup';
 import SelectField from './FormModels/SelectField';
 import CheckboxField from './FormModels/CheckboxField';
-import { FormValues, OfferData, TilePropDrill } from './types';
+import { OfferData } from './types';
+import { useRecoilState } from 'recoil';
+import { stepState } from '@/core/atoms';
 
-const Offer: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
+const Offer = () => {
+  const [_step, setStep] = useRecoilState(stepState);
+
   const validationSchema = yup.object().shape({
     salutation: yup.string().required(errorMessages.fieldRequired),
     title: yup.string().required(errorMessages.fieldRequired),
@@ -43,8 +47,7 @@ const Offer: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
         validateOnChange={true}
         validateOnBlur={false}
         onSubmit={(values) => {
-          setFullFormData((prevValues: FormValues) => ({ ...prevValues, offer: values }));
-          setStep(7);
+          setStep((currValue) => [7, { ...currValue[1], offer: values }]);
         }}
       >
         {({ handleSubmit }) => (
