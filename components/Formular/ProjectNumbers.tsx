@@ -5,7 +5,6 @@ import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import HInputField from './FormModels/HInputField';
 import { IconObject } from '../icons/iconObject';
-import HSelectField from './FormModels/HSelectField';
 import { AddIcon } from '@chakra-ui/icons';
 import { EuroIcon } from '../icons/EuroIcon';
 import { EqualsIcon } from '../icons/EqualsIcon';
@@ -14,15 +13,18 @@ import { FormValues, ProjectNumbersData, TilePropDrill } from './types';
 const ProjectNumbers: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
   const validationSchema = yup.object().shape({
     landPrice: yup.number().required(errorMessages.fieldRequired).positive().integer(),
-    paid: yup.string().required(errorMessages.fieldRequired),
-    buildingCosts: yup.number().required(errorMessages.fieldRequired).positive().integer(),
+    buildingCosts: yup.number().typeError(errorMessages.isNum).integer(),
     broker: yup.number().positive().integer(),
-    equityCapital: yup.number().required(errorMessages.fieldRequired).positive().integer(),
+    equityCapital: yup
+      .number()
+      .required(errorMessages.fieldRequired)
+      .typeError(errorMessages.isNum)
+      .positive()
+      .integer(),
   });
   const initialValues: ProjectNumbersData = {
     landPrice: null,
-    paid: '',
-    buildingCosts: 0,
+    buildingCosts: null,
     broker: null,
     equityCapital: null,
   };
@@ -60,17 +62,6 @@ const ProjectNumbers: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
                 placeholder='Please specify'
                 width='50%'
                 backIcon={IconObject.euro}
-              />
-
-              <Field
-                component={HSelectField}
-                name='paid'
-                type='select'
-                label='Already paid?'
-                default='No'
-                options={['No', 'Yes - paid with equity', 'Yes - paid with a bank financing']}
-                placeholder='Please select'
-                width='50%'
               />
 
               <Field

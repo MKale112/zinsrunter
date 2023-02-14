@@ -8,7 +8,7 @@ const colors = {
     darkBlue: '#1c3c6c',
     mutedBlue: '#2c5464',
     acid: '#9bc31c',
-    darkAcid: '#5c8444',
+    darkAcid: '#719B00',
   },
   primaryFontColor: baseTheme.colors.gray['800'],
   secondaryFontColor: baseTheme.colors.gray['600'],
@@ -67,8 +67,12 @@ const customTheme = extendTheme({
       },
     },
     Link: {
-      _hover: {
-        // color: colors.primary.teal,
+      baseStyle: {
+        color: colors.primary.blue,
+        fontWeight: 'semibold',
+        _hover: {
+          textDecoration: 'underline',
+        },
       },
     },
     Checkbox: {

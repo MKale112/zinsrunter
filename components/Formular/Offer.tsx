@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Box, Button, Center, SimpleGrid, VStack, Text } from '@chakra-ui/react';
+import { Box, Button, Center, SimpleGrid, VStack, Text, Link, HStack } from '@chakra-ui/react';
 import { errorMessages } from 'data/errorMessages';
 import { Formik, Form, Field } from 'formik';
 import InputField from './FormModels/InputField';
@@ -7,19 +7,26 @@ import * as yup from 'yup';
 import SelectField from './FormModels/SelectField';
 import CheckboxField from './FormModels/CheckboxField';
 import { FormValues, OfferData, TilePropDrill } from './types';
+import ChakraLink from '../Link/ChakraLink';
+import RadioField from './FormModels/RadioField';
+import TextAreaField from './FormModels/TextAreaField';
+import Image from 'next/image';
 
 const Offer: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
+  const phoneRegex =
+    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
   const validationSchema = yup.object().shape({
     salutation: yup.string().required(errorMessages.fieldRequired),
     title: yup.string().required(errorMessages.fieldRequired),
     firstName: yup.string().required(errorMessages.fieldRequired),
     lastName: yup.string().required(errorMessages.fieldRequired),
-    phone: yup.number().required(errorMessages.fieldRequired),
+    phone: yup.string().matches(phoneRegex).required(errorMessages.fieldRequired),
     email: yup.string().email(),
-    mainEarnerOccupation: yup.string().required(),
+    mainEarnerOccupation: yup.string().required(errorMessages.fieldRequired),
+    anmerkungen: yup.string(),
+    videoBeratung: yup.string(),
     newsletter: yup.boolean(),
     dataSharing: yup.boolean(),
-    permissionToCall: yup.boolean(),
   });
   const initialValues: OfferData = {
     salutation: '',
@@ -29,9 +36,10 @@ const Offer: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
     phone: '',
     email: '',
     mainEarnerOccupation: '',
+    anmerkungen: '',
+    videoBeratung: 'Ja',
     newsletter: false,
     dataSharing: false,
-    permissionToCall: false,
   };
 
   return (
@@ -125,34 +133,54 @@ const Offer: FC<TilePropDrill> = ({ setFullFormData, setStep }) => {
                 placeholder='Please select'
               />
 
+              <Field component={RadioField} name='videoBeratung' label='Wünschen Sie eine Videoberatung?' />
+
+              <Field component={TextAreaField} name='anmerkungen' label='Sonstige optionale Angaben:' />
+
               <Box bgColor='gray.400' w='100%' h='1px' />
 
-              <Box alignSelf='flex-start'>
-                <Field component={CheckboxField} name='newsletter' label='Bewertung der Beratung und News' />
-                <Text fontSize={14}>
-                  Ja, Zins-runter darf mir eine Bitte um Bewertung der Finanzierungsberatung, weiterführende
-                  Informationen und Angebote per Email schicken. Ich kann diese Einwilligung jederzeit mit Wirkung für
-                  die Zukunft widerrufen.
-                </Text>
-              </Box>
+              <Field
+                component={CheckboxField}
+                name='newsletter'
+                label={
+                  <Text>
+                    Ich bin an weiteren <Link href='mailto:matejkalebic112@gmail.com'>Informationen/Newsletter</Link>{' '}
+                    per E-Mail interessiert.
+                  </Text>
+                }
+              />
 
-              <Box alignSelf='flex-start'>
-                <Field component={CheckboxField} name='dataSharing' label='Datenweitergabe' />
-                <Text fontSize={14}>
-                  Ja, ich stimme für die Erstellung meines Angebotes widerruflich der Weitergabe meiner eingegebenen
-                  Daten an die Baufi24 Baufinanzierung AG und meinen zukünftigen Finanzierungsberater zu (bitte beachten
-                  Sie hierzu die Datenschutzerklärung).
-                </Text>
-              </Box>
+              <Field
+                component={CheckboxField}
+                name='dataSharing'
+                label={
+                  <Text>
+                    <ChakraLink href='/datenschultz'>Datenschutz</ChakraLink> und{' '}
+                    <ChakraLink href='/agb'>AGB</ChakraLink> akzeptiert
+                  </Text>
+                }
+              />
 
-              <Box alignSelf='flex-start'>
-                <Field component={CheckboxField} name='permissionToCall' label='Anruferlaubnis' />
-                <Text fontSize={14}>
-                  Ja, mein Berater darf mich telefonisch kontaktieren. Eine optimale Angebotserstellung und/oder
-                  Beratung ist nur dann möglich, wenn der für Sie zuständige Finanzierungsberater mit Ihnen Rücksprache
-                  halten kann.
-                </Text>
-              </Box>
+              <Box bgColor='gray.400' w='100%' h='1px' />
+
+              <VStack spacing={6}>
+                <HStack alignItems='center' spacing={4}>
+                  <Image src='/ssl-icon.png' alt='Übermittlung über Sicherheitsserver' height={30} width={30} />
+                  <Text>Alle Ihre Daten werden sicher SSL-verschlüsselt übertragen!</Text>
+                </HStack>
+                <HStack alignItems='center' textAlign='center' spacing={4}>
+                  <Image
+                    src='/icons/self-inhabited.webp'
+                    alt='unverbindliche Konditionsangebote'
+                    height={30}
+                    width={35}
+                  />
+                  <Text>
+                    Sie erhalten nur unverbindliche Konditions¬angebote. <br />
+                    Es wird kein Abschluss getätigt.
+                  </Text>
+                </HStack>
+              </VStack>
 
               <Box bgColor='gray.400' w='100%' h='1px' />
 

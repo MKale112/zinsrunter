@@ -12,10 +12,11 @@ export const BannerText = (props: BannerTextProps) => {
     <VStack
       w={'50%'}
       backdropFilter={'blur(2px)'}
-      backgroundColor={isMobile ? 'blackAlpha.600' : 'blackAlpha.400'}
+      backgroundColor={isMobile ? 'blackAlpha.600' : 'blackAlpha.500'}
       fontWeight={'bold'}
       textShadow={'2px 1px black'}
       padding={10}
+      alignItems='flex-start'
       {...rest}
     >
       {children}

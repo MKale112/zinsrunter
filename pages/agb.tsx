@@ -1,11 +1,12 @@
 import { FullWidthContainer, ResponsiveContainer } from '@/components/Containers';
-import { Heading, Link, VStack, Text, UnorderedList, ListItem, OrderedList } from '@chakra-ui/react';
+import { Heading, Link, VStack, Text, UnorderedList, ListItem, OrderedList, Box } from '@chakra-ui/react';
 import React from 'react';
 
 const AGB = () => {
   return (
-    <FullWidthContainer py={[4, 12]} bgColor='gray.100'>
-      <ResponsiveContainer>
+    <FullWidthContainer>
+      <Box h={10} bgColor='primary.blue' />
+      <ResponsiveContainer py={[4, 12]} bgColor='white'>
         <VStack spacing={[4, 6, 10, 12]} alignItems='flex-start' justifyContent='flex-start'>
           <VStack alignItems='flex-start'>
             <Heading as={'h1'} fontSize={['md', 'lg', 'lg', '2xl']}>
@@ -547,6 +548,7 @@ const AGB = () => {
           </VStack>
         </VStack>
       </ResponsiveContainer>
+      <Box h={10} bgColor='gray.100' />
     </FullWidthContainer>
   );
 };

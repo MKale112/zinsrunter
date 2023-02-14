@@ -1,12 +1,13 @@
 import React from 'react';
-import { Button, ListItem, OrderedList, Text, VStack } from '@chakra-ui/react';
+import { Box, Button, ListItem, OrderedList, Text, VStack } from '@chakra-ui/react';
 import ChakraLink from '@/components/Link/ChakraLink';
 import { FullWidthContainer, ResponsiveContainer } from '@/components/Containers';
 
 const Erstinformation = () => {
   return (
-    <FullWidthContainer py={[4, 12]} bgColor='gray.100'>
-      <ResponsiveContainer>
+    <FullWidthContainer>
+      <Box h={10} bgColor='primary.blue' />
+      <ResponsiveContainer py={[4, 12]} bgColor='white'>
         <VStack spacing={[4, 8, 12]}>
           <OrderedList spacing={[4, 6]}>
             <ListItem>
@@ -110,6 +111,7 @@ const Erstinformation = () => {
           </ChakraLink>
         </VStack>
       </ResponsiveContainer>
+      <Box h={10} bgColor='gray.100' />
     </FullWidthContainer>
   );
 };

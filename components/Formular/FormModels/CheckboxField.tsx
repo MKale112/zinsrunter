@@ -3,7 +3,7 @@ import { FieldProps } from 'formik';
 import React, { FC } from 'react';
 
 export interface Props extends FieldProps {
-  label: string;
+  label: string | React.ReactElement;
 }
 
 const CheckboxField: FC<Props> = ({ label, field }) => (

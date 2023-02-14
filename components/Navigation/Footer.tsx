@@ -4,21 +4,15 @@ import { FullWidthContainer, ResponsiveContainer } from '../Containers';
 import Image from 'next/image';
 import footerItems from '../../data/footer.json';
 import Link from '../Link/ChakraLink';
+import ChakraLink from '../Link/ChakraLink';
 
 const Footer = () => {
   const [isMobile] = useMediaQuery('(max-width: 640px)');
   const items = footerItems.links.map((entry) => (
-    <Link
-      color='primary.blue'
-      fontWeight='semibold'
-      _hover={{ textDecoration: 'underline' }}
-      key={`${entry.label}${entry.id}`}
-      href={entry.href}
-      target='_self'
-      rel='noreferrer'
-      fontSize={['xs', 'md']}
-    >
-      <Button variant='link'>{entry.label}</Button>
+    <Link color='primary.blue' key={`${entry.label}${entry.id}`} href={entry.href} target='_self' rel='noreferrer'>
+      <Button variant='link' fontWeight='normal' fontSize='md'>
+        {entry.label}
+      </Button>
     </Link>
   ));
   const brands = footerItems.brands.map((entry) => (
@@ -28,7 +22,7 @@ const Footer = () => {
     <FullWidthContainer pt={[8, 0]} pb={[2, 4]}>
       <ResponsiveContainer>
         <Stack
-          py={[4, 8, 10, 12, 16]}
+          py={[4, 8, 10, 12]}
           direction={'row'}
           justifyContent={isMobile ? 'space-evenly' : 'center'}
           alignItems={'center'}
@@ -68,9 +62,9 @@ const Footer = () => {
           <Stack direction={isMobile ? 'column' : 'row'} justify='space-between' alignItems='center'>
             <Text fontSize={['sm', 'md']}>
               {new Date().getFullYear()} ©{' '}
-              <a href='/'>
+              <ChakraLink href='/'>
                 <Button variant='link'>Zins-runter.de</Button>
-              </a>
+              </ChakraLink>
             </Text>
           </Stack>
         </VStack>
