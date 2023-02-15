@@ -13,7 +13,7 @@ import { useRecoilState } from 'recoil';
 import { stepState } from '@/core/atoms';
 
 const ProjectNumbers = () => {
-  const [_step, setStep] = useRecoilState(stepState);
+  const [step, setStep] = useRecoilState(stepState);
 
   const validationSchema = yup.object().shape({
     landPrice: yup.number().required(errorMessages.fieldRequired).positive().integer(),
@@ -27,10 +27,10 @@ const ProjectNumbers = () => {
       .integer(),
   });
   const initialValues: ProjectNumbersData = {
-    landPrice: null,
-    buildingCosts: null,
-    broker: null,
-    equityCapital: null,
+    landPrice: step[1].projectNumbers?.landPrice ?? '',
+    buildingCosts: step[1].projectNumbers?.buildingCosts ?? '',
+    broker: step[1].projectNumbers?.broker ?? '',
+    equityCapital: step[1].projectNumbers?.equityCapital ?? '',
   };
 
   return (

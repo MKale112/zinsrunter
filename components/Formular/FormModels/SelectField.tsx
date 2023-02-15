@@ -19,7 +19,6 @@ const SelectField: FC<Props> = ({ label, options, placeholder = 'Please select o
       <Select
         {...field}
         placeholder={placeholder}
-        defaultValue=''
         borderColor='primary.acid'
         border='2px'
         color='primary.blue'

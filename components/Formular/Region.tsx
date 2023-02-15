@@ -11,7 +11,7 @@ import { useRecoilState } from 'recoil';
 import { stepState } from '@/core/atoms';
 
 export const Region = () => {
-  const [_step, setStep] = useRecoilState(stepState);
+  const [step, setStep] = useRecoilState(stepState);
   const validationSchema = yup.object().shape({
     zipcode: yup
       .number()
@@ -30,11 +30,11 @@ export const Region = () => {
     netRentalIncomeMonthly: yup.number().required(errorMessages.fieldRequired).positive().integer(),
   });
   const initialValues: RegionData = {
-    zipcode: null,
-    location: '',
-    searchStatus: '',
-    householdNetMonthly: null,
-    netRentalIncomeMonthly: null,
+    zipcode: step[1].region?.zipcode ?? '',
+    location: step[1].region?.location ?? '',
+    searchStatus: step[1].region?.searchStatus ?? '',
+    householdNetMonthly: step[1].region?.householdNetMonthly ?? '',
+    netRentalIncomeMonthly: step[1].region?.netRentalIncomeMonthly ?? '',
   };
   return (
     <Center w={['95%', '95%', '80%', '50%']}>

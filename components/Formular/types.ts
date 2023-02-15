@@ -1,18 +1,18 @@
 import { SetterOrUpdater } from 'recoil';
 
 export interface RegionData {
-  zipcode: number | null;
+  zipcode: number | string;
   location: string | undefined;
   searchStatus: string | undefined;
-  householdNetMonthly: number | null;
-  netRentalIncomeMonthly: number | null;
+  householdNetMonthly: number | string;
+  netRentalIncomeMonthly: number | string;
 }
 
 export interface ProjectNumbersData {
-  landPrice: number | null;
-  buildingCosts: number | null;
-  broker: number | null;
-  equityCapital: number | null;
+  landPrice: number | string;
+  buildingCosts: number | string;
+  broker: number | string;
+  equityCapital: number | string;
 }
 
 export interface OfferData {
