@@ -54,7 +54,7 @@ const AutocompleteField: FC<Props> = ({ name, label, placeholder = '', options, 
         value={field.value}
         placeholder={placeholder}
         options={options}
-        defaultValue={{ value: null, label: '' }}
+        // defaultValue={{ value: null, label: '' }}
         chakraStyles={chakraStyles}
         onChange={onChangeInput}
       />

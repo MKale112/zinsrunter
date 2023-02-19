@@ -19,7 +19,7 @@ export const Region = () => {
   const [step, setStep] = useRecoilState(stepState);
 
   const [input, setInput] = useState<string>('');
-  console.log(setInput);
+
   const [options, setOptions] = useState<AutocompleteMapEntry[]>([]);
 
   const generateOptions = (input: string) => {
@@ -37,7 +37,7 @@ export const Region = () => {
     console.log(mappedOptions);
     return mappedOptions.filter((item, index) => mappedOptions.indexOf(item) === index) as AutocompleteMapEntry[];
   };
-
+  console.log(input);
   useEffect(() => {
     const autocompleteOptions = generateOptions(input);
     setOptions(autocompleteOptions);
@@ -87,6 +87,8 @@ export const Region = () => {
                 placeholder='Bitte eingeben'
                 type='number'
                 options={options}
+                onChangeInput={setInput}
+                onChange={console.log('ante')}
               />
               {/* <Field
                 component={InputField}

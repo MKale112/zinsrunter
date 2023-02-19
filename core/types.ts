@@ -16,3 +16,9 @@ export interface AutocompleteMapEntry {
   value: ZipcodeEntry;
   label: string;
 }
+
+export interface MetaTags {
+  title: string;
+  desc: string;
+  image: string;
+}
