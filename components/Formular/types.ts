@@ -16,13 +16,13 @@ export interface ProjectNumbersData {
 }
 
 export interface OfferData {
-  salutation: string;
-  title: string;
+  anrede: string;
+  titel: string;
   firstName: string;
   lastName: string;
-  phone: string;
+  mobilnummer: string;
   email: string;
-  mainEarnerOccupation: string;
+  haupterwerbstätigkeit: string;
   anmerkungen: string;
   videoBeratung: string;
   newsletter: boolean;

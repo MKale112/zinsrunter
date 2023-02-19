@@ -76,6 +76,12 @@ const Header = () => {
   return (
     <FullWidthContainer>
       <ResponsiveContainer>
+        <HStack py={1} justifyContent='flex-end'>
+          <Image src='/icons/phone.webp' alt='Call us!' height={25} />
+          <Text as={'b'} color='primary.blue' fontSize={{ base: 'sm', md: 'sm' }}>
+            Gebührenfreie Hotline: 0800 36 40000
+          </Text>
+        </HStack>
         <HStack py={{ base: 2, lg: 4 }} justify='space-between'>
           <HStack spacing={6} alignItems='flex-end'>
             <ChakraLink href='/'>

@@ -24,7 +24,7 @@ const Offer = () => {
     title: yup.string().required(errorMessages.fieldRequired),
     firstName: yup.string().required(errorMessages.fieldRequired),
     lastName: yup.string().required(errorMessages.fieldRequired),
-    phone: yup.string().matches(phoneRegex).required(errorMessages.fieldRequired),
+    mobilnummer: yup.string().matches(phoneRegex).required(errorMessages.fieldRequired),
     email: yup.string().email(),
     mainEarnerOccupation: yup.string().required(errorMessages.fieldRequired),
     anmerkungen: yup.string(),
@@ -33,13 +33,13 @@ const Offer = () => {
     dataSharing: yup.boolean(),
   });
   const initialValues: OfferData = {
-    salutation: '',
-    title: '',
+    anrede: '',
+    titel: '',
     firstName: '',
     lastName: '',
-    phone: '',
+    mobilnummer: '',
     email: '',
-    mainEarnerOccupation: '',
+    haupterwerbstätigkeit: '',
     anmerkungen: '',
     videoBeratung: 'Ja',
     newsletter: false,
@@ -72,50 +72,50 @@ const Offer = () => {
               <SimpleGrid w='full' columns={2} spacing={6}>
                 <Field
                   component={SelectField}
-                  name='salutation'
+                  name='anrede'
                   type='select'
-                  label='Salutation'
+                  label='Anrede'
                   default='No'
                   options={['Mr', 'Mrs']}
-                  placeholder='Please select'
+                  placeholder='Bitte auswählen'
                 />
 
                 <Field
                   component={SelectField}
-                  name='title'
+                  name='titel'
                   type='select'
-                  label='Title'
-                  default='No'
+                  label='Titel'
+                  default=''
                   options={['dr', 'prof', 'Prof. Dr.']}
-                  placeholder='If applicable, please select'
+                  placeholder='Bitte wählen Sie aus, ob es auf Sie zutrifft'
+                />
+
+                <Field component={InputField} name='vorName' type='text' label='Vorname' placeholder='Bitte eingeben' />
+
+                <Field
+                  component={InputField}
+                  name='nachName'
+                  type='text'
+                  label='Nachname'
+                  placeholder='Bitte eingeben'
                 />
 
                 <Field
                   component={InputField}
-                  name='firstName'
-                  type='text'
-                  label='First Name'
-                  placeholder='Please enter'
+                  name='mobilnummer'
+                  type='number'
+                  label='Mobilnummer'
+                  placeholder='Bitte eingeben'
                 />
-
-                <Field
-                  component={InputField}
-                  name='lastName'
-                  type='text'
-                  label='Last Name'
-                  placeholder='Please enter'
-                />
-
-                <Field component={InputField} name='phone' type='number' label='Phone' placeholder='Please enter' />
-                <Field component={InputField} name='email' type='email' label='Email' placeholder='Please enter' />
+                <Field component={InputField} name='email' type='email' label='Email' placeholder='Bitte eingeben' />
               </SimpleGrid>
 
               <Field
                 component={SelectField}
-                name='mainEarnerOccupation'
+                name='haupterwerbstätigkeit'
                 type='select'
-                label='Occupation of the main earner'
-                default='No'
+                label='Haupterwerbstätigkeit'
+                default=''
                 options={[
                   'Employee',
                   'Official',
@@ -133,7 +133,7 @@ const Offer = () => {
                   'Housewife',
                   'Uneployed',
                 ]}
-                placeholder='Please select'
+                placeholder='Bitte auswählen'
               />
 
               <Field component={RadioField} name='videoBeratung' label='Wünschen Sie eine Videoberatung?' />
@@ -158,8 +158,14 @@ const Offer = () => {
                 name='dataSharing'
                 label={
                   <Text>
-                    <ChakraLink href='/datenschultz'>Datenschutz</ChakraLink> und{' '}
-                    <ChakraLink href='/agb'>AGB</ChakraLink> akzeptiert
+                    <ChakraLink _hover={{ textDecoration: 'underline' }} href='/datenschultz'>
+                      Datenschutz
+                    </ChakraLink>{' '}
+                    und{' '}
+                    <ChakraLink _hover={{ textDecoration: 'underline' }} href='/agb'>
+                      AGB
+                    </ChakraLink>{' '}
+                    akzeptiert
                   </Text>
                 }
               />

@@ -2,28 +2,28 @@
   "kontakt": [
     {
       "id": "kontakt-id-1",
-      "icon": "",
+      "icon": "/icons/contact.webp",
       "title": "Sie möchten ein Angebot",
       "text": "Mit wenigen Klicks in nur wenigen Schritten zum Angebot",
       "link": { "text": "Hier kostenlos anfordern", "href": "" }
     },
     {
       "id": "kontakt-id-2",
-      "icon": "",
+      "icon": "/icons/mail.webp",
       "title": "Sie schreiben uns",
       "text": "Einfach Kontaktformular ausfüllen: Wir melden uns bei Ihnen.",
       "link": { "text": "Anfrage absenden", "href": "#kontakt-form" }
     },
     {
       "id": "kontakt-id-3",
-      "icon": "",
+      "icon": "/icons/phone-call.webp",
       "title": "Wir rufen Sie zurück",
       "text": "Beratung per Video oder Telefon: Wir kontaktieren Sie zu Ihrer Wunschzeit.",
       "link": { "text": "Rückruf vereinbaren.", "href": "#kontakt-form" }
     },
     {
       "id": "kontakt-id-4",
-      "icon": "",
+      "icon": "/icons/call-service.webp",
       "title": "Rufen Sie uns an",
       "text": "Anrufen und Wunschtermin zur Beratung vereinbaren: 0800 36 40000*"
     }

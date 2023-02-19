@@ -1,29 +1,50 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
 import { Center, VStack, Button, Text } from '@chakra-ui/react';
 import { errorMessages } from 'data/errorMessages';
 import { Formik, Form, Field } from 'formik';
 import InputField from './FormModels/InputField';
+import countryData from '../../data/formular/zipcodes.json';
 
 import * as yup from 'yup';
 import { RegionData } from './types';
 import SelectField from './FormModels/SelectField';
+
 import { useRecoilState } from 'recoil';
 import { stepState } from '@/core/atoms';
+import { AutocompleteMapEntry, ZipcodeEntry } from '@/core/types';
+import AutocompleteField from './FormModels/AutocompleteField';
 
 export const Region = () => {
   const [step, setStep] = useRecoilState(stepState);
-  const validationSchema = yup.object().shape({
-    zipcode: yup
-      .number()
-      .positive()
-      .integer()
-      .test('is-zipcode', 'Invalid zipcode format', (value: any) => {
-        if (!/^\d{5}(?:[-\s]\d{4})?$/.test(value)) {
-          return true;
+
+  const [input, setInput] = useState<string>('');
+  console.log(setInput);
+  const [options, setOptions] = useState<AutocompleteMapEntry[]>([]);
+
+  const generateOptions = (input: string) => {
+    const mappedOptions = (countryData as ZipcodeEntry[])
+      .map((entry) => {
+        if (
+          Number(input) >= Number(entry.startsAt.substring(0, input.length)) &&
+          Number(input) <= Number(entry.endsAt.substring(0, input.length))
+        ) {
+          return { value: entry, label: entry.region };
         }
-        return true;
       })
-      .required(errorMessages.fieldRequired),
+      .filter((entry) => entry !== undefined);
+
+    console.log(mappedOptions);
+    return mappedOptions.filter((item, index) => mappedOptions.indexOf(item) === index) as AutocompleteMapEntry[];
+  };
+
+  useEffect(() => {
+    const autocompleteOptions = generateOptions(input);
+    setOptions(autocompleteOptions);
+  }, [input]);
+
+  const validationSchema = yup.object().shape({
+    zipcode: yup.string().required(errorMessages.fieldRequired),
     location: yup.string().required(errorMessages.fieldRequired),
     searchStatus: yup.string(),
     householdNetMonthly: yup.number().required(errorMessages.fieldRequired).positive().integer(),
@@ -60,12 +81,23 @@ export const Region = () => {
               spacing={6}
             >
               <Field
+                component={AutocompleteField}
+                name='zipcode'
+                label='Postleitzahl Wohnort heute'
+                placeholder='Bitte eingeben'
+                type='number'
+                options={options}
+              />
+              {/* <Field
                 component={InputField}
                 name='zipcode'
                 type='number'
                 label='Postleitzahl Wohnort heute'
                 placeholder='Bitte eingeben'
-              />
+                min='0'
+                max='99999'
+                onChangeInput={setInput}
+              /> */}
 
               <Field component={InputField} name='location' type='text' label='Ort' placeholder='Wird vorgeschlagen' />
 

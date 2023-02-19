@@ -10,6 +10,7 @@ import InputField from '@/components/Formular/FormModels/InputField';
 import SelectField from '@/components/Formular/FormModels/SelectField';
 import TextAreaField from '@/components/Formular/FormModels/TextAreaField';
 import CheckboxField from '@/components/Formular/FormModels/CheckboxField';
+import ChakraLink from '@/components/Link/ChakraLink';
 
 const Kontakt = () => {
   const [isMobile] = useMediaQuery('(max-width: 640px)');
@@ -26,9 +27,9 @@ const Kontakt = () => {
         overflow={'hidden'}
       >
         <Box p={6}>
-          <VStack spacing={2} align={'center'} textAlign='center'>
-            <Image src={entry.icon} alt={entry.title} height={100} width={100} />
-            <Heading fontSize={['xl', 'xl', '3xl']} fontWeight={600} fontFamily={'body'}>
+          <VStack spacing={4} align={'center'} textAlign='center'>
+            <Image src={entry.icon} alt={entry.title} height={75} width={75} />
+            <Heading fontSize={['xl', 'xl', '3xl']} color={'primary.blue'} fontWeight={600} fontFamily={'body'}>
               {entry.title}
             </Heading>
             <Text color={'secondaryFontColor'}>
@@ -59,11 +60,7 @@ const Kontakt = () => {
     nachname: yup.string().required(errorMessages.fieldRequired),
     strasseHausnummer: yup.string().required(errorMessages.fieldRequired),
     ort: yup.string().required(errorMessages.fieldRequired),
-    telefonMobilnummer: yup
-      .string()
-      .matches(phoneRegex)
-      .typeError(errorMessages.isNum)
-      .required(errorMessages.fieldRequired),
+    mobilnummer: yup.string().matches(phoneRegex).typeError(errorMessages.isNum).required(errorMessages.fieldRequired),
     email: yup.string().required(errorMessages.fieldRequired),
     datenschultzAgbAkzeptiert: yup.boolean().required(errorMessages.fieldRequired),
   });
@@ -74,7 +71,7 @@ const Kontakt = () => {
     nachname: '',
     strasseHausnummer: '',
     ort: '',
-    telefonMobilnummer: null,
+    mobilnummer: null,
     email: '',
     anmerkungen: '',
     datenschultzAgbAkzeptiert: false,
@@ -133,7 +130,7 @@ const Kontakt = () => {
                       label='Anrede'
                       default='No'
                       options={['Mr', 'Mrs']}
-                      placeholder='Please select'
+                      placeholder='Bitte auswählen'
                     />
 
                     <SimpleGrid width='full' columns={isMobile ? 1 : 2} gap={4}>
@@ -142,7 +139,7 @@ const Kontakt = () => {
                         name='vorname'
                         type='text'
                         label='Vorname'
-                        placeholder='Please enter'
+                        placeholder='Bitte eingeben'
                       />
 
                       <Field
@@ -150,7 +147,7 @@ const Kontakt = () => {
                         name='nachname'
                         type='text'
                         label='Nachname'
-                        placeholder='Please enter'
+                        placeholder='Bitte eingeben'
                       />
 
                       <Field
@@ -158,19 +155,25 @@ const Kontakt = () => {
                         name='strasseHausnummer'
                         type='text'
                         label='Straße/Hausnummer'
-                        placeholder='Please enter'
+                        placeholder='Bitte eingeben'
                       />
 
-                      <Field component={InputField} name='ort' type='text' label='Ort' placeholder='Please enter' />
+                      <Field component={InputField} name='ort' type='text' label='Ort' placeholder='Bitte eingeben' />
 
                       <Field
                         component={InputField}
-                        name='telefonMobilnummer'
+                        name='mobilnummer'
                         type='text'
-                        label='Telefon- / Mobilnummer*:'
-                        placeholder='Please enter'
+                        label='Mobilnummer'
+                        placeholder='Bitte eingeben'
                       />
-                      <Field component={InputField} name='email' type='text' label='Email' placeholder='Please enter' />
+                      <Field
+                        component={InputField}
+                        name='email'
+                        type='text'
+                        label='Email'
+                        placeholder='Bitte eingeben'
+                      />
                     </SimpleGrid>
 
                     <Field
@@ -185,7 +188,18 @@ const Kontakt = () => {
                       <Field
                         component={CheckboxField}
                         name='datenschultzAgbAkzeptiert'
-                        label='Datenschutz und AGB akzeptiert'
+                        label={
+                          <Text>
+                            <ChakraLink _hover={{ textDecoration: 'underline' }} href='/datenschultz'>
+                              Datenschutz
+                            </ChakraLink>{' '}
+                            und{' '}
+                            <ChakraLink _hover={{ textDecoration: 'underline' }} href='/agb'>
+                              AGB
+                            </ChakraLink>{' '}
+                            akzeptiert
+                          </Text>
+                        }
                       />
                     </HStack>
 

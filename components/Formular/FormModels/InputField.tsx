@@ -7,9 +7,10 @@ export interface Props extends FieldProps {
   placeholder?: string;
   label: string;
   width?: string;
+  type?: string;
 }
 
-const InputField: FC<Props> = ({ placeholder = '', label, width, field }) => (
+const InputField: FC<Props> = ({ placeholder = '', label, width, field, type = 'text' }) => (
   <FormControl>
     <FormLabel fontSize={14} mb={0}>
       {label}:
@@ -22,11 +23,7 @@ const InputField: FC<Props> = ({ placeholder = '', label, width, field }) => (
       color='primary.blue'
       fontWeight='medium'
       {...field}
-      // onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-      //   if (isNaN(Number(e.target.value))) {
-      //     e.preventDefault();
-      //   }
-      // }}
+      type={type}
     />
     <CustomErrorMessage name={field.name} />
   </FormControl>

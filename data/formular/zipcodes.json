@@ -1,0 +1,1370 @@
+[
+  {
+    "startsAt": "01001",
+    "endsAt": "01936",
+    "region": "Sachsen",
+    "grunderwerbsteuer": 5.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "01941",
+    "endsAt": "01998",
+    "region": "Brandenburg",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "02601",
+    "endsAt": "02999",
+    "region": "Sachsen",
+    "grunderwerbsteuer": 5.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "03001",
+    "endsAt": "03253",
+    "region": "Brandenburg",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "04001",
+    "endsAt": "04579",
+    "region": "Sachsen",
+    "grunderwerbsteuer": 5.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "04581",
+    "endsAt": "04639",
+    "region": "Thüringen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "04641",
+    "endsAt": "04889",
+    "region": "Sachsen",
+    "grunderwerbsteuer": 5.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "04891",
+    "endsAt": "04938",
+    "region": "Brandenburg",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "06001",
+    "endsAt": "06548",
+    "region": "Sachsen-Anhalt",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "06551",
+    "endsAt": "06578",
+    "region": "Thüringen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "06601",
+    "endsAt": "06928",
+    "region": "Sachsen-Anhalt",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "07301",
+    "endsAt": "07919",
+    "region": "Thüringen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "07919",
+    "endsAt": "07919",
+    "region": "Sachsen",
+    "grunderwerbsteuer": 5.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "07919",
+    "endsAt": "07919",
+    "region": "Thüringen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "07919",
+    "endsAt": "07919",
+    "region": "Sachsen",
+    "grunderwerbsteuer": 5.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "07920",
+    "endsAt": "07950",
+    "region": "Thüringen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "07951",
+    "endsAt": "07951",
+    "region": "Sachsen",
+    "grunderwerbsteuer": 5.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "07952",
+    "endsAt": "07952",
+    "region": "Thüringen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "07952",
+    "endsAt": "07952",
+    "region": "Sachsen",
+    "grunderwerbsteuer": 5.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "07953",
+    "endsAt": "07980",
+    "region": "Thüringen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "07982",
+    "endsAt": "07982",
+    "region": "Sachsen",
+    "grunderwerbsteuer": 5.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "07985",
+    "endsAt": "07985",
+    "region": "Thüringen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "07985",
+    "endsAt": "07985",
+    "region": "Sachsen",
+    "grunderwerbsteuer": 5.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "07985",
+    "endsAt": "07989",
+    "region": "Thüringen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "08001",
+    "endsAt": "09669",
+    "region": "Sachsen",
+    "grunderwerbsteuer": 5.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "10001",
+    "endsAt": "14330",
+    "region": "Berlin",
+    "grunderwerbsteuer": 6,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "14401",
+    "endsAt": "14715",
+    "region": "Brandenburg",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "14715",
+    "endsAt": "14715",
+    "region": "Sachsen-Anhalt",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "14723",
+    "endsAt": "16949",
+    "region": "Brandenburg",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "17001",
+    "endsAt": "17256",
+    "region": "Mecklenburg-Vorpommern",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "17258",
+    "endsAt": "17258",
+    "region": "Brandenburg",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "17258",
+    "endsAt": "17259",
+    "region": "Mecklenburg-Vorpommern",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "17261",
+    "endsAt": "17291",
+    "region": "Brandenburg",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "17301",
+    "endsAt": "17309",
+    "region": "Mecklenburg-Vorpommern",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "17309",
+    "endsAt": "17309",
+    "region": "Brandenburg",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "17309",
+    "endsAt": "17321",
+    "region": "Mecklenburg-Vorpommern",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "17321",
+    "endsAt": "17321",
+    "region": "Brandenburg",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "17321",
+    "endsAt": "17322",
+    "region": "Mecklenburg-Vorpommern",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "17326",
+    "endsAt": "17326",
+    "region": "Brandenburg",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "17328",
+    "endsAt": "17331",
+    "region": "Mecklenburg-Vorpommern",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "17335",
+    "endsAt": "17335",
+    "region": "Brandenburg",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "17335",
+    "endsAt": "17335",
+    "region": "Mecklenburg-Vorpommern",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "17337",
+    "endsAt": "17337",
+    "region": "Brandenburg",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "17337",
+    "endsAt": "19260",
+    "region": "Mecklenburg-Vorpommern",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "19271",
+    "endsAt": "19273",
+    "region": "Niedersachsen",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "19273",
+    "endsAt": "19273",
+    "region": "Mecklenburg-Vorpommern",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "19273",
+    "endsAt": "19306",
+    "region": "Mecklenburg-Vorpommern",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "19307",
+    "endsAt": "19357",
+    "region": "Brandenburg",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "19357",
+    "endsAt": "19417",
+    "region": "Mecklenburg-Vorpommern",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "20001",
+    "endsAt": "21037",
+    "region": "Hamburg",
+    "grunderwerbsteuer": 5.5,
+    "makler": 0.03125
+  },
+  {
+    "startsAt": "21039",
+    "endsAt": "21039",
+    "region": "Schleswig-Holstein",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "21039",
+    "endsAt": "21170",
+    "region": "Hamburg",
+    "grunderwerbsteuer": 5.5,
+    "makler": 0.03125
+  },
+  {
+    "startsAt": "21202",
+    "endsAt": "21449",
+    "region": "Niedersachsen",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "21451",
+    "endsAt": "21521",
+    "region": "Schleswig-Holstein",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "21522",
+    "endsAt": "21522",
+    "region": "Niedersachsen",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "21524",
+    "endsAt": "21529",
+    "region": "Schleswig-Holstein",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "21601",
+    "endsAt": "21789",
+    "region": "Niedersachsen",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "22001",
+    "endsAt": "22113",
+    "region": "Hamburg",
+    "grunderwerbsteuer": 5.5,
+    "makler": 0.03125
+  },
+  {
+    "startsAt": "22113",
+    "endsAt": "22113",
+    "region": "Schleswig-Holstein",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "22115",
+    "endsAt": "22143",
+    "region": "Hamburg",
+    "grunderwerbsteuer": 5.5,
+    "makler": 0.03125
+  },
+  {
+    "startsAt": "22145",
+    "endsAt": "22145",
+    "region": "Schleswig-Holstein",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "22145",
+    "endsAt": "22145",
+    "region": "Hamburg",
+    "grunderwerbsteuer": 5.5,
+    "makler": 0.03125
+  },
+  {
+    "startsAt": "22145",
+    "endsAt": "22145",
+    "region": "Schleswig-Holstein",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "22147",
+    "endsAt": "22786",
+    "region": "Hamburg",
+    "grunderwerbsteuer": 5.5,
+    "makler": 0.03125
+  },
+  {
+    "startsAt": "22801",
+    "endsAt": "23919",
+    "region": "Schleswig-Holstein",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "23921",
+    "endsAt": "23999",
+    "region": "Mecklenburg-Vorpommern",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "24001",
+    "endsAt": "25999",
+    "region": "Schleswig-Holstein",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "26001",
+    "endsAt": "27478",
+    "region": "Niedersachsen",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "27483",
+    "endsAt": "27498",
+    "region": "Schleswig-Holstein",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "27499",
+    "endsAt": "27499",
+    "region": "Hamburg",
+    "grunderwerbsteuer": 5.5,
+    "makler": 0.03125
+  },
+  {
+    "startsAt": "27501",
+    "endsAt": "27580",
+    "region": "Bremen",
+    "grunderwerbsteuer": 5,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "27607",
+    "endsAt": "27809",
+    "region": "Niedersachsen",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "28001",
+    "endsAt": "28779",
+    "region": "Bremen",
+    "grunderwerbsteuer": 5,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "28784",
+    "endsAt": "29399",
+    "region": "Niedersachsen",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "29401",
+    "endsAt": "29416",
+    "region": "Sachsen-Anhalt",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "29431",
+    "endsAt": "31868",
+    "region": "Niedersachsen",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "32001",
+    "endsAt": "33829",
+    "region": "Nordrhein-Westfalen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "34001",
+    "endsAt": "34329",
+    "region": "Hessen",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "34331",
+    "endsAt": "34353",
+    "region": "Niedersachsen",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "34355",
+    "endsAt": "34355",
+    "region": "Hessen",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "34355",
+    "endsAt": "34355",
+    "region": "Niedersachsen",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "34356",
+    "endsAt": "34399",
+    "region": "Hessen",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "34401",
+    "endsAt": "34439",
+    "region": "Nordrhein-Westfalen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "34441",
+    "endsAt": "36399",
+    "region": "Hessen",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "36401",
+    "endsAt": "36469",
+    "region": "Thüringen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "37001",
+    "endsAt": "37194",
+    "region": "Niedersachsen",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "37194",
+    "endsAt": "37195",
+    "region": "Hessen",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "37197",
+    "endsAt": "37199",
+    "region": "Niedersachsen",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "37201",
+    "endsAt": "37299",
+    "region": "Hessen",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "37301",
+    "endsAt": "37359",
+    "region": "Thüringen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "37401",
+    "endsAt": "37649",
+    "region": "Niedersachsen",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "37651",
+    "endsAt": "37688",
+    "region": "Nordrhein-Westfalen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "37689",
+    "endsAt": "37691",
+    "region": "Niedersachsen",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "37692",
+    "endsAt": "37696",
+    "region": "Nordrhein-Westfalen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "37697",
+    "endsAt": "38479",
+    "region": "Niedersachsen",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "38481",
+    "endsAt": "38489",
+    "region": "Sachsen-Anhalt",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "38501",
+    "endsAt": "38729",
+    "region": "Niedersachsen",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "38801",
+    "endsAt": "39649",
+    "region": "Sachsen-Anhalt",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "40001",
+    "endsAt": "48432",
+    "region": "Nordrhein-Westfalen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "48442",
+    "endsAt": "48465",
+    "region": "Niedersachsen",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "48466",
+    "endsAt": "48477",
+    "region": "Nordrhein-Westfalen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "48478",
+    "endsAt": "48480",
+    "region": "Niedersachsen",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "48481",
+    "endsAt": "48485",
+    "region": "Nordrhein-Westfalen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "48486",
+    "endsAt": "48488",
+    "region": "Niedersachsen",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "48489",
+    "endsAt": "48496",
+    "region": "Nordrhein-Westfalen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "48497",
+    "endsAt": "48531",
+    "region": "Niedersachsen",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "48541",
+    "endsAt": "48739",
+    "region": "Nordrhein-Westfalen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "49001",
+    "endsAt": "49459",
+    "region": "Niedersachsen",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "49461",
+    "endsAt": "49549",
+    "region": "Nordrhein-Westfalen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "49551",
+    "endsAt": "49849",
+    "region": "Niedersachsen",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "50101",
+    "endsAt": "51597",
+    "region": "Nordrhein-Westfalen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "51598",
+    "endsAt": "51598",
+    "region": "Rheinland-Pfalz",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "51601",
+    "endsAt": "53359",
+    "region": "Nordrhein-Westfalen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "53401",
+    "endsAt": "53579",
+    "region": "Rheinland-Pfalz",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "53581",
+    "endsAt": "53604",
+    "region": "Nordrhein-Westfalen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "53614",
+    "endsAt": "53619",
+    "region": "Rheinland-Pfalz",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "53621",
+    "endsAt": "53949",
+    "region": "Nordrhein-Westfalen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "54181",
+    "endsAt": "55239",
+    "region": "Rheinland-Pfalz",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "55240",
+    "endsAt": "55252",
+    "region": "Hessen",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "55253",
+    "endsAt": "56869",
+    "region": "Rheinland-Pfalz",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "57001",
+    "endsAt": "57489",
+    "region": "Nordrhein-Westfalen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "57501",
+    "endsAt": "57648",
+    "region": "Rheinland-Pfalz",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "58001",
+    "endsAt": "59966",
+    "region": "Nordrhein-Westfalen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "59969",
+    "endsAt": "59969",
+    "region": "Hessen",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "59969",
+    "endsAt": "59969",
+    "region": "Nordrhein-Westfalen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "60001",
+    "endsAt": "63699",
+    "region": "Hessen",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "63701",
+    "endsAt": "63774",
+    "region": "Bayern",
+    "grunderwerbsteuer": 3.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "63776",
+    "endsAt": "63776",
+    "region": "Hessen",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "63776",
+    "endsAt": "63928",
+    "region": "Bayern",
+    "grunderwerbsteuer": 3.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "63928",
+    "endsAt": "63928",
+    "region": "Baden-Württemberg",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "63930",
+    "endsAt": "63939",
+    "region": "Bayern",
+    "grunderwerbsteuer": 3.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "64201",
+    "endsAt": "64753",
+    "region": "Hessen",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "64754",
+    "endsAt": "64754",
+    "region": "Baden-Württemberg",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "64754",
+    "endsAt": "65326",
+    "region": "Hessen",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "65326",
+    "endsAt": "65326",
+    "region": "Rheinland-Pfalz",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "65327",
+    "endsAt": "65391",
+    "region": "Hessen",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "65391",
+    "endsAt": "65391",
+    "region": "Rheinland-Pfalz",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "65392",
+    "endsAt": "65556",
+    "region": "Hessen",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "65558",
+    "endsAt": "65582",
+    "region": "Rheinland-Pfalz",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "65583",
+    "endsAt": "65620",
+    "region": "Hessen",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "65621",
+    "endsAt": "65626",
+    "region": "Rheinland-Pfalz",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "65627",
+    "endsAt": "65627",
+    "region": "Hessen",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "65629",
+    "endsAt": "65629",
+    "region": "Rheinland-Pfalz",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "65701",
+    "endsAt": "65936",
+    "region": "Hessen",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "66001",
+    "endsAt": "66459",
+    "region": "Saarland",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "66461",
+    "endsAt": "66509",
+    "region": "Rheinland-Pfalz",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "66511",
+    "endsAt": "66839",
+    "region": "Saarland",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "66841",
+    "endsAt": "67829",
+    "region": "Rheinland-Pfalz",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "68001",
+    "endsAt": "68312",
+    "region": "Baden-Württemberg",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "68501",
+    "endsAt": "68519",
+    "region": "Hessen",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "68520",
+    "endsAt": "68549",
+    "region": "Baden-Württemberg",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "68601",
+    "endsAt": "68649",
+    "region": "Hessen",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "68701",
+    "endsAt": "69234",
+    "region": "Baden-Württemberg",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "69235",
+    "endsAt": "69239",
+    "region": "Hessen",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "69240",
+    "endsAt": "69429",
+    "region": "Baden-Württemberg",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "69430",
+    "endsAt": "69431",
+    "region": "Hessen",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "69434",
+    "endsAt": "69434",
+    "region": "Baden-Württemberg",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "69434",
+    "endsAt": "69434",
+    "region": "Hessen",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "69435",
+    "endsAt": "69469",
+    "region": "Baden-Württemberg",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "69479",
+    "endsAt": "69488",
+    "region": "Hessen",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "69489",
+    "endsAt": "69502",
+    "region": "Baden-Württemberg",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "69503",
+    "endsAt": "69509",
+    "region": "Hessen",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "69510",
+    "endsAt": "69514",
+    "region": "Baden-Württemberg",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "69515",
+    "endsAt": "69518",
+    "region": "Hessen",
+    "grunderwerbsteuer": 6,
+    "makler": 0.02975
+  },
+  {
+    "startsAt": "70001",
+    "endsAt": "74592",
+    "region": "Baden-Württemberg",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "74594",
+    "endsAt": "74594",
+    "region": "Bayern",
+    "grunderwerbsteuer": 3.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "74594",
+    "endsAt": "76709",
+    "region": "Baden-Württemberg",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "76711",
+    "endsAt": "76891",
+    "region": "Rheinland-Pfalz",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "77601",
+    "endsAt": "79879",
+    "region": "Baden-Württemberg",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "80001",
+    "endsAt": "87490",
+    "region": "Bayern",
+    "grunderwerbsteuer": 3.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "87491",
+    "endsAt": "87491",
+    "region": "Außerhalb der BRD"
+  },
+  {
+    "startsAt": "87493",
+    "endsAt": "87561",
+    "region": "Bayern",
+    "grunderwerbsteuer": 3.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "87567",
+    "endsAt": "87569",
+    "region": "Außerhalb der BRD"
+  },
+  {
+    "startsAt": "87571",
+    "endsAt": "87789",
+    "region": "Bayern",
+    "grunderwerbsteuer": 3.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "88001",
+    "endsAt": "88099",
+    "region": "Baden-Württemberg",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "88101",
+    "endsAt": "88146",
+    "region": "Bayern",
+    "grunderwerbsteuer": 3.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "88147",
+    "endsAt": "88147",
+    "region": "Baden-Württemberg",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "88147",
+    "endsAt": "88179",
+    "region": "Bayern",
+    "grunderwerbsteuer": 3.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "88181",
+    "endsAt": "89079",
+    "region": "Baden-Württemberg",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "89081",
+    "endsAt": "89081",
+    "region": "Bayern",
+    "grunderwerbsteuer": 3.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "89081",
+    "endsAt": "89085",
+    "region": "Baden-Württemberg",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "89087",
+    "endsAt": "89087",
+    "region": "Bayern",
+    "grunderwerbsteuer": 3.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "89090",
+    "endsAt": "89198",
+    "region": "Baden-Württemberg",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "89201",
+    "endsAt": "89449",
+    "region": "Bayern",
+    "grunderwerbsteuer": 3.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "89501",
+    "endsAt": "89619",
+    "region": "Baden-Württemberg",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "90001",
+    "endsAt": "96489",
+    "region": "Bayern",
+    "grunderwerbsteuer": 3.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "96501",
+    "endsAt": "96529",
+    "region": "Thüringen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "97001",
+    "endsAt": "97859",
+    "region": "Bayern",
+    "grunderwerbsteuer": 3.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "97861",
+    "endsAt": "97877",
+    "region": "Baden-Württemberg",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "97888",
+    "endsAt": "97892",
+    "region": "Bayern",
+    "grunderwerbsteuer": 3.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "97893",
+    "endsAt": "97896",
+    "region": "Baden-Württemberg",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "97896",
+    "endsAt": "97896",
+    "region": "Bayern",
+    "grunderwerbsteuer": 3.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "97897",
+    "endsAt": "97900",
+    "region": "Baden-Württemberg",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "97901",
+    "endsAt": "97909",
+    "region": "Bayern",
+    "grunderwerbsteuer": 3.5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "97911",
+    "endsAt": "97999",
+    "region": "Baden-Württemberg",
+    "grunderwerbsteuer": 5,
+    "makler": 0.0357
+  },
+  {
+    "startsAt": "98501",
+    "endsAt": "99998",
+    "region": "Thüringen",
+    "grunderwerbsteuer": 6.5,
+    "makler": 0.0357
+  }
+]
