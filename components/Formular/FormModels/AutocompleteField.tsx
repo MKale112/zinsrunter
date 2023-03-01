@@ -1,19 +1,20 @@
 import { FormControl, FormLabel } from '@chakra-ui/react';
-import { FieldProps } from 'formik';
+import { Field, FieldProps, FormikValues } from 'formik';
 import React, { FC } from 'react';
 import CustomErrorMessage from './CustomErrorMessage';
 import { Select as ReactSelect, GroupBase, OptionsOrGroups, ChakraStylesConfig } from 'chakra-react-select';
+import { AutocompleteMapEntry } from '@/core/types';
 
-export interface Props extends FieldProps {
+export interface Props {
   name: string;
   label: string;
   placeholder?: string;
-  type: string;
   options: OptionsOrGroups<unknown, GroupBase<unknown>>;
   onChangeInput: (input: string) => void;
+  onSelectOption: (option: AutocompleteMapEntry) => void;
 }
 
-const AutocompleteField: FC<Props> = ({ name, label, placeholder = '', options, onChangeInput, field }) => {
+const AutocompleteField: FC<Props> = ({ name, label, placeholder = '', options, onChangeInput, onSelectOption }) => {
   const chakraStyles: ChakraStylesConfig = {
     clearIndicator: (provided) => ({
       ...provided,
@@ -33,37 +34,37 @@ const AutocompleteField: FC<Props> = ({ name, label, placeholder = '', options, 
     }),
   };
 
-  return (
-    // <Field name={name}>
-    //   {({ field, form }: FieldProps<FormikValues>) => {
-    //     const onChange = (option: any) => {
-    //       form.setFieldValue(name, option);
-    //     };
-    // const onBlur = () => {
-    //   form.setFieldTouched(name, true);
-    // };
-    // return (
-    <FormControl>
-      <FormLabel fontSize={14} mb={0}>
-        {label}:
-      </FormLabel>
+  const handleSelectOption = (newValue: AutocompleteMapEntry) => {
+    onSelectOption(newValue);
+  };
 
-      <ReactSelect
-        {...field}
-        name={name}
-        value={field.value}
-        placeholder={placeholder}
-        options={options}
-        // defaultValue={{ value: null, label: '' }}
-        chakraStyles={chakraStyles}
-        onChange={onChangeInput}
-      />
-      <CustomErrorMessage name={field.name} />
-    </FormControl>
+  return (
+    <Field name={name}>
+      {({ field, form }: FieldProps<FormikValues>) => {
+        const onChange = (option: any) => {
+          form.setFieldValue(name, option.value);
+          handleSelectOption(option);
+        };
+        return (
+          <FormControl>
+            <FormLabel fontSize={14} mb={0}>
+              {label}:
+            </FormLabel>
+
+            <ReactSelect
+              name={name}
+              placeholder={placeholder}
+              options={options}
+              chakraStyles={chakraStyles}
+              onInputChange={(newValue) => onChangeInput(newValue)}
+              onChange={(newValue) => onChange(newValue)}
+            />
+            <CustomErrorMessage name={field.name} />
+          </FormControl>
+        );
+      }}
+    </Field>
   );
-  //       }}
-  //     </Field>
-  //   );
 };
 
 export default AutocompleteField;

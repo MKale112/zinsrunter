@@ -4,6 +4,7 @@ import { errorMessages } from 'data/errorMessages';
 import { Formik, Form, Field } from 'formik';
 import InputField from './FormModels/InputField';
 import * as yup from 'yup';
+import 'yup-phone';
 import SelectField from './FormModels/SelectField';
 import CheckboxField from './FormModels/CheckboxField';
 import { useRecoilState } from 'recoil';
@@ -17,33 +18,31 @@ import Image from 'next/image';
 const Offer = () => {
   const [_step, setStep] = useRecoilState(stepState);
 
-  const phoneRegex =
-    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
   const validationSchema = yup.object().shape({
-    salutation: yup.string().required(errorMessages.fieldRequired),
-    title: yup.string().required(errorMessages.fieldRequired),
-    firstName: yup.string().required(errorMessages.fieldRequired),
-    lastName: yup.string().required(errorMessages.fieldRequired),
-    mobilnummer: yup.string().matches(phoneRegex).required(errorMessages.fieldRequired),
-    email: yup.string().email(),
-    mainEarnerOccupation: yup.string().required(errorMessages.fieldRequired),
+    anrede: yup.string().required(errorMessages.fieldRequired),
+    titel: yup.string().required(errorMessages.fieldRequired),
+    vorName: yup.string().required(errorMessages.fieldRequired),
+    nachName: yup.string().required(errorMessages.fieldRequired),
+    mobilnummer: yup.string().phone('', false, errorMessages.invalidPhone).required(errorMessages.fieldRequired),
+    email: yup.string().email(errorMessages.invalidEmail),
+    haupterwerbstätigkeit: yup.string().required(errorMessages.fieldRequired),
     anmerkungen: yup.string(),
     videoBeratung: yup.string(),
     newsletter: yup.boolean(),
-    dataSharing: yup.boolean(),
+    agb: yup.boolean(),
   });
   const initialValues: OfferData = {
     anrede: '',
     titel: '',
-    firstName: '',
-    lastName: '',
+    vorName: '',
+    nachName: '',
     mobilnummer: '',
     email: '',
     haupterwerbstätigkeit: '',
     anmerkungen: '',
     videoBeratung: 'Ja',
     newsletter: false,
-    dataSharing: false,
+    agb: false,
   };
 
   return (
@@ -55,6 +54,7 @@ const Offer = () => {
         validateOnChange={true}
         validateOnBlur={false}
         onSubmit={(values) => {
+          console.log('usa');
           setStep((currValue) => [7, { ...currValue[1], offer: values }]);
         }}
       >
@@ -103,7 +103,7 @@ const Offer = () => {
                 <Field
                   component={InputField}
                   name='mobilnummer'
-                  type='number'
+                  type='text'
                   label='Mobilnummer'
                   placeholder='Bitte eingeben'
                 />
@@ -155,7 +155,7 @@ const Offer = () => {
 
               <Field
                 component={CheckboxField}
-                name='dataSharing'
+                name='agb'
                 label={
                   <Text>
                     <ChakraLink _hover={{ textDecoration: 'underline' }} href='/datenschultz'>

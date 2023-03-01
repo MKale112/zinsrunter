@@ -9,7 +9,7 @@ export interface Props extends FieldProps {
   width?: string;
 }
 
-const InputField: FC<Props> = ({ placeholder = '', label, width, field }) => (
+const TextAreaField: FC<Props> = ({ placeholder = '', label, width, field }) => (
   <FormControl>
     <FormLabel fontSize={14} mb={0}>
       {label}:
@@ -22,14 +22,9 @@ const InputField: FC<Props> = ({ placeholder = '', label, width, field }) => (
       color='primary.blue'
       fontWeight='medium'
       {...field}
-      // onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-      //   if (isNaN(Number(e.target.value))) {
-      //     e.preventDefault();
-      //   }
-      // }}
     />
     <CustomErrorMessage name={field.name} />
   </FormControl>
 );
 
-export default InputField;
+export default TextAreaField;

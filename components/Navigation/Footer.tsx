@@ -5,9 +5,11 @@ import Image from 'next/image';
 import footerItems from '../../data/footer.json';
 import Link from '../Link/ChakraLink';
 import ChakraLink from '../Link/ChakraLink';
+import { useRouter } from 'next/router';
 
 const Footer = () => {
   const [isMobile] = useMediaQuery('(max-width: 640px)');
+  const router = useRouter();
   const items = footerItems.links.map((entry) => (
     <Link color='primary.blue' key={`${entry.label}${entry.id}`} href={entry.href} target='_self' rel='noreferrer'>
       <Button variant='link' fontWeight='normal' fontSize='md'>
@@ -19,7 +21,7 @@ const Footer = () => {
     <Image key={entry.id} src={entry.path} alt={entry.alt} width={isMobile ? 100 : 150} height={100} />
   ));
   return (
-    <FullWidthContainer pt={[8, 0]} pb={[2, 4]}>
+    <FullWidthContainer pt={[8, 0]} pb={[2, 4]} bgColor={router.pathname.includes('formular') ? 'gray.100' : 'white'}>
       <ResponsiveContainer>
         <Stack
           py={[4, 8, 10, 12]}

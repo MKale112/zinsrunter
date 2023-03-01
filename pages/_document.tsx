@@ -5,7 +5,7 @@ import customTheme from '@/styles/theme';
 
 export default function Document() {
   return (
-    <Html>
+    <Html lang='de'>
       <Head />
       <body>
         <ColorModeScript initialColorMode={customTheme.config.initialColorMode} />

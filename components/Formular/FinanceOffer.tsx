@@ -1,6 +1,6 @@
 import { stepState } from '@/core/atoms';
 import { Center, VStack, Text, SimpleGrid } from '@chakra-ui/react';
-import { financeOffer } from 'data/form';
+import { financeOffer, estate } from 'data/form';
 import Image from 'next/image';
 import React from 'react';
 import { useRecoilState } from 'recoil';
@@ -8,7 +8,10 @@ import { useRecoilState } from 'recoil';
 export const FinanceOffer = () => {
   const [step, setStep] = useRecoilState(stepState);
   const handleTileClick = (tileText: string) => {
-    setStep((currValue) => [1, { ...currValue[1], financeOffer: tileText }]);
+    console.log(tileText);
+    tileText === financeOffer.data[1].text
+      ? setStep((currValue) => [2, { ...currValue[1], financeOffer: tileText, estate: estate.data[2].text }])
+      : setStep((currValue) => [1, { ...currValue[1], financeOffer: tileText }]);
   };
 
   return (

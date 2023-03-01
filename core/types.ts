@@ -13,7 +13,8 @@ export interface ZipcodeEntry {
 }
 
 export interface AutocompleteMapEntry {
-  value: ZipcodeEntry;
+  entry: ZipcodeEntry;
+  value: string;
   label: string;
 }
 

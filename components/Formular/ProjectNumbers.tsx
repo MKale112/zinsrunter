@@ -1,38 +1,103 @@
-import React from 'react';
-import { Center, VStack, Button, Text, Box, HStack } from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react';
+import {
+  Center,
+  VStack,
+  Button,
+  Text,
+  Box,
+  HStack,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  useDisclosure,
+  Select,
+} from '@chakra-ui/react';
 import { errorMessages } from 'data/errorMessages';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form } from 'formik';
 import * as yup from 'yup';
 import HInputField from './FormModels/HInputField';
 import { IconObject } from '../icons/iconObject';
-import { AddIcon } from '@chakra-ui/icons';
+import { AddIcon, EditIcon, InfoIcon } from '@chakra-ui/icons';
 import { EuroIcon } from '../icons/EuroIcon';
 import { EqualsIcon } from '../icons/EqualsIcon';
 import { ProjectNumbersData } from './types';
 import { useRecoilState } from 'recoil';
 import { stepState } from '@/core/atoms';
+import grunderAndMaklerData from '../../data/formular/grunderAndMakler.json';
+
+const regionSelectOptions = grunderAndMaklerData.map((entry) => (
+  <option key={entry.city} value={entry.city}>
+    {entry.city}
+  </option>
+));
 
 const ProjectNumbers = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const [step, setStep] = useRecoilState(stepState);
-
-  const validationSchema = yup.object().shape({
-    landPrice: yup.number().required(errorMessages.fieldRequired).positive().integer(),
-    buildingCosts: yup.number().typeError(errorMessages.isNum).integer(),
-    broker: yup.number().positive().integer(),
-    equityCapital: yup
-      .number()
-      .required(errorMessages.fieldRequired)
-      .typeError(errorMessages.isNum)
-      .positive()
-      .integer(),
+  const [location, setLocation] = useState(step[1].region.location!);
+  const [variables, setVariables] = useState<{ grunder: number; makler: number }>();
+  const [isEligible, setEligible] = useState(false);
+  const [calculations, setCalculations] = useState({
+    notarAndGrundbuchAmount: 0,
+    grunderAmount: 0,
+    maklerAmount: 0,
+    darlehensbetrag: 0,
   });
-  const initialValues: ProjectNumbersData = {
-    landPrice: step[1].projectNumbers?.landPrice ?? '',
-    buildingCosts: step[1].projectNumbers?.buildingCosts ?? '',
-    broker: step[1].projectNumbers?.broker ?? '',
-    equityCapital: step[1].projectNumbers?.equityCapital ?? '',
+
+  useEffect(() => {
+    const { grunder, makler } = findGrunderAndMakler(location);
+    setVariables({ grunder: grunder!, makler: makler! });
+    console.log('calculations: ', calculations);
+  }, [location, calculations]);
+
+  const findGrunderAndMakler = (location: string) => {
+    const result = grunderAndMaklerData.find((entry) => entry.city === location);
+    return { grunder: result?.grunderwerbsteuer, makler: result?.makler };
   };
 
+  const calculatePrices = (kaufpreis: number, notarAndGrundbuch: number, eigenkapital: number) => {
+    console.log('triggered!');
+
+    if (!variables) {
+      console.log('no variables');
+    } else {
+      const grunderAmount = Number.parseFloat((kaufpreis * variables?.grunder).toFixed(2));
+      const maklerAmount = Number.parseFloat((kaufpreis * variables?.makler).toFixed(2));
+      const notarAndGrundbuchAmount = Number.parseFloat((kaufpreis * 0.02).toFixed(2));
+      const darlehensbetrag =
+        Math.ceil(
+          (+kaufpreis +
+            +notarAndGrundbuch +
+            +grunderAmount +
+            +maklerAmount +
+            +notarAndGrundbuchAmount +
+            +eigenkapital) /
+            1000,
+        ) * 1000;
+      setCalculations({ notarAndGrundbuchAmount, grunderAmount, maklerAmount, darlehensbetrag });
+      darlehensbetrag > 50000 ? setEligible(true) : setEligible(false);
+    }
+  };
+
+  console.log('darl: ', calculations.darlehensbetrag);
+
+  const validationSchema = yup.object().shape({
+    kaufpreis: yup.number().required(errorMessages.fieldRequired).positive().integer(),
+    notarAndGrundbuch: yup.number().typeError(errorMessages.isNum).integer(),
+    makler: yup.number().typeError(errorMessages.isNum).integer(),
+    eigenkapital: yup.number().integer(),
+  });
+
+  const initialValues: ProjectNumbersData = {
+    kaufpreis: step[1].projectNumbers?.kaufpreis || 0,
+    notarAndGrundbuch: step[1].projectNumbers?.notarAndGrundbuch || 0,
+    makler: step[1].projectNumbers?.makler || 0,
+    eigenkapital: step[1].projectNumbers?.eigenkapital || 0,
+  };
   return (
     <Center w='60%'>
       <Formik
@@ -43,9 +108,10 @@ const ProjectNumbers = () => {
         validateOnBlur={false}
         onSubmit={(values) => {
           setStep((currValue) => [6, { ...currValue[1], projectNumbers: values }]);
+          console.log(values);
         }}
       >
-        {({ handleSubmit }) => (
+        {({ handleSubmit, values }) => (
           <Form onSubmit={handleSubmit}>
             <VStack
               bgColor='white'
@@ -57,25 +123,22 @@ const ProjectNumbers = () => {
               spacing={6}
               alignItems='flex-start'
             >
-              <Field
-                component={HInputField}
-                name='landPrice'
-                type='number'
+              <HInputField
+                name='kaufpreis'
                 label='Kaufpreis'
-                placeholder='Please specify'
+                placeholder='0'
                 width='50%'
-                backIcon={IconObject.euro}
+                // backIcon={IconObject.euro}
+                onInputChange={() => calculatePrices(values.kaufpreis, values.notarAndGrundbuch, values.eigenkapital)}
               />
-
-              <Field
-                component={HInputField}
-                name='buildingCosts'
-                type='text'
-                label='Building costs'
-                placeholder='Please enter'
+              <HInputField
+                name='notarAndGrundbuch'
+                label='Notar & Grundbuch'
+                placeholder='0'
                 width='50%'
-                frontIcon={IconObject.plus}
-                backIcon={IconObject.euro}
+                // frontIcon={IconObject.plus}
+                // backIcon={IconObject.euro}
+                onInputChange={() => calculatePrices(values.kaufpreis, values.notarAndGrundbuch, values.eigenkapital)}
               />
 
               <HStack w='full'>
@@ -83,10 +146,12 @@ const ProjectNumbers = () => {
                   <AddIcon />
                 </Box>
                 <HStack justifyContent='space-between' w={'full'}>
-                  <Text>Notar & Grundbuch</Text>
+                  <Text fontSize={14} mb={0}>
+                    Notar & Grundbuch
+                  </Text>
                   <HStack>
                     <Text fontSize={12}>(2.00%)</Text>
-                    <Text>0</Text>
+                    <Text>{calculations.notarAndGrundbuchAmount}</Text>
                     <Box w='5%'>
                       <EuroIcon />
                     </Box>
@@ -99,10 +164,12 @@ const ProjectNumbers = () => {
                   <AddIcon />
                 </Box>
                 <HStack justifyContent='space-between' w={'full'}>
-                  <Text>Grunderwerbsteuer</Text>
+                  <Text fontSize={14} mb={0}>
+                    Grunderwerbsteuer
+                  </Text>
                   <HStack>
-                    <Text fontSize={12}>(4.50%)</Text>
-                    <Text>0</Text>
+                    <Text fontSize={12}>({((variables?.grunder ?? 0) * 100).toFixed(2)}%)</Text>
+                    <Text>{calculations.grunderAmount}</Text>
                     <Box w='5%'>
                       <EuroIcon />
                     </Box>
@@ -110,19 +177,58 @@ const ProjectNumbers = () => {
                 </HStack>
               </HStack>
               <Text fontSize={11} mb={4}>
-                Diese Beträge sind für das Bundesland ###### gesetzlich vorgegeben und werden deshalb automatisch
-                ermittelt.
+                Diese Beträge sind für das Bundesland{' '}
+                <Button
+                  variant='link'
+                  color={'black'}
+                  fontWeight='extrabold'
+                  textDecoration='underline'
+                  py={0}
+                  fontSize='xs'
+                  onClick={onOpen}
+                >
+                  {location} <EditIcon />
+                </Button>{' '}
+                gesetzlich vorgegeben und werden deshalb automatisch ermittelt.
               </Text>
 
-              <Field
-                component={HInputField}
-                name='broker'
-                type='number'
-                label='Makler'
-                placeholder='Please enter'
-                frontIcon={IconObject.plus}
-                backIcon={IconObject.euro}
+              <Drawer isOpen={isOpen} placement='right' onClose={onClose} size='sm'>
+                <DrawerOverlay />
+                <DrawerContent>
+                  <DrawerCloseButton color='white' boxSize={12} />
+                  <DrawerHeader bgColor={'primary.acid'} color={'primary.white'} fontSize={{ base: 'xl', md: '2xl' }}>
+                    Bundesland ändern
+                  </DrawerHeader>
+
+                  <DrawerBody>
+                    <Select
+                      defaultValue={location}
+                      size='lg'
+                      onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                        setLocation((e.target as HTMLSelectElement).value)
+                      }
+                    >
+                      {regionSelectOptions}
+                    </Select>
+                  </DrawerBody>
+
+                  <DrawerFooter>
+                    <Button variant='accent' onClick={onClose}>
+                      Schließen
+                    </Button>
+                  </DrawerFooter>
+                </DrawerContent>
+              </Drawer>
+
+              <HInputField
+                name='makler'
+                label={`Makler (${((variables?.makler ?? 0) * 100).toFixed(2)}%) `}
+                placeholder='0'
                 width='50%'
+                value={values.makler || calculations.maklerAmount}
+                // frontIcon={IconObject.plus}
+                // backIcon={IconObject.euro}
+                onInputChange={() => calculatePrices(values.kaufpreis, values.notarAndGrundbuch, values.eigenkapital)}
               />
 
               <Text fontSize={11} mb={4}>
@@ -130,16 +236,28 @@ const ProjectNumbers = () => {
                 Bedarf verändern oder auch komplett entfallen lassen.
               </Text>
 
-              <Field
-                component={HInputField}
-                name='equityCapital'
+              <HInputField
+                name='eigenkapital'
                 type='number'
                 label='Eigenkapital'
-                placeholder='Please enter'
+                placeholder='0'
+                width='50%'
+                value={values.eigenkapital}
+                // frontIcon={IconObject.plus}
+                // backIcon={IconObject.euro}
+                onInputChange={() => calculatePrices(values.kaufpreis, values.notarAndGrundbuch, values.eigenkapital)}
+              />
+
+              {/* <Field
+                component={HInputField}
+                name='eigenkapital'
+                type='number'
+                label='Eigenkapital'
+                placeholder='0'
                 frontIcon={IconObject.plus}
                 backIcon={IconObject.euro}
                 width='50%'
-              />
+              /> */}
 
               <Box w='full' h='2px' bgColor='primary.acid' />
 
@@ -150,7 +268,7 @@ const ProjectNumbers = () => {
                 <HStack justifyContent='space-between' w={'full'}>
                   <Text>Darlehensbetrag</Text>
                   <HStack>
-                    <Text>0</Text>
+                    <Text>{calculations.darlehensbetrag}</Text>
                     <Box w='5%'>
                       <EuroIcon />
                     </Box>
@@ -161,9 +279,46 @@ const ProjectNumbers = () => {
                 Darlehensbeträge werden auf volle 1.000 Euro gerundet.
               </Text>
 
+              <VStack
+                w='full'
+                py={2}
+                px={2}
+                alignItems='flex-start'
+                border='2px'
+                borderColor={isEligible ? 'primary.blue' : 'red.300'}
+                borderRadius='lg'
+              >
+                {isEligible ? (
+                  <Text fontSize={'xs'}>
+                    <InfoIcon boxSize={3} color='primary.blue' /> Banken vergeben ihre Darlehen aktuell sehr restriktiv.
+                    Bitte beachten Sie, dass für Darlehen ohne Eigenkapital gegenwärtig mit höheren Tilgungssätzen zu
+                    rechnen ist. Gleichzeitig werden auch höhere Anforderungen an die Bonität respektive
+                    Kapitaldienstfähigkeit gestellt. <br />
+                    <br />
+                    <strong>Wichtig:</strong> <br />
+                    Sollten Sie Eigenkapital besitzen, das Sie aber nicht einsetzen möchten, so möchten wir Sie dennoch
+                    eindringlich darum bitten dieses hier anzugeben. Ihr Berater bespricht mit Ihnen alle zur Verfügung
+                    stehenden Möglichkeiten.
+                  </Text>
+                ) : (
+                  <Text fontSize={'xs'}>
+                    <InfoIcon boxSize={3} color='red' /> Das Mindestdarlehen beträgt 50.000 Euro.
+                  </Text>
+                )}
+              </VStack>
+
               <Box bgColor='gray.400' w='full' h='1px' />
 
-              <Button alignSelf='center' variant='accent' type='submit' py={6} px={16} fontSize={20}>
+              <Button
+                isDisabled={!isEligible}
+                _hover={!isEligible ? {} : { bgColor: 'primary.darkAcid' }}
+                alignSelf='center'
+                variant='accent'
+                type='submit'
+                py={6}
+                px={16}
+                fontSize={20}
+              >
                 Werte übernehmen und weiter zum letzten Schritt
               </Button>
             </VStack>
