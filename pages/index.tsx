@@ -29,7 +29,7 @@ export default function Home() {
         </ChakraLink>
       </HeroBanner>
       <Financing />
-      <Partners />
+      <Partners cards={true} />
       <Highlights />
       <Seals />
     </>
