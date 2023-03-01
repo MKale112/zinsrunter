@@ -1,4 +1,5 @@
-import { AddIcon, MinusIcon } from '@chakra-ui/icons';
+import { MinusIcon } from './MinusIcon';
+import { AddIcon } from './AddIcon';
 import { EqualsIcon } from './EqualsIcon';
 import { EuroIcon } from './EuroIcon';
 

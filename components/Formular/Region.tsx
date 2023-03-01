@@ -20,7 +20,7 @@ export const Region = () => {
   const [step, setStep] = useRecoilState(stepState);
   const [input, setInput] = useState<string>('');
   const [options, setOptions] = useState<AutocompleteMapEntry[]>([]);
-  const [location, setLocation] = useState<string>();
+  const [location, setLocation] = useState(step[1]?.region?.location);
 
   const isRental = step[1].propertyUse === propertyUse.data[0].text;
   const alreadyDecided = financeOffer.data.some((element) => element.text === step[1].financeOffer);
@@ -28,7 +28,7 @@ export const Region = () => {
   const handleSelectedOption = (value: AutocompleteMapEntry) => {
     setLocation(value.entry ? value.entry.region : '');
   };
-
+  console.log(location);
   const generateOptions = (input: string) => {
     const mappedOptions = (countryData as ZipcodeEntry[])
       .map((entry) => {
@@ -52,6 +52,7 @@ export const Region = () => {
   useEffect(() => {
     const autocompleteOptions = input.length === 5 ? generateOptions(input) : [];
     setOptions(autocompleteOptions);
+    console.log(initialValues);
   }, [input]);
 
   const validationSchema = yup.object().shape({
@@ -64,7 +65,7 @@ export const Region = () => {
       : yup.number().required(errorMessages.fieldRequired).positive().integer(),
   });
   const initialValues: RegionData = {
-    zipcode: step[1].region?.zipcode ?? '',
+    zipcode: step[1].region?.zipcode,
     location: step[1].region?.location ?? '',
     searchStatus: step[1].region?.searchStatus,
     householdNetMonthly: step[1].region?.householdNetMonthly,
@@ -79,10 +80,11 @@ export const Region = () => {
         validateOnChange={true}
         validateOnBlur={false}
         onSubmit={(values) => {
+          setStep((currValue) => [4, { ...currValue[1], region: {} as RegionData }]);
           setStep((currValue) => [4, { ...currValue[1], region: { ...values, location } }]);
         }}
       >
-        {({ handleSubmit }) => (
+        {({ handleSubmit, values }) => (
           <Form onSubmit={handleSubmit}>
             <VStack
               bgColor='white'
@@ -98,6 +100,7 @@ export const Region = () => {
                 label='Postleitzahl Wohnort heute'
                 placeholder='Bitte eingeben'
                 options={options}
+                value={{ value: values.zipcode, label: values.zipcode }}
                 onChangeInput={setInput}
                 onSelectOption={handleSelectedOption}
               />
@@ -134,6 +137,7 @@ export const Region = () => {
                 type='number'
                 label='Haushaltsnetto monatlich'
                 placeholder='Bitte eingeben'
+                value={values.householdNetMonthly}
               />
 
               <Text fontSize={14} mb={4}>
@@ -149,6 +153,7 @@ export const Region = () => {
                     type='number'
                     label='Netto-Mieteinnahme monatlich'
                     placeholder='Bitte eingeben'
+                    value={values.netRentalIncomeMonthly}
                   />
                   <Text fontSize={14} mb={4}>
                     Bitte geben Sie hier die Mieteinnahme des zu vermietenden Objektes ein. Falls noch kein Mietvertrag

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Icon, IconProps } from '@chakra-ui/react';
 
-export const EqualsIcon = (props: IconProps) => (
+export const EqualsIcon: FC = (props: IconProps) => (
   <Icon
     fill='#000000'
     version='1.1'

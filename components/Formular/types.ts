@@ -22,14 +22,12 @@ export interface ZipCodeData {
   grunder?: number;
   makler?: number;
 }
-
 export interface ProjectNumbersData {
   kaufpreis: number;
-  notarAndGrundbuch: number;
-  makler: number;
+  modernisierungs: number;
+  makler: number | string;
   eigenkapital: number;
 }
-
 export interface OfferData {
   anrede: string;
   titel: string;

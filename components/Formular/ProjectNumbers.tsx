@@ -51,31 +51,38 @@ const ProjectNumbers = () => {
   useEffect(() => {
     const { grunder, makler } = findGrunderAndMakler(location);
     setVariables({ grunder: grunder!, makler: makler! });
-    console.log('calculations: ', calculations);
-  }, [location, calculations]);
+  }, []);
+
+  useEffect(() => {
+    step[1].projectNumbers &&
+      calculatePrices(
+        step[1].projectNumbers.kaufpreis,
+        step[1].projectNumbers.modernisierungs,
+        step[1].projectNumbers.eigenkapital,
+      );
+  }, [variables]);
+
+  useEffect(() => {
+    const { grunder, makler } = findGrunderAndMakler(location);
+    setVariables({ grunder: grunder!, makler: makler! });
+  }, [location]);
 
   const findGrunderAndMakler = (location: string) => {
     const result = grunderAndMaklerData.find((entry) => entry.city === location);
+    console.log(result);
     return { grunder: result?.grunderwerbsteuer, makler: result?.makler };
   };
 
-  const calculatePrices = (kaufpreis: number, notarAndGrundbuch: number, eigenkapital: number) => {
-    console.log('triggered!');
-
+  const calculatePrices = (kaufpreis: number, modernisierungs: number, eigenkapital: number) => {
     if (!variables) {
       console.log('no variables');
     } else {
       const grunderAmount = Number.parseFloat((kaufpreis * variables?.grunder).toFixed(2));
-      const maklerAmount = Number.parseFloat((kaufpreis * variables?.makler).toFixed(2));
+      const maklerAmount = Number.parseFloat((kaufpreis * (variables?.makler ?? 0)).toFixed(2));
       const notarAndGrundbuchAmount = Number.parseFloat((kaufpreis * 0.02).toFixed(2));
       const darlehensbetrag =
         Math.ceil(
-          (+kaufpreis +
-            +notarAndGrundbuch +
-            +grunderAmount +
-            +maklerAmount +
-            +notarAndGrundbuchAmount +
-            +eigenkapital) /
+          (+kaufpreis + +modernisierungs + +grunderAmount + +maklerAmount + +notarAndGrundbuchAmount - +eigenkapital) /
             1000,
         ) * 1000;
       setCalculations({ notarAndGrundbuchAmount, grunderAmount, maklerAmount, darlehensbetrag });
@@ -83,20 +90,18 @@ const ProjectNumbers = () => {
     }
   };
 
-  console.log('darl: ', calculations.darlehensbetrag);
-
   const validationSchema = yup.object().shape({
     kaufpreis: yup.number().required(errorMessages.fieldRequired).positive().integer(),
-    notarAndGrundbuch: yup.number().typeError(errorMessages.isNum).integer(),
-    makler: yup.number().typeError(errorMessages.isNum).integer(),
+    modernisierungs: yup.number().typeError(errorMessages.isNum).integer(),
+    makler: yup.number().typeError(errorMessages.isNum),
     eigenkapital: yup.number().integer(),
   });
 
   const initialValues: ProjectNumbersData = {
-    kaufpreis: step[1].projectNumbers?.kaufpreis || 0,
-    notarAndGrundbuch: step[1].projectNumbers?.notarAndGrundbuch || 0,
-    makler: step[1].projectNumbers?.makler || 0,
-    eigenkapital: step[1].projectNumbers?.eigenkapital || 0,
+    kaufpreis: step[1].projectNumbers?.kaufpreis,
+    modernisierungs: step[1].projectNumbers?.modernisierungs,
+    makler: step[1].projectNumbers?.makler,
+    eigenkapital: step[1].projectNumbers?.eigenkapital,
   };
   return (
     <Center w='60%'>
@@ -128,17 +133,19 @@ const ProjectNumbers = () => {
                 label='Kaufpreis'
                 placeholder='0'
                 width='50%'
-                // backIcon={IconObject.euro}
-                onInputChange={() => calculatePrices(values.kaufpreis, values.notarAndGrundbuch, values.eigenkapital)}
+                value={values.kaufpreis}
+                backIcon={IconObject.euro}
+                onInputChange={() => calculatePrices(values.kaufpreis, values.modernisierungs, values.eigenkapital)}
               />
               <HInputField
-                name='notarAndGrundbuch'
-                label='Notar & Grundbuch'
+                name='modernisierungs'
+                label='Evtl. Modernisierungskosten'
                 placeholder='0'
                 width='50%'
-                // frontIcon={IconObject.plus}
-                // backIcon={IconObject.euro}
-                onInputChange={() => calculatePrices(values.kaufpreis, values.notarAndGrundbuch, values.eigenkapital)}
+                value={values.modernisierungs}
+                frontIcon={IconObject.plus}
+                backIcon={IconObject.euro}
+                onInputChange={() => calculatePrices(values.kaufpreis, values.modernisierungs, values.eigenkapital)}
               />
 
               <HStack w='full'>
@@ -225,10 +232,10 @@ const ProjectNumbers = () => {
                 label={`Makler (${((variables?.makler ?? 0) * 100).toFixed(2)}%) `}
                 placeholder='0'
                 width='50%'
-                value={values.makler || calculations.maklerAmount}
-                // frontIcon={IconObject.plus}
-                // backIcon={IconObject.euro}
-                onInputChange={() => calculatePrices(values.kaufpreis, values.notarAndGrundbuch, values.eigenkapital)}
+                value={values.makler === '' ? undefined : values.makler || calculations.maklerAmount}
+                frontIcon={IconObject.plus}
+                backIcon={IconObject.euro}
+                onInputChange={() => calculatePrices(values.kaufpreis, values.modernisierungs, values.eigenkapital)}
               />
 
               <Text fontSize={11} mb={4}>
@@ -243,21 +250,10 @@ const ProjectNumbers = () => {
                 placeholder='0'
                 width='50%'
                 value={values.eigenkapital}
-                // frontIcon={IconObject.plus}
-                // backIcon={IconObject.euro}
-                onInputChange={() => calculatePrices(values.kaufpreis, values.notarAndGrundbuch, values.eigenkapital)}
-              />
-
-              {/* <Field
-                component={HInputField}
-                name='eigenkapital'
-                type='number'
-                label='Eigenkapital'
-                placeholder='0'
-                frontIcon={IconObject.plus}
+                frontIcon={IconObject.minus}
                 backIcon={IconObject.euro}
-                width='50%'
-              /> */}
+                onInputChange={() => calculatePrices(values.kaufpreis, values.modernisierungs, values.eigenkapital)}
+              />
 
               <Box w='full' h='2px' bgColor='primary.acid' />
 

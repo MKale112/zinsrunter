@@ -12,9 +12,18 @@ export interface Props {
   options: OptionsOrGroups<unknown, GroupBase<unknown>>;
   onChangeInput: (input: string) => void;
   onSelectOption: (option: AutocompleteMapEntry) => void;
+  value: { value: number; label: number };
 }
 
-const AutocompleteField: FC<Props> = ({ name, label, placeholder = '', options, onChangeInput, onSelectOption }) => {
+const AutocompleteField: FC<Props> = ({
+  name,
+  label,
+  placeholder = '',
+  options,
+  onChangeInput,
+  onSelectOption,
+  value,
+}) => {
   const chakraStyles: ChakraStylesConfig = {
     clearIndicator: (provided) => ({
       ...provided,
@@ -55,6 +64,7 @@ const AutocompleteField: FC<Props> = ({ name, label, placeholder = '', options, 
               name={name}
               placeholder={placeholder}
               options={options}
+              value={value.label && value}
               chakraStyles={chakraStyles}
               onInputChange={(newValue) => onChangeInput(newValue)}
               onChange={(newValue) => onChange(newValue)}

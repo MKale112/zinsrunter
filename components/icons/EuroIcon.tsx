@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Icon, IconProps } from '@chakra-ui/react';
 
-export const EuroIcon = (props: IconProps) => (
+export const EuroIcon: FC = (props: IconProps) => (
   <Icon
     fill='#000000'
     width='30px'
