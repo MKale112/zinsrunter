@@ -39,7 +39,7 @@ const ProjectNumbers = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [step, setStep] = useRecoilState(stepState);
   const [location, setLocation] = useState(step[1].region.location!);
-  const [variables, setVariables] = useState<{ grunder: number; makler: number }>();
+  const [variables, setVariables] = useState<{ grunder: number; makler: number | string }>();
   const [isEligible, setEligible] = useState(false);
   const [calculations, setCalculations] = useState({
     notarAndGrundbuchAmount: 0,
@@ -69,20 +69,33 @@ const ProjectNumbers = () => {
 
   const findGrunderAndMakler = (location: string) => {
     const result = grunderAndMaklerData.find((entry) => entry.city === location);
-    console.log(result);
     return { grunder: result?.grunderwerbsteuer, makler: result?.makler };
   };
 
-  const calculatePrices = (kaufpreis: number, modernisierungs: number, eigenkapital: number) => {
+  const calculatePrices = (
+    kaufpreis?: number,
+    modernisierungs?: number,
+    eigenkapital?: number,
+    newMaklerAmount?: number,
+  ) => {
     if (!variables) {
       console.log('no variables');
     } else {
-      const grunderAmount = Number.parseFloat((kaufpreis * variables?.grunder).toFixed(2));
-      const maklerAmount = Number.parseFloat((kaufpreis * (variables?.makler ?? 0)).toFixed(2));
-      const notarAndGrundbuchAmount = Number.parseFloat((kaufpreis * 0.02).toFixed(2));
+      const grunderAmount = Number.parseFloat(((kaufpreis ?? 0) * (variables?.grunder ?? 0)).toFixed(2));
+      const maklerAmount =
+        newMaklerAmount ??
+        Number.parseFloat(
+          ((kaufpreis ?? 0) * (typeof variables?.makler === 'string' ? 0 : variables?.makler ?? 0)).toFixed(2),
+        );
+      const notarAndGrundbuchAmount = Number.parseFloat(((kaufpreis ?? 0) * 0.02).toFixed(2));
       const darlehensbetrag =
         Math.ceil(
-          (+kaufpreis + +modernisierungs + +grunderAmount + +maklerAmount + +notarAndGrundbuchAmount - +eigenkapital) /
+          (+(kaufpreis ?? 0) +
+            +(modernisierungs ?? 0) +
+            +grunderAmount +
+            +maklerAmount +
+            +notarAndGrundbuchAmount -
+            +(eigenkapital ?? 0)) /
             1000,
         ) * 1000;
       setCalculations({ notarAndGrundbuchAmount, grunderAmount, maklerAmount, darlehensbetrag });
@@ -93,7 +106,7 @@ const ProjectNumbers = () => {
   const validationSchema = yup.object().shape({
     kaufpreis: yup.number().required(errorMessages.fieldRequired).positive().integer(),
     modernisierungs: yup.number().typeError(errorMessages.isNum).integer(),
-    makler: yup.number().typeError(errorMessages.isNum),
+    makler: yup.number().typeError(errorMessages.isNum).positive().integer().nullable(),
     eigenkapital: yup.number().integer(),
   });
 
@@ -135,7 +148,7 @@ const ProjectNumbers = () => {
                 width='50%'
                 value={values.kaufpreis}
                 backIcon={IconObject.euro}
-                onInputChange={() => calculatePrices(values.kaufpreis, values.modernisierungs, values.eigenkapital)}
+                onInputChange={(kaufpreis) => calculatePrices(kaufpreis, values.modernisierungs, values.eigenkapital)}
               />
               <HInputField
                 name='modernisierungs'
@@ -145,7 +158,9 @@ const ProjectNumbers = () => {
                 value={values.modernisierungs}
                 frontIcon={IconObject.plus}
                 backIcon={IconObject.euro}
-                onInputChange={() => calculatePrices(values.kaufpreis, values.modernisierungs, values.eigenkapital)}
+                onInputChange={(modernisierungs) =>
+                  calculatePrices(values.kaufpreis, modernisierungs, values.eigenkapital)
+                }
               />
 
               <HStack w='full'>
@@ -229,13 +244,17 @@ const ProjectNumbers = () => {
 
               <HInputField
                 name='makler'
-                label={`Makler (${((variables?.makler ?? 0) * 100).toFixed(2)}%) `}
+                label={`Makler (${((typeof variables?.makler === 'string' ? 0 : variables?.makler ?? 0) * 100).toFixed(
+                  2,
+                )}%) `}
                 placeholder='0'
                 width='50%'
                 value={values.makler === '' ? undefined : values.makler || calculations.maklerAmount}
                 frontIcon={IconObject.plus}
                 backIcon={IconObject.euro}
-                onInputChange={() => calculatePrices(values.kaufpreis, values.modernisierungs, values.eigenkapital)}
+                onInputChange={(makler) =>
+                  calculatePrices(values.kaufpreis, values.modernisierungs, values.eigenkapital, makler)
+                }
               />
 
               <Text fontSize={11} mb={4}>
@@ -252,7 +271,9 @@ const ProjectNumbers = () => {
                 value={values.eigenkapital}
                 frontIcon={IconObject.minus}
                 backIcon={IconObject.euro}
-                onInputChange={() => calculatePrices(values.kaufpreis, values.modernisierungs, values.eigenkapital)}
+                onInputChange={(eigenkapital) =>
+                  calculatePrices(values.kaufpreis, values.modernisierungs, eigenkapital)
+                }
               />
 
               <Box w='full' h='2px' bgColor='primary.acid' />
