@@ -8,7 +8,6 @@ import { useRecoilState } from 'recoil';
 export const FinanceOffer = () => {
   const [step, setStep] = useRecoilState(stepState);
   const handleTileClick = (tileText: string) => {
-    console.log(tileText);
     tileText === financeOffer.data[1].text
       ? setStep((currValue) => [2, { ...currValue[1], financeOffer: tileText, estate: estate.data[2].text }])
       : setStep((currValue) => [1, { ...currValue[1], financeOffer: tileText }]);
