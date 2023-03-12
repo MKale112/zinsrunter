@@ -31,6 +31,7 @@ import grunderAndMaklerData from '../../data/formular/grunderAndMakler.json';
 import CheckboxField from './FormModels/CheckboxField';
 import RadioField from './FormModels/RadioField';
 import { validateConfig } from 'next/dist/server/config-shared';
+import { formatNumber } from '@/core/utils';
 
 const regionSelectOptions = grunderAndMaklerData.map((entry) => (
   <option key={entry.city} value={entry.city}>
@@ -82,21 +83,25 @@ const ProjectNumbers = () => {
       console.log('no variables');
     } else {
       const { grunder, makler } = findGrunderAndMakler(location);
-      console.log(kaufpreis?.toLocaleString());
+      const formattedKaufpreis = formatNumber(kaufpreis);
+      const formattedModernisierungs = formatNumber(modernisierungs);
+      const formattedEigenkapital = formatNumber(eigenkapital);
+      const formattedMaklerAmount = formatNumber(newMaklerAmount);
 
-      const grunderAmount = Number.parseFloat(((kaufpreis ?? 0) * (grunder ?? 0)).toFixed(2));
+      const grunderAmount = Number.parseFloat(((formattedKaufpreis ?? 0) * (grunder ?? 0)).toFixed(2));
+      console.log('formattedMaklerAmount:', formattedMaklerAmount);
       const maklerAmount =
-        newMaklerAmount ??
-        Number.parseFloat(((kaufpreis ?? 0) * (typeof makler === 'string' ? 0 : makler ?? 0)).toFixed(2));
-      const notarAndGrundbuchAmount = Number.parseFloat(((kaufpreis ?? 0) * 0.02).toFixed(2));
+        formattedMaklerAmount ??
+        Number.parseFloat(((formattedKaufpreis ?? 0) * (typeof makler === 'string' ? 0 : makler ?? 0)).toFixed(2));
+      const notarAndGrundbuchAmount = Number.parseFloat(((formattedKaufpreis ?? 0) * 0.02).toFixed(2));
       const darlehensbetrag =
         Math.ceil(
-          (+(kaufpreis ?? 0) +
-            +(modernisierungs ?? 0) +
+          (+(formattedKaufpreis ?? 0) +
+            +(formattedModernisierungs ?? 0) +
             +grunderAmount +
             +maklerAmount +
             +notarAndGrundbuchAmount -
-            +(eigenkapital ?? 0)) /
+            +(formattedEigenkapital ?? 0)) /
             1000,
         ) * 1000;
       setCalculations({ notarAndGrundbuchAmount, grunderAmount, maklerAmount, darlehensbetrag });
@@ -105,10 +110,28 @@ const ProjectNumbers = () => {
   };
 
   const validationSchema = yup.object().shape({
-    kaufpreis: yup.number().required(errorMessages.fieldRequired).positive().integer(),
-    modernisierungs: yup.number().typeError(errorMessages.isNum).integer(),
-    makler: yup.number().typeError(errorMessages.isNum).positive().integer().nullable(),
-    eigenkapital: yup.number().integer(),
+    kaufpreis: yup
+      .number()
+      .transform((_, value) => formatNumber(value))
+      .required(errorMessages.fieldRequired)
+      .integer(),
+    modernisierungs: yup
+      .number()
+      .transform((_, value) => formatNumber(value))
+      .typeError(errorMessages.isNum)
+      .integer(),
+    makler: yup
+      .number()
+      .transform((_, value) => formatNumber(value))
+      .typeError(errorMessages.isNum)
+      .positive()
+      .integer()
+      .nullable(),
+    eigenkapital: yup
+      .number()
+      .transform((_, value) => formatNumber(value))
+      .required(errorMessages.fieldRequired)
+      .integer(),
     besitzenMoglicherweise: yup.string().required(errorMessages.fieldRequired),
   });
 
@@ -151,7 +174,9 @@ const ProjectNumbers = () => {
                 width='50%'
                 value={values.kaufpreis}
                 backIcon={IconObject.euro}
-                onInputChange={(kaufpreis) => calculatePrices(kaufpreis, values.modernisierungs, values.eigenkapital)}
+                onInputChange={(kaufpreis) =>
+                  calculatePrices(kaufpreis as unknown as number, values.modernisierungs, values.eigenkapital)
+                }
               />
               <HInputField
                 name='modernisierungs'
@@ -162,7 +187,7 @@ const ProjectNumbers = () => {
                 frontIcon={IconObject.plus}
                 backIcon={IconObject.euro}
                 onInputChange={(modernisierungs) =>
-                  calculatePrices(values.kaufpreis, modernisierungs, values.eigenkapital)
+                  calculatePrices(values.kaufpreis, modernisierungs as unknown as number, values.eigenkapital)
                 }
               />
 
@@ -236,7 +261,7 @@ const ProjectNumbers = () => {
                           values.kaufpreis,
                           values.modernisierungs,
                           values.eigenkapital,
-                          Number((values.kaufpreis * makler).toFixed(2)),
+                          Number((formatNumber(values.kaufpreis)! * makler).toFixed(2)),
                         );
                       }}
                     >
@@ -263,7 +288,12 @@ const ProjectNumbers = () => {
                 frontIcon={IconObject.plus}
                 backIcon={IconObject.euro}
                 onInputChange={(makler) =>
-                  calculatePrices(values.kaufpreis, values.modernisierungs, values.eigenkapital, makler)
+                  calculatePrices(
+                    values.kaufpreis,
+                    values.modernisierungs,
+                    values.eigenkapital,
+                    makler as unknown as number,
+                  )
                 }
               />
 
@@ -281,9 +311,10 @@ const ProjectNumbers = () => {
                 value={values.eigenkapital}
                 frontIcon={IconObject.minus}
                 backIcon={IconObject.euro}
-                onInputChange={(eigenkapital) =>
-                  calculatePrices(values.kaufpreis, values.modernisierungs, eigenkapital)
-                }
+                onInputChange={(eigenkapital) => {
+                  console.log('eigenkapital', eigenkapital);
+                  calculatePrices(values.kaufpreis, values.modernisierungs, eigenkapital as unknown as number);
+                }}
               />
               {!values.eigenkapital && (
                 <VStack

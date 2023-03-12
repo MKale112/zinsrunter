@@ -13,8 +13,8 @@ export interface RegionData {
   zipcode: number;
   bundesland: string | undefined;
   searchStatus: string | undefined;
-  householdNetMonthly: number;
-  netRentalIncomeMonthly?: number;
+  householdNetMonthly: string;
+  netRentalIncomeMonthly?: string;
 }
 export interface ZipCodeData {
   zipcode: number | string;

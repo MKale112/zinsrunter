@@ -15,7 +15,8 @@ import { stepState } from '@/core/atoms';
 import { AutocompleteMapEntry, ZipcodeEntry } from '@/core/types';
 import AutocompleteField from './FormModels/AutocompleteField';
 import { financeOffer, propertyUse } from 'data/form';
-import { EuroIcon } from '../icons/EuroIcon';
+import NumberInput from './FormModels/NumberInput';
+import { formatNumber } from '@/core/utils';
 
 export const Region = () => {
   const [step, setStep] = useRecoilState(stepState);
@@ -59,7 +60,10 @@ export const Region = () => {
     zipcode: yup.string().required(errorMessages.fieldRequired),
     // location: yup.string().required(errorMessages.fieldRequired),
     searchStatus: alreadyDecided ? yup.string().nullable() : yup.string().required(),
-    householdNetMonthly: yup.number().required(errorMessages.fieldRequired).positive().integer(),
+    householdNetMonthly: yup
+      .number()
+      .transform((_, value) => formatNumber(value))
+      .required(errorMessages.fieldRequired),
     netRentalIncomeMonthly: isRental
       ? yup.number().nullable()
       : yup.number().required(errorMessages.fieldRequired).positive().integer(),
@@ -133,14 +137,13 @@ export const Region = () => {
 
               <HStack w='full' alignItems='flex-end'>
                 <Field
-                  component={InputField}
+                  component={NumberInput}
                   name='householdNetMonthly'
                   type='number'
                   label='Haushaltsnetto monatlich'
                   placeholder='Bitte eingeben'
                   value={values.householdNetMonthly}
                 />
-                <EuroIcon height='40px' width='40px' />
               </HStack>
 
               <Text fontSize={14} mb={4}>
@@ -152,14 +155,13 @@ export const Region = () => {
                 <>
                   <HStack w='full' alignItems='flex-end'>
                     <Field
-                      component={InputField}
+                      component={NumberInput}
                       name='netRentalIncomeMonthly'
                       type='number'
                       label='Netto-Mieteinnahme monatlich'
                       placeholder='Bitte eingeben'
                       value={values.netRentalIncomeMonthly}
                     />
-                    <EuroIcon height='40px' width='40px' />
                   </HStack>
                   <Text fontSize={14} mb={4}>
                     Bitte geben Sie hier die Mieteinnahme des zu vermietenden Objektes ein. Falls noch kein Mietvertrag

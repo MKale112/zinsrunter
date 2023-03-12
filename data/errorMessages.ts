@@ -4,4 +4,5 @@ export const errorMessages = {
   isNum: 'Dieses Feld muss eine Zahl sein',
   invalidPhone: 'Diese Telefonnummer hat ein ungültiges Format',
   invalidEmail: 'Ungültiges Email-Format',
+  invalidInput: 'Ungültige Eingabe',
 };
