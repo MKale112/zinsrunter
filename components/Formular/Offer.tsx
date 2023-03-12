@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, Center, SimpleGrid, VStack, Text, Link, HStack } from '@chakra-ui/react';
+import { Box, Button, Center, SimpleGrid, VStack, Text, Link, HStack, Tooltip, Divider } from '@chakra-ui/react';
 import { errorMessages } from 'data/errorMessages';
 import { Formik, Form, Field } from 'formik';
 import InputField from './FormModels/InputField';
@@ -14,17 +14,24 @@ import ChakraLink from '../Link/ChakraLink';
 import RadioField from './FormModels/RadioField';
 import TextAreaField from './FormModels/TextAreaField';
 import Image from 'next/image';
+import { countries } from 'data/countries';
 
 const Offer = () => {
-  const [_step, setStep] = useRecoilState(stepState);
+  const [step, setStep] = useRecoilState(stepState);
 
   const validationSchema = yup.object().shape({
     anrede: yup.string().required(errorMessages.fieldRequired),
-    titel: yup.string().required(errorMessages.fieldRequired),
+    titel: yup.string(),
     vorName: yup.string().required(errorMessages.fieldRequired),
     nachName: yup.string().required(errorMessages.fieldRequired),
+    geburtsdatum: yup.date().required(errorMessages.fieldRequired),
+    strasseHausnummer: yup.string().required(errorMessages.fieldRequired),
+    plzOrt: yup.string().required(errorMessages.fieldRequired),
+    familienstand: yup.string().required(errorMessages.fieldRequired),
+    staatsangehorigkeit: yup.string().required(errorMessages.fieldRequired),
     mobilnummer: yup.string().phone('', false, errorMessages.invalidPhone).required(errorMessages.fieldRequired),
     email: yup.string().email(errorMessages.invalidEmail),
+    erreichbarkeit: yup.string().required(errorMessages.fieldRequired),
     haupterwerbstätigkeit: yup.string().required(errorMessages.fieldRequired),
     anmerkungen: yup.string(),
     videoBeratung: yup.string(),
@@ -32,17 +39,23 @@ const Offer = () => {
     agb: yup.boolean(),
   });
   const initialValues: OfferData = {
-    anrede: '',
-    titel: '',
-    vorName: '',
-    nachName: '',
-    mobilnummer: '',
-    email: '',
-    haupterwerbstätigkeit: '',
-    anmerkungen: '',
-    videoBeratung: 'Ja',
-    newsletter: false,
-    agb: false,
+    anrede: step[1].offer?.anrede || '',
+    titel: step[1].offer?.titel || '',
+    vorName: step[1].offer?.vorName || '',
+    nachName: step[1].offer?.nachName || '',
+    geburtsdatum: step[1].offer?.geburtsdatum || '',
+    strasseHausnummer: step[1].offer?.strasseHausnummer || '',
+    familienstand: step[1].offer?.familienstand || '',
+    staatsangehorigkeit: step[1].offer?.staatsangehorigkeit || '',
+    plzOrt: step[1].offer?.plzOrt || `${step[1].region?.zipcode}` || '',
+    mobilnummer: step[1].offer?.mobilnummer || '',
+    email: step[1].offer?.email || '',
+    erreichbarkeit: step[1].offer?.erreichbarkeit || '',
+    haupterwerbstätigkeit: step[1].offer?.haupterwerbstätigkeit || '',
+    anmerkungen: step[1].offer?.anmerkungen || '',
+    videoBeratung: step[1].offer?.videoBeratung || 'Ja',
+    newsletter: step[1].offer?.newsletter || false,
+    agb: step[1].offer?.agb || false,
   };
 
   return (
@@ -58,7 +71,7 @@ const Offer = () => {
           setStep((currValue) => [7, { ...currValue[1], offer: values }]);
         }}
       >
-        {({ handleSubmit }) => (
+        {({ handleSubmit, values }) => (
           <Form onSubmit={handleSubmit}>
             <VStack
               bgColor='white'
@@ -73,28 +86,41 @@ const Offer = () => {
                 <Field
                   component={SelectField}
                   name='anrede'
+                  value={values.anrede}
                   type='select'
                   label='Anrede'
                   default='No'
-                  options={['Mr', 'Mrs']}
+                  options={['Herr', 'Frau']}
                   placeholder='Bitte auswählen'
                 />
 
                 <Field
                   component={SelectField}
                   name='titel'
+                  value={values.titel}
                   type='select'
                   label='Titel'
                   default=''
-                  options={['dr', 'prof', 'Prof. Dr.']}
-                  placeholder='Bitte wählen Sie aus, ob es auf Sie zutrifft'
+                  options={['Dr', 'prof', 'Prof. Dr.']}
+                  placeholder='Falls zutreffend, bitte auswälhen'
                 />
+              </SimpleGrid>
+              <Divider />
 
-                <Field component={InputField} name='vorName' type='text' label='Vorname' placeholder='Bitte eingeben' />
+              <SimpleGrid w='full' columns={2} spacing={6}>
+                <Field
+                  component={InputField}
+                  name='vorName'
+                  value={values.vorName}
+                  type='text'
+                  label='Vorname'
+                  placeholder='Bitte eingeben'
+                />
 
                 <Field
                   component={InputField}
                   name='nachName'
+                  value={values.nachName}
                   type='text'
                   label='Nachname'
                   placeholder='Bitte eingeben'
@@ -102,49 +128,131 @@ const Offer = () => {
 
                 <Field
                   component={InputField}
+                  name='geburtsdatum'
+                  value={values.geburtsdatum}
+                  type='date'
+                  label='Geburtsdatum'
+                  placeholder='Bitte eingeben'
+                />
+
+                <Field
+                  component={InputField}
+                  name='strasseHausnummer'
+                  value={values.strasseHausnummer}
+                  type='text'
+                  label='Straße / Hausnummer'
+                  placeholder='Bitte eingeben'
+                />
+
+                <Field
+                  component={InputField}
+                  name='plzOrt'
+                  value={values.plzOrt}
+                  type='text'
+                  label='PLZ / Ort'
+                  placeholder='Bitte eingeben'
+                />
+
+                <Field
+                  component={SelectField}
+                  options={['Ledig', 'Verheiratet', 'Getrennt lebend', 'Geschieden', 'Verwitwet']}
+                  name='familienstand'
+                  type='text'
+                  label='Familienstand'
+                  placeholder='Bitte auswählen'
+                />
+
+                <Field
+                  component={SelectField}
+                  options={countries}
+                  name='staatsangehorigkeit'
+                  type='text'
+                  label='Staatsangehörigkeit'
+                  placeholder='Bitte auswählen'
+                />
+
+                <Field
+                  component={SelectField}
+                  name='haupterwerbstätigkeit'
+                  type='select'
+                  label='Haupterwerbstätigkeit'
+                  default=''
+                  options={[
+                    'Angestellte/r',
+                    'Beamte/r',
+                    'Geringfügig beschäftigt',
+                    'Elternzeit',
+                    'Selbstständige/r (nicht bil.)',
+                    'Selbstständige/r (bilanzierend)',
+                    'Freiberufler/in',
+                    'Geschäftsf. Gesellschafter/in',
+                    'Rentner/in',
+                    'Privatier',
+                    'Student/in',
+                    'Hausmann/-frau',
+                    'Arbeitslos',
+                  ]}
+                  placeholder='Bitte auswählen'
+                />
+              </SimpleGrid>
+
+              <Divider />
+
+              <Tooltip
+                label='Auch wir mögen keine Werbemails und -anrufe! Deshalb garantieren wir Ihnen, dass wir Ihre Daten auf
+                    keinen Fall an unbeteiligte Dritte weitergeben.'
+              >
+                <Text cursor='pointer' textDecoration='underline' fontWeight='bold'>
+                  Ihre Privatsphäre ist uns wichtig!
+                </Text>
+              </Tooltip>
+
+              <SimpleGrid w='full' columns={2} spacing={6}>
+                <Field
+                  component={InputField}
                   name='mobilnummer'
+                  value={values.mobilnummer}
                   type='text'
                   label='Mobilnummer'
                   placeholder='Bitte eingeben'
                 />
-                <Field component={InputField} name='email' type='email' label='Email' placeholder='Bitte eingeben' />
+                <Field
+                  component={InputField}
+                  name='email'
+                  value={values.email}
+                  type='email'
+                  label='Email'
+                  placeholder='Bitte eingeben'
+                />
+
+                <Field
+                  component={SelectField}
+                  options={['jederzeit', '8-10 Uhr', '10-13 Uhr', '13-16 Uhr', '6-19 Uhr', 'nach 19 Uhr']}
+                  name='erreichbarkeit'
+                  type='text'
+                  label='Erreichbarkeit'
+                  placeholder='Bitte auswählen'
+                />
               </SimpleGrid>
+              <Divider />
 
-              <Field
-                component={SelectField}
-                name='haupterwerbstätigkeit'
-                type='select'
-                label='Haupterwerbstätigkeit'
-                default=''
-                options={[
-                  'Employee',
-                  'Official',
-                  'Marginally employed',
-                  'Maternity leave',
-                  'Self employed',
-                  'Self employed (not qualified)',
-                  'Self employed (balancing)',
-                  'Freelancer',
-                  'Businessperson shareholder',
-                  'Not working',
-                  'Pensioner',
-                  'Privateer',
-                  'Student',
-                  'Housewife',
-                  'Uneployed',
-                ]}
-                placeholder='Bitte auswählen'
-              />
+              <SimpleGrid w='full' columns={2} spacing={6}>
+                <Field
+                  component={RadioField}
+                  name='videoBeratung'
+                  value={values.videoBeratung}
+                  label='Wünschen Sie eine Videoberatung?'
+                />
 
-              <Field component={RadioField} name='videoBeratung' label='Wünschen Sie eine Videoberatung?' />
-
-              <Field component={TextAreaField} name='anmerkungen' label='Sonstige optionale Angaben:' />
+                <Field component={TextAreaField} name='anmerkungen' label='Sonstige optionale Angaben' />
+              </SimpleGrid>
 
               <Box bgColor='gray.400' w='100%' h='1px' />
 
               <Field
                 component={CheckboxField}
                 name='newsletter'
+                value={values.newsletter}
                 label={
                   <Text>
                     Ich bin an weiteren <Link href='mailto:matejkalebic112@gmail.com'>Informationen/Newsletter</Link>{' '}
@@ -156,6 +264,7 @@ const Offer = () => {
               <Field
                 component={CheckboxField}
                 name='agb'
+                value={values.agb}
                 label={
                   <Text>
                     <ChakraLink _hover={{ textDecoration: 'underline' }} href='/datenschultz'>

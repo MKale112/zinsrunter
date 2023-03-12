@@ -17,7 +17,7 @@ import {
   Select,
 } from '@chakra-ui/react';
 import { errorMessages } from 'data/errorMessages';
-import { Formik, Form } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import HInputField from './FormModels/HInputField';
 import { IconObject } from '../icons/iconObject';
@@ -28,6 +28,8 @@ import { ProjectNumbersData } from './types';
 import { useRecoilState } from 'recoil';
 import { stepState } from '@/core/atoms';
 import grunderAndMaklerData from '../../data/formular/grunderAndMakler.json';
+import CheckboxField from './FormModels/CheckboxField';
+import RadioField from './FormModels/RadioField';
 
 const regionSelectOptions = grunderAndMaklerData.map((entry) => (
   <option key={entry.city} value={entry.city}>
@@ -38,7 +40,7 @@ const regionSelectOptions = grunderAndMaklerData.map((entry) => (
 const ProjectNumbers = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [step, setStep] = useRecoilState(stepState);
-  const [location, setLocation] = useState(step[1].region.location!);
+  const [location, setLocation] = useState(step[1].region.bundesland!);
   const [variables, setVariables] = useState<{ grunder: number; makler: number | string }>();
   const [isEligible, setEligible] = useState(false);
   const [calculations, setCalculations] = useState({
@@ -108,6 +110,7 @@ const ProjectNumbers = () => {
     modernisierungs: yup.number().typeError(errorMessages.isNum).integer(),
     makler: yup.number().typeError(errorMessages.isNum).positive().integer().nullable(),
     eigenkapital: yup.number().integer(),
+    besitzenMoglicherweise: yup.string().required(errorMessages.fieldRequired),
   });
 
   const initialValues: ProjectNumbersData = {
@@ -115,6 +118,7 @@ const ProjectNumbers = () => {
     modernisierungs: step[1].projectNumbers?.modernisierungs,
     makler: step[1].projectNumbers?.makler,
     eigenkapital: step[1].projectNumbers?.eigenkapital,
+    besitzenMoglicherweise: step[1].projectNumbers?.besitzenMoglicherweise || undefined,
   };
   return (
     <Center w='60%'>
@@ -275,6 +279,29 @@ const ProjectNumbers = () => {
                   calculatePrices(values.kaufpreis, values.modernisierungs, eigenkapital)
                 }
               />
+              {!values.eigenkapital && (
+                <VStack
+                  w='full'
+                  py={2}
+                  px={2}
+                  alignItems='flex-start'
+                  border='2px'
+                  borderColor='primary.blue'
+                  borderRadius='lg'
+                >
+                  <Text fontSize={'xs'}>
+                    <InfoIcon boxSize={3} color='primary.blue' /> Banken vergeben ihre Darlehen aktuell sehr restriktiv.
+                    Bitte beachten Sie, dass für Darlehen ohne Eigenkapital gegenwärtig mit höheren Tilgungssätzen zu
+                    rechnen ist. Gleichzeitig werden auch höhere Anforderungen an die Bonität respektive
+                    Kapitaldienstfähigkeit gestellt. <br />
+                    <br />
+                    <strong>Wichtig:</strong> <br />
+                    Sollten Sie Eigenkapital besitzen, das Sie aber nicht einsetzen möchten, so möchten wir Sie dennoch
+                    eindringlich darum bitten dieses hier anzugeben. Ihr Berater bespricht mit Ihnen alle zur Verfügung
+                    stehenden Möglichkeiten.
+                  </Text>
+                </VStack>
+              )}
 
               <Box w='full' h='2px' bgColor='primary.acid' />
 
@@ -296,32 +323,44 @@ const ProjectNumbers = () => {
                 Darlehensbeträge werden auf volle 1.000 Euro gerundet.
               </Text>
 
-              <VStack
-                w='full'
-                py={2}
-                px={2}
-                alignItems='flex-start'
-                border='2px'
-                borderColor={isEligible ? 'primary.blue' : 'red.300'}
-                borderRadius='lg'
-              >
-                {isEligible ? (
-                  <Text fontSize={'xs'}>
-                    <InfoIcon boxSize={3} color='primary.blue' /> Banken vergeben ihre Darlehen aktuell sehr restriktiv.
-                    Bitte beachten Sie, dass für Darlehen ohne Eigenkapital gegenwärtig mit höheren Tilgungssätzen zu
-                    rechnen ist. Gleichzeitig werden auch höhere Anforderungen an die Bonität respektive
-                    Kapitaldienstfähigkeit gestellt. <br />
-                    <br />
-                    <strong>Wichtig:</strong> <br />
-                    Sollten Sie Eigenkapital besitzen, das Sie aber nicht einsetzen möchten, so möchten wir Sie dennoch
-                    eindringlich darum bitten dieses hier anzugeben. Ihr Berater bespricht mit Ihnen alle zur Verfügung
-                    stehenden Möglichkeiten.
-                  </Text>
-                ) : (
+              {!isEligible && (
+                <VStack
+                  w='full'
+                  py={2}
+                  px={2}
+                  alignItems='flex-start'
+                  border='2px'
+                  borderColor={isEligible ? 'primary.blue' : 'red.300'}
+                  borderRadius='lg'
+                >
                   <Text fontSize={'xs'}>
                     <InfoIcon boxSize={3} color='red' /> Das Mindestdarlehen beträgt 50.000 Euro.
                   </Text>
-                )}
+                </VStack>
+              )}
+
+              <Box bgColor='gray.400' w='full' h='1px' />
+
+              <VStack>
+                <Field
+                  component={RadioField}
+                  name='besitzenMoglicherweise'
+                  label='Besitzen Sie möglicherweise bereits eine andere Immobilie die als zusätzliche Sicherheit für den
+                  Immobilienkredit dienen könnte?'
+                />
+                <Text fontSize={11} mb={4}>
+                  Für die Bank bedeutet diese zusätzliche Sicherheit für einen Immobilienkredit ein verringertes Risiko
+                  von Zahlungsausfällen. Eine Baufinanzierung hält meist über mehrere Jahrzehnte an, in denen sich Ihre
+                  finanzielle Situation stets verändern kann. <br />
+                  <br />
+                  Besteht von Seiten der Bank ein geringes finanzielles Risiko von Zahlungsausfällen, honoriert sie das
+                  mit niedrigen Zinsen. Das bedeutet: <br />
+                  <br />
+                  Je geringer das Risiko von Zahlungsausfällen, das heißt{' '}
+                  <strong>
+                    je mehr Sicherheiten vorhanden sind, desto bessere Zinsen wird Ihnen die Bank anbieten.
+                  </strong>
+                </Text>
               </VStack>
 
               <Box bgColor='gray.400' w='full' h='1px' />

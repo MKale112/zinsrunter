@@ -11,7 +11,7 @@ export type FormValues = {
 };
 export interface RegionData {
   zipcode: number;
-  location: string | undefined;
+  bundesland: string | undefined;
   searchStatus: string | undefined;
   householdNetMonthly: number;
   netRentalIncomeMonthly?: number;
@@ -27,14 +27,21 @@ export interface ProjectNumbersData {
   modernisierungs: number;
   makler: number | string;
   eigenkapital: number;
+  besitzenMoglicherweise?: string;
 }
 export interface OfferData {
   anrede: string;
   titel: string;
   vorName: string;
   nachName: string;
+  geburtsdatum: string;
+  strasseHausnummer: string;
+  familienstand: string;
+  staatsangehorigkeit: string;
+  plzOrt: string;
   mobilnummer: string;
   email: string;
+  erreichbarkeit: string;
   haupterwerbstätigkeit: string;
   anmerkungen: string;
   videoBeratung: string;

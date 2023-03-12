@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Center, VStack, Button, Text } from '@chakra-ui/react';
+import { Center, VStack, Button, Text, HStack } from '@chakra-ui/react';
 import { errorMessages } from 'data/errorMessages';
 import { Formik, Form, Field } from 'formik';
 import InputField from './FormModels/InputField';
@@ -15,20 +15,20 @@ import { stepState } from '@/core/atoms';
 import { AutocompleteMapEntry, ZipcodeEntry } from '@/core/types';
 import AutocompleteField from './FormModels/AutocompleteField';
 import { financeOffer, propertyUse } from 'data/form';
+import { EuroIcon } from '../icons/EuroIcon';
 
 export const Region = () => {
   const [step, setStep] = useRecoilState(stepState);
   const [input, setInput] = useState<string>('');
   const [options, setOptions] = useState<AutocompleteMapEntry[]>([]);
-  const [location, setLocation] = useState(step[1]?.region?.location);
+  const [bundesland, setBundesland] = useState(step[1]?.region?.bundesland);
 
   const isRental = step[1].propertyUse === propertyUse.data[0].text;
   const alreadyDecided = financeOffer.data.some((element) => element.text === step[1].financeOffer);
 
   const handleSelectedOption = (value: AutocompleteMapEntry) => {
-    setLocation(value.entry ? value.entry.region : '');
+    setBundesland(value.entry ? value.entry.region : '');
   };
-  console.log(location);
   const generateOptions = (input: string) => {
     const mappedOptions = (countryData as ZipcodeEntry[])
       .map((entry) => {
@@ -66,7 +66,7 @@ export const Region = () => {
   });
   const initialValues: RegionData = {
     zipcode: step[1].region?.zipcode,
-    location: step[1].region?.location ?? '',
+    bundesland: step[1].region?.bundesland ?? '',
     searchStatus: step[1].region?.searchStatus,
     householdNetMonthly: step[1].region?.householdNetMonthly,
     netRentalIncomeMonthly: step[1].region?.netRentalIncomeMonthly,
@@ -81,7 +81,7 @@ export const Region = () => {
         validateOnBlur={false}
         onSubmit={(values) => {
           setStep((currValue) => [4, { ...currValue[1], region: {} as RegionData }]);
-          setStep((currValue) => [4, { ...currValue[1], region: { ...values, location } }]);
+          setStep((currValue) => [4, { ...currValue[1], region: { ...values, bundesland } }]);
         }}
       >
         {({ handleSubmit, values }) => (
@@ -107,11 +107,11 @@ export const Region = () => {
 
               <Field
                 component={InputField}
-                name='location'
+                name='bundesland'
                 type='text'
-                label='Ort'
+                label='Bundesland'
                 placeholder='Wird vorgeschlagen'
-                value={location}
+                value={bundesland}
                 isDisabled
               />
 
@@ -131,14 +131,17 @@ export const Region = () => {
                 />
               )}
 
-              <Field
-                component={InputField}
-                name='householdNetMonthly'
-                type='number'
-                label='Haushaltsnetto monatlich'
-                placeholder='Bitte eingeben'
-                value={values.householdNetMonthly}
-              />
+              <HStack w='full' alignItems='flex-end'>
+                <Field
+                  component={InputField}
+                  name='householdNetMonthly'
+                  type='number'
+                  label='Haushaltsnetto monatlich'
+                  placeholder='Bitte eingeben'
+                  value={values.householdNetMonthly}
+                />
+                <EuroIcon height='40px' width='40px' />
+              </HStack>
 
               <Text fontSize={14} mb={4}>
                 Bitte geben Sie hier das monatliche Nettoeinkommmen des gesamten Haushalts ein. Bitte geben Sie nur
@@ -147,14 +150,17 @@ export const Region = () => {
 
               {!isRental && (
                 <>
-                  <Field
-                    component={InputField}
-                    name='netRentalIncomeMonthly'
-                    type='number'
-                    label='Netto-Mieteinnahme monatlich'
-                    placeholder='Bitte eingeben'
-                    value={values.netRentalIncomeMonthly}
-                  />
+                  <HStack w='full' alignItems='flex-end'>
+                    <Field
+                      component={InputField}
+                      name='netRentalIncomeMonthly'
+                      type='number'
+                      label='Netto-Mieteinnahme monatlich'
+                      placeholder='Bitte eingeben'
+                      value={values.netRentalIncomeMonthly}
+                    />
+                    <EuroIcon height='40px' width='40px' />
+                  </HStack>
                   <Text fontSize={14} mb={4}>
                     Bitte geben Sie hier die Mieteinnahme des zu vermietenden Objektes ein. Falls noch kein Mietvertrag
                     besteht, geben Sie bitte die zu erwartende Einnahme an.

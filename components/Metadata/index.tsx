@@ -10,23 +10,16 @@ const generateMetaText = (asPath: string): MetaTags => {
   };
   switch (asPath.split('/')[1]) {
     case 'formular':
-      metaTags.title = 'Formular';
+      metaTags.title = 'Baufinanzierung - kostenloses Angebot anfordern bei Zins-runter.de';
       return metaTags;
     case 'uber-uns':
       metaTags.title = 'Uber uns';
       return metaTags;
     case 'kontakt':
-      metaTags.title = 'Kontakt';
-      return metaTags;
-    case 'agb':
-      return metaTags;
-    case 'datenschultz':
-      return metaTags;
-    case 'erstinformation':
-      return metaTags;
-    case 'impressum':
+      metaTags.title = 'Kontakt zu Zins-runter.de';
       return metaTags;
     default:
+      metaTags.title = 'Siguron GmbH - Baufinanzierung bei Zins-runter.de';
       return metaTags;
   }
 };
