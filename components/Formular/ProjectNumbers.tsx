@@ -82,6 +82,7 @@ const ProjectNumbers = () => {
       console.log('no variables');
     } else {
       const { grunder, makler } = findGrunderAndMakler(location);
+      console.log(kaufpreis?.toLocaleString());
 
       const grunderAmount = Number.parseFloat(((kaufpreis ?? 0) * (grunder ?? 0)).toFixed(2));
       const maklerAmount =

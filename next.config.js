@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const buildDate = new Date().toLocaleString();
+
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
@@ -16,6 +18,19 @@ const nextConfig = {
         source: '/formular',
         destination: '/formular/financeOffer',
         permanent: true,
+      },
+    ];
+  },
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'time',
+            value: buildDate,
+          },
+        ],
       },
     ];
   },
