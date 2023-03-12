@@ -30,6 +30,7 @@ import { stepState } from '@/core/atoms';
 import grunderAndMaklerData from '../../data/formular/grunderAndMakler.json';
 import CheckboxField from './FormModels/CheckboxField';
 import RadioField from './FormModels/RadioField';
+import { validateConfig } from 'next/dist/server/config-shared';
 
 const regionSelectOptions = grunderAndMaklerData.map((entry) => (
   <option key={entry.city} value={entry.city}>
@@ -56,22 +57,19 @@ const ProjectNumbers = () => {
   }, []);
 
   useEffect(() => {
+    const { grunder, makler } = findGrunderAndMakler(location);
+    setVariables({ grunder: grunder!, makler: makler! });
     step[1].projectNumbers &&
       calculatePrices(
         step[1].projectNumbers.kaufpreis,
         step[1].projectNumbers.modernisierungs,
         step[1].projectNumbers.eigenkapital,
       );
-  }, [variables]);
-
-  useEffect(() => {
-    const { grunder, makler } = findGrunderAndMakler(location);
-    setVariables({ grunder: grunder!, makler: makler! });
   }, [location]);
 
   const findGrunderAndMakler = (location: string) => {
     const result = grunderAndMaklerData.find((entry) => entry.city === location);
-    return { grunder: result?.grunderwerbsteuer, makler: result?.makler };
+    return { grunder: result!.grunderwerbsteuer, makler: result!.makler };
   };
 
   const calculatePrices = (
@@ -80,15 +78,15 @@ const ProjectNumbers = () => {
     eigenkapital?: number,
     newMaklerAmount?: number,
   ) => {
-    if (!variables) {
+    if (!location) {
       console.log('no variables');
     } else {
-      const grunderAmount = Number.parseFloat(((kaufpreis ?? 0) * (variables?.grunder ?? 0)).toFixed(2));
+      const { grunder, makler } = findGrunderAndMakler(location);
+
+      const grunderAmount = Number.parseFloat(((kaufpreis ?? 0) * (grunder ?? 0)).toFixed(2));
       const maklerAmount =
         newMaklerAmount ??
-        Number.parseFloat(
-          ((kaufpreis ?? 0) * (typeof variables?.makler === 'string' ? 0 : variables?.makler ?? 0)).toFixed(2),
-        );
+        Number.parseFloat(((kaufpreis ?? 0) * (typeof makler === 'string' ? 0 : makler ?? 0)).toFixed(2));
       const notarAndGrundbuchAmount = Number.parseFloat(((kaufpreis ?? 0) * 0.02).toFixed(2));
       const darlehensbetrag =
         Math.ceil(
@@ -230,9 +228,16 @@ const ProjectNumbers = () => {
                     <Select
                       defaultValue={location}
                       size='lg'
-                      onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-                        setLocation((e.target as HTMLSelectElement).value)
-                      }
+                      onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+                        setLocation((e.target as HTMLSelectElement).value);
+                        const { makler } = findGrunderAndMakler((e.target as HTMLSelectElement).value);
+                        calculatePrices(
+                          values.kaufpreis,
+                          values.modernisierungs,
+                          values.eigenkapital,
+                          Number((values.kaufpreis * makler).toFixed(2)),
+                        );
+                      }}
                     >
                       {regionSelectOptions}
                     </Select>
@@ -249,7 +254,7 @@ const ProjectNumbers = () => {
               <HInputField
                 name='makler'
                 label={`Makler (${((typeof variables?.makler === 'string' ? 0 : variables?.makler ?? 0) * 100).toFixed(
-                  2,
+                  3,
                 )}%) `}
                 placeholder='0'
                 width='50%'
