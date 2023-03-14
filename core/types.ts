@@ -144,6 +144,17 @@ export interface DBInput {
   standort_plz: string;
   standort_ort: string;
   gclid_field: string;
+  nutzung: string;
+  haushaltseinkommen: string;
+  mieteinnahmen: string;
+  schufa: string;
+  modernisierungskosten: string;
+  maklerprovision: string;
+  immobilienbesitz: string;
+  titel: string;
+  staatsangehorigkeit: string;
+  erreichbarkeit: string;
+  videoberatung: string;
 }
 
 export const InitialDBInput = {
@@ -239,7 +250,7 @@ export const InitialDBInput = {
   anlagedauer: '',
   anlegertyp: '',
   monatliche_sparrate: '',
-  aktiv: 0,
+  aktiv: 1,
   p_email: '',
   pid: '',
   versicherungsart: '',
@@ -266,4 +277,15 @@ export const InitialDBInput = {
   standort_plz: '',
   standort_ort: '',
   gclid_field: '',
+  nutzung: '',
+  haushaltseinkommen: '',
+  mieteinnahmen: '',
+  schufa: '',
+  modernisierungskosten: '',
+  maklerprovision: '',
+  immobilienbesitz: '',
+  titel: '',
+  staatsangehorigkeit: '',
+  erreichbarkeit: '',
+  videoberatung: '',
 };
