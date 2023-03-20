@@ -334,11 +334,10 @@ const Offer = () => {
               <Box bgColor='gray.400' w='100%' h='1px' />
               <VStack>
                 <Text fontSize={20}>Stimmt so alles?</Text>
-                <ChakraLink href=''>
-                  <Button variant='accent' type='submit' padding={6} fontSize={20}>
-                    Jetzt Angebot anfordern
-                  </Button>
-                </ChakraLink>
+
+                <Button variant='accent' type='submit' padding={6} fontSize={20}>
+                  Jetzt Angebot anfordern
+                </Button>
               </VStack>
             </VStack>
           </Form>
