@@ -3,6 +3,9 @@ const buildDate = new Date().toLocaleString();
 
 const nextConfig = {
   reactStrictMode: true,
+  env: {
+    WEBSITE_URL: 'http://localhost:3000',
+  },
   swcMinify: true,
   webpack(config) {
     config.module.rules.push({
@@ -16,7 +19,7 @@ const nextConfig = {
     return [
       {
         source: '/formular',
-        destination: '/formular/financeOffer',
+        destination: '/formular/finanzierungszweck',
         permanent: true,
       },
     ];

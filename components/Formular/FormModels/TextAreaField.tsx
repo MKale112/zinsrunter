@@ -12,7 +12,7 @@ export interface Props extends FieldProps {
 const TextAreaField: FC<Props> = ({ placeholder = '', label, width, field }) => (
   <FormControl>
     <FormLabel fontSize={14} mb={0}>
-      {label}:
+      {label}
     </FormLabel>
     <Textarea
       width={width}

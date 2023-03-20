@@ -1,5 +1,17 @@
 import { FullWidthContainer, ResponsiveContainer } from '@/components/Containers';
-import { Box, Center, Heading, SimpleGrid, useMediaQuery, VStack, Text, Button, HStack, Link } from '@chakra-ui/react';
+import {
+  Box,
+  Center,
+  Heading,
+  SimpleGrid,
+  useMediaQuery,
+  VStack,
+  Text,
+  Button,
+  HStack,
+  Link,
+  useToast,
+} from '@chakra-ui/react';
 import { Field, Form, Formik } from 'formik';
 import Image from 'next/image';
 import React from 'react';
@@ -11,9 +23,11 @@ import SelectField from '@/components/Formular/FormModels/SelectField';
 import TextAreaField from '@/components/Formular/FormModels/TextAreaField';
 import CheckboxField from '@/components/Formular/FormModels/CheckboxField';
 import ChakraLink from '@/components/Link/ChakraLink';
+import axios from 'axios';
 
 const Kontakt = () => {
   const [isMobile] = useMediaQuery('(max-width: 640px)');
+  const toast = useToast();
   const kontaktCards = kontaktData.kontakt.map((entry) => (
     <Center key={entry.id} h='full'>
       <Box
@@ -51,30 +65,32 @@ const Kontakt = () => {
     </Center>
   ));
 
-  const phoneRegex =
-    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+  const phoneRegex = /^[+]?[\d-]+$/;
 
   const validationSchema = yup.object().shape({
     anrede: yup.string(),
     vorname: yup.string().required(errorMessages.fieldRequired),
-    nachname: yup.string().required(errorMessages.fieldRequired),
-    strasseHausnummer: yup.string().required(errorMessages.fieldRequired),
+    name: yup.string().required(errorMessages.fieldRequired),
+    strasse: yup.string().required(errorMessages.fieldRequired),
+    hausnummer: yup.number().positive().integer(),
     ort: yup.string().required(errorMessages.fieldRequired),
-    mobilnummer: yup.string().matches(phoneRegex).typeError(errorMessages.isNum).required(errorMessages.fieldRequired),
+    telefon: yup.string().matches(phoneRegex).typeError(errorMessages.isNum).required(errorMessages.fieldRequired),
     email: yup.string().required(errorMessages.fieldRequired),
-    datenschultzAgbAkzeptiert: yup.boolean().required(errorMessages.fieldRequired),
+    bemerkung: yup.string(),
+    agb: yup.boolean().oneOf([true], errorMessages.termsAndConditions).required(errorMessages.fieldRequired),
   });
 
   const initialValues = {
     anrede: '',
     vorname: '',
-    nachname: '',
-    strasseHausnummer: '',
+    name: '',
+    strasse: '',
+    hausnummer: undefined,
     ort: '',
-    mobilnummer: null,
+    telefon: null,
     email: '',
-    anmerkungen: '',
-    datenschultzAgbAkzeptiert: false,
+    bemerkung: '',
+    agb: false,
   };
 
   return (
@@ -106,11 +122,27 @@ const Kontakt = () => {
               validationSchema={validationSchema}
               validateOnChange={true}
               validateOnBlur={false}
-              onSubmit={(values) => {
-                console.log(values);
+              onSubmit={async (values) => {
+                const response = await axios.post(`${process.env.WEBSITE_URL}/api/kontakt`, values);
+                if (response.status === 200) {
+                  console.log(response.data);
+                  toast({
+                    title: 'Einreichung erfolgreich',
+                    status: 'success',
+                    duration: 5000,
+                    isClosable: false,
+                  });
+                } else {
+                  toast({
+                    title: 'Fehler beim Senden Ihrer Anfrage',
+                    status: 'error',
+                    duration: 5000,
+                    isClosable: false,
+                  });
+                }
               }}
             >
-              {({ handleSubmit }) => (
+              {({ handleSubmit, values }) => (
                 <Form onSubmit={handleSubmit}>
                   <VStack
                     minWidth={isMobile ? '90vw' : '50vw'}
@@ -129,7 +161,7 @@ const Kontakt = () => {
                       type='select'
                       label='Anrede'
                       default='No'
-                      options={['Mr', 'Mrs']}
+                      options={['Herr', 'Frau']}
                       placeholder='Bitte auswählen'
                     />
 
@@ -144,27 +176,38 @@ const Kontakt = () => {
 
                       <Field
                         component={InputField}
-                        name='nachname'
+                        name='name'
                         type='text'
                         label='Nachname'
                         placeholder='Bitte eingeben'
                       />
 
-                      <Field
-                        component={InputField}
-                        name='strasseHausnummer'
-                        type='text'
-                        label='Straße/Hausnummer'
-                        placeholder='Bitte eingeben'
-                      />
+                      <HStack alignItems='flex-end'>
+                        <Field
+                          component={InputField}
+                          name='strasse'
+                          type='text'
+                          label='Straße/Hausnummer'
+                          placeholder='Bitte eingeben'
+                          width='75%'
+                        />
+                        <Field
+                          component={InputField}
+                          name='hausnummer'
+                          type='number'
+                          label=''
+                          placeholder='...'
+                          width='25%'
+                        />
+                      </HStack>
 
                       <Field component={InputField} name='ort' type='text' label='Ort' placeholder='Bitte eingeben' />
 
                       <Field
                         component={InputField}
-                        name='mobilnummer'
+                        name='telefon'
                         type='text'
-                        label='Mobilnummer'
+                        label='Telefon- / Mobilnr.'
                         placeholder='Bitte eingeben'
                       />
                       <Field
@@ -178,7 +221,7 @@ const Kontakt = () => {
 
                     <Field
                       component={TextAreaField}
-                      name='anmerkungen'
+                      name='bemerkung'
                       type='text'
                       label='Anmerkungen'
                       placeholder='Werden absolut Vertraulich behandelt'
@@ -187,9 +230,10 @@ const Kontakt = () => {
                     <HStack width='full' justifyContent='flex-start'>
                       <Field
                         component={CheckboxField}
-                        name='datenschultzAgbAkzeptiert'
+                        value={values.agb}
+                        name='agb'
                         label={
-                          <Text>
+                          <Text color='secondaryFontColor'>
                             <ChakraLink _hover={{ textDecoration: 'underline' }} href='/datenschultz'>
                               Datenschutz
                             </ChakraLink>{' '}
@@ -203,6 +247,11 @@ const Kontakt = () => {
                       />
                     </HStack>
 
+                    <HStack alignItems='center' spacing={4} py={4}>
+                      <Image src='/ssl-icon.png' alt='Übermittlung über Sicherheitsserver' height={30} width={30} />
+                      <Text>Alle Ihre Daten werden sicher SSL-verschlüsselt übertragen!</Text>
+                    </HStack>
+
                     <Button variant='accent' type='submit' padding={6} fontSize={20}>
                       Absenden
                     </Button>
@@ -211,12 +260,6 @@ const Kontakt = () => {
               )}
             </Formik>
           </VStack>
-          <HStack alignItems='center' spacing={8}>
-            <Image src='/ssl-icon.png' alt='Übermittlung über Sicherheitsserver' height={75} width={75} />
-            <Text fontSize={['xl', 'xl', '2xl']} color='secondaryFontColor' maxW={200}>
-              Übermittlung über Sicherheitsserver
-            </Text>
-          </HStack>
         </VStack>
       </ResponsiveContainer>
       <Box h={10} bgColor='primary.acid' />

@@ -33,7 +33,7 @@ const HInputField: FC<FieldHookConfig<string> & CustomHInputProps> = (props) => 
         <Box w='5%'>{frontIcon && React.createElement(frontIcon)}</Box>
         <HStack justifyContent='space-between' w={'full'}>
           <FormLabel fontSize={14} mb={0}>
-            {label}:{' '}
+            {label}{' '}
           </FormLabel>
           <NumericFormat
             customInput={Input}

@@ -16,11 +16,11 @@ import { stepState } from '@/core/atoms';
 // const ReactReveal = require('react-reveal');
 
 const formSteps = [
-  'financeOffer',
-  'estate',
-  'propertyUse',
+  'finanzierungszweck',
+  'immobilientyp',
+  'nutzung',
   'region',
-  'negativeSCHUFA',
+  'schufa',
   'projectNumbers',
   'offer',
   'thankYou',
@@ -30,7 +30,7 @@ const form = [FinanceOffer, Estate, PropertyUse, Region, NegativeSCHUFA, Project
 const Formular = () => {
   const router = useRouter();
   const formStep = router.query.step?.toString();
-  const stepByUrl = formSteps.indexOf(formStep || 'financeOffer');
+  const stepByUrl = formSteps.indexOf(formStep || 'finanzierungszweck');
 
   const [step, _setStep] = useRecoilState(stepState);
 

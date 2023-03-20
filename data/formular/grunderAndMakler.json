@@ -2,81 +2,81 @@
   {
     "city": "Baden-Württemberg",
     "grunderwerbsteuer": 0.05,
-    "makler": 0.0357
+    "maklerprovision": 0.0357
   },
   {
     "city": "Bayern",
     "grunderwerbsteuer": 0.035,
-    "makler": 0.0357
+    "maklerprovision": 0.0357
   },
   {
     "city": "Berlin",
     "grunderwerbsteuer": 0.06,
-    "makler": 0.0357
+    "maklerprovision": 0.0357
   },
   {
     "city": "Brandenburg",
     "grunderwerbsteuer": 0.065,
-    "makler": 0.0357
+    "maklerprovision": 0.0357
   },
   {
     "city": "Bremen",
     "grunderwerbsteuer": 0.05,
-    "makler": 0.02975
+    "maklerprovision": 0.02975
   },
   {
     "city": "Hamburg",
     "grunderwerbsteuer": 0.055,
-    "makler": 0.03125
+    "maklerprovision": 0.03125
   },
   {
     "city": "Hessen",
     "grunderwerbsteuer": 0.06,
-    "makler": 0.02975
+    "maklerprovision": 0.02975
   },
   {
     "city": "Mecklenburg-Vorpommern",
     "grunderwerbsteuer": 0.06,
-    "makler": 0.02975
+    "maklerprovision": 0.02975
   },
   {
     "city": "Niedersachsen",
     "grunderwerbsteuer": 0.05,
-    "makler": 0.0357
+    "maklerprovision": 0.0357
   },
   {
     "city": "Nordrhein-Westfalen",
     "grunderwerbsteuer": 0.065,
-    "makler": 0.0357
+    "maklerprovision": 0.0357
   },
   {
     "city": "Rheinland-Pfalz",
     "grunderwerbsteuer": 0.05,
-    "makler": 0.0357
+    "maklerprovision": 0.0357
   },
   {
     "city": "Saarland",
     "grunderwerbsteuer": 0.065,
-    "makler": 0.0357
+    "maklerprovision": 0.0357
   },
   {
     "city": "Sachsen",
     "grunderwerbsteuer": 0.055,
-    "makler": 0.0357
+    "maklerprovision": 0.0357
   },
   {
     "city": "Sachsen-Anhalt",
     "grunderwerbsteuer": 0.05,
-    "makler": 0.0357
+    "maklerprovision": 0.0357
   },
   {
     "city": "Schleswig-Holstein",
     "grunderwerbsteuer": 0.065,
-    "makler": 0.0357
+    "maklerprovision": 0.0357
   },
   {
     "city": "Thüringen",
     "grunderwerbsteuer": 0.065,
-    "makler": 0.0357
+    "maklerprovision": 0.0357
   }
 ]

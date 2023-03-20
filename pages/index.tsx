@@ -6,12 +6,10 @@ import Seals from '@/components/SealsAndPartners/Seals';
 import Highlights from '@/components/Highlights/Highlights';
 import ChakraLink from '@/components/Link/ChakraLink';
 import { Financing } from '@/components/Financing/Financing';
-import { InitialDBInput } from '@/core/types';
+import Script from 'next/script';
 
 export default function Home() {
   const [isMobile] = useMediaQuery('(max-width: 640px)');
-
-  console.log(InitialDBInput);
 
   return (
     <>

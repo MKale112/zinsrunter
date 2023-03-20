@@ -1,15 +1,15 @@
 export enum FormState {
-  financeOffer = 'Was möchten Sie genau finanzieren?',
-  estate = 'Um was für eine Immobilie handelt es sich?',
-  propertyUse = 'Sie möchten…',
-  region = 'Persönliche Angaben',
-  negativeSCHUFA = 'Gibt oder gab es bei Ihnen negative SCHUFA Einträge?',
+  finanzierungszweck = 'Was möchten Sie genau finanzieren?',
+  immobilientyp = 'Um was für eine Immobilie handelt es sich?',
+  nutzung = 'Sie möchten…',
+  region = 'Wo findet das Finanzierungsvorhaben statt?',
+  schufa = 'Gibt oder gab es bei Ihnen negative SCHUFA Einträge?',
   projectNumbers = 'Die Finanzierung in Zahlen',
   offer = 'Persönliche Angaben',
 }
 
-export const financeOffer = {
-  key: 'financeOffer',
+export const finanzierungszweck = {
+  key: 'finanzierungszweck',
   data: [
     {
       key: 'buyPropery',
@@ -44,8 +44,8 @@ export const financeOffer = {
   ],
 };
 
-export const estate = {
-  key: 'estate',
+export const immobilientyp = {
+  key: 'immobilientyp',
   data: [
     {
       key: 'condominium',
@@ -95,8 +95,8 @@ export const estate = {
   ],
 };
 
-export const propertyUse = {
-  key: 'propertyUse',
+export const nutzung = {
+  key: 'nutzung',
   data: [
     {
       key: 'selfInhabited',
@@ -116,8 +116,8 @@ export const propertyUse = {
   ],
 };
 
-export const negativeSCHUFA = {
-  key: 'negativeSCHUFA',
+export const schufa = {
+  key: 'schufa',
   data: [
     {
       key: 'no',

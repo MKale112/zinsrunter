@@ -12,7 +12,7 @@ export interface Props extends FieldProps {
 const SelectField: FC<Props> = ({ label, options, placeholder = 'Please select one', field }) => (
   <FormControl>
     <FormLabel fontSize={14} mb={0}>
-      {label}:
+      {label}
     </FormLabel>
 
     {options && (

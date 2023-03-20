@@ -1,50 +1,52 @@
 import { SetterOrUpdater } from 'recoil';
 
 export type FormValues = {
-  financeOffer: string;
-  estate: string;
-  propertyUse: string;
+  finanzierungszweck: string;
+  immobilientyp: string;
+  nutzung: string;
   region: RegionData;
-  negativeSCHUFA: string;
+  schufa: string;
   projectNumbers: ProjectNumbersData;
   offer: OfferData;
 };
 export interface RegionData {
-  zipcode: number;
+  standort_plz: number;
   bundesland: string | undefined;
-  searchStatus: string | undefined;
-  householdNetMonthly: string;
-  netRentalIncomeMonthly?: string;
+  familienstand: string;
+  berufsstatus: string;
+  objektgefunden: string | undefined;
+  haushaltseinkommen: string;
+  mieteinnahmen?: string;
 }
 export interface ZipCodeData {
-  zipcode: number | string;
+  standort_plz: number | string;
   region?: string;
   grunder?: number;
-  makler?: number;
+  maklerprovision?: number;
 }
 export interface ProjectNumbersData {
   kaufpreis: number;
-  modernisierungs: number;
-  makler: number | string;
+  modernisierungskosten: number;
+  maklerprovision: number | string;
   eigenkapital: number;
-  besitzenMoglicherweise?: string;
+  immobilienbesitz?: string;
 }
 export interface OfferData {
   anrede: string;
   titel: string;
-  vorName: string;
-  nachName: string;
+  vorname: string;
+  name: string;
   geburtsdatum: string;
-  strasseHausnummer: string;
-  familienstand: string;
+  strasse: string;
+  hausnummer: string;
   staatsangehorigkeit: string;
-  plzOrt: string;
-  mobilnummer: string;
+  plz: string;
+  ort: string;
+  telefon: string;
   email: string;
   erreichbarkeit: string;
-  haupterwerbstätigkeit: string;
-  anmerkungen: string;
-  videoBeratung: string;
+  bemerkung: string;
+  videoberatung: string;
   newsletter: boolean;
   agb: boolean;
 }

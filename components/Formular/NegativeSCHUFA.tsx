@@ -1,6 +1,6 @@
 import { stepState } from '@/core/atoms';
 import { Center, VStack, Text, SimpleGrid, UnorderedList, ListItem, Image } from '@chakra-ui/react';
-import { negativeSCHUFA } from 'data/form';
+import { schufa } from 'data/form';
 import React from 'react';
 import { useRecoilState } from 'recoil';
 import { ResponsiveContainer } from '../Containers';
@@ -8,13 +8,13 @@ import { ResponsiveContainer } from '../Containers';
 export const NegativeSCHUFA = () => {
   const [step, setStep] = useRecoilState(stepState);
   const handleTileClick = (tileText: string) => {
-    setStep((currValue) => [5, { ...currValue[1], negativeSCHUFA: tileText }]);
+    setStep((currValue) => [5, { ...currValue[1], schufa: tileText }]);
   };
 
   return (
     <>
       <SimpleGrid columns={[1, 2, 3, 3]} spacing={4} justifyItems={'center'} pb={10}>
-        {negativeSCHUFA.data.map((entry) => (
+        {schufa.data.map((entry) => (
           <Center
             data-group
             key={entry.key}
@@ -26,7 +26,7 @@ export const NegativeSCHUFA = () => {
             transform='translateY(0px)'
             transition='all 0.4s ease-in-out'
             w={[300, 200, 200, 300]}
-            sx={step[1].negativeSCHUFA === entry.text ? { bgColor: 'primary.acid', boxShadow: '2xl' } : {}}
+            sx={step[1].schufa === entry.text ? { bgColor: 'primary.acid', boxShadow: '2xl' } : {}}
             _hover={{
               cursor: 'pointer',
               bgColor: 'primary.acid',
@@ -38,10 +38,10 @@ export const NegativeSCHUFA = () => {
           >
             <VStack
               _groupHover={{ filter: 'brightness(0) invert(1)' }}
-              sx={step[1].negativeSCHUFA === entry.text ? { filter: 'brightness(0) invert(1)' } : {}}
+              sx={step[1].schufa === entry.text ? { filter: 'brightness(0) invert(1)' } : {}}
             >
               <Image src={entry.icon} alt={entry.text} height={16} width={16} />
-              <Text fontSize={['sm', 'md', 'lg']} fontWeight='medium'>
+              <Text fontSize={['sm', 'md', 'lg']} fontWeight='medium' color='secondaryFontColor'>
                 {entry.text}
               </Text>
             </VStack>
@@ -49,10 +49,10 @@ export const NegativeSCHUFA = () => {
         ))}
       </SimpleGrid>
       <ResponsiveContainer bg='white' borderRadius='2xl' p={[5, 5, 10]} w={{ lg: 930 }}>
-        <Text fontSize={['xl', 'xl', '2xl']} fontWeight={'bold'}>
+        <Text fontSize={['xl', 'xl', '2xl']} fontWeight={'bold'} color='secondaryFontColor'>
           Wichtige Hinweise zu dieser Frage
         </Text>
-        <UnorderedList pl={[2, 7]} mt={5} fontSize={['m', 'm', 'xl']} spacing={4}>
+        <UnorderedList pl={[2, 7]} mt={5} fontSize={['m', 'm', 'xl']} spacing={4} color='secondaryFontColor'>
           <ListItem>
             <Text>
               <strong>Im Rahmen dieser Anfrage werden wir keine SCHUFA Daten von Ihnen abrufen.</strong>

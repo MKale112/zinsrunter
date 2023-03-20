@@ -1,5 +1,5 @@
-import React from 'react';
-import { Box, Button, Center, SimpleGrid, VStack, Text, Link, HStack, Tooltip, Divider } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { Box, Button, Center, SimpleGrid, VStack, Text, Link, HStack, Divider, useToast } from '@chakra-ui/react';
 import { errorMessages } from 'data/errorMessages';
 import { Formik, Form, Field } from 'formik';
 import InputField from './FormModels/InputField';
@@ -9,54 +9,64 @@ import SelectField from './FormModels/SelectField';
 import CheckboxField from './FormModels/CheckboxField';
 import { useRecoilState } from 'recoil';
 import { stepState } from '@/core/atoms';
-import { OfferData } from './types';
-import ChakraLink from '../Link/ChakraLink';
+import { FormValues, OfferData } from './types';
 import RadioField from './FormModels/RadioField';
 import TextAreaField from './FormModels/TextAreaField';
 import Image from 'next/image';
 import { countries } from 'data/countries';
+import axios from 'axios';
+import Popup from '../Popups';
+import ChakraLink from '../Link/ChakraLink';
 
 const Offer = () => {
   const [step, setStep] = useRecoilState(stepState);
+  const toast = useToast();
+  const [isOpen, setIsOpen] = useState(false);
+  const [popupContent, setPopupContent] = useState('');
+
+  const phoneRegex = /^[+]?[\d-]+$/;
+  const zipcodeRegex = /^[0-9]{1,6}$/;
 
   const validationSchema = yup.object().shape({
     anrede: yup.string().required(errorMessages.fieldRequired),
     titel: yup.string(),
-    vorName: yup.string().required(errorMessages.fieldRequired),
-    nachName: yup.string().required(errorMessages.fieldRequired),
+    vorname: yup.string().required(errorMessages.fieldRequired),
+    name: yup.string().required(errorMessages.fieldRequired),
     geburtsdatum: yup.date().required(errorMessages.fieldRequired),
-    strasseHausnummer: yup.string().required(errorMessages.fieldRequired),
-    plzOrt: yup.string().required(errorMessages.fieldRequired),
-    familienstand: yup.string().required(errorMessages.fieldRequired),
+    strasse: yup.string().required(errorMessages.fieldRequired),
+    hausnummer: yup.number().positive().integer(),
+    plz: yup.string().matches(zipcodeRegex, errorMessages.zipcodeInvalidInput).required(errorMessages.fieldRequired),
+    ort: yup.string().required(errorMessages.fieldRequired),
     staatsangehorigkeit: yup.string().required(errorMessages.fieldRequired),
-    mobilnummer: yup.string().phone('', false, errorMessages.invalidPhone).required(errorMessages.fieldRequired),
+    telefon: yup.string().matches(phoneRegex).required(errorMessages.fieldRequired),
     email: yup.string().email(errorMessages.invalidEmail),
     erreichbarkeit: yup.string().required(errorMessages.fieldRequired),
-    haupterwerbstätigkeit: yup.string().required(errorMessages.fieldRequired),
-    anmerkungen: yup.string(),
-    videoBeratung: yup.string(),
+    bemerkung: yup.string(),
+    videoberatung: yup.string(),
     newsletter: yup.boolean(),
-    agb: yup.boolean(),
+    agb: yup.boolean().oneOf([true], errorMessages.termsAndConditions).required(errorMessages.fieldRequired),
   });
   const initialValues: OfferData = {
     anrede: step[1].offer?.anrede || '',
     titel: step[1].offer?.titel || '',
-    vorName: step[1].offer?.vorName || '',
-    nachName: step[1].offer?.nachName || '',
+    vorname: step[1].offer?.vorname || '',
+    name: step[1].offer?.name || '',
     geburtsdatum: step[1].offer?.geburtsdatum || '',
-    strasseHausnummer: step[1].offer?.strasseHausnummer || '',
-    familienstand: step[1].offer?.familienstand || '',
+    strasse: step[1].offer?.strasse || '',
+    hausnummer: step[1].offer?.hausnummer || '',
     staatsangehorigkeit: step[1].offer?.staatsangehorigkeit || '',
-    plzOrt: step[1].offer?.plzOrt || `${step[1].region?.zipcode}` || '',
-    mobilnummer: step[1].offer?.mobilnummer || '',
+    plz: step[1].offer?.plz || '',
+    ort: step[1].offer?.ort || '',
+    telefon: step[1].offer?.telefon || '',
     email: step[1].offer?.email || '',
     erreichbarkeit: step[1].offer?.erreichbarkeit || '',
-    haupterwerbstätigkeit: step[1].offer?.haupterwerbstätigkeit || '',
-    anmerkungen: step[1].offer?.anmerkungen || '',
-    videoBeratung: step[1].offer?.videoBeratung || 'Ja',
+    bemerkung: step[1].offer?.bemerkung || '',
+    videoberatung: step[1].offer?.videoberatung || 'Ja',
     newsletter: step[1].offer?.newsletter || false,
     agb: step[1].offer?.agb || false,
   };
+
+  const fullData = {} as FormValues;
 
   return (
     <Center w={['100%', '100%', '80%', '80%', '65%']}>
@@ -66,9 +76,26 @@ const Offer = () => {
         validationSchema={validationSchema}
         validateOnChange={true}
         validateOnBlur={false}
-        onSubmit={(values) => {
-          console.log('usa');
-          setStep((currValue) => [7, { ...currValue[1], offer: values }]);
+        onSubmit={async (values) => {
+          Object.assign(fullData, step[1], { offer: values });
+          const response = await axios.post(`${process.env.WEBSITE_URL}/api/formular`, fullData);
+          if (response.status === 200) {
+            console.log(response.data);
+            toast({
+              title: 'Einreichung erfolgreich',
+              status: 'success',
+              duration: 5000,
+              isClosable: false,
+            });
+            setStep((currValue) => [7, { ...currValue[1], offer: values }]);
+          } else {
+            toast({
+              title: 'Fehler beim Senden Ihrer Anfrage',
+              status: 'error',
+              duration: 5000,
+              isClosable: false,
+            });
+          }
         }}
       >
         {({ handleSubmit, values }) => (
@@ -106,12 +133,11 @@ const Offer = () => {
                 />
               </SimpleGrid>
               <Divider />
-
               <SimpleGrid w='full' columns={2} spacing={6}>
                 <Field
                   component={InputField}
-                  name='vorName'
-                  value={values.vorName}
+                  name='vorname'
+                  value={values.vorname}
                   type='text'
                   label='Vorname'
                   placeholder='Bitte eingeben'
@@ -119,8 +145,8 @@ const Offer = () => {
 
                 <Field
                   component={InputField}
-                  name='nachName'
-                  value={values.nachName}
+                  name='name'
+                  value={values.name}
                   type='text'
                   label='Nachname'
                   placeholder='Bitte eingeben'
@@ -133,33 +159,46 @@ const Offer = () => {
                   type='date'
                   label='Geburtsdatum'
                   placeholder='Bitte eingeben'
+                  maxDate='9999-12-31'
+                  minDate='1900-01-01'
                 />
+
+                <HStack alignItems='flex-end'>
+                  <Field
+                    component={InputField}
+                    name='strasse'
+                    value={values.strasse}
+                    type='text'
+                    label='Straße / Hausnummer'
+                    placeholder='Bitte eingeben'
+                  />
+                  <Field
+                    component={InputField}
+                    name='hausnummer'
+                    value={values.hausnummer}
+                    type='number'
+                    label=''
+                    placeholder=''
+                    width={'25%'}
+                  />
+                </HStack>
 
                 <Field
                   component={InputField}
-                  name='strasseHausnummer'
-                  value={values.strasseHausnummer}
+                  name='plz'
+                  value={values.plz}
                   type='text'
-                  label='Straße / Hausnummer'
+                  label='PLZ'
                   placeholder='Bitte eingeben'
                 />
 
                 <Field
                   component={InputField}
-                  name='plzOrt'
-                  value={values.plzOrt}
+                  name='ort'
+                  value={values.ort}
                   type='text'
-                  label='PLZ / Ort'
+                  label='Ort'
                   placeholder='Bitte eingeben'
-                />
-
-                <Field
-                  component={SelectField}
-                  options={['Ledig', 'Verheiratet', 'Getrennt lebend', 'Geschieden', 'Verwitwet']}
-                  name='familienstand'
-                  type='text'
-                  label='Familienstand'
-                  placeholder='Bitte auswählen'
                 />
 
                 <Field
@@ -170,50 +209,24 @@ const Offer = () => {
                   label='Staatsangehörigkeit'
                   placeholder='Bitte auswählen'
                 />
-
-                <Field
-                  component={SelectField}
-                  name='haupterwerbstätigkeit'
-                  type='select'
-                  label='Haupterwerbstätigkeit'
-                  default=''
-                  options={[
-                    'Angestellte/r',
-                    'Beamte/r',
-                    'Geringfügig beschäftigt',
-                    'Elternzeit',
-                    'Selbstständige/r (nicht bil.)',
-                    'Selbstständige/r (bilanzierend)',
-                    'Freiberufler/in',
-                    'Geschäftsf. Gesellschafter/in',
-                    'Rentner/in',
-                    'Privatier',
-                    'Student/in',
-                    'Hausmann/-frau',
-                    'Arbeitslos',
-                  ]}
-                  placeholder='Bitte auswählen'
-                />
               </SimpleGrid>
-
               <Divider />
 
-              <Tooltip
-                label='Auch wir mögen keine Werbemails und -anrufe! Deshalb garantieren wir Ihnen, dass wir Ihre Daten auf
-                    keinen Fall an unbeteiligte Dritte weitergeben.'
-              >
-                <Text cursor='pointer' textDecoration='underline' fontWeight='bold'>
-                  Ihre Privatsphäre ist uns wichtig!
+              <HStack fontSize={['sm']}>
+                <Text fontWeight='bold'>Ihre Privatsphäre ist uns wichtig!</Text>
+                <Text>
+                  Auch wir mögen keine Werbemails und -anrufe! Deshalb garantieren wir Ihnen, dass wir Ihre Daten auf
+                  keinen Fall an unbeteiligte Dritte weitergeben.
                 </Text>
-              </Tooltip>
+              </HStack>
 
               <SimpleGrid w='full' columns={2} spacing={6}>
                 <Field
                   component={InputField}
-                  name='mobilnummer'
-                  value={values.mobilnummer}
+                  name='telefon'
+                  value={values.telefon}
                   type='text'
-                  label='Mobilnummer'
+                  label='Telefon- / Mobilnr.'
                   placeholder='Bitte eingeben'
                 />
                 <Field
@@ -235,52 +248,71 @@ const Offer = () => {
                 />
               </SimpleGrid>
               <Divider />
-
               <SimpleGrid w='full' columns={2} spacing={6}>
                 <Field
                   component={RadioField}
-                  name='videoBeratung'
-                  value={values.videoBeratung}
+                  name='videoberatung'
+                  value={values.videoberatung}
                   label='Wünschen Sie eine Videoberatung?'
                 />
 
-                <Field component={TextAreaField} name='anmerkungen' label='Sonstige optionale Angaben' />
+                <Field component={TextAreaField} name='bemerkung' label='Sonstige optionale Angaben' />
               </SimpleGrid>
-
               <Box bgColor='gray.400' w='100%' h='1px' />
-
               <Field
                 component={CheckboxField}
                 name='newsletter'
                 value={values.newsletter}
                 label={
-                  <Text>
-                    Ich bin an weiteren <Link href='mailto:matejkalebic112@gmail.com'>Informationen/Newsletter</Link>{' '}
+                  <Text color='secondaryFontColor'>
+                    Ich bin an weiteren{' '}
+                    <Link
+                      _hover={{ textDecoration: 'underline' }}
+                      color='primary.linkBlue'
+                      onClick={() => {
+                        setIsOpen(true);
+                        setPopupContent('Newsletter');
+                      }}
+                    >
+                      Informationen/Newsletter
+                    </Link>{' '}
                     per E-Mail interessiert.
                   </Text>
                 }
               />
-
               <Field
                 component={CheckboxField}
                 name='agb'
                 value={values.agb}
                 label={
-                  <Text>
-                    <ChakraLink _hover={{ textDecoration: 'underline' }} href='/datenschultz'>
+                  <Text color='secondaryFontColor'>
+                    <Link
+                      _hover={{ textDecoration: 'underline' }}
+                      color='primary.linkBlue'
+                      onClick={() => {
+                        setIsOpen(true);
+                        setPopupContent('Datenschutz');
+                      }}
+                    >
                       Datenschutz
-                    </ChakraLink>{' '}
+                    </Link>{' '}
                     und{' '}
-                    <ChakraLink _hover={{ textDecoration: 'underline' }} href='/agb'>
+                    <Link
+                      _hover={{ textDecoration: 'underline' }}
+                      color='primary.linkBlue'
+                      onClick={() => {
+                        setIsOpen(true);
+                        setPopupContent('AGB');
+                      }}
+                    >
                       AGB
-                    </ChakraLink>{' '}
+                    </Link>{' '}
                     akzeptiert
                   </Text>
                 }
               />
-
+              <Popup isOpen={isOpen} onClose={() => setIsOpen(false)} popupContent={popupContent} />
               <Box bgColor='gray.400' w='100%' h='1px' />
-
               <VStack spacing={6}>
                 <HStack alignItems='center' spacing={4}>
                   <Image src='/ssl-icon.png' alt='Übermittlung über Sicherheitsserver' height={30} width={30} />
@@ -294,19 +326,19 @@ const Offer = () => {
                     width={35}
                   />
                   <Text>
-                    Sie erhalten nur unverbindliche Konditions¬angebote. <br />
+                    Sie erhalten nur unverbindliche Konditions-Vorschläge. <br />
                     Es wird kein Abschluss getätigt.
                   </Text>
                 </HStack>
               </VStack>
-
               <Box bgColor='gray.400' w='100%' h='1px' />
-
               <VStack>
                 <Text fontSize={20}>Stimmt so alles?</Text>
-                <Button variant='accent' type='submit' padding={6} fontSize={20}>
-                  Jetzt Angebot anfordern
-                </Button>
+                <ChakraLink href=''>
+                  <Button variant='accent' type='submit' padding={6} fontSize={20}>
+                    Jetzt Angebot anfordern
+                  </Button>
+                </ChakraLink>
               </VStack>
             </VStack>
           </Form>

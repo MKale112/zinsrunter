@@ -181,7 +181,6 @@ export const countries = [
   'San Marino',
   'Sao Tome und Principe',
   'Saudi-Arabien',
-  'Saudi-Arabien',
   'Schweden',
   'Schweiz',
   'Senegal',

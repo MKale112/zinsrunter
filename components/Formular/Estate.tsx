@@ -1,6 +1,6 @@
 import { stepState } from '@/core/atoms';
 import { VStack, Text, SimpleGrid, Button } from '@chakra-ui/react';
-import { estate, financeOffer } from 'data/form';
+import { immobilientyp, finanzierungszweck } from 'data/form';
 import Image from 'next/image';
 import React from 'react';
 import { useRecoilState } from 'recoil';
@@ -8,15 +8,15 @@ import { useRecoilState } from 'recoil';
 export const Estate = () => {
   const [step, setStep] = useRecoilState(stepState);
   const handleTileClick = (tileText: string) => {
-    setStep((currValue) => [2, { ...currValue[1], estate: tileText }]);
+    setStep((currValue) => [2, { ...currValue[1], immobilientyp: tileText }]);
   };
 
   return (
     <SimpleGrid columns={[1, 2, 3, 3]} spacing={6} justifyItems={'center'} textAlign='center'>
-      {estate.data.map((entry) => {
+      {immobilientyp.data.map((entry) => {
         const isDisabled =
-          step[1].financeOffer === financeOffer.data[2].text &&
-          (entry.text === estate.data[0].text || entry.text === estate.data[2].text);
+          step[1].finanzierungszweck === finanzierungszweck.data[2].text &&
+          (entry.text === immobilientyp.data[0].text || entry.text === immobilientyp.data[2].text);
 
         return (
           <Button
@@ -32,7 +32,7 @@ export const Estate = () => {
             transform='translateY(0px)'
             transition='all 0.4s ease-in-out'
             w={[300, 200, 200, 300]}
-            sx={step[1].estate === entry.text ? { bgColor: 'primary.acid', boxShadow: '2xl' } : {}}
+            sx={step[1].immobilientyp === entry.text ? { bgColor: 'primary.acid', boxShadow: '2xl' } : {}}
             _hover={
               !isDisabled
                 ? {
@@ -48,10 +48,10 @@ export const Estate = () => {
           >
             <VStack
               _groupHover={!isDisabled ? { filter: 'brightness(0) invert(1)' } : {}}
-              sx={step[1].estate === entry.text ? { filter: 'brightness(0) invert(1)' } : {}}
+              sx={step[1].immobilientyp === entry.text ? { filter: 'brightness(0) invert(1)' } : {}}
             >
               <Image src={entry.icon} alt={entry.text} height={64} width={64} />
-              <Text fontSize={['sm', 'md', 'lg']} fontWeight='medium'>
+              <Text fontSize={['sm', 'md', 'lg']} fontWeight='medium' color='secondaryFontColor'>
                 {entry.text}
               </Text>
             </VStack>

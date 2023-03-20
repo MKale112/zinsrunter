@@ -5,7 +5,7 @@
       "icon": "/icons/contact.webp",
       "title": "Sie möchten ein Angebot",
       "text": "Mit wenigen Klicks in nur wenigen Schritten zum Angebot",
-      "link": { "text": "Hier kostenlos anfordern", "href": "" }
+      "link": { "text": "Hier kostenlos anfordern", "href": "/formular" }
     },
     {
       "id": "kontakt-id-2",

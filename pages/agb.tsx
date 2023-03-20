@@ -2,16 +2,22 @@ import { FullWidthContainer, ResponsiveContainer } from '@/components/Containers
 import { Heading, Link, VStack, Text, UnorderedList, ListItem, OrderedList, Box } from '@chakra-ui/react';
 import React from 'react';
 
-const AGB = () => {
+interface Props {
+  isPopup?: boolean;
+}
+
+const AGB = ({ isPopup = false }: Props) => {
   return (
     <FullWidthContainer>
-      <Box h={10} bgColor='primary.blue' />
-      <ResponsiveContainer py={[4, 12]} bgColor='white'>
+      {!isPopup && <Box h={10} bgColor='primary.blue' />}
+      <ResponsiveContainer py={!isPopup ? [4, 12] : 0} px={!isPopup ? [4, 8, 16, 20] : 0} bgColor='white'>
         <VStack spacing={[4, 6, 10, 12]} alignItems='flex-start' justifyContent='flex-start'>
           <VStack alignItems='flex-start'>
-            <Heading as={'h1'} fontSize={['md', 'lg', 'lg', '2xl']}>
-              Allgemeine Geschäftsbedingungen für die Vermittlung von Immobilienfinanzierungen und Bauspardarlehen
-            </Heading>
+            {!isPopup && (
+              <Heading as={'h1'} fontSize={['md', 'lg', 'lg', '2xl']}>
+                Allgemeine Geschäftsbedingungen für die Vermittlung von Immobilienfinanzierungen und Bauspardarlehen
+              </Heading>
+            )}
             <Text>
               Andere Vergleichsrechner auf dieser Seite unterliegen gesonderten Bedingungen, die Sie{' '}
               <Link
@@ -120,7 +126,7 @@ const AGB = () => {
                 3.2. SIGURON erbringt für den Kunden hinsichtlich seiner individuellen Finanzierungsbedürfnisse
                 persönliche Vermittlungs- und Beratungsleistungen, nämlich:
               </Text>
-              <UnorderedList>
+              <UnorderedList listStylePosition='inside'>
                 <ListItem>Analyse individueller Finanzierungsbedürfnisse</ListItem>
                 <ListItem>Unterstützung bei der Erfassung von Antragsdaten und -unterlagen</ListItem>
                 <ListItem>Ermittlung und Optimierung individueller Konditionen für Darlehen</ListItem>
@@ -212,7 +218,7 @@ const AGB = () => {
                 Der Europlatz-Marktplatz erbringt für SIGURON eigenständig und eigenverantwortlich Leistungen zum Zweck
                 der Produktauswahl, Vorbereitung und Beantragung des Darlehens, nämlich:
               </Text>
-              <UnorderedList>
+              <UnorderedList listStylePosition='inside'>
                 <ListItem>Ermittlung und Vergleich von Finanzierungsvorschlägen</ListItem>
                 <ListItem>Ermittlung von sinnvollen Produktergänzungen und -alternativen</ListItem>
                 <ListItem>
@@ -467,7 +473,7 @@ const AGB = () => {
                 <br />
                 Die Informationen im Sinne des Abschnitts 1 Satz 2 umfassen folgende Angaben:
               </Text>
-              <OrderedList>
+              <OrderedList listStylePosition='inside'>
                 <ListItem>
                   1. die Identität des Unternehmers; anzugeben ist auch das öffentliche Unternehmensregister, bei dem
                   der Rechtsträger eingetragen ist, und die zugehörige Registernummer oder gleichwertige Kennung;
@@ -548,7 +554,7 @@ const AGB = () => {
           </VStack>
         </VStack>
       </ResponsiveContainer>
-      <Box h={10} bgColor='gray.100' />
+      {!isPopup && <Box h={10} bgColor='gray.100' />}
     </FullWidthContainer>
   );
 };

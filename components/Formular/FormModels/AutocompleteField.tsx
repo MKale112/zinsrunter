@@ -31,15 +31,24 @@ const AutocompleteField: FC<Props> = ({
     }),
     container: (provided) => ({
       ...provided,
-      //   border: '2px solid',
-      //   borderColor: 'primary.acid',
-      //   borderRadius: 'md',
+      border: 'none',
     }),
     valueContainer: (base) => ({
       ...base,
       border: '2px solid',
       borderColor: 'primary.acid',
       borderRadius: 'md',
+    }),
+    dropdownIndicator: (provided) => ({
+      ...provided,
+      display: 'none', // hide the dropdown button
+    }),
+    control: (provided) => ({
+      ...provided,
+      border: 'none', // remove the default control border
+      '&:hover': {
+        borderColor: 'black', // change border color on hover
+      },
     }),
   };
 
@@ -57,7 +66,7 @@ const AutocompleteField: FC<Props> = ({
         return (
           <FormControl>
             <FormLabel fontSize={14} mb={0}>
-              {label}:
+              {label}
             </FormLabel>
 
             <ReactSelect

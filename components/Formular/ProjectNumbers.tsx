@@ -20,17 +20,18 @@ import { errorMessages } from 'data/errorMessages';
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import HInputField from './FormModels/HInputField';
+import RadioField from './FormModels/RadioField';
+import CheckboxField from './FormModels/CheckboxField';
+
 import { IconObject } from '../icons/iconObject';
 import { AddIcon, EditIcon, InfoIcon } from '@chakra-ui/icons';
 import { EuroIcon } from '../icons/EuroIcon';
 import { EqualsIcon } from '../icons/EqualsIcon';
+
 import { ProjectNumbersData } from './types';
 import { useRecoilState } from 'recoil';
 import { stepState } from '@/core/atoms';
 import grunderAndMaklerData from '../../data/formular/grunderAndMakler.json';
-import CheckboxField from './FormModels/CheckboxField';
-import RadioField from './FormModels/RadioField';
-import { validateConfig } from 'next/dist/server/config-shared';
 import { formatNumber } from '@/core/utils';
 
 const regionSelectOptions = grunderAndMaklerData.map((entry) => (
@@ -43,48 +44,48 @@ const ProjectNumbers = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [step, setStep] = useRecoilState(stepState);
   const [location, setLocation] = useState(step[1].region.bundesland!);
-  const [variables, setVariables] = useState<{ grunder: number; makler: number | string }>();
+  const [variables, setVariables] = useState<{ grunder: number; maklerprovision: number | string }>();
   const [isEligible, setEligible] = useState(false);
   const [calculations, setCalculations] = useState({
     notarAndGrundbuchAmount: 0,
     grunderAmount: 0,
     maklerAmount: 0,
-    darlehensbetrag: 0,
+    kreditsumme: 0,
   });
 
   useEffect(() => {
-    const { grunder, makler } = findGrunderAndMakler(location);
-    setVariables({ grunder: grunder!, makler: makler! });
+    const { grunder, maklerprovision } = findGrunderAndMakler(location);
+    setVariables({ grunder: grunder!, maklerprovision: maklerprovision! });
   }, []);
 
   useEffect(() => {
-    const { grunder, makler } = findGrunderAndMakler(location);
-    setVariables({ grunder: grunder!, makler: makler! });
+    const { grunder, maklerprovision } = findGrunderAndMakler(location);
+    setVariables({ grunder: grunder!, maklerprovision: maklerprovision! });
     step[1].projectNumbers &&
       calculatePrices(
         step[1].projectNumbers.kaufpreis,
-        step[1].projectNumbers.modernisierungs,
+        step[1].projectNumbers.modernisierungskosten,
         step[1].projectNumbers.eigenkapital,
       );
   }, [location]);
 
   const findGrunderAndMakler = (location: string) => {
     const result = grunderAndMaklerData.find((entry) => entry.city === location);
-    return { grunder: result!.grunderwerbsteuer, makler: result!.makler };
+    return { grunder: result!.grunderwerbsteuer, maklerprovision: result!.maklerprovision };
   };
 
   const calculatePrices = (
     kaufpreis?: number,
-    modernisierungs?: number,
+    modernisierungskosten?: number,
     eigenkapital?: number,
     newMaklerAmount?: number,
   ) => {
     if (!location) {
       console.log('no variables');
     } else {
-      const { grunder, makler } = findGrunderAndMakler(location);
+      const { grunder, maklerprovision } = findGrunderAndMakler(location);
       const formattedKaufpreis = formatNumber(kaufpreis);
-      const formattedModernisierungs = formatNumber(modernisierungs);
+      const formattedModernisierungs = formatNumber(modernisierungskosten);
       const formattedEigenkapital = formatNumber(eigenkapital);
       const formattedMaklerAmount = formatNumber(newMaklerAmount);
 
@@ -92,9 +93,11 @@ const ProjectNumbers = () => {
       console.log('formattedMaklerAmount:', formattedMaklerAmount);
       const maklerAmount =
         formattedMaklerAmount ??
-        Number.parseFloat(((formattedKaufpreis ?? 0) * (typeof makler === 'string' ? 0 : makler ?? 0)).toFixed(2));
+        Number.parseFloat(
+          ((formattedKaufpreis ?? 0) * (typeof maklerprovision === 'string' ? 0 : maklerprovision ?? 0)).toFixed(2),
+        );
       const notarAndGrundbuchAmount = Number.parseFloat(((formattedKaufpreis ?? 0) * 0.02).toFixed(2));
-      const darlehensbetrag =
+      const kreditsumme =
         Math.ceil(
           (+(formattedKaufpreis ?? 0) +
             +(formattedModernisierungs ?? 0) +
@@ -104,8 +107,8 @@ const ProjectNumbers = () => {
             +(formattedEigenkapital ?? 0)) /
             1000,
         ) * 1000;
-      setCalculations({ notarAndGrundbuchAmount, grunderAmount, maklerAmount, darlehensbetrag });
-      darlehensbetrag > 50000 ? setEligible(true) : setEligible(false);
+      setCalculations({ notarAndGrundbuchAmount, grunderAmount, maklerAmount, kreditsumme });
+      kreditsumme > 50000 ? setEligible(true) : setEligible(false);
     }
   };
 
@@ -115,12 +118,12 @@ const ProjectNumbers = () => {
       .transform((_, value) => formatNumber(value))
       .required(errorMessages.fieldRequired)
       .integer(),
-    modernisierungs: yup
+    modernisierungskosten: yup
       .number()
       .transform((_, value) => formatNumber(value))
       .typeError(errorMessages.isNum)
       .integer(),
-    makler: yup
+    maklerprovision: yup
       .number()
       .transform((_, value) => formatNumber(value))
       .typeError(errorMessages.isNum)
@@ -130,17 +133,16 @@ const ProjectNumbers = () => {
     eigenkapital: yup
       .number()
       .transform((_, value) => formatNumber(value))
-      .required(errorMessages.fieldRequired)
       .integer(),
-    besitzenMoglicherweise: yup.string().required(errorMessages.fieldRequired),
+    immobilienbesitz: yup.string().required(errorMessages.fieldRequired),
   });
 
   const initialValues: ProjectNumbersData = {
     kaufpreis: step[1].projectNumbers?.kaufpreis,
-    modernisierungs: step[1].projectNumbers?.modernisierungs,
-    makler: step[1].projectNumbers?.makler,
+    modernisierungskosten: step[1].projectNumbers?.modernisierungskosten,
+    maklerprovision: step[1].projectNumbers?.maklerprovision,
     eigenkapital: step[1].projectNumbers?.eigenkapital,
-    besitzenMoglicherweise: step[1].projectNumbers?.besitzenMoglicherweise || undefined,
+    immobilienbesitz: step[1].projectNumbers?.immobilienbesitz || undefined,
   };
   return (
     <Center w='60%'>
@@ -175,19 +177,19 @@ const ProjectNumbers = () => {
                 value={values.kaufpreis}
                 backIcon={IconObject.euro}
                 onInputChange={(kaufpreis) =>
-                  calculatePrices(kaufpreis as unknown as number, values.modernisierungs, values.eigenkapital)
+                  calculatePrices(kaufpreis as unknown as number, values.modernisierungskosten, values.eigenkapital)
                 }
               />
               <HInputField
-                name='modernisierungs'
+                name='modernisierungskosten'
                 label='Evtl. Modernisierungskosten'
                 placeholder='0'
                 width='50%'
-                value={values.modernisierungs}
+                value={values.modernisierungskosten}
                 frontIcon={IconObject.plus}
                 backIcon={IconObject.euro}
-                onInputChange={(modernisierungs) =>
-                  calculatePrices(values.kaufpreis, modernisierungs as unknown as number, values.eigenkapital)
+                onInputChange={(modernisierungskosten) =>
+                  calculatePrices(values.kaufpreis, modernisierungskosten as unknown as number, values.eigenkapital)
                 }
               />
 
@@ -201,7 +203,12 @@ const ProjectNumbers = () => {
                   </Text>
                   <HStack>
                     <Text fontSize={12}>(2.00%)</Text>
-                    <Text>{calculations.notarAndGrundbuchAmount}</Text>
+                    <Text>
+                      {calculations.notarAndGrundbuchAmount.toLocaleString('de-DE', {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </Text>
                     <Box w='5%'>
                       <EuroIcon />
                     </Box>
@@ -219,7 +226,12 @@ const ProjectNumbers = () => {
                   </Text>
                   <HStack>
                     <Text fontSize={12}>({((variables?.grunder ?? 0) * 100).toFixed(2)}%)</Text>
-                    <Text>{calculations.grunderAmount}</Text>
+                    <Text>
+                      {calculations.grunderAmount.toLocaleString('de-DE', {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </Text>
                     <Box w='5%'>
                       <EuroIcon />
                     </Box>
@@ -256,12 +268,12 @@ const ProjectNumbers = () => {
                       size='lg'
                       onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
                         setLocation((e.target as HTMLSelectElement).value);
-                        const { makler } = findGrunderAndMakler((e.target as HTMLSelectElement).value);
+                        const { maklerprovision } = findGrunderAndMakler((e.target as HTMLSelectElement).value);
                         calculatePrices(
                           values.kaufpreis,
-                          values.modernisierungs,
+                          values.modernisierungskosten,
                           values.eigenkapital,
-                          Number((formatNumber(values.kaufpreis)! * makler).toFixed(2)),
+                          Number((formatNumber(values.kaufpreis)! * maklerprovision).toFixed(2)),
                         );
                       }}
                     >
@@ -278,21 +290,21 @@ const ProjectNumbers = () => {
               </Drawer>
 
               <HInputField
-                name='makler'
-                label={`Makler (${((typeof variables?.makler === 'string' ? 0 : variables?.makler ?? 0) * 100).toFixed(
-                  3,
-                )}%) `}
+                name='maklerprovision'
+                label={`Makler (${(
+                  (typeof variables?.maklerprovision === 'string' ? 0 : variables?.maklerprovision ?? 0) * 100
+                ).toFixed(2)}%) `}
                 placeholder='0'
                 width='50%'
-                value={values.makler === '' ? undefined : values.makler || calculations.maklerAmount}
+                value={values.maklerprovision === '' ? undefined : values.maklerprovision || calculations.maklerAmount}
                 frontIcon={IconObject.plus}
                 backIcon={IconObject.euro}
-                onInputChange={(makler) =>
+                onInputChange={(maklerprovision) =>
                   calculatePrices(
                     values.kaufpreis,
-                    values.modernisierungs,
+                    values.modernisierungskosten,
                     values.eigenkapital,
-                    makler as unknown as number,
+                    maklerprovision as unknown as number,
                   )
                 }
               />
@@ -313,7 +325,7 @@ const ProjectNumbers = () => {
                 backIcon={IconObject.euro}
                 onInputChange={(eigenkapital) => {
                   console.log('eigenkapital', eigenkapital);
-                  calculatePrices(values.kaufpreis, values.modernisierungs, eigenkapital as unknown as number);
+                  calculatePrices(values.kaufpreis, values.modernisierungskosten, eigenkapital as unknown as number);
                 }}
               />
               {!values.eigenkapital && (
@@ -349,7 +361,12 @@ const ProjectNumbers = () => {
                 <HStack justifyContent='space-between' w={'full'}>
                   <Text>Darlehensbetrag</Text>
                   <HStack>
-                    <Text>{calculations.darlehensbetrag}</Text>
+                    <Text>
+                      {calculations.kreditsumme.toLocaleString('de-DE', {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </Text>
                     <Box w='5%'>
                       <EuroIcon />
                     </Box>
@@ -381,7 +398,7 @@ const ProjectNumbers = () => {
               <VStack>
                 <Field
                   component={RadioField}
-                  name='besitzenMoglicherweise'
+                  name='immobilienbesitz'
                   label='Besitzen Sie möglicherweise bereits eine andere Immobilie die als zusätzliche Sicherheit für den
                   Immobilienkredit dienen könnte?'
                 />

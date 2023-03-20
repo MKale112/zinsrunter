@@ -57,7 +57,7 @@ const Highlights = () => {
         </AccordionButton>
       </Heading>
 
-      <AccordionPanel py={[2, 4]} ml={4} fontSize={['sm', '2xl']}>
+      <AccordionPanel py={[2, 4]} ml={4} fontSize={['sm', 'xl']} color='secondaryFontColor'>
         {entry.text}
       </AccordionPanel>
     </AccordionItem>

@@ -1,56 +1,68 @@
 {
   "partners": [
     {
-      "id": "allianz-logo",
-      "path": "/partners/allianz.png"
-    },
-    {
-      "id": "psd-bank-logo",
-      "path": "/partners/psd-bank.png"
-    },
-    {
-      "id": "ing-logo",
-      "path": "/partners/ing.png"
-    },
-    {
       "id": "commerzbank-logo",
       "path": "/partners/commerzbank.png"
     },
     {
-      "id": "deutsche-bank-logo",
-      "path": "/partners/deutsche-bank.png"
+      "id": "dsl_bank-logo",
+      "path": "/partners/dsl-bank.webp"
     },
     {
-      "id": "deutsche-kreditbank-logo",
-      "path": "/partners/deutsche-kreditbank.png"
-    },
-    {
-      "id": "degussa-bank-logo",
-      "path": "/partners/degussa-bank.png"
+      "id": "allianz-logo",
+      "path": "/partners/allianz.png"
     },
     {
       "id": "axa-logo",
       "path": "/partners/axa.png"
     },
     {
-      "id": "hypo-vereinsbank-logo",
-      "path": "/partners/hypo-vereinsbank.png"
+      "id": "ing-logo",
+      "path": "/partners/ing.png"
     },
     {
-      "id": "alte-leipziger-logo",
-      "path": "/partners/alte-leipziger.png"
+      "id": "deutsche-kreditbank-logo",
+      "path": "/partners/deutsche-kreditbank.png"
+    },
+    {
+      "id": "sparkasse-logo",
+      "path": "/partners/sparkasse.webp"
+    },
+    {
+      "id": "vr-bank-logo",
+      "path": "/partners/vr-bank.webp"
+    },
+    {
+      "id": "psd-bank-logo",
+      "path": "/partners/psd-bank.png"
+    },
+    {
+      "id": "degussa-bank-logo",
+      "path": "/partners/degussa-bank.png"
+    },
+    {
+      "id": "lbs-logo",
+      "path": "/partners/lbs.webp"
+    },
+    {
+      "id": "deutsche-bank-logo",
+      "path": "/partners/deutsche-bank.png"
+    },
+    {
+      "id": "bhw-logo",
+      "path": "/partners/bhw.webp"
     },
     {
       "id": "deutsche-apotheker-und-arztebank-logo",
       "path": "/partners/deutsche-apotheker-und-arztebank.png"
     },
     {
-      "id": "ergo-logo",
-      "path": "/partners/ergo.png"
+      "id": "schwaebisch-logo",
+      "path": "/partners/schwaebisch.webp"
     },
     {
-      "id": "huk-coburg-logo",
-      "path": "/partners/huk-coburg.png"
+      "id": "unicredit-logo",
+      "path": "/partners/unicredit.webp"
     }
   ]
 }

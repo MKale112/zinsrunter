@@ -36,15 +36,20 @@ const Partners = ({ cards = true }: PartnersProps) => {
               sind wir an keinen Anbieter gebunden und können so aus einem Pool von über 500 Finanzierungsgebern
               vermitteln.
             </Text>
-            <HStack justifyContent={'center'} wrap='wrap'>
+            <SimpleGrid
+              columns={[2, 3, 4, 8]}
+              spacingX={{ base: 8, md: 4, lg: 6 }}
+              justifyContent='center'
+              alignItems='center'
+            >
               {partners}
-            </HStack>
+            </SimpleGrid>
             {cards &&
               (isMobile ? (
                 <VStack spacing={10}>
                   <ReactReveal.Fade bottom w='30%'>
                     <VStack bg='gray.200' p={6} borderRadius='2xl' h='full' boxShadow='lg'>
-                      <Heading mb={4} as='h3' fontSize={['lg', '2xl']} color='primary.blue' wordBreak='break-all'>
+                      <Heading mb={4} as='h3' fontSize={['lg', 'xl']} color='primary.blue' overflowWrap='break-word'>
                         DARLEHEN MIT GEBUNDENEM SOLLZINSSATZ — MAXIMALE KALKULATIONSSICHERHEIT
                       </Heading>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
@@ -68,7 +73,7 @@ const Partners = ({ cards = true }: PartnersProps) => {
                   </ReactReveal.Fade>
                   <ReactReveal.Fade bottom w='30%'>
                     <VStack bg='gray.200' p={6} borderRadius='2xl' h='full' boxShadow='lg'>
-                      <Heading mb={4} as='h3' fontSize={['lg', '2xl']} color='primary.blue' wordBreak='break-all'>
+                      <Heading mb={4} as='h3' fontSize={['lg', 'xl']} color='primary.blue' overflowWrap='break-word'>
                         DARLEHEN MIT VERÄNDERLICHEM SOLLZINSSATZ — GROSSE FLEXIBILITÄT
                       </Heading>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
@@ -84,7 +89,7 @@ const Partners = ({ cards = true }: PartnersProps) => {
                   </ReactReveal.Fade>
                   <ReactReveal.Fade bottom w='30%'>
                     <VStack bg='gray.200' p={6} borderRadius='2xl' h='full' boxShadow='lg'>
-                      <Heading mb={4} as='h3' fontSize={['lg', '2xl']} color='primary.blue' wordBreak='break-all'>
+                      <Heading mb={4} as='h3' fontSize={['lg', 'xl']} color='primary.blue' overflowWrap='break-word'>
                         FÖRDERMITTEL, BAUSPAREN UND WOHN-RIESTER — UNTERSTÜTZUNG VON &quot;VATER STAAT&quot; FÜR DIE
                         IMMOBILIENFINANZIERUNG
                       </Heading>
@@ -109,7 +114,7 @@ const Partners = ({ cards = true }: PartnersProps) => {
                 <SimpleGrid columns={3} gap={10} justifyContent='space-around' alignItems='flex-start'>
                   <ReactReveal.Fade bottom w='30%'>
                     <VStack bg='gray.100' p={10} borderRadius='2xl' h='full' minH={650} boxShadow='2xl'>
-                      <Heading mb={4} as='h3' fontSize={['lg', '2xl']} color='primary.blue' wordBreak='break-all'>
+                      <Heading mb={4} as='h3' fontSize={['lg', '2xl']} color='primary.blue' overflowWrap='break-word'>
                         DARLEHEN MIT GEBUNDENEM SOLLZINSSATZ — MAXIMALE KALKULATIONSSICHERHEIT
                       </Heading>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
@@ -133,7 +138,7 @@ const Partners = ({ cards = true }: PartnersProps) => {
                   </ReactReveal.Fade>
                   <ReactReveal.Fade bottom w='30%'>
                     <VStack bg='gray.100' p={10} borderRadius='2xl' h='full' minH={650} boxShadow='2xl'>
-                      <Heading mb={4} as='h3' fontSize={['lg', '2xl']} color='primary.blue' wordBreak='break-all'>
+                      <Heading mb={4} as='h3' fontSize={['lg', '2xl']} color='primary.blue' overflowWrap='break-word'>
                         DARLEHEN MIT VERÄNDERLICHEM SOLLZINSSATZ — GROSSE FLEXIBILITÄT
                       </Heading>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
@@ -149,7 +154,7 @@ const Partners = ({ cards = true }: PartnersProps) => {
                   </ReactReveal.Fade>
                   <ReactReveal.Fade bottom w='30%'>
                     <VStack bg='gray.100' p={10} borderRadius='2xl' h='full' minH={650} boxShadow='2xl'>
-                      <Heading mb={4} as='h3' fontSize={['lg', '2xl']} color='primary.blue' wordBreak='break-all'>
+                      <Heading mb={4} as='h3' fontSize={['lg', '2xl']} color='primary.blue' overflowWrap='break-word'>
                         FÖRDERMITTEL, BAUSPAREN UND WOHN-RIESTER — UNTERSTÜTZUNG VON &quot;VATER STAAT&quot; FÜR DIE
                         IMMOBILIENFINANZIERUNG
                       </Heading>

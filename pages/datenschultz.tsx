@@ -2,16 +2,22 @@ import { FullWidthContainer, ResponsiveContainer } from '@/components/Containers
 import { Box, Heading, Link, ListItem, Text, UnorderedList, VStack } from '@chakra-ui/react';
 import React from 'react';
 
-const Datenschultz = () => {
+interface Props {
+  isPopup?: boolean;
+}
+
+const Datenschultz = ({ isPopup = false }: Props) => {
   return (
     <FullWidthContainer>
-      <Box h={10} bgColor='primary.blue' />
-      <ResponsiveContainer py={[4, 12]} bgColor='white'>
+      {!isPopup && <Box h={10} bgColor='primary.blue' />}
+      <ResponsiveContainer py={!isPopup ? [4, 12] : 0} px={!isPopup ? [4, 8, 16, 20] : 0} bgColor='white'>
         <VStack alignItems='flex-start' spacing={[4, 6]}>
           <VStack alignItems='flex-start'>
-            <Heading as='h1' fontSize={['md', 'lg', 'lg', '2xl']}>
-              Datenschutz
-            </Heading>
+            {!isPopup && (
+              <Heading as='h1' fontSize={['md', 'lg', 'lg', '2xl']}>
+                Datenschutz
+              </Heading>
+            )}
             <Text>
               Der Schutz Ihrer uns mitgeteilten persönlichen Informationen ist uns außerordentlich wichtig. Rund um
               unsere Aktivitäten zur Erfüllung der Anforderungen der Datenschutz-Grundverordnung (DS-GVO), des
@@ -119,7 +125,7 @@ const Datenschultz = () => {
               Sterbegeldversicherung, Risikolebensversicherung, Baufinanzierung, Bausparen, Kapitalanlage, Dread
               Disease, Fonds, Investments erheben wir folgende Daten:
             </Text>
-            <UnorderedList>
+            <UnorderedList listStylePosition='inside'>
               <ListItem>Ihr Geschlecht,</ListItem>
               <ListItem>Ihren vollständigen und richtigen Namen,</ListItem>
               <ListItem>Ihre E-Mail-Adresse,</ListItem>
@@ -137,7 +143,7 @@ const Datenschultz = () => {
               Motorradversicherung, LKW-Versicherung, Anhängerversicherung, Mopedversicherung, Bootsversicherung,
               Wohnwagen- und Wohnmobilversicherung, erheben wir folgende Daten:
             </Text>
-            <UnorderedList>
+            <UnorderedList listStylePosition='inside'>
               <ListItem>Ihr Geschlecht,</ListItem>
               <ListItem>Ihren vollständigen und richtigen Namen,</ListItem>
               <ListItem>Ihre E-Mail-Adresse,</ListItem>
@@ -248,7 +254,7 @@ const Datenschultz = () => {
               Verantwortlich im Sinne der EU-Datenschutzgrundverordnung (DSGVO) für die nachfolgend beschriebene
               Datenverarbeitung im Zusammenhang mit dem EUROPACE-Marktplatz ist,
             </Text>
-            <UnorderedList>
+            <UnorderedList listStylePosition='inside'>
               <ListItem>
                 wenn Sie ein Allgemeines Verbraucherdarlehen (z.B. einen Ratenkredit) beantragen, die Europace AG,
                 Klosterstr. 71, 10179 Berlin,
@@ -275,7 +281,7 @@ const Datenschultz = () => {
               Bei Fragen zum Thema Datenschutz im Zusammenhang mit dem EUROPACE-Marktplatz können Sie sich jederzeit an
               den Datenschutzbeauftragten des jeweils verantwortlichen Unternehmens wenden:
             </Text>
-            <UnorderedList>
+            <UnorderedList listStylePosition='inside'>
               <ListItem>Europace AG:datenschutz@europace.de</ListItem>
               <ListItem>Hypoport Mortgage Market Ltd.: datenschutz@europace.ie</ListItem>
             </UnorderedList>
@@ -615,7 +621,7 @@ const Datenschultz = () => {
               Die Datenschutz-Grundverordnung garantiert Ihnen gewisse Rechte, die Sie uns gegenüber geltend machen
               können. Sie haben das Recht:
             </Text>
-            <UnorderedList>
+            <UnorderedList listStylePosition='inside'>
               <ListItem>
                 von uns eine Bestätigung darüber zu verlangen, ob Sie betreffende personenbezogene Daten verarbeitet
                 werden und wenn ja, die näheren Umstände der Datenverarbeitung (Art. 15 DS-GVO: Auskunftsrecht der
@@ -916,7 +922,7 @@ const Datenschultz = () => {
           </VStack>
         </VStack>
       </ResponsiveContainer>
-      <Box h={10} bgColor='gray.100' />
+      {!isPopup && <Box h={10} bgColor='gray.100' />}
     </FullWidthContainer>
   );
 };

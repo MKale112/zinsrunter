@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react';
 
-import { Center, VStack, Button, Text, HStack } from '@chakra-ui/react';
+import { VStack, Button, Text, HStack } from '@chakra-ui/react';
 import { errorMessages } from 'data/errorMessages';
 import { Formik, Form, Field } from 'formik';
-import InputField from './FormModels/InputField';
 import countryData from '../../data/formular/zipcodes.json';
 
-import * as yup from 'yup';
 import { RegionData } from './types';
+import * as yup from 'yup';
+import InputField from './FormModels/InputField';
 import SelectField from './FormModels/SelectField';
+import AutocompleteField from './FormModels/AutocompleteField';
+import NumberInput from './FormModels/NumberInput';
 
 import { useRecoilState } from 'recoil';
 import { stepState } from '@/core/atoms';
 import { AutocompleteMapEntry, ZipcodeEntry } from '@/core/types';
-import AutocompleteField from './FormModels/AutocompleteField';
-import { financeOffer, propertyUse } from 'data/form';
-import NumberInput from './FormModels/NumberInput';
+import { finanzierungszweck, nutzung } from 'data/form';
 import { formatNumber } from '@/core/utils';
 
 export const Region = () => {
@@ -24,8 +24,8 @@ export const Region = () => {
   const [options, setOptions] = useState<AutocompleteMapEntry[]>([]);
   const [bundesland, setBundesland] = useState(step[1]?.region?.bundesland);
 
-  const isRental = step[1].propertyUse === propertyUse.data[0].text;
-  const alreadyDecided = financeOffer.data.some((element) => element.text === step[1].financeOffer);
+  const isRental = step[1].nutzung === nutzung.data[0].text;
+  const alreadyDecided = finanzierungszweck.data.some((element) => element.text === step[1].finanzierungszweck);
 
   const handleSelectedOption = (value: AutocompleteMapEntry) => {
     setBundesland(value.entry ? value.entry.region : '');
@@ -56,27 +56,48 @@ export const Region = () => {
     console.log(initialValues);
   }, [input]);
 
+  const zipcodeRegex = /^[0-9]{1,6}$/;
+
   const validationSchema = yup.object().shape({
-    zipcode: yup.string().required(errorMessages.fieldRequired),
+    standort_plz: yup
+      .string()
+      .matches(zipcodeRegex, errorMessages.zipcodeInvalidInput)
+      .required(errorMessages.fieldRequired),
     // location: yup.string().required(errorMessages.fieldRequired),
-    searchStatus: alreadyDecided ? yup.string().nullable() : yup.string().required(),
-    householdNetMonthly: yup
+    familienstand: yup.string().required(errorMessages.fieldRequired),
+    berufsstatus: yup.string().required(errorMessages.fieldRequired),
+    objektgefunden: alreadyDecided ? yup.string().nullable() : yup.string().required(errorMessages.fieldRequired),
+    haushaltseinkommen: yup
       .number()
       .transform((_, value) => formatNumber(value))
       .required(errorMessages.fieldRequired),
-    netRentalIncomeMonthly: isRental
+    mieteinnahmen: isRental
       ? yup.number().nullable()
-      : yup.number().required(errorMessages.fieldRequired).positive().integer(),
+      : yup
+          .number()
+          .transform((_, value) => formatNumber(value))
+          .required(errorMessages.fieldRequired)
+          .positive()
+          .integer(),
   });
   const initialValues: RegionData = {
-    zipcode: step[1].region?.zipcode,
+    standort_plz: step[1].region?.standort_plz,
     bundesland: step[1].region?.bundesland ?? '',
-    searchStatus: step[1].region?.searchStatus,
-    householdNetMonthly: step[1].region?.householdNetMonthly,
-    netRentalIncomeMonthly: step[1].region?.netRentalIncomeMonthly,
+    familienstand: step[1].region?.familienstand || '',
+    berufsstatus: step[1].region?.berufsstatus || '',
+    objektgefunden: step[1].region?.objektgefunden,
+    haushaltseinkommen: step[1].region?.haushaltseinkommen,
+    mieteinnahmen: step[1].region?.mieteinnahmen,
   };
   return (
-    <Center w={['95%', '95%', '80%', '50%']}>
+    <VStack w={['95%', '95%', '80%', '50%']} spacing={8}>
+      <VStack textAlign='center'>
+        <Text>Es gibt Kreditinstitute, die nur regional auftreten (Sparkassen und Volksbanken).</Text>
+        <Text>
+          Damit diese Banken in der Angebotserstellung berücksichtigt werden können, geben Sie bitte auch den Standort
+          Ihres Finanzierungsvorhabens an.
+        </Text>
+      </VStack>
       <Formik
         // eslint-disable-next-line
         initialValues={initialValues}
@@ -99,30 +120,66 @@ export const Region = () => {
               borderColor='gray.200'
               spacing={6}
             >
-              <AutocompleteField
-                name='zipcode'
-                label='Postleitzahl Wohnort heute'
-                placeholder='Bitte eingeben'
-                options={options}
-                value={{ value: values.zipcode, label: values.zipcode }}
-                onChangeInput={setInput}
-                onSelectOption={handleSelectedOption}
-              />
+              <HStack w='full'>
+                <AutocompleteField
+                  name='standort_plz'
+                  label='Postleitzahl des Vorhabens'
+                  placeholder='Bitte eingeben'
+                  options={options}
+                  value={{ value: values.standort_plz, label: values.standort_plz }}
+                  onChangeInput={setInput}
+                  onSelectOption={handleSelectedOption}
+                />
 
-              <Field
-                component={InputField}
-                name='bundesland'
-                type='text'
-                label='Bundesland'
-                placeholder='Wird vorgeschlagen'
-                value={bundesland}
-                isDisabled
-              />
+                <Field
+                  component={InputField}
+                  name='bundesland'
+                  type='text'
+                  label='Bundesland'
+                  placeholder='Wird vorgeschlagen'
+                  value={bundesland}
+                  isDisabled
+                />
+              </HStack>
+
+              <HStack w='full'>
+                <Field
+                  component={SelectField}
+                  options={['Ledig', 'Verheiratet', 'Getrennt lebend', 'Geschieden', 'Verwitwet']}
+                  name='familienstand'
+                  type='text'
+                  label='Familienstand'
+                  placeholder='Bitte auswählen'
+                />
+                <Field
+                  component={SelectField}
+                  name='berufsstatus'
+                  type='select'
+                  label='Haupterwerbstätigkeit'
+                  default=''
+                  options={[
+                    'Angestellte/r',
+                    'Beamte/r',
+                    'Geringfügig beschäftigt',
+                    'Elternzeit',
+                    'Selbstständige/r (nicht bil.)',
+                    'Selbstständige/r (bilanzierend)',
+                    'Freiberufler/in',
+                    'Geschäftsf. Gesellschafter/in',
+                    'Rentner/in',
+                    'Privatier',
+                    'Student/in',
+                    'Hausmann/-frau',
+                    'Arbeitslos',
+                  ]}
+                  placeholder='Bitte auswählen'
+                />
+              </HStack>
 
               {!alreadyDecided && (
                 <Field
                   component={SelectField}
-                  name='searchStatus'
+                  name='objektgefunden'
                   type='select'
                   label='Stand der Immobiliensuche'
                   options={[
@@ -138,11 +195,11 @@ export const Region = () => {
               <HStack w='full' alignItems='flex-end'>
                 <Field
                   component={NumberInput}
-                  name='householdNetMonthly'
+                  name='haushaltseinkommen'
                   type='number'
-                  label='Haushaltsnetto monatlich'
+                  label='Haushaltsnettoeinkommen monatlich'
                   placeholder='Bitte eingeben'
-                  value={values.householdNetMonthly}
+                  value={values.haushaltseinkommen}
                 />
               </HStack>
 
@@ -156,11 +213,11 @@ export const Region = () => {
                   <HStack w='full' alignItems='flex-end'>
                     <Field
                       component={NumberInput}
-                      name='netRentalIncomeMonthly'
+                      name='mieteinnahmen'
                       type='number'
                       label='Netto-Mieteinnahme monatlich'
                       placeholder='Bitte eingeben'
-                      value={values.netRentalIncomeMonthly}
+                      value={values.mieteinnahmen}
                     />
                   </HStack>
                   <Text fontSize={14} mb={4}>
@@ -177,6 +234,6 @@ export const Region = () => {
           </Form>
         )}
       </Formik>
-    </Center>
+    </VStack>
   );
 };

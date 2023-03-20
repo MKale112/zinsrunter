@@ -10,16 +10,27 @@ export interface Props extends FieldProps {
   type?: string;
   isDisabled?: boolean;
   value?: string;
+  maxDate?: string;
+  minDate?: string;
 }
 
-const InputField: FC<Props> = ({ placeholder = '', label, width, field, type = 'text', isDisabled = false, value }) => {
+const InputField: FC<Props> = ({
+  placeholder = '',
+  label,
+  width,
+  field,
+  type = 'text',
+  isDisabled = false,
+  value,
+  maxDate,
+  minDate,
+}) => {
   return (
-    <FormControl>
+    <FormControl width={width}>
       <FormLabel fontSize={14} mb={0}>
-        {label}:
+        {label}
       </FormLabel>
       <Input
-        width={width}
         placeholder={placeholder}
         borderColor='primary.acid'
         border='2px'
@@ -32,6 +43,8 @@ const InputField: FC<Props> = ({ placeholder = '', label, width, field, type = '
         cursor={isDisabled ? 'not-allowed' : 'auto'}
         _hover={{ opacity: 1 }}
         type={type}
+        max={maxDate}
+        min={minDate}
       />
       <CustomErrorMessage name={field.name} />
     </FormControl>

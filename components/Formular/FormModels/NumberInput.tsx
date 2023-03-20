@@ -18,7 +18,7 @@ const NumberInput: FC<Props> = ({ placeholder = '', label, width, field, value }
   return (
     <FormControl>
       <FormLabel fontSize={14} mb={0}>
-        {label}:
+        {label}
       </FormLabel>
       <HStack>
         <NumericFormat

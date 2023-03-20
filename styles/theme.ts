@@ -5,6 +5,7 @@ const colors = {
     white: '#FFF',
     black: '#000',
     blue: '#143474',
+    linkBlue: '#12368a',
     darkBlue: '#1c3c6c',
     mutedBlue: '#2c5464',
     acid: '#9bc31c',
@@ -68,7 +69,7 @@ const customTheme = extendTheme({
     },
     Link: {
       baseStyle: {
-        color: colors.primary.blue,
+        color: colors.primary.linkBlue,
         fontWeight: 'semibold',
         _hover: {
           textDecoration: 'underline',
