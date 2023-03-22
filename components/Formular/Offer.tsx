@@ -1,5 +1,18 @@
 import React, { useState } from 'react';
-import { Box, Button, Center, SimpleGrid, VStack, Text, Link, HStack, Divider, useToast } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Center,
+  SimpleGrid,
+  VStack,
+  Text,
+  Link,
+  HStack,
+  Divider,
+  useToast,
+  useMediaQuery,
+  Stack,
+} from '@chakra-ui/react';
 import { errorMessages } from 'data/errorMessages';
 import { Formik, Form, Field } from 'formik';
 import InputField from './FormModels/InputField';
@@ -16,9 +29,9 @@ import Image from 'next/image';
 import { countries } from 'data/countries';
 import axios from 'axios';
 import Popup from '../Popups';
-import ChakraLink from '../Link/ChakraLink';
 
 const Offer = () => {
+  const [isMobile] = useMediaQuery('(max-width: 640px)');
   const [step, setStep] = useRecoilState(stepState);
   const toast = useToast();
   const [isOpen, setIsOpen] = useState(false);
@@ -109,7 +122,7 @@ const Offer = () => {
               borderColor='gray.200'
               spacing={6}
             >
-              <SimpleGrid w='full' columns={2} spacing={6}>
+              <SimpleGrid w='full' columns={{ base: 1, md: 1, lg: 2 }} spacing={6}>
                 <Field
                   component={SelectField}
                   name='anrede'
@@ -132,8 +145,10 @@ const Offer = () => {
                   placeholder='Falls zutreffend, bitte auswälhen'
                 />
               </SimpleGrid>
+
               <Divider />
-              <SimpleGrid w='full' columns={2} spacing={6}>
+
+              <SimpleGrid w='full' columns={{ base: 1, md: 1, lg: 2 }} spacing={6}>
                 <Field
                   component={InputField}
                   name='vorname'
@@ -209,18 +224,20 @@ const Offer = () => {
                   label='Staatsangehörigkeit'
                   placeholder='Bitte auswählen'
                 />
+
+                <Field component={TextAreaField} name='bemerkung' label='Sonstige optionale Angaben' />
               </SimpleGrid>
               <Divider />
 
-              <HStack fontSize={['sm']}>
+              <Stack direction={isMobile ? 'column' : 'row'} fontSize={['sm']}>
                 <Text fontWeight='bold'>Ihre Privatsphäre ist uns wichtig!</Text>
                 <Text>
                   Auch wir mögen keine Werbemails und -anrufe! Deshalb garantieren wir Ihnen, dass wir Ihre Daten auf
                   keinen Fall an unbeteiligte Dritte weitergeben.
                 </Text>
-              </HStack>
+              </Stack>
 
-              <SimpleGrid w='full' columns={2} spacing={6}>
+              <SimpleGrid w='full' columns={{ base: 1, md: 1, lg: 2 }} spacing={6}>
                 <Field
                   component={InputField}
                   name='telefon'
@@ -246,19 +263,20 @@ const Offer = () => {
                   label='Erreichbarkeit'
                   placeholder='Bitte auswählen'
                 />
-              </SimpleGrid>
-              <Divider />
-              <SimpleGrid w='full' columns={2} spacing={6}>
+
                 <Field
                   component={RadioField}
                   name='videoberatung'
                   value={values.videoberatung}
                   label='Wünschen Sie eine Videoberatung?'
                 />
-
-                <Field component={TextAreaField} name='bemerkung' label='Sonstige optionale Angaben' />
               </SimpleGrid>
+
+              {/* <Divider /> */}
+              {/* <SimpleGrid w='full' columns={2} spacing={6}></SimpleGrid> */}
+
               <Box bgColor='gray.400' w='100%' h='1px' />
+
               <Field
                 component={CheckboxField}
                 name='newsletter'
@@ -312,8 +330,10 @@ const Offer = () => {
                 }
               />
               <Popup isOpen={isOpen} onClose={() => setIsOpen(false)} popupContent={popupContent} />
+
               <Box bgColor='gray.400' w='100%' h='1px' />
-              <VStack spacing={6}>
+
+              <VStack spacing={6} fontSize={['xs', 'sm']} alignItems={isMobile ? 'flex-start' : 'center'}>
                 <HStack alignItems='center' spacing={4}>
                   <Image src='/ssl-icon.png' alt='Übermittlung über Sicherheitsserver' height={30} width={30} />
                   <Text>Alle Ihre Daten werden sicher SSL-verschlüsselt übertragen!</Text>
@@ -331,7 +351,9 @@ const Offer = () => {
                   </Text>
                 </HStack>
               </VStack>
+
               <Box bgColor='gray.400' w='100%' h='1px' />
+
               <VStack>
                 <Text fontSize={20}>Stimmt so alles?</Text>
 

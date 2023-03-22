@@ -9,7 +9,7 @@ export const ThankYou = () => {
   return (
     <VStack
       bgColor='white'
-      p={10}
+      p={[4, 6, 10]}
       boxShadow='2xl'
       borderRadius='lg'
       border='1px'

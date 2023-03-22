@@ -76,11 +76,11 @@ const Header = () => {
 
   return (
     <FullWidthContainer>
-      <Teaser />
+      <Teaser isMobile={isMobile} />
       <ResponsiveContainer>
         <HStack py={1} justifyContent='flex-end'>
-          <Image src='/icons/phone.webp' alt='Call us!' height={25} />
-          <Text as={'b'} color='primary.blue' fontSize={{ base: 'sm', md: 'sm' }}>
+          <Image src='/icons/phone.webp' alt='Call us!' height={isMobile ? 15 : 25} />
+          <Text as={'b'} color='primary.blue' fontSize={{ base: 'xs', md: 'sm' }}>
             Gebührenfreie Hotline: 0800 36 40000
           </Text>
         </HStack>

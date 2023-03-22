@@ -16,8 +16,8 @@ const RadioField: FC<Props> = ({ label, name, field }) => {
       <FormLabel fontSize={14} mb={0}>
         {label}
       </FormLabel>
-      <RadioGroup {...rest} name={name}>
-        <Stack direction='row'>
+      <RadioGroup {...rest} name={name} h='full'>
+        <Stack direction='row' justifyContent='space-evenly' alignItems='center' h='full'>
           <Radio {...field} value='ja' onChange={onChange}>
             Ja
           </Radio>

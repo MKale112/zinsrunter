@@ -19,7 +19,7 @@ const Footer = () => {
     </Link>
   ));
   const brands = footerItems.brands.map((entry) => (
-    <Image key={entry.id} src={entry.path} alt={entry.alt} width={isOnForm ? 75 : 150} height={100} />
+    <Image key={entry.id} src={entry.path} alt={entry.alt} width={isOnForm || isMobile ? 75 : 150} height={100} />
   ));
   return (
     <FullWidthContainer pt={[8, 0]} pb={[2, 4]} bgColor={router.pathname.includes('formular') ? 'gray.100' : 'white'}>
@@ -34,7 +34,7 @@ const Footer = () => {
         >
           {brands}
         </Stack>
-        <VStack pt={[8, 0]}>
+        <VStack>
           <VStack spacing={8} alignItems='start'>
             {isMobile ? (
               <VStack spacing={4} mb={4}>

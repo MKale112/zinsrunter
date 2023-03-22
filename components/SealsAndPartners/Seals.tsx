@@ -79,7 +79,7 @@ const Seals = () => {
               </SimpleGrid>
             )}
             <ChakraLink href='/formular'>
-              <Button variant='accent'>Jetzt unverbindlich anfragen!</Button>
+              <Button variant='accent'>Beratungstermin vereinbaren</Button>
             </ChakraLink>
           </VStack>
         </ReactReveal.Fade>

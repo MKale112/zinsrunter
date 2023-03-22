@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Center,
   VStack,
   Button,
   Text,
@@ -15,13 +14,14 @@ import {
   DrawerOverlay,
   useDisclosure,
   Select,
+  useMediaQuery,
+  Stack,
 } from '@chakra-ui/react';
 import { errorMessages } from 'data/errorMessages';
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import HInputField from './FormModels/HInputField';
 import RadioField from './FormModels/RadioField';
-import CheckboxField from './FormModels/CheckboxField';
 
 import { IconObject } from '../icons/iconObject';
 import { AddIcon, EditIcon, InfoIcon } from '@chakra-ui/icons';
@@ -41,6 +41,7 @@ const regionSelectOptions = grunderAndMaklerData.map((entry) => (
 ));
 
 const ProjectNumbers = () => {
+  const [isMobile] = useMediaQuery('(max-width: 640px)');
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [step, setStep] = useRecoilState(stepState);
   const [location, setLocation] = useState(step[1].region.bundesland!);
@@ -88,6 +89,7 @@ const ProjectNumbers = () => {
       const formattedModernisierungs = formatNumber(modernisierungskosten);
       const formattedEigenkapital = formatNumber(eigenkapital);
       const formattedMaklerAmount = formatNumber(newMaklerAmount);
+      console.log('newMaklerAmount: ', newMaklerAmount);
 
       const grunderAmount = Number.parseFloat(((formattedKaufpreis ?? 0) * (grunder ?? 0)).toFixed(2));
       console.log('formattedMaklerAmount:', formattedMaklerAmount);
@@ -145,7 +147,7 @@ const ProjectNumbers = () => {
     immobilienbesitz: step[1].projectNumbers?.immobilienbesitz || undefined,
   };
   return (
-    <Center w='60%'>
+    <VStack w={['95%', '95%', '80%', '50%']} spacing={8} alignItems='center'>
       <Formik
         // eslint-disable-next-line
         initialValues={initialValues}
@@ -161,7 +163,7 @@ const ProjectNumbers = () => {
           <Form onSubmit={handleSubmit}>
             <VStack
               bgColor='white'
-              p={10}
+              p={[6, 8, 8, 10]}
               boxShadow='2xl'
               borderRadius='lg'
               border='1px'
@@ -173,7 +175,7 @@ const ProjectNumbers = () => {
                 name='kaufpreis'
                 label='Kaufpreis'
                 placeholder='0'
-                width='50%'
+                width='100%'
                 value={values.kaufpreis}
                 backIcon={IconObject.euro}
                 onInputChange={(kaufpreis) =>
@@ -184,7 +186,7 @@ const ProjectNumbers = () => {
                 name='modernisierungskosten'
                 label='Evtl. Modernisierungskosten'
                 placeholder='0'
-                width='50%'
+                width='100%'
                 value={values.modernisierungskosten}
                 frontIcon={IconObject.plus}
                 backIcon={IconObject.euro}
@@ -194,51 +196,56 @@ const ProjectNumbers = () => {
               />
 
               <HStack w='full'>
-                <Box w='5%'>
+                <Box w='5%' alignSelf='flex-start'>
                   <AddIcon />
                 </Box>
-                <HStack justifyContent='space-between' w={'full'}>
-                  <Text fontSize={14} mb={0}>
-                    Notar & Grundbuch
-                  </Text>
+                <Stack direction={isMobile ? 'column' : 'row'} justifyContent='space-between' w={'full'}>
                   <HStack>
+                    <Text fontSize={14} mb={0}>
+                      Notar & Grundbuch
+                    </Text>
                     <Text fontSize={12}>(2.00%)</Text>
+                  </HStack>
+                  <HStack alignSelf='flex-end'>
                     <Text>
                       {calculations.notarAndGrundbuchAmount.toLocaleString('de-DE', {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2,
                       })}
                     </Text>
-                    <Box w='5%'>
+                    <Box w='fit-content'>
                       <EuroIcon />
                     </Box>
                   </HStack>
-                </HStack>
+                </Stack>
               </HStack>
 
-              <HStack w='full'>
-                <Box w='5%'>
+              <HStack w='full' alignItems={isMobile ? 'flex-start' : 'center'}>
+                <Box w='5%' alignSelf='flex-start'>
                   <AddIcon />
                 </Box>
-                <HStack justifyContent='space-between' w={'full'}>
-                  <Text fontSize={14} mb={0}>
-                    Grunderwerbsteuer
-                  </Text>
+                <Stack direction={isMobile ? 'column' : 'row'} justifyContent='space-between' w={'full'}>
                   <HStack>
+                    <Text fontSize={14} mb={0}>
+                      Grunderwerbsteuer
+                    </Text>
                     <Text fontSize={12}>({((variables?.grunder ?? 0) * 100).toFixed(2)}%)</Text>
+                  </HStack>
+                  <HStack alignSelf='flex-end'>
                     <Text>
                       {calculations.grunderAmount.toLocaleString('de-DE', {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2,
                       })}
                     </Text>
-                    <Box w='5%'>
+                    <Box w='fit-content'>
                       <EuroIcon />
                     </Box>
                   </HStack>
-                </HStack>
+                </Stack>
               </HStack>
-              <Text fontSize={11} mb={4}>
+
+              <Text fontSize={11} mb={4} w='full'>
                 Diese Beträge sind für das Bundesland{' '}
                 <Button
                   variant='link'
@@ -295,7 +302,7 @@ const ProjectNumbers = () => {
                   (typeof variables?.maklerprovision === 'string' ? 0 : variables?.maklerprovision ?? 0) * 100
                 ).toFixed(2)}%) `}
                 placeholder='0'
-                width='50%'
+                width='100%'
                 value={values.maklerprovision === '' ? undefined : values.maklerprovision || calculations.maklerAmount}
                 frontIcon={IconObject.plus}
                 backIcon={IconObject.euro}
@@ -319,7 +326,7 @@ const ProjectNumbers = () => {
                 type='number'
                 label='Eigenkapital'
                 placeholder='0'
-                width='50%'
+                width='100%'
                 value={values.eigenkapital}
                 frontIcon={IconObject.minus}
                 backIcon={IconObject.euro}
@@ -328,6 +335,7 @@ const ProjectNumbers = () => {
                   calculatePrices(values.kaufpreis, values.modernisierungskosten, eigenkapital as unknown as number);
                 }}
               />
+
               {!values.eigenkapital && (
                 <VStack
                   w='full'
@@ -355,23 +363,23 @@ const ProjectNumbers = () => {
               <Box w='full' h='2px' bgColor='primary.acid' />
 
               <HStack w='full'>
-                <Box w='5%'>
+                <Box w='5%' alignSelf='flex-start'>
                   <EqualsIcon />
                 </Box>
-                <HStack justifyContent='space-between' w={'full'}>
+                <Stack direction={isMobile ? 'column' : 'row'} justifyContent='space-between' w={'full'}>
                   <Text>Darlehensbetrag</Text>
-                  <HStack>
+                  <HStack alignSelf='flex-end'>
                     <Text>
                       {calculations.kreditsumme.toLocaleString('de-DE', {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2,
                       })}
                     </Text>
-                    <Box w='5%'>
+                    <Box w='fit-content'>
                       <EuroIcon />
                     </Box>
                   </HStack>
-                </HStack>
+                </Stack>
               </HStack>
               <Text fontSize={11} mb={4}>
                 Darlehensbeträge werden auf volle 1.000 Euro gerundet.
@@ -395,7 +403,7 @@ const ProjectNumbers = () => {
 
               <Box bgColor='gray.400' w='full' h='1px' />
 
-              <VStack>
+              <VStack w='full'>
                 <Field
                   component={RadioField}
                   name='immobilienbesitz'
@@ -420,6 +428,7 @@ const ProjectNumbers = () => {
               <Box bgColor='gray.400' w='full' h='1px' />
 
               <Button
+                w='full'
                 isDisabled={!isEligible}
                 _hover={!isEligible ? {} : { bgColor: 'primary.darkAcid' }}
                 alignSelf='center'
@@ -427,15 +436,15 @@ const ProjectNumbers = () => {
                 type='submit'
                 py={6}
                 px={16}
-                fontSize={20}
+                fontSize={[14, 18]}
               >
-                Werte übernehmen und weiter zum letzten Schritt
+                Werte übernehmen und weiter
               </Button>
             </VStack>
           </Form>
         )}
       </Formik>
-    </Center>
+    </VStack>
   );
 };
 

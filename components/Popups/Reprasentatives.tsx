@@ -1,5 +1,6 @@
 import React from 'react';
-import { VStack, Text } from '@chakra-ui/react';
+import { VStack, Text, Divider } from '@chakra-ui/react';
+import Script from 'next/script';
 
 const Reprasentatives = () => {
   return (
@@ -56,8 +57,9 @@ const Reprasentatives = () => {
           Datum der Konditionsermittlung: <div className='baufilead_beste_kondition_datum' />
         </Text>
       </VStack>
+      <Divider />
       <VStack alignItems='flex-start'>
-        <Text>
+        <Text py={4}>
           Kauf einer Immobilie zur Eigennutzung
           <br />
           <br />
@@ -80,7 +82,7 @@ const Reprasentatives = () => {
           KfW-Darlehen oder in Verbindung mit dem Abschluss von Versicherungen an. Dies wurde von uns ggf.
           berücksichtigt.
         </Text>
-        <Text as='b' fontSize={18}>
+        <Text as='b' fontSize={18} py={4}>
           Zins-runter.de bietet Ihnen Top- Konditionen für Ihre Baufinanzierung!
         </Text>
       </VStack>

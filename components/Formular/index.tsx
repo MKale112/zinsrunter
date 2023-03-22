@@ -21,9 +21,9 @@ const formSteps = [
   'nutzung',
   'region',
   'schufa',
-  'projectNumbers',
-  'offer',
-  'thankYou',
+  'projektnummern',
+  'angebot',
+  'dankbarkeit',
 ];
 const form = [FinanceOffer, Estate, PropertyUse, Region, NegativeSCHUFA, ProjectNumbers, Offer, ThankYou];
 
@@ -38,7 +38,7 @@ const Formular = () => {
   const progress = ((stepByUrl + 1) / numberOfSteps) * 100;
 
   useEffect(() => {
-    router.push(`${formSteps[step[0]]}`);
+    router.push(`${formSteps[step[0]]}${step[0] === 7 ? '?thankyou=1' : ''}`);
   }, [step]);
 
   console.log(step);
@@ -72,7 +72,7 @@ const Formular = () => {
           )}
 
           <VStack py={10} w='full'>
-            <Heading as='h3' fontSize={['lg', 'xl', 'xl', '3xl']} pb={8}>
+            <Heading as='h3' fontSize={['lg', 'xl', 'xl', '3xl']} pb={{ base: 4, md: 8 }} textAlign='center'>
               {FormState[formSteps[stepByUrl] as keyof typeof FormState]}
             </Heading>
             <>{React.createElement(form[stepByUrl])}</>

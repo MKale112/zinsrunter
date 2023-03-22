@@ -80,7 +80,7 @@ export const Financing = () => {
                   </HStack>
                 </List>
                 <ChakraLink href='/formular' mt={2}>
-                  <Button variant='accent'>Jetzt unverbindlich anfragen!</Button>
+                  <Button variant='accent'>Finanzierungvorschlag anfordern</Button>
                 </ChakraLink>
               </VStack>
             </ReactReveal.Fade>

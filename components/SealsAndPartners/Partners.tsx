@@ -14,7 +14,7 @@ const Partners = ({ cards = true }: PartnersProps) => {
   const [isMobile] = useMediaQuery('(max-width: 640px)');
   const partners = partnerData.partners.map((entry, index) => (
     <ReactReveal.Fade bottom delay={index * 100} key={entry.id}>
-      <Image src={entry.path} alt={entry.id} width={isMobile ? 100 : 150} height={100} />
+      <Image src={entry.path} alt={entry.id} width={isMobile ? 120 : 150} height={100} />
     </ReactReveal.Fade>
   ));
 

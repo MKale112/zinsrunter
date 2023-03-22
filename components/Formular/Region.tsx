@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { VStack, Button, Text, HStack } from '@chakra-ui/react';
+import { VStack, Button, Text, HStack, SimpleGrid, useMediaQuery } from '@chakra-ui/react';
 import { errorMessages } from 'data/errorMessages';
 import { Formik, Form, Field } from 'formik';
 import countryData from '../../data/formular/zipcodes.json';
@@ -19,6 +19,7 @@ import { finanzierungszweck, nutzung } from 'data/form';
 import { formatNumber } from '@/core/utils';
 
 export const Region = () => {
+  const [isMobile] = useMediaQuery('(max-width: 640px)');
   const [step, setStep] = useRecoilState(stepState);
   const [input, setInput] = useState<string>('');
   const [options, setOptions] = useState<AutocompleteMapEntry[]>([]);
@@ -120,7 +121,7 @@ export const Region = () => {
               borderColor='gray.200'
               spacing={6}
             >
-              <HStack w='full'>
+              <SimpleGrid w='full' columns={isMobile ? 1 : 2} spacing={2}>
                 <AutocompleteField
                   name='standort_plz'
                   label='Postleitzahl des Vorhabens'
@@ -140,9 +141,9 @@ export const Region = () => {
                   value={bundesland}
                   isDisabled
                 />
-              </HStack>
+              </SimpleGrid>
 
-              <HStack w='full'>
+              <SimpleGrid w='full' columns={isMobile ? 1 : 2} spacing={2}>
                 <Field
                   component={SelectField}
                   options={['Ledig', 'Verheiratet', 'Getrennt lebend', 'Geschieden', 'Verwitwet']}
@@ -174,7 +175,7 @@ export const Region = () => {
                   ]}
                   placeholder='Bitte auswählen'
                 />
-              </HStack>
+              </SimpleGrid>
 
               {!alreadyDecided && (
                 <Field
