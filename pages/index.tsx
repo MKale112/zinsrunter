@@ -18,22 +18,7 @@ export default function Home() {
         type='text/javascript'
         src='https://www.baufi-lead.de/baufilead/partner/PkGvpMTcO4DxDy0gEBGuq9c2NYTZ1Q/imports.js'
       />
-      <HeroBanner heroImage={isMobile ? '/hero-image-mobile.webp' : '/hero-image.webp'}>
-        <Heading as={'h2'} fontSize={['lg', '4xl']} color='white'>
-          Baufinanzierung vergleichen - einfach & sicher
-        </Heading>
-        <Text fontSize={['md', '2xl']} color='white'>
-          Finanzierungskonditionen von über 500 Banken im Vergleich
-          <br />
-          Personliche Beratung digital oder per Telefon
-        </Text>
-        <Text fontSize={['sm', 'lg']} color='primary.acid'>
-          Individuelles & transparentes Angebot in der Regel binnen 24 Stunden
-        </Text>
-        <ChakraLink href='/formular' alignSelf='center'>
-          <Button variant='accent'>Unverbindlich Anfragen</Button>
-        </ChakraLink>
-      </HeroBanner>
+      <HeroBanner heroImage={isMobile ? '/hero-image-mobile.webp' : '/hero-image.webp'} />
       <Financing />
       <Partners cards={true} />
       <Highlights />

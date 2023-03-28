@@ -22,7 +22,6 @@ import navigationJSON from '../../data/navigationLinks.json';
 import { FullWidthContainer, ResponsiveContainer } from '../Containers';
 import ChakraLink from '../Link/ChakraLink';
 import { useRouter } from 'next/router';
-import Teaser from '../Teaser';
 
 interface TabsInterface {
   color?: string;
@@ -76,7 +75,6 @@ const Header = () => {
 
   return (
     <FullWidthContainer>
-      <Teaser isMobile={isMobile} />
       <ResponsiveContainer>
         <HStack py={1} justifyContent='flex-end'>
           <Image src='/icons/phone.webp' alt='Call us!' height={isMobile ? 15 : 25} />

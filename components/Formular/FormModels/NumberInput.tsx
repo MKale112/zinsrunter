@@ -20,7 +20,7 @@ const NumberInput: FC<Props> = ({ placeholder = '', label, width, field, value }
       <FormLabel fontSize={14} mb={0}>
         {label}
       </FormLabel>
-      <HStack>
+      <HStack spacing={0}>
         <NumericFormat
           customInput={Input}
           width={width}

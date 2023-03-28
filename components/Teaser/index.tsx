@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { Box, HStack, SimpleGrid, Text } from '@chakra-ui/react';
-import { QuestionOutlineIcon } from '@chakra-ui/icons';
+import { Box, HStack, Text, VStack } from '@chakra-ui/react';
 import Script from 'next/script';
 import { useRouter } from 'next/router';
 import Popup from '../Popups';
+const ReactReveal = require('react-reveal');
 
-const Teaser = ({ isMobile }: { isMobile: boolean }) => {
+const Teaser = ({ isMobile = false }: { isMobile?: boolean }) => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
     if (!router.isReady) return;
   }, []);
+
+  const date = new Date();
+  const options = { day: 'numeric' as const, month: 'numeric' as const, year: 'numeric' as const };
+  const formattedDate = date.toLocaleDateString('de-DE', options).replace(/\.\s*$/, '');
 
   return (
     <>
@@ -26,33 +30,40 @@ const Teaser = ({ isMobile }: { isMobile: boolean }) => {
         var baufilead_tippgeber_id = &quot;TQJ25&quot;;
       </Script>
 
-      <SimpleGrid
-        columns={isMobile ? 2 : 4}
-        // spacing={6}
-        bgColor='gray.200'
-        color='black'
-        py={1}
-        fontSize={{ base: 'xs', md: 'sm', lg: 'md' }}
-      >
-        <HStack justifyContent='center' alignItems='center' color='red.600'>
-          <Text>ab</Text>
-          <Box fontWeight='bold' className='baufilead_beste_kondition_sollzins' />
-          <QuestionOutlineIcon onClick={() => setIsOpen(true)} cursor='pointer' />
-          <Popup isOpen={isOpen} onClose={() => setIsOpen(false)} popupContent={'Reprasentatives'} />
-        </HStack>
-        <HStack justifyContent='center' alignItems='center'>
-          <Text>Sollzins (gebunden)</Text>
-          <Box fontWeight='bold' className='baufilead_beste_kondition_sollzins' />
-        </HStack>
-        <HStack justifyContent='center' alignItems='center'>
-          <Text>Sollzinsbindung</Text>
-          <Box fontWeight='bold' className='baufilead_beste_kondition_zinsbindung' />
-        </HStack>
-        <HStack justifyContent='center' alignItems='center'>
-          <Text>Effektiver Jahreszins</Text>
-          <Box fontWeight='bold' className='baufilead_beste_kondition_effektivzins' />
-        </HStack>
-      </SimpleGrid>
+      <ReactReveal.Fade right>
+        <VStack
+          h='full'
+          justifyContent='center'
+          spacing={2}
+          color='white'
+          padding={[4, 6, 10]}
+          fontSize={{ base: 'xl', md: 'xl', lg: '2xl' }}
+        >
+          <Text color='primary.acid' fontWeight='bold' textShadow={'2px 1px black'} pb={[1, 1, 4]}>
+            Top -Zins
+          </Text>
+          <HStack
+            justifyContent='center'
+            alignItems='center'
+            fontSize={{ base: '2xl', md: '2xl', lg: '4xl' }}
+            fontWeight='bold'
+            textShadow={'2px 1px black'}
+            color='primary.acid'
+          >
+            <Text>ab</Text>
+            <Box className='baufilead_beste_kondition_sollzins' />
+            <Popup isOpen={isOpen} onClose={() => setIsOpen(false)} popupContent={'Repräsentatives Zins-Beispiel'} />
+          </HStack>
+          <HStack justifyContent='center' alignItems='center'>
+            <Text>Stand heute {formattedDate}</Text>
+          </HStack>
+          <HStack justifyContent='center' alignItems='center' fontSize={{ base: 'sm', md: 'md', lg: 'lg' }}>
+            <Text textDecoration='underline' onClick={() => setIsOpen(true)} cursor='pointer'>
+              Repräsentatives Beispiel anzeigen
+            </Text>
+          </HStack>
+        </VStack>
+      </ReactReveal.Fade>
     </>
   );
 };

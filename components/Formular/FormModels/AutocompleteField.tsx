@@ -56,6 +56,8 @@ const AutocompleteField: FC<Props> = ({
     onSelectOption(newValue);
   };
 
+  const customNoOptionsMessage = () => ''; // return null to remove the message
+
   return (
     <Field name={name}>
       {({ field, form }: FieldProps<FormikValues>) => {
@@ -77,6 +79,7 @@ const AutocompleteField: FC<Props> = ({
               chakraStyles={chakraStyles}
               onInputChange={(newValue) => onChangeInput(newValue)}
               onChange={(newValue) => onChange(newValue)}
+              noOptionsMessage={customNoOptionsMessage}
             />
             <CustomErrorMessage name={field.name} />
           </FormControl>

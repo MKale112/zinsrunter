@@ -5,6 +5,7 @@ import { NumericFormat } from 'react-number-format';
 import CustomErrorMessage from './CustomErrorMessage';
 
 interface CustomHInputProps {
+  name: string;
   label: string;
   placeholder?: string;
   width?: string;
@@ -17,7 +18,7 @@ interface CustomHInputProps {
 const HInputField: FC<FieldHookConfig<string> & CustomHInputProps> = (props) => {
   const [isMobile] = useMediaQuery('(max-width: 640px)');
   const [field, meta, helpers] = useField(props);
-  const { label, placeholder = '', width, onInputChange, frontIcon, backIcon, value } = props;
+  const { name, label, placeholder = '', width, onInputChange, frontIcon, backIcon, value } = props;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     helpers.setValue(e.target.value);
@@ -41,6 +42,7 @@ const HInputField: FC<FieldHookConfig<string> & CustomHInputProps> = (props) => 
               thousandSeparator='.'
               decimalSeparator=','
               {...field}
+              name={name}
               width={width}
               placeholder={placeholder}
               value={value}

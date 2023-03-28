@@ -115,7 +115,7 @@ const UberUns = () => {
 
           <VStack alignItems='flex-start' spacing={4}>
             <Heading as='h3' fontSize={['md', 'lg', 'lg', 'xl']}>
-              2020 Zins-runter.de – Das Fachportal zum Thema Immobilienfinanzierung und Kredite
+              2023 Zins-runter.de – Das Fachportal zum Thema Immobilienfinanzierung und Kredite
             </Heading>
             <Stack direction={isMobile ? 'column' : 'row'} spacing={8}>
               <Image
@@ -147,7 +147,7 @@ const UberUns = () => {
                   Als unabhängiger Finanzierungsvermittler ist Zins-runter.de nicht an Kreditinstitute gebunden – durch{' '}
                   <strong>
                     diese Unabhängigkeit von Banken und Sparkassen garantieren wir eine konsequent echte und vielfältige
-                    Produktauswahl. Derzeit können wir aus einem Pool vom über 500 Banken und Kreditgebern schöpfen
+                    Produktauswahl. Derzeit können wir aus einem Pool von über 500 Banken und Kreditgebern schöpfen
                   </strong>
                 </Text>
               </VStack>

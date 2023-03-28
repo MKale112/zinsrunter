@@ -3,7 +3,7 @@ import { GetServerSidePropsContext } from 'next';
 export default function SitemapGenerator() {}
 
 // If updated pages, update lastModDate to the current date
-const pages = ['formular', 'uber-uns', 'datenschultz', 'agb', 'erstinformation', 'impressum', 'kontakt'];
+const pages = ['formular', 'uber-uns', 'datenschutz', 'agb', 'erstinformation', 'impressum', 'kontakt'];
 const lastModDate = '2023-03-12'; // YYYY-MM-DD
 
 export const getServerSideProps = async ({ req, res }: GetServerSidePropsContext): Promise<{ props: any }> => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { VStack, Button, Text, HStack, SimpleGrid, useMediaQuery } from '@chakra-ui/react';
+import { VStack, Button, Text, HStack, SimpleGrid, useMediaQuery, Box } from '@chakra-ui/react';
 import { errorMessages } from 'data/errorMessages';
 import { Formik, Form, Field } from 'formik';
 import countryData from '../../data/formular/zipcodes.json';
@@ -71,13 +71,15 @@ export const Region = () => {
     haushaltseinkommen: yup
       .number()
       .transform((_, value) => formatNumber(value))
-      .required(errorMessages.fieldRequired),
+      .required(errorMessages.fieldRequired)
+      .typeError(errorMessages.isNum),
     mieteinnahmen: isRental
       ? yup.number().nullable()
       : yup
           .number()
           .transform((_, value) => formatNumber(value))
           .required(errorMessages.fieldRequired)
+          .typeError(errorMessages.isNum)
           .positive()
           .integer(),
   });
@@ -121,7 +123,7 @@ export const Region = () => {
               borderColor='gray.200'
               spacing={6}
             >
-              <SimpleGrid w='full' columns={isMobile ? 1 : 2} spacing={2}>
+              <SimpleGrid w='full' columns={isMobile ? 1 : 2} spacing={6}>
                 <AutocompleteField
                   name='standort_plz'
                   label='Postleitzahl des Vorhabens'
@@ -143,7 +145,7 @@ export const Region = () => {
                 />
               </SimpleGrid>
 
-              <SimpleGrid w='full' columns={isMobile ? 1 : 2} spacing={2}>
+              <SimpleGrid w='full' columns={isMobile ? 1 : 2} spacing={6}>
                 <Field
                   component={SelectField}
                   options={['Ledig', 'Verheiratet', 'Getrennt lebend', 'Geschieden', 'Verwitwet']}
@@ -193,25 +195,24 @@ export const Region = () => {
                 />
               )}
 
-              <HStack w='full' alignItems='flex-end'>
-                <Field
-                  component={NumberInput}
-                  name='haushaltseinkommen'
-                  type='number'
-                  label='Haushaltsnettoeinkommen monatlich'
-                  placeholder='Bitte eingeben'
-                  value={values.haushaltseinkommen}
-                />
-              </HStack>
+              <SimpleGrid spacing={6} columns={isMobile || isRental ? 1 : 2}>
+                <VStack w={isMobile ? 'full' : !isRental ? 'full' : '50%'} alignItems='flex-start'>
+                  <Field
+                    component={NumberInput}
+                    name='haushaltseinkommen'
+                    type='number'
+                    label='Haushaltsnettoeinkommen monatlich'
+                    placeholder='Bitte eingeben'
+                    value={values.haushaltseinkommen}
+                  />
+                  <Text fontSize={14} mb={4}>
+                    Bitte geben Sie hier das monatliche Nettoeinkommmen des gesamten Haushalts ein. Bitte geben Sie nur
+                    regelmäßig wiederkehrende Einkünfte an.
+                  </Text>
+                </VStack>
 
-              <Text fontSize={14} mb={4}>
-                Bitte geben Sie hier das monatliche Nettoeinkommmen des gesamten Haushalts ein. Bitte geben Sie nur
-                regelmäßig wiederkehrende Einkünfte an.
-              </Text>
-
-              {!isRental && (
-                <>
-                  <HStack w='full' alignItems='flex-end'>
+                {!isRental && (
+                  <VStack w='full' alignItems='flex-start'>
                     <Field
                       component={NumberInput}
                       name='mieteinnahmen'
@@ -220,13 +221,13 @@ export const Region = () => {
                       placeholder='Bitte eingeben'
                       value={values.mieteinnahmen}
                     />
-                  </HStack>
-                  <Text fontSize={14} mb={4}>
-                    Bitte geben Sie hier die Mieteinnahme des zu vermietenden Objektes ein. Falls noch kein Mietvertrag
-                    besteht, geben Sie bitte die zu erwartende Einnahme an.
-                  </Text>
-                </>
-              )}
+                    <Text fontSize={14} mb={4}>
+                      Bitte geben Sie hier die Mieteinnahme des zu vermietenden Objektes ein. Falls noch kein
+                      Mietvertrag besteht, geben Sie bitte die zu erwartende Einnahme an.
+                    </Text>
+                  </VStack>
+                )}
+              </SimpleGrid>
 
               <Button variant='accent' type='submit' padding={6} fontSize={20}>
                 Weiter

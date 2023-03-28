@@ -6,7 +6,7 @@ interface Props {
   isPopup?: boolean;
 }
 
-const Datenschultz = ({ isPopup = false }: Props) => {
+const Datenschutz = ({ isPopup = false }: Props) => {
   return (
     <FullWidthContainer>
       {!isPopup && <Box h={10} bgColor='primary.blue' />}
@@ -927,4 +927,4 @@ const Datenschultz = ({ isPopup = false }: Props) => {
   );
 };
 
-export default Datenschultz;
+export default Datenschutz;

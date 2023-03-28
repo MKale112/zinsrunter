@@ -66,13 +66,14 @@ const Kontakt = () => {
   ));
 
   const phoneRegex = /^[+]?[\d-]+$/;
+  const houseNumberRegex = /^[\d]+[a-zA-Z]*\s*[a-zA-Z]*$/;
 
   const validationSchema = yup.object().shape({
     anrede: yup.string(),
     vorname: yup.string().required(errorMessages.fieldRequired),
     name: yup.string().required(errorMessages.fieldRequired),
     strasse: yup.string().required(errorMessages.fieldRequired),
-    hausnummer: yup.number().positive().integer(),
+    hausnummer: yup.string().matches(houseNumberRegex, errorMessages),
     ort: yup.string().required(errorMessages.fieldRequired),
     telefon: yup.string().matches(phoneRegex).typeError(errorMessages.isNum).required(errorMessages.fieldRequired),
     email: yup.string().required(errorMessages.fieldRequired),
@@ -99,10 +100,10 @@ const Kontakt = () => {
       <ResponsiveContainer py={[16, 24]}>
         <VStack spacing={16}>
           <VStack spacing={{ base: 4, md: 8 }}>
-            <Heading as='h1' fontSize={{ base: '4xl', md: '5xl' }}>
-              KONTAKT
+            <Heading as='h1' fontSize={{ base: '3xl', md: '4xl' }}>
+              Kontakt
             </Heading>
-            <Heading as='h2' fontSize={{ base: '2xl', md: '3xl' }} color={'secondaryFontColor'}>
+            <Heading as='h2' fontSize={{ base: 'xl', md: '2xl' }} color={'secondaryFontColor'}>
               Wie können wir Ihnen helfen?
             </Heading>
           </VStack>
@@ -165,7 +166,7 @@ const Kontakt = () => {
                       placeholder='Bitte auswählen'
                     />
 
-                    <SimpleGrid width='full' columns={isMobile ? 1 : 2} gap={4}>
+                    <SimpleGrid width='full' columns={isMobile ? 1 : 2} spacing={6}>
                       <Field
                         component={InputField}
                         name='vorname'
@@ -234,7 +235,7 @@ const Kontakt = () => {
                         name='agb'
                         label={
                           <Text color='secondaryFontColor'>
-                            <ChakraLink _hover={{ textDecoration: 'underline' }} href='/datenschultz'>
+                            <ChakraLink _hover={{ textDecoration: 'underline' }} href='/datenschutz'>
                               Datenschutz
                             </ChakraLink>{' '}
                             und{' '}

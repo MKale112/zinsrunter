@@ -287,7 +287,7 @@ const AGB = ({ isPopup = false }: Props) => {
 
           <VStack alignItems={'flex-start'}>
             <Heading as={'h2'} fontSize={['md', 'lg', 'lg', 'xl']}>
-              7. Datenschultz
+              7. Datenschutz
             </Heading>
             <VStack alignItems={'flex-start'}>
               <Text>

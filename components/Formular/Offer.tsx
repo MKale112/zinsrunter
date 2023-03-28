@@ -39,6 +39,7 @@ const Offer = () => {
 
   const phoneRegex = /^[+]?[\d-]+$/;
   const zipcodeRegex = /^[0-9]{1,6}$/;
+  const houseNumberRegex = /^[\d]+[a-zA-Z]*\s*[a-zA-Z]*$/;
 
   const validationSchema = yup.object().shape({
     anrede: yup.string().required(errorMessages.fieldRequired),
@@ -47,7 +48,7 @@ const Offer = () => {
     name: yup.string().required(errorMessages.fieldRequired),
     geburtsdatum: yup.date().required(errorMessages.fieldRequired),
     strasse: yup.string().required(errorMessages.fieldRequired),
-    hausnummer: yup.number().positive().integer(),
+    hausnummer: yup.string().matches(houseNumberRegex, errorMessages),
     plz: yup.string().matches(zipcodeRegex, errorMessages.zipcodeInvalidInput).required(errorMessages.fieldRequired),
     ort: yup.string().required(errorMessages.fieldRequired),
     staatsangehorigkeit: yup.string().required(errorMessages.fieldRequired),
@@ -90,25 +91,27 @@ const Offer = () => {
         validateOnChange={true}
         validateOnBlur={false}
         onSubmit={async (values) => {
-          Object.assign(fullData, step[1], { offer: values });
-          const response = await axios.post(`${process.env.WEBSITE_URL}/api/formular`, fullData);
-          if (response.status === 200) {
-            console.log(response.data);
-            toast({
-              title: 'Einreichung erfolgreich',
-              status: 'success',
-              duration: 5000,
-              isClosable: false,
-            });
-            setStep((currValue) => [7, { ...currValue[1], offer: values }]);
-          } else {
-            toast({
-              title: 'Fehler beim Senden Ihrer Anfrage',
-              status: 'error',
-              duration: 5000,
-              isClosable: false,
-            });
-          }
+          setStep((currValue) => [7, { ...currValue[1], offer: values }]);
+
+          // Object.assign(fullData, step[1], { offer: values });
+          // const response = await axios.post(`${process.env.WEBSITE_URL}/api/formular`, fullData);
+          // if (response.status === 200) {
+          //   console.log(response.data);
+          //   toast({
+          //     title: 'Einreichung erfolgreich',
+          //     status: 'success',
+          //     duration: 5000,
+          //     isClosable: false,
+          //   });
+          //   setStep((currValue) => [7, { ...currValue[1], offer: values }]);
+          // } else {
+          //   toast({
+          //     title: 'Fehler beim Senden Ihrer Anfrage',
+          //     status: 'error',
+          //     duration: 5000,
+          //     isClosable: false,
+          //   });
+          // }
         }}
       >
         {({ handleSubmit, values }) => (
@@ -230,7 +233,9 @@ const Offer = () => {
               <Divider />
 
               <Stack direction={isMobile ? 'column' : 'row'} fontSize={['sm']}>
-                <Text fontWeight='bold'>Ihre Privatsphäre ist uns wichtig!</Text>
+                <Text fontWeight='bold' w={isMobile ? 'full' : '60%'}>
+                  Ihre Privatsphäre ist uns wichtig!
+                </Text>
                 <Text>
                   Auch wir mögen keine Werbemails und -anrufe! Deshalb garantieren wir Ihnen, dass wir Ihre Daten auf
                   keinen Fall an unbeteiligte Dritte weitergeben.

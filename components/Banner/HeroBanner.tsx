@@ -1,32 +1,33 @@
 import React, { ReactNode } from 'react';
 import BannerText from './BannerText';
 import { FullWidthContainer, ResponsiveContainer } from '../Containers';
-const ReactReveal = require('react-reveal');
+import Teaser from '../Teaser';
+import { Stack, useMediaQuery } from '@chakra-ui/react';
 
 const defaultHeroBannerImage = '/hero-image.webp';
 
-export enum ContentPosition {
-  LEFT = 'flex-start',
-  CENTER = 'center',
-  RIGHT = 'flex-end',
-}
-
 export interface HeroBannerProps {
-  children: ReactNode;
   heroImage?: string;
-  contentPosition?: ContentPosition;
 }
 
 export const HeroBanner = (props: HeroBannerProps) => {
-  const { heroImage = defaultHeroBannerImage, contentPosition = ContentPosition.RIGHT, children, ...rest } = props;
+  const [isMobile] = useMediaQuery('(max-width: 640px)');
+  const { heroImage = defaultHeroBannerImage } = props;
+
   return (
-    <FullWidthContainer bgImgUrl={heroImage} bgImgRepeat={'no-repeat'} bgImgSize='cover' h={['28rem', '45rem']}>
-      <ResponsiveContainer h='full' display='flex' justifyContent={contentPosition} alignItems='center' {...rest}>
-        <ReactReveal.Fade right>
-          <BannerText spacing={6} w={['100%', '100%', '75%']} ml='auto'>
-            {children}
-          </BannerText>
-        </ReactReveal.Fade>
+    <FullWidthContainer bgImgUrl={heroImage} bgImgRepeat={'no-repeat'} bgImgSize='cover' h={['36rem', '45rem']}>
+      <ResponsiveContainer h='full' w='full' display='flex' justifyContent='space-around' alignItems='center'>
+        <Stack
+          w='full'
+          direction={isMobile ? 'column' : 'row'}
+          justifyContent={isMobile ? 'center' : 'space-around'}
+          spacing={isMobile ? 3 : 10}
+          backdropFilter={'blur(2px)'}
+          backgroundColor={isMobile ? 'blackAlpha.400' : 'blackAlpha.500'}
+        >
+          <Teaser isMobile={false} />
+          <BannerText />
+        </Stack>
       </ResponsiveContainer>
     </FullWidthContainer>
   );

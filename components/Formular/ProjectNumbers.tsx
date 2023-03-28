@@ -60,6 +60,10 @@ const ProjectNumbers = () => {
   }, []);
 
   useEffect(() => {
+    console.log('calculations');
+  }, [calculations]);
+
+  useEffect(() => {
     const { grunder, maklerprovision } = findGrunderAndMakler(location);
     setVariables({ grunder: grunder!, maklerprovision: maklerprovision! });
     step[1].projectNumbers &&
@@ -129,7 +133,6 @@ const ProjectNumbers = () => {
       .number()
       .transform((_, value) => formatNumber(value))
       .typeError(errorMessages.isNum)
-      .positive()
       .integer()
       .nullable(),
     eigenkapital: yup
@@ -297,6 +300,7 @@ const ProjectNumbers = () => {
               </Drawer>
 
               <HInputField
+                key='maklerprovision'
                 name='maklerprovision'
                 label={`Makler (${(
                   (typeof variables?.maklerprovision === 'string' ? 0 : variables?.maklerprovision ?? 0) * 100

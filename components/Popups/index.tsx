@@ -8,7 +8,7 @@ import {
   ModalBody,
 } from '@chakra-ui/react';
 import AGB from 'pages/agb';
-import Datenschultz from 'pages/datenschultz';
+import Datenschutz from 'pages/datenschutz';
 import * as React from 'react';
 import Newsletter from './Newsletter';
 import Reprasentatives from './Reprasentatives';
@@ -25,7 +25,7 @@ const Popup = ({ isOpen, onClose, popupContent }: Props) => {
   let displayed = null;
   switch (popupContent) {
     case 'Datenschutz':
-      displayed = <Datenschultz isPopup={true} />;
+      displayed = <Datenschutz isPopup={true} />;
       break;
     case 'AGB':
       displayed = <AGB isPopup={true} />;
@@ -33,7 +33,7 @@ const Popup = ({ isOpen, onClose, popupContent }: Props) => {
     case 'Newsletter':
       displayed = <Newsletter />;
       break;
-    case 'Reprasentatives':
+    case 'Repräsentatives Zins-Beispiel':
       displayed = <Reprasentatives />;
       break;
     default:
