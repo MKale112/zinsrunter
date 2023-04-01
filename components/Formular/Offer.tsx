@@ -114,7 +114,7 @@ const Offer = () => {
           // }
         }}
       >
-        {({ handleSubmit, values }) => (
+        {({ handleSubmit, values, isSubmitting }) => (
           <Form onSubmit={handleSubmit}>
             <VStack
               bgColor='white'
@@ -362,7 +362,7 @@ const Offer = () => {
               <VStack>
                 <Text fontSize={20}>Stimmt so alles?</Text>
 
-                <Button variant='accent' type='submit' padding={6} fontSize={20}>
+                <Button variant='accent' type='submit' padding={6} fontSize={20} disabled={isSubmitting}>
                   Jetzt Angebot anfordern
                 </Button>
               </VStack>

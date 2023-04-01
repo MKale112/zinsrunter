@@ -30,6 +30,7 @@ export interface ProjectNumbersData {
   maklerprovision: number | string;
   eigenkapital: number;
   immobilienbesitz?: string;
+  kreditsumme: number | string;
 }
 export interface OfferData {
   anrede: string;

@@ -148,6 +148,7 @@ const ProjectNumbers = () => {
     maklerprovision: step[1].projectNumbers?.maklerprovision,
     eigenkapital: step[1].projectNumbers?.eigenkapital,
     immobilienbesitz: step[1].projectNumbers?.immobilienbesitz || undefined,
+    kreditsumme: 0,
   };
   return (
     <VStack w={['95%', '95%', '80%', '50%']} spacing={8} alignItems='center'>
@@ -158,7 +159,17 @@ const ProjectNumbers = () => {
         validateOnChange={true}
         validateOnBlur={false}
         onSubmit={(values) => {
-          setStep((currValue) => [6, { ...currValue[1], projectNumbers: values }]);
+          setStep((currValue) => [
+            6,
+            {
+              ...currValue[1],
+              projectNumbers: {
+                ...values,
+                maklerprovision: calculations.maklerAmount,
+                kreditsumme: calculations.kreditsumme,
+              },
+            },
+          ]);
           console.log(values);
         }}
       >
@@ -181,9 +192,10 @@ const ProjectNumbers = () => {
                 width='100%'
                 value={values.kaufpreis}
                 backIcon={IconObject.euro}
-                onInputChange={(kaufpreis) =>
-                  calculatePrices(kaufpreis as unknown as number, values.modernisierungskosten, values.eigenkapital)
-                }
+                onInputChange={(kaufpreis) => {
+                  calculatePrices(kaufpreis as unknown as number, values.modernisierungskosten, values.eigenkapital);
+                  console.log('values', values, 'calculations', calculations);
+                }}
               />
               <HInputField
                 name='modernisierungskosten'
@@ -307,7 +319,7 @@ const ProjectNumbers = () => {
                 ).toFixed(2)}%) `}
                 placeholder='0'
                 width='100%'
-                value={values.maklerprovision === '' ? undefined : values.maklerprovision || calculations.maklerAmount}
+                value={values.maklerprovision === '' ? undefined : values.maklerprovision ?? calculations.maklerAmount}
                 frontIcon={IconObject.plus}
                 backIcon={IconObject.euro}
                 onInputChange={(maklerprovision) =>
