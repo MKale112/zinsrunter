@@ -1,6 +1,6 @@
 import { IconObject } from '@/components/icons/iconObject';
 import { Box, FormControl, FormLabel, HStack, Select } from '@chakra-ui/react';
-import { FieldProps } from 'formik';
+import { FieldProps, useField } from 'formik';
 import React, { FC } from 'react';
 import CustomErrorMessage from './CustomErrorMessage';
 
@@ -21,37 +21,41 @@ const HSelectField: FC<Props> = ({
   frontIcon,
   backIcon,
   width = '100%',
-}) => (
-  <FormControl>
-    <HStack>
-      <Box w='5%'>{frontIcon && React.createElement(frontIcon)}</Box>
-      <HStack justifyContent='space-between' w={'full'}>
-        <FormLabel fontSize={14} mb={0}>
-          {label}{' '}
-        </FormLabel>
+}) => {
+  const [_formikField, meta] = useField(field);
 
-        {options && (
-          <Select
-            {...field}
-            placeholder={placeholder}
-            borderColor='primary.acid'
-            border='2px'
-            color='primary.blue'
-            fontWeight='medium'
-            width={width}
-          >
-            {options.map((option) => (
-              <option key={option} value={option}>
-                {option.charAt(0).toUpperCase() + option.slice(1)}
-              </option>
-            ))}
-          </Select>
-        )}
+  return (
+    <FormControl isInvalid={meta.touched && !!meta.error}>
+      <HStack>
+        <Box w='5%'>{frontIcon && React.createElement(frontIcon)}</Box>
+        <HStack justifyContent='space-between' w={'full'}>
+          <FormLabel fontSize={14} mb={0}>
+            {label}{' '}
+          </FormLabel>
+
+          {options && (
+            <Select
+              {...field}
+              placeholder={placeholder}
+              borderColor={meta.touched && !!meta.error ? 'red.500' : 'primary.acid'}
+              border='2px'
+              color='primary.blue'
+              fontWeight='medium'
+              width={width}
+            >
+              {options.map((option) => (
+                <option key={option} value={option}>
+                  {option.charAt(0).toUpperCase() + option.slice(1)}
+                </option>
+              ))}
+            </Select>
+          )}
+        </HStack>
+        <Box w='5%'>{backIcon && React.createElement(backIcon)}</Box>
       </HStack>
-      <Box w='5%'>{backIcon && React.createElement(backIcon)}</Box>
-    </HStack>
-    <CustomErrorMessage name={field.name} />
-  </FormControl>
-);
+      <CustomErrorMessage name={field.name} />
+    </FormControl>
+  );
+};
 
 export default HSelectField;

@@ -1,6 +1,6 @@
 import { Box, FormControl, FormLabel, HStack, Input, Stack, useMediaQuery } from '@chakra-ui/react';
 import { FieldHookConfig, useField } from 'formik';
-import React, { FC } from 'react';
+import React, { FC, useEffect, useRef } from 'react';
 import { NumericFormat } from 'react-number-format';
 import CustomErrorMessage from './CustomErrorMessage';
 
@@ -18,6 +18,15 @@ interface CustomHInputProps {
 const HInputField: FC<FieldHookConfig<string> & CustomHInputProps> = (props) => {
   const [isMobile] = useMediaQuery('(max-width: 640px)');
   const [field, meta, helpers] = useField(props);
+
+  const formControlRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (meta.touched && !!meta.error && formControlRef.current) {
+      formControlRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [meta.error, meta.touched]);
+
   const { name, label, placeholder = '', width, onInputChange, frontIcon, backIcon, value } = props;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,7 +38,7 @@ const HInputField: FC<FieldHookConfig<string> & CustomHInputProps> = (props) => 
   };
 
   return (
-    <FormControl>
+    <FormControl ref={formControlRef} isInvalid={meta.touched && !!meta.error}>
       <HStack justifyContent='space-between' alignItems={isMobile ? 'flex-start' : 'center'}>
         <Box w='5%'>{frontIcon && React.createElement(frontIcon)}</Box>
         <Stack direction={isMobile ? 'column' : 'row'} justifyContent='space-between' w='full' alignItems='center'>
@@ -46,7 +55,7 @@ const HInputField: FC<FieldHookConfig<string> & CustomHInputProps> = (props) => 
               width={width}
               placeholder={placeholder}
               value={value}
-              borderColor='primary.acid'
+              borderColor={meta.touched && !!meta.error ? 'red.500' : 'primary.acid'}
               border='2px'
               color='primary.blue'
               fontWeight='medium'

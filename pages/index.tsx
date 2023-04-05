@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import HeroBanner from '@/components/Banner/HeroBanner';
-import { Button, Heading, Text, useMediaQuery } from '@chakra-ui/react';
+import { useMediaQuery } from '@chakra-ui/react';
 import Partners from '@/components/SealsAndPartners/Partners';
 import Seals from '@/components/SealsAndPartners/Seals';
 import Highlights from '@/components/Highlights/Highlights';
-import ChakraLink from '@/components/Link/ChakraLink';
 import { Financing } from '@/components/Financing/Financing';
 import Script from 'next/script';
-import Head from 'next/head';
+import { addGclid } from '@/core/utils';
 
 export default function Home() {
   const [isMobile] = useMediaQuery('(max-width: 640px)');
+
+  useEffect(() => {
+    window.addEventListener('load', addGclid);
+    () => {
+      window.removeEventListener('load', addGclid);
+    };
+  }, []);
 
   return (
     <>

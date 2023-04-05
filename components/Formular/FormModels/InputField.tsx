@@ -1,6 +1,6 @@
 import { FormControl, FormLabel, Input } from '@chakra-ui/react';
-import { FieldProps } from 'formik';
-import React, { FC } from 'react';
+import { FieldProps, useField } from 'formik';
+import React, { FC, useEffect, useRef } from 'react';
 import CustomErrorMessage from './CustomErrorMessage';
 
 export interface Props extends FieldProps {
@@ -25,14 +25,23 @@ const InputField: FC<Props> = ({
   maxDate,
   minDate,
 }) => {
+  const [_formikField, meta] = useField(field);
+  const formControlRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (meta.touched && !!meta.error && formControlRef.current) {
+      formControlRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [meta.error, meta.touched]);
+
   return (
-    <FormControl width={width}>
+    <FormControl ref={formControlRef} width={width} isInvalid={meta.touched && !!meta.error}>
       <FormLabel fontSize={14} mb={0}>
         {label}
       </FormLabel>
       <Input
         placeholder={placeholder}
-        borderColor='primary.acid'
+        borderColor={meta.touched && !!meta.error ? 'red.500' : 'primary.acid'}
         border='2px'
         color='primary.blue'
         fontWeight='medium'

@@ -13,6 +13,25 @@ export const Financing = () => {
           <VStack spacing={[10, 20]}>
             <ReactReveal.Fade bottom>
               <VStack spacing={10} alignItems='center'>
+                <Text
+                  textAlign='center'
+                  w={{ base: '100%', md: '75%', lg: '75%' }}
+                  fontSize={['md', 'xl']}
+                  color='secondaryFontColor'
+                >
+                  Der Bau oder Kauf einer Immobilie ist ein bedeutender Schritt. Die Frage nach der Finanzierung ist
+                  dabei ein wesentlicher Faktor. Als unabhängiger Baufinanzierungs­berater ist Zins-runter.de Ihr
+                  Partner bei der Immobilien­finanzierung.
+                </Text>
+                <Text
+                  textAlign='center'
+                  w={{ base: '100%', md: '75%', lg: '75%' }}
+                  fontSize={['md', 'xl']}
+                  color='secondaryFontColor'
+                >
+                  Eine erste Zinsindikation ist kurzfristig möglich. Im Beratungstermin wird Ihr Vorhaben dann genauer
+                  analysiert und Ihr Finanzierungsangebot wird meist noch günstiger.
+                </Text>
                 <Heading as='h2' fontSize={['xl', '3xl']} textAlign='center'>
                   Derzeit können wir folgende Finanzierungen anbieten:
                 </Heading>

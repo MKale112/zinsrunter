@@ -95,7 +95,9 @@ export const Region = () => {
   return (
     <VStack w={['95%', '95%', '80%', '50%']} spacing={8}>
       <VStack textAlign='center'>
-        <Text>Es gibt Kreditinstitute, die nur regional auftreten (Sparkassen und Volksbanken).</Text>
+        <Text color='secondaryFontColor'>
+          Es gibt Kreditinstitute, die nur regional auftreten (Sparkassen und Volksbanken).
+        </Text>
         <Text>
           Damit diese Banken in der Angebotserstellung berücksichtigt werden können, geben Sie bitte auch den Standort
           Ihres Finanzierungsvorhabens an.

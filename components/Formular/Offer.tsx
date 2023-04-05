@@ -29,6 +29,7 @@ import Image from 'next/image';
 import { countries } from 'data/countries';
 import axios from 'axios';
 import Popup from '../Popups';
+import { LocalStorageGCLID, SubscribeBody } from '@/core/types';
 
 const Offer = () => {
   const [isMobile] = useMediaQuery('(max-width: 640px)');
@@ -48,7 +49,11 @@ const Offer = () => {
     name: yup.string().required(errorMessages.fieldRequired),
     geburtsdatum: yup.date().required(errorMessages.fieldRequired),
     strasse: yup.string().required(errorMessages.fieldRequired),
-    hausnummer: yup.string().matches(houseNumberRegex, errorMessages),
+    hausnummer: yup.string().when('strasse', {
+      is: (val: string) => !val || val.trim() === '',
+      then: yup.string().required('\u00a0'),
+      otherwise: yup.string().matches(houseNumberRegex, errorMessages.invalidInput),
+    }),
     plz: yup.string().matches(zipcodeRegex, errorMessages.zipcodeInvalidInput).required(errorMessages.fieldRequired),
     ort: yup.string().required(errorMessages.fieldRequired),
     staatsangehorigkeit: yup.string().required(errorMessages.fieldRequired),
@@ -91,27 +96,50 @@ const Offer = () => {
         validateOnChange={true}
         validateOnBlur={false}
         onSubmit={async (values) => {
-          setStep((currValue) => [7, { ...currValue[1], offer: values }]);
+          // setStep((currValue) => [7, { ...currValue[1], offer: values }]);
 
-          // Object.assign(fullData, step[1], { offer: values });
-          // const response = await axios.post(`${process.env.WEBSITE_URL}/api/formular`, fullData);
-          // if (response.status === 200) {
-          //   console.log(response.data);
-          //   toast({
-          //     title: 'Einreichung erfolgreich',
-          //     status: 'success',
-          //     duration: 5000,
-          //     isClosable: false,
-          //   });
-          //   setStep((currValue) => [7, { ...currValue[1], offer: values }]);
-          // } else {
-          //   toast({
-          //     title: 'Fehler beim Senden Ihrer Anfrage',
-          //     status: 'error',
-          //     duration: 5000,
-          //     isClosable: false,
-          //   });
-          // }
+          const currDate = new Date().getTime();
+          const gclid = JSON.parse(localStorage.getItem('gclid') || '{}') as LocalStorageGCLID;
+          const isGclidValid = gclid && currDate < gclid.expiryDate;
+
+          if (values.newsletter) {
+            const body: SubscribeBody = {
+              email: values.email,
+              vorname: values.vorname,
+              name: values.name,
+              anrede: values.anrede,
+              sparte_seite: 'baufin',
+              plz: values.plz,
+              ort: values.ort,
+              berufsstatus: step[1].region.berufsstatus,
+              geburtsdatum: values.geburtsdatum,
+            };
+            await axios
+              .post(`${process.env.WEBSITE_URL}/api/subscribe`, body)
+              .then((res) => console.log(res.data))
+              .catch((error) => console.log('Subscription was unsuccessful: ', error));
+          }
+
+          Object.assign(fullData, step[1], { offer: values }, { gclid_field: isGclidValid ? gclid.value : '' });
+
+          const response = await axios.post(`${process.env.WEBSITE_URL}/api/formular`, fullData);
+          if (response.status === 200) {
+            console.log(response.data);
+            toast({
+              title: 'Einreichung erfolgreich',
+              status: 'success',
+              duration: 5000,
+              isClosable: false,
+            });
+            setStep((currValue) => [7, { ...currValue[1], offer: values }]);
+          } else {
+            toast({
+              title: 'Fehler beim Senden Ihrer Anfrage',
+              status: 'error',
+              duration: 5000,
+              isClosable: false,
+            });
+          }
         }}
       >
         {({ handleSubmit, values, isSubmitting }) => (
@@ -276,9 +304,6 @@ const Offer = () => {
                   label='Wünschen Sie eine Videoberatung?'
                 />
               </SimpleGrid>
-
-              {/* <Divider /> */}
-              {/* <SimpleGrid w='full' columns={2} spacing={6}></SimpleGrid> */}
 
               <Box bgColor='gray.400' w='100%' h='1px' />
 

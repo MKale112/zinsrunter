@@ -24,6 +24,23 @@ export interface MetaTags {
   image: string;
 }
 
+export interface SubscribeBody {
+  email: string;
+  vorname: string;
+  name: string;
+  anrede: string;
+  sparte_seite: string;
+  plz: string;
+  ort: string;
+  berufsstatus: string;
+  geburtsdatum: string;
+}
+
+export interface LocalStorageGCLID {
+  value: string;
+  expiryDate: number;
+}
+
 export interface DBInput {
   anrede: string;
   vorname: string;

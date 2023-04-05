@@ -708,7 +708,10 @@ const Datenschutz = ({ isPopup = false }: Props) => {
             <Heading as='h2' fontSize={['md', 'lg', 'lg', 'xl']}>
               10. Welche internetspezifischen Datenverarbeitungen anfallen
             </Heading>
-            <Text>Individuelle Einstellungen</Text>
+            <Text>Individuelle Einstellungen</Text>{' '}
+            <button id='ot-sdk-btn' className='ot-sdk-show-settings'>
+              Individuelle Einstellungen
+            </button>
             <Text>
               <strong>a) Hinweise zu Cookies</strong> <br />
               Im Rahmen unserer Internetseiten verwenden wir so genannte Cookies. Hierbei handelt es sich um kleine
