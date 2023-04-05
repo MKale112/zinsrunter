@@ -64,6 +64,8 @@ const populateQueryString = (flattenedData: Record<any, any>): string => {
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  console.log('WEBSITE_URL:', process.env.WEBSITE_URL); // Log the website URL
+
   try {
     const log = flattenObject(req.body);
     await validationSchema.validate(log);
