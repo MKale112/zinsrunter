@@ -60,16 +60,14 @@ const populateQueryString = (flattenedData: Record<any, any>): string => {
     }`;
   });
   const queryString = `INSERT INTO adressen(${columnString}) VALUES (${values})`;
+
   return queryString;
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  console.log('WEBSITE_URL:', process.env.WEBSITE_URL); // Log the website URL
-
   try {
     const log = flattenObject(req.body);
     await validationSchema.validate(log);
-    console.log('log: ', log);
 
     const queryString = populateQueryString(flattenObject(req.body));
     console.log(queryString);
