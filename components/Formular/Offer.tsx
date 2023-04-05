@@ -122,6 +122,7 @@ const Offer = () => {
 
           Object.assign(fullData, step[1], { offer: values }, { gclid_field: isGclidValid ? gclid.value : '' });
 
+          console.log(`${process.env.WEBSITE_URL}/api/formular`);
           const response = await axios.post(`${process.env.WEBSITE_URL}/api/formular`, fullData);
           if (response.status === 200) {
             console.log(response.data);
