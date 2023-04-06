@@ -48,7 +48,7 @@ export const Metadata = ({ asPath }: { asPath: string }) => {
 
       <meta name='description' content={metaText.desc} />
       <meta name='Copyright' content='Siguron GmbH, M&uuml;nchen' />
-      <link rel='canonical' href={asPath} />
+      {!asPath.includes('[...step]') && <link rel='canonical' href={asPath} />}
       <meta property='og:title' content={metaText.title} />
       <meta property='og:description' content={metaText.desc} />
       <meta property='og:image' content={metaText.image} />

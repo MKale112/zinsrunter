@@ -11,6 +11,7 @@ import { Metadata } from '@/components/Metadata';
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
+  console.log({ router });
   const [queryClient] = React.useState(() => new QueryClient());
   return (
     <QueryClientProvider client={queryClient}>
