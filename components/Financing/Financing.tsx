@@ -68,7 +68,7 @@ export const Financing = () => {
                     <Text>
                       Mehrfamilienhäuser (
                       <Link
-                        href='https://www.ehyp.de/ehyp/b2b/PH_Investorenfinanzierungen.pdf'
+                        href='https://ehyp.de/ehyp/b2b/PH_Investorenfinanzierungen.pdf'
                         target='_blank'
                         rel='noreferrer'
                         color='primary.blue'
@@ -85,7 +85,7 @@ export const Financing = () => {
                     <Text>
                       Teilgewerblich genutzte Objekte (max. 50%,{' '}
                       <Link
-                        href='https://www.ehyp.de/ehyp/b2b/PH_Investorenfinanzierungen.pdf'
+                        href='https://ehyp.de/ehyp/b2b/PH_Investorenfinanzierungen.pdf'
                         target='_blank'
                         rel='noreferrer'
                         color='primary.blue'

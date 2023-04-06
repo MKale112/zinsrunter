@@ -577,7 +577,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               blau direkt. Blau direkt verarbeitet Ihre Daten im Einklang mit den europäischen Datenschutzbestimmungen.
               Ausführliche Informationen zum Datenschutz und zu Ihren Rechten bzgl. der Verarbeitung Ihrer Daten können
               Sie jederzeit in der Datenschutzerklärung von blau direkt einsehen:{' '}
-              <Link href='https://www.blaudirekt.de/datenschutz/'>https://www.blaudirekt.de/datenschutz/</Link>
+              <Link href='https://blaudirekt.de/datenschutz/'>https://blaudirekt.de/datenschutz/</Link>
             </Text>
           </VStack>
 
@@ -762,11 +762,11 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               haben keinerlei Einfluss auf eventuelle Verarbeitungen von personenbezogenen Daten, da diese allein im
               Verantwortungsbereich von Facebook liegen. Nähere Informationen zur Erhebung und Nutzung der Daten durch
               Facebook finden Sie in den Datenschutzhinweisen von Facebook unter{' '}
-              <Link href='https://www.facebook.com/policy.php'>https://www.facebook.com/policy.php</Link>. Wenn Sie der
-              Nutzung von Facebook Website Custom Audiences widersprechen möchten, können Sie die entsprechenden
-              Einstellungen in Ihrem Facebook Nutzerkonto vornehmen unter:
-              <Link href='https://www.facebook.com/ads/website_custom_audiences/'>
-                https://www.facebook.com/ads/website_custom_audiences/
+              <Link href='https://facebook.com/policy.php'>https://facebook.com/policy.php</Link>. Wenn Sie der Nutzung
+              von Facebook Website Custom Audiences widersprechen möchten, können Sie die entsprechenden Einstellungen
+              in Ihrem Facebook Nutzerkonto vornehmen unter:
+              <Link href='https://facebook.com/ads/website_custom_audiences/'>
+                https://facebook.com/ads/website_custom_audiences/
               </Link>
               .
             </Text>
@@ -802,7 +802,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               Zweck und Umfang der Datenerhebung und die weitere Verarbeitung und Nutzung der Daten durch Facebook sowie
               die diesbezüglichen Rechte und Einstellungsmöglichkeiten zum Schutz der Privatsphäre der Nutzer können
               diese den Datenschutzhinweisen von Facebook entnehmen:{' '}
-              <Link href='https://www.facebook.com/about/privacy/'>https://www.facebook.com/about/privacy/</Link>.
+              <Link href='https://facebook.com/about/privacy/'>https://facebook.com/about/privacy/</Link>.
               <br />
               <br />
               Wenn ein Nutzer Facebookmitglied ist und nicht möchte, dass Facebook über dieses Angebot Daten über ihn

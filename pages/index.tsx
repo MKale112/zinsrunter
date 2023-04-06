@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import HeroBanner from '@/components/Banner/HeroBanner';
-import { useMediaQuery } from '@chakra-ui/react';
+import { Heading, VisuallyHidden, useMediaQuery } from '@chakra-ui/react';
 import Partners from '@/components/SealsAndPartners/Partners';
 import Seals from '@/components/SealsAndPartners/Seals';
 import Highlights from '@/components/Highlights/Highlights';
@@ -24,6 +24,9 @@ export default function Home() {
         type='text/javascript'
         src='https://www.baufi-lead.de/baufilead/partner/PkGvpMTcO4DxDy0gEBGuq9c2NYTZ1Q/imports.js'
       />
+      <VisuallyHidden>
+        <Heading as='h1'>Zins-Runter</Heading>
+      </VisuallyHidden>
       <HeroBanner heroImage={isMobile ? '/hero-image-mobile.webp' : '/hero-image.webp'} />
       <Financing />
       <Partners cards={true} />

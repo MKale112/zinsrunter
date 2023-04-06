@@ -4,9 +4,9 @@ import React from 'react';
 
 const generateMetaText = (asPath: string): MetaTags => {
   const metaTags: MetaTags = {
-    title: 'Baufinanzierung im Vergleich – Zins-runter.de',
-    desc: 'Zins-runter.de – Baufinanzierung unabhängig vergleichen. Unsere Experten vergleichen aus über 500 Finanzierungspartnern. Kostenlosen Finanzierungsvorschlag hier anfordern',
-    image: '/logo.png',
+    title: 'Baufinanzierung im Vergleich - Zins-runter.de',
+    desc: 'Zins-runter.de - Baufinanzierung unabhängig vergleichen. Unsere Experten vergleichen aus über 500 Finanzierungspartnern. Kostenlosen Finanzierungsvorschlag hier anfordern',
+    image: '/hero-image.webp',
   };
   switch (asPath.split('/')[1]) {
     case 'formular':
@@ -45,14 +45,13 @@ export const Metadata = ({ asPath }: { asPath: string }) => {
         name='keywords'
         content=' Baufinanzierung, Immobilienfinanzierung, Darlehen, Ratenkredite, Dienstleistung, Finanzierungsvermittler, Vergleich, Kredit'
       />
+
       <meta name='description' content={metaText.desc} />
       <meta name='Copyright' content='Siguron GmbH, M&uuml;nchen' />
-      <link rel='canonical' href='https://www.zins-runter.de/' />
-      <meta name='description' content={metaText.desc} />
-      <meta name='Copyright' content='Siguron GmbH, M&uuml;nchen' />
-      <link rel='canonical' href='https://www.zins-runter.de/' />
+      <link rel='canonical' href={asPath} />
       <meta property='og:title' content={metaText.title} />
       <meta property='og:description' content={metaText.desc} />
+      <meta property='og:image' content={metaText.image} />
     </Head>
   );
 };

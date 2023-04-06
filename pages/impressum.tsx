@@ -1,11 +1,14 @@
 import { FullWidthContainer, ResponsiveContainer } from '@/components/Containers';
-import { Heading, Link, VStack, Text, Box } from '@chakra-ui/react';
+import { Heading, Link, VStack, Text, Box, VisuallyHidden } from '@chakra-ui/react';
 import React from 'react';
 
 const AGB = () => {
   return (
     <FullWidthContainer>
       <Box h={10} bgColor='primary.blue' />
+      <VisuallyHidden>
+        <Heading as='h1'>Impressum</Heading>
+      </VisuallyHidden>
       <ResponsiveContainer py={[4, 12]} bgColor='white'>
         <VStack spacing={[4, 6, 10, 12]} alignItems='flex-start' justifyContent='flex-start'>
           <VStack alignItems='flex-start'>
@@ -114,7 +117,7 @@ const AGB = () => {
                 color='primary.blue'
                 fontWeight='semibold'
                 _hover={{ textDecoration: 'underline' }}
-                href='https://www.versicherungstarife.info/foto.htm'
+                href='https://versicherungstarife.info/foto.htm'
               >
                 Fotografen
               </Link>
@@ -191,7 +194,7 @@ const AGB = () => {
                   color='primary.blue'
                   fontWeight='semibold'
                   _hover={{ textDecoration: 'underline' }}
-                  href='https://www.facebook.com/help/?faq=17512'
+                  href='https://facebook.com/help/?faq=17512'
                 ></Link>
                 Kenntnisstand:
               </Text>

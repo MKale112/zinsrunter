@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, ListItem, OrderedList, Text, VStack } from '@chakra-ui/react';
+import { Box, Button, Heading, ListItem, OrderedList, Text, VStack, VisuallyHidden } from '@chakra-ui/react';
 import ChakraLink from '@/components/Link/ChakraLink';
 import { FullWidthContainer, ResponsiveContainer } from '@/components/Containers';
 
@@ -7,6 +7,9 @@ const Erstinformation = () => {
   return (
     <FullWidthContainer>
       <Box h={10} bgColor='primary.blue' />
+      <VisuallyHidden>
+        <Heading as='h1'>Erstinformation</Heading>
+      </VisuallyHidden>
       <ResponsiveContainer py={[4, 12]} bgColor='white'>
         <VStack spacing={[4, 8, 12]}>
           <OrderedList spacing={[4, 6]}>
@@ -104,7 +107,7 @@ const Erstinformation = () => {
             </ListItem>
           </OrderedList>
 
-          <ChakraLink href='https://www.versicherungstarife.info/erstinformation.pdf'>
+          <ChakraLink href='https://versicherungstarife.info/erstinformation.pdf'>
             <Button variant='accent' type='submit' padding={6} fontSize={20}>
               Erstinformation - PDF
             </Button>

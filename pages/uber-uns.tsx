@@ -47,7 +47,7 @@ const UberUns = () => {
             <Text>
               Das Webportal Zins-runter.de, welches als von der{' '}
               <strong>IHK zugelassener Immobiliendarlehensvermittler</strong> (Registernummer{' '}
-              <Link href='https://www.vermittlerregister.info/recherche?a=suche&zeige=VVR&registernummer=D-W-155-4BMB-08'>
+              <Link href='https://vermittlerregister.info/recherche?a=suche&zeige=VVR&registernummer=D-W-155-4BMB-08'>
                 D-W-155-4BMB-08
               </Link>
               ) gegründet wurde, von der Siguron GmbH betrieben.{' '}
@@ -58,7 +58,7 @@ const UberUns = () => {
             </Text>
             <Text>
               Als Immobiliendarlehensvermittler, Finanz/-und Versicherungsmakler ( Registernummer{' '}
-              <Link href='https://www.vermittlerregister.info/recherche?a=suche&zeige=VVR&registernummer=D-PE7E-PSNZP-43'>
+              <Link href='https://vermittlerregister.info/recherche?a=suche&zeige=VVR&registernummer=D-PE7E-PSNZP-43'>
                 D-PE7E-PSNZP-43
               </Link>{' '}
               ) arbeiten wir selbständig und unabhängig von den Kreditinstituten bzw. den Versicherungskonzernen. Wir
@@ -78,7 +78,7 @@ const UberUns = () => {
           </VStack>
 
           <VStack alignItems='flex-start' spacing={4}>
-            <Link href='https://www.versicherungstarife.info/kundenlogin.htm'>
+            <Link href='https://versicherungstarife.info/kundenlogin.htm'>
               <Heading as='h3' fontSize={['lg', 'lg', 'lg', 'xl']}>
                 2020 Kundenverwaltung und APP
               </Heading>
@@ -190,7 +190,7 @@ const UberUns = () => {
               Das liegt uns am Herzen
             </Heading>
             <Stack direction={isMobile ? 'column' : 'row'} alignItems='flex-start' spacing={8}>
-              <Link href='https://www.menschenfuermenschen.de/'>
+              <Link href='https://menschenfuermenschen.de/'>
                 <Image src='/unter-uns/menschen.webp' alt='Menschen für Menschen' height={200} width={200} />
               </Link>
               <VStack>

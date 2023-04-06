@@ -24,7 +24,7 @@ const AGB = ({ isPopup = false }: Props) => {
                 color='primary.blue'
                 fontWeight='semibold'
                 _hover={{ textDecoration: 'underline' }}
-                href='https://www.versicherungstarife.info/impressum.htm'
+                href='https://versicherungstarife.info/impressum.htm'
               >
                 hier aufrufen
               </Link>{' '}
@@ -391,7 +391,7 @@ const AGB = ({ isPopup = false }: Props) => {
                   color='primary.blue'
                   fontWeight='semibold'
                   _hover={{ textDecoration: 'underline' }}
-                  href='www.versicherungsombudsmann.de'
+                  href='https://versicherungsombudsmann.de/'
                 >
                   www.versicherungsombudsmann.de
                 </Link>
@@ -427,7 +427,7 @@ const AGB = ({ isPopup = false }: Props) => {
                   color='primary.blue'
                   fontWeight='semibold'
                   _hover={{ textDecoration: 'underline' }}
-                  href='www.schlichtung-finanzberatung.de'
+                  href='https://schlichtung-finanzberatung.de/'
                 >
                   www.schlichtung-finanzberatung.de
                 </Link>

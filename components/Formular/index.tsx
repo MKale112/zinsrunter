@@ -1,4 +1,4 @@
-import { Box, Heading, Progress, Text, VStack } from '@chakra-ui/react';
+import { Box, Heading, Progress, Text, VStack, VisuallyHidden } from '@chakra-ui/react';
 import { FormState } from 'data/form';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
@@ -13,6 +13,7 @@ import { PropertyUse } from './PropertyUse';
 import { Region } from './Region';
 import { useRecoilState } from 'recoil';
 import { stepState } from '@/core/atoms';
+import { toTitleCase } from '@/core/utils';
 // const ReactReveal = require('react-reveal');
 
 const formSteps = [
@@ -45,6 +46,9 @@ const Formular = () => {
 
   return (
     <FullWidthContainer bg={'gray.100'}>
+      <VisuallyHidden>
+        <Heading as='h1'>{toTitleCase(formSteps[step[0]])}</Heading>
+      </VisuallyHidden>
       <Progress
         bgColor='gray.200'
         colorScheme='green'

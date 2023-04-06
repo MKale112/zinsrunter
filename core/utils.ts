@@ -35,3 +35,13 @@ export function addGclid(): void {
   // const gclid = JSON.parse(localStorage.getItem('gclid') || '{}');
   // const isGclidValid = gclid && currDate < gclid.expiryDate;
 }
+
+export function toTitleCase(string: string) {
+  if (!string || string.length === 0) {
+    return '';
+  }
+  const regExp = /(^\w|\s\w)/g;
+  return string.replace(regExp, (letter) => {
+    return letter.toUpperCase();
+  });
+}

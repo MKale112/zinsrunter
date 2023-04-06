@@ -6,7 +6,7 @@ const Reprasentatives = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     const script = document.createElement('script');
-    script.src = 'https://www.baufi-lead.de/baufilead/partner/PkGvpMTcO4DxDy0gEBGuq9c2NYTZ1Q/imports.js';
+    script.src = 'https://baufi-lead.de/baufilead/partner/PkGvpMTcO4DxDy0gEBGuq9c2NYTZ1Q/imports.js';
     script.async = true;
     script.onload = () => {
       setIsLoaded(true);
@@ -23,7 +23,7 @@ const Reprasentatives = () => {
       <Script
         id='baufi-lead-script-1'
         type='text/javascript'
-        src='https://www.baufi-lead.de/baufilead/partner/PkGvpMTcO4DxDy0gEBGuq9c2NYTZ1Q/imports.js'
+        src='https://baufi-lead.de/baufilead/partner/PkGvpMTcO4DxDy0gEBGuq9c2NYTZ1Q/imports.js'
       />
       <Script id='baufi-lead-script-2' type='text/javascript'>
         var baufilead_kampagne = &quot;Zins-runter.de Europace Formulare&quot;;
