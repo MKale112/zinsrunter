@@ -8,7 +8,7 @@ const lastModDate = '2023-03-12'; // YYYY-MM-DD
 
 export const getServerSideProps = async ({ req, res }: GetServerSidePropsContext): Promise<{ props: any }> => {
   const host = req.headers.host;
-  const protocol = host?.includes('http') ? '' : 'http://';
+  const protocol = req.headers.protocol?.includes('http') ? '' : 'http://';
 
   let items = '';
   pages.forEach(
