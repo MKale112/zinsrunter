@@ -115,15 +115,15 @@ const Offer = () => {
               geburtsdatum: values.geburtsdatum,
             };
             await axios
-              .post(`${process.env.WEBSITE_URL}/api/subscribe`, body)
+              .post(`/api/subscribe`, body)
               .then((res) => console.log(res.data))
               .catch((error) => console.log('Subscription was unsuccessful: ', error));
           }
 
           Object.assign(fullData, step[1], { offer: values }, { gclid_field: isGclidValid ? gclid.value : '' });
 
-          console.log(`${process.env.WEBSITE_URL}/api/formular`);
-          const response = await axios.post(`${process.env.WEBSITE_URL}/api/formular`, fullData);
+          console.log(`${process.env.NEXT_PUBLIC_WEBSITE_URL}/api/formular`);
+          const response = await axios.post(`/api/formular`, fullData);
           if (response.status === 200) {
             console.log(response.data);
             toast({
