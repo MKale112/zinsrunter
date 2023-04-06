@@ -48,10 +48,6 @@ const Formular = () => {
 
   return (
     <>
-      <Head>
-        <link rel='canonical' href={`/formular/${formSteps[step[0]]}`} />
-      </Head>
-
       <FullWidthContainer bg={'gray.100'}>
         <VisuallyHidden>
           <Heading as='h1'>{toTitleCase(formSteps[step[0]])}</Heading>
