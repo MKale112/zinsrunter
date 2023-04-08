@@ -120,7 +120,20 @@ const Offer = () => {
               .catch((error) => console.log('Subscription was unsuccessful: ', error));
           }
 
-          Object.assign(fullData, step[1], { offer: values }, { gclid_field: isGclidValid ? gclid.value : '' });
+          console.log(values.geburtsdatum);
+          const formattedDate = new Date(values.geburtsdatum)
+            .toLocaleDateString('de-DE', {
+              day: '2-digit',
+              month: '2-digit',
+              year: 'numeric',
+            })
+            .replace(/\./g, '.');
+          Object.assign(
+            fullData,
+            step[1],
+            { offer: { ...values, geburtsdatum: formattedDate } },
+            { gclid_field: isGclidValid ? gclid.value : '' },
+          );
 
           console.log(`${process.env.NEXT_PUBLIC_WEBSITE_URL}/api/formular`);
           const response = await axios.post(`/api/formular`, fullData);

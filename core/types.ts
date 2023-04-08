@@ -249,7 +249,16 @@ export const InitialDBInput = {
   mail_versendet_an: '""',
   brokercode: '""',
   Werbeaussage: '"Baufinanzierungsvergleich"',
-  sslc: '""',
+  sslc: `"${new Date()
+    .toLocaleString('de-DE', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+    })
+    .replace(',', '')}"`,
   herkunft: '"Zins-runter.de"',
   medium: '"internet"',
   tracking: '"beratung"',
