@@ -240,7 +240,7 @@ export const InitialDBInput = {
   seite: '""',
   art: '""',
   sparte: '"baufin"',
-  angelegt_am: `"${new Date().toISOString().slice(0, 19).replace('T', ' ')}"`,
+  angelegt_am: `"${new Date().toLocaleString('de-DE').slice(0, 19).replace(',', '')}"`,
   bearbeitet: 0,
   bearbeitet_am: '""',
   bearbeitet_von: '""',
