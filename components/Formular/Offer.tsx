@@ -134,10 +134,10 @@ const Offer = () => {
           if (response.status === 200) {
             console.log(response.data);
             dataLayer.push({
-              event: 'myCustomEvent',
-              eventCategory: 'buttonClick',
-              eventAction: 'click',
-              eventLabel: 'My Button',
+              event: 'formSubmissionSuccess',
+              eventCategory: 'formSubmission',
+              email: values.email,
+              telefon: values.telefon,
             });
             toast({
               title: 'Einreichung erfolgreich',
