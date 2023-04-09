@@ -75,15 +75,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       query: queryString,
     });
 
-    // send the data to the API endpoint using axios
-    const response = await axios.post('https://leads.versicherungstarife.info/api/v1/lead/save', dataToSend, {
-      headers: {
-        Authorization: 'Bearer NUzLjq6bRfyuhdyFAnuua6I6Jsun33bMVDuqqmohpDLQ2u5LWfocxRjzunkZ',
-        'Content-Type': 'application/json',
-      },
-    });
+    console.log('before api call');
 
-    console.log(response.data);
+    // send the data to the API endpoint using axios
+    // const response = await axios.post('https://leads.versicherungstarife.info/api/v1/lead/save', dataToSend, {
+    //   headers: {
+    //     Authorization: 'Bearer NUzLjq6bRfyuhdyFAnuua6I6Jsun33bMVDuqqmohpDLQ2u5LWfocxRjzunkZ',
+    //     'Content-Type': 'application/json',
+    //   },
+    // });
+
+    console.log('after api call');
+    // console.log(response.data);
 
     res.status(200).json('Success');
   } catch (error) {
