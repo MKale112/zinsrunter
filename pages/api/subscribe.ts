@@ -65,12 +65,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     };
 
     console.log('groupRequestOptions', JSON.parse(groupRequestOptions.body));
-    // const groupResponse = await fetch(groupUrl, groupRequestOptions);
-    // const groupData = await groupResponse.json();
+    const groupResponse = await fetch(groupUrl, groupRequestOptions);
+    const groupData = await groupResponse.json();
 
-    // if (!groupData.id) {
-    //   throw new Error('Failed to create CleverReach user');
-    // }
+    if (!groupData.id) {
+      throw new Error('Failed to create CleverReach user');
+    }
 
     const formRequestOptions = {
       method: 'POST',
@@ -90,12 +90,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     console.log('formRequestOptions: ', JSON.parse(formRequestOptions.body));
 
-    // const formResponse = await fetch(formUrl, formRequestOptions);
-    // const formData = await formResponse.json();
+    const formResponse = await fetch(formUrl, formRequestOptions);
+    const formData = await formResponse.json();
 
-    // if (!formData.success) {
-    //   throw new Error('Failed to send CleverReach activation email');
-    // }
+    if (!formData.success) {
+      throw new Error('Failed to send CleverReach activation email');
+    }
 
     res.status(200).json({ success: true });
   } catch (error: any) {
