@@ -30,6 +30,7 @@ import { countries } from 'data/countries';
 import axios from 'axios';
 import Popup from '../Popups';
 import { LocalStorageGCLID, SubscribeBody } from '@/core/types';
+import { formatDate } from '@/core/utils';
 
 const Offer = () => {
   const [isMobile] = useMediaQuery('(max-width: 640px)');
@@ -120,14 +121,7 @@ const Offer = () => {
               .catch((error) => console.log('Subscription was unsuccessful: ', error));
           }
 
-          console.log(values.geburtsdatum);
-          const formattedDate = new Date(values.geburtsdatum)
-            .toLocaleDateString('de-DE', {
-              day: '2-digit',
-              month: '2-digit',
-              year: 'numeric',
-            })
-            .replace(/\./g, '.');
+          const formattedDate = formatDate(new Date(values.geburtsdatum), 'geburtsdatum');
           Object.assign(
             fullData,
             step[1],

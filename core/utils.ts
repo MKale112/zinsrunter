@@ -45,3 +45,29 @@ export function toTitleCase(string: string) {
     return letter.toUpperCase();
   });
 }
+
+export function formatDate(date: Date | string, field: string): string {
+  if (typeof date === 'string') {
+    date = new Date(date);
+  }
+
+  const day = date.getDate().toString().padStart(2, '0');
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const year = date.getFullYear().toString();
+  const hour = date.getHours().toString().padStart(2, '0');
+  const minute = date.getMinutes().toString().padStart(2, '0');
+  const second = date.getSeconds().toString().padStart(2, '0');
+
+  switch (field) {
+    case 'bearbeitet_am':
+      return `${day}.${month}.${year} - ${hour}:${minute}`;
+    case 'angelegt_am':
+      return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+    case 'geburtsdatum':
+      return `${day}.${month}.${year}`;
+    case 'sslc':
+      return `${day}.${month}.${year}-${hour}:${minute}:${second}`;
+    default:
+      throw new Error('Invalid field name');
+  }
+}

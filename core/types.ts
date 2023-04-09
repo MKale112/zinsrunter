@@ -1,3 +1,5 @@
+import { formatDate } from './utils';
+
 export interface IconProps {
   height: number;
   width: number;
@@ -240,25 +242,27 @@ export const InitialDBInput = {
   seite: '""',
   art: '""',
   sparte: '"baufin"',
-  angelegt_am: `"${new Date().toLocaleString('de-DE').slice(0, 19).replace(',', '')}"`,
+  // angelegt_am: `"${new Date().toLocaleString('de-DE').slice(0, 19).replace(',', '')}"`,
+  angelegt_am: `"${formatDate(new Date(), 'angelegt_am')}"`,
   bearbeitet: 0,
-  bearbeitet_am: '""',
+  bearbeitet_am: `"${formatDate(new Date(), 'bearbeitet_am')}"`,
   bearbeitet_von: '""',
   status: 0,
   mail_versendet: 0,
   mail_versendet_an: '""',
   brokercode: '""',
   Werbeaussage: '"Baufinanzierungsvergleich"',
-  sslc: `"${new Date()
-    .toLocaleString('de-DE', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-    })
-    .replace(',', '')}"`,
+  // sslc: `"${new Date()
+  //   .toLocaleString('de-DE', {
+  //     day: '2-digit',
+  //     month: '2-digit',
+  //     year: 'numeric',
+  //     hour: '2-digit',
+  //     minute: '2-digit',
+  //     second: '2-digit',
+  //   })
+  //   .replace(',', '')}"`,
+  sslc: `"${formatDate(new Date(), 'sslc')}"`,
   herkunft: '"Zins-runter.de"',
   medium: '"internet"',
   tracking: '"beratung"',
