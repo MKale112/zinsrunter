@@ -19,6 +19,17 @@ export default function Document() {
         {/* OneTrust-Cookie-Einwilligungshinweis – Ende für www.zins-runter.de */}
       </Head>
       <body>
+        <noscript>
+          <iframe
+            height='0'
+            src={`https://www.googletagmanager.com/ns.html?id=${process.env.GTM_ID}`}
+            style={{
+              display: 'none',
+              visibility: 'hidden',
+            }}
+            width='0'
+          />
+        </noscript>
         <ColorModeScript initialColorMode={customTheme.config.initialColorMode} />
         <Main />
         <NextScript />

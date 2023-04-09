@@ -30,7 +30,7 @@ import { countries } from 'data/countries';
 import axios from 'axios';
 import Popup from '../Popups';
 import { LocalStorageGCLID, SubscribeBody } from '@/core/types';
-import { formatDate } from '@/core/utils';
+import { dataLayer, formatDate } from '@/core/utils';
 
 const Offer = () => {
   const [isMobile] = useMediaQuery('(max-width: 640px)');
@@ -133,6 +133,12 @@ const Offer = () => {
           const response = await axios.post(`/api/formular`, fullData);
           if (response.status === 200) {
             console.log(response.data);
+            dataLayer.push({
+              event: 'myCustomEvent',
+              eventCategory: 'buttonClick',
+              eventAction: 'click',
+              eventLabel: 'My Button',
+            });
             toast({
               title: 'Einreichung erfolgreich',
               status: 'success',

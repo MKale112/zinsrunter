@@ -71,3 +71,9 @@ export function formatDate(date: Date | string, field: string): string {
       throw new Error('Invalid field name');
   }
 }
+
+export type DataLayerItem = {
+  [key: string]: any;
+};
+
+export const dataLayer: DataLayerItem[] = [];
