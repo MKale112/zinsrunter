@@ -1,9 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { FormValues } from '@/components/Formular/types';
 import { InitialDBInput } from '@/core/types';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import excuteQuery from '../../lib/db';
 import * as yup from 'yup';
+import axios from 'axios';
 
 const validationSchema = yup.object({
   finanzierungszweck: yup.string().required(),
@@ -66,14 +66,25 @@ const populateQueryString = (flattenedData: Record<any, any>): string => {
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const log = flattenObject(req.body);
-    await validationSchema.validate(log);
+    const dataToSend = flattenObject(req.body);
+    await validationSchema.validate(dataToSend);
 
     const queryString = populateQueryString(flattenObject(req.body));
-    console.log(queryString);
-    const result = await excuteQuery({
+    // console.log(queryString);
+    await excuteQuery({
       query: queryString,
     });
+
+    // send the data to the API endpoint using axios
+    const response = await axios.post('https://leads.versicherungstarife.info/api/v1/lead/save', dataToSend, {
+      headers: {
+        Authorization: 'Bearer NUzLjq6bRfyuhdyFAnuua6I6Jsun33bMVDuqqmohpDLQ2u5LWfocxRjzunkZ',
+        'Content-Type': 'application/json',
+      },
+    });
+
+    console.log(response.data);
+
     res.status(200).json('Success');
   } catch (error) {
     console.log(error);
