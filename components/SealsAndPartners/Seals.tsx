@@ -8,7 +8,6 @@ import {
   VStack,
   Text,
   useMediaQuery,
-  Image,
   HStack,
 } from '@chakra-ui/react';
 import React from 'react';
@@ -16,13 +15,16 @@ import { FullWidthContainer, ResponsiveContainer } from '../Containers';
 import Tilt from 'react-parallax-tilt';
 import sealsData from '../../data/seals.json';
 import ChakraLink from '../Link/ChakraLink';
+import Image from 'next/image';
 const ReactReveal = require('react-reveal');
 
 const Seals = () => {
   const [isMobile] = useMediaQuery('(max-width: 640px)');
 
   const sealsAndHonors = sealsData.seals.map((entry, index) => {
-    const images = entry.images.map((image, index) => <Image key={index} src={image} boxSize={isMobile ? 20 : 24} />);
+    const images = entry.images.map((image, index) => (
+      <Image key={index} src={image} alt={entry.alt} height={isMobile ? 75 : 100} width={isMobile ? 75 : 100} />
+    ));
     return (
       <ReactReveal.Fade collapse text up delay={index * 200} key={entry.id}>
         <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10}>

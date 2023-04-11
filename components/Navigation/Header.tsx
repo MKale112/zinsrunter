@@ -13,7 +13,6 @@ import {
   DrawerOverlay,
   useDisclosure,
   Flex,
-  Image,
   VStack,
   SystemStyleObject,
 } from '@chakra-ui/react';
@@ -22,6 +21,7 @@ import navigationJSON from '../../data/navigationLinks.json';
 import { FullWidthContainer, ResponsiveContainer } from '../Containers';
 import ChakraLink from '../Link/ChakraLink';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 interface TabsInterface {
   color?: string;
@@ -77,15 +77,15 @@ const Header = () => {
     <FullWidthContainer>
       <ResponsiveContainer>
         <HStack py={1} justifyContent='flex-end'>
-          <Image src='/icons/phone.webp' alt='Call us!' height={isMobile ? 15 : 25} />
-          <Text as={'b'} color='primary.blue' fontSize={{ base: 'xs', md: 'sm' }}>
+          <Image src='/icons/phone.webp' alt='Call us!' height={isMobile ? 15 : 25} width={isMobile ? 15 : 25} />
+          <Text as='b' color='primary.blue' fontSize={{ base: 'xs', md: 'sm' }}>
             Gebührenfreie Hotline: 0800 36 40000
           </Text>
         </HStack>
         <HStack py={{ base: 2, lg: 4 }} justify='space-between'>
           <HStack spacing={6} alignItems='flex-end'>
             <ChakraLink href='/'>
-              <Image src='/logo.webp' alt={'Logo Image'} width={isMobile ? 120 : 150} />
+              <Image src='/logo.webp' alt='Logo Image' height={isMobile ? 100 : 125} width={isMobile ? 120 : 150} />
             </ChakraLink>
             {!isTablet && (
               <Text fontSize={['xs', 'md', 'lg', 'lg', 'xl', '2xl']} color='secondaryFontColor'>

@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import Popup from '../Popups';
 const ReactReveal = require('react-reveal');
 
-const Teaser = ({ isMobile = false }: { isMobile?: boolean }) => {
+const Teaser = () => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {

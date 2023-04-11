@@ -1,9 +1,10 @@
 import { stepState } from '@/core/atoms';
-import { Center, VStack, Text, SimpleGrid, UnorderedList, ListItem, Image } from '@chakra-ui/react';
+import { Center, VStack, Text, SimpleGrid, UnorderedList, ListItem } from '@chakra-ui/react';
 import { schufa } from 'data/form';
 import React from 'react';
 import { useRecoilState } from 'recoil';
 import { ResponsiveContainer } from '../Containers';
+import Image from 'next/image';
 
 export const NegativeSCHUFA = () => {
   const [step, setStep] = useRecoilState(stepState);
@@ -40,7 +41,7 @@ export const NegativeSCHUFA = () => {
               _groupHover={{ filter: 'brightness(0) invert(1)' }}
               sx={step[1].schufa === entry.text ? { filter: 'brightness(0) invert(1)' } : {}}
             >
-              <Image src={entry.icon} alt={entry.text} height={16} width={16} />
+              <Image src={entry.icon} alt={entry.text} height={70} width={70} />
               <Text fontSize={['sm', 'md', 'lg']} fontWeight='medium' color='secondaryFontColor'>
                 {entry.text}
               </Text>
