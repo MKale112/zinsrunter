@@ -25,7 +25,7 @@ export const HeroBanner = (props: HeroBannerProps) => {
           backdropFilter={'blur(2px)'}
           backgroundColor={isMobile ? 'blackAlpha.400' : 'blackAlpha.500'}
         >
-          <Teaser isMobile={false} />
+          <Teaser />
           <BannerText />
         </Stack>
       </ResponsiveContainer>
