@@ -2,7 +2,7 @@
   "partners": [
     {
       "id": "commerzbank-logo",
-      "path": "/partners/commerzbank.png"
+      "path": "/partners/commerzbank.webp"
     },
     {
       "id": "dsl_bank-logo",
@@ -10,19 +10,19 @@
     },
     {
       "id": "allianz-logo",
-      "path": "/partners/allianz.png"
+      "path": "/partners/allianz.webp"
     },
     {
       "id": "axa-logo",
-      "path": "/partners/axa.png"
+      "path": "/partners/axa.webp"
     },
     {
       "id": "ing-logo",
-      "path": "/partners/ing.png"
+      "path": "/partners/ing.webp"
     },
     {
       "id": "deutsche-kreditbank-logo",
-      "path": "/partners/deutsche-kreditbank.png"
+      "path": "/partners/deutsche-kreditbank.webp"
     },
     {
       "id": "sparkasse-logo",
@@ -34,11 +34,11 @@
     },
     {
       "id": "psd-bank-logo",
-      "path": "/partners/psd-bank.png"
+      "path": "/partners/psd-bank.webp"
     },
     {
       "id": "degussa-bank-logo",
-      "path": "/partners/degussa-bank.png"
+      "path": "/partners/degussa-bank.webp"
     },
     {
       "id": "lbs-logo",
@@ -46,7 +46,7 @@
     },
     {
       "id": "deutsche-bank-logo",
-      "path": "/partners/deutsche-bank.png"
+      "path": "/partners/deutsche-bank.webp"
     },
     {
       "id": "bhw-logo",
@@ -54,7 +54,7 @@
     },
     {
       "id": "deutsche-apotheker-und-arztebank-logo",
-      "path": "/partners/deutsche-apotheker-und-arztebank.png"
+      "path": "/partners/deutsche-apotheker-und-arztebank.webp"
     },
     {
       "id": "schwaebisch-logo",

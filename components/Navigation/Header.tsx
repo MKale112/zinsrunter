@@ -85,7 +85,7 @@ const Header = () => {
         <HStack py={{ base: 2, lg: 4 }} justify='space-between'>
           <HStack spacing={6} alignItems='flex-end'>
             <ChakraLink href='/'>
-              <Image src='/logo.png' alt={'Logo Image'} width={isMobile ? 120 : 150} />
+              <Image src='/logo.webp' alt={'Logo Image'} width={isMobile ? 120 : 150} />
             </ChakraLink>
             {!isTablet && (
               <Text fontSize={['xs', 'md', 'lg', 'lg', 'xl', '2xl']} color='secondaryFontColor'>
