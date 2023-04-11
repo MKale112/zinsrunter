@@ -54,7 +54,6 @@ export const Region = () => {
   useEffect(() => {
     const autocompleteOptions = input.length === 5 ? generateOptions(input) : [];
     setOptions(autocompleteOptions);
-    console.log(initialValues);
   }, [input]);
 
   const zipcodeRegex = /^[0-9]{1,6}$/;

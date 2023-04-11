@@ -126,7 +126,6 @@ const Kontakt = () => {
               onSubmit={async (values) => {
                 const response = await axios.post(`${process.env.WEBSITE_URL}/api/kontakt`, values);
                 if (response.status === 200) {
-                  console.log(response.data);
                   toast({
                     title: 'Einreichung erfolgreich',
                     status: 'success',

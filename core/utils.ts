@@ -1,12 +1,9 @@
 export const formatNumber = (v?: number) => {
-  console.log(v);
   if (!v) return undefined;
-  // console.log(v, Number(v.toString().replaceAll('.', '').replaceAll(',', '.')));
   return Math.round(Number(v.toString().replaceAll('.', '').replaceAll(',', '.')));
 };
 
 function getParam(p: string): string | null {
-  console.log(window.location.search);
   const match = RegExp(`[?&]${p}=([^&]*)`).exec(window.location.search);
   return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
 }
@@ -21,7 +18,7 @@ function addToStorage(key: string, value: string): void {
 
 function storeGclid(): void {
   const gclidParam = getParam('gclid');
-  console.log(gclidParam);
+  // console.log(gclidParam);
   if (gclidParam) {
     addToStorage('gclid', gclidParam);
   }

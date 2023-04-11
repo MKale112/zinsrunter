@@ -4,6 +4,7 @@ import { InitialDBInput } from '@/core/types';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import excuteQuery from '../../lib/db';
 import * as yup from 'yup';
+import axios from 'axios';
 
 const validationSchema = yup.object({
   anrede: yup.string().required(),
@@ -47,18 +48,31 @@ const populateQueryString = (flattenedData: Record<any, any>): string => {
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const log = flattenObject(req.body);
-    await validationSchema.validate(log);
-    console.log('log: ', log);
+    const dataToSend = flattenObject(req.body);
+    await validationSchema.validate(dataToSend);
 
     const queryString = populateQueryString(flattenObject(req.body));
-    console.log(queryString);
-    const result = await excuteQuery({
+    await excuteQuery({
       query: queryString,
     });
+
+    const dataToSendToSecondDB = {
+      data: {
+        ...dataToSend,
+      },
+    };
+
+    // send the data to the API endpoint using axios
+    await axios.post('https://leads.versicherungstarife.info/api/v1/lead/save', dataToSendToSecondDB, {
+      headers: {
+        Authorization: 'Bearer NUzLjq6bRfyuhdyFAnuua6I6Jsun33bMVDuqqmohpDLQ2u5LWfocxRjzunkZ',
+        'Content-Type': 'application/json',
+      },
+    });
+
     res.status(200).json('Success');
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     res.status(500).json('Submission Failed');
   }
 }

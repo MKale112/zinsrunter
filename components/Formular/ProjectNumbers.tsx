@@ -59,9 +59,9 @@ const ProjectNumbers = () => {
     setVariables({ grunder: grunder!, maklerprovision: maklerprovision! });
   }, []);
 
-  useEffect(() => {
-    console.log('calculations');
-  }, [calculations]);
+  // useEffect(() => {
+  //   console.log('calculations');
+  // }, [calculations]);
 
   useEffect(() => {
     const { grunder, maklerprovision } = findGrunderAndMakler(location);
@@ -93,10 +93,8 @@ const ProjectNumbers = () => {
       const formattedModernisierungs = formatNumber(modernisierungskosten);
       const formattedEigenkapital = formatNumber(eigenkapital);
       const formattedMaklerAmount = formatNumber(newMaklerAmount);
-      console.log('newMaklerAmount: ', newMaklerAmount);
 
       const grunderAmount = Number.parseFloat(((formattedKaufpreis ?? 0) * (grunder ?? 0)).toFixed(2));
-      console.log('formattedMaklerAmount:', formattedMaklerAmount);
       const maklerAmount =
         formattedMaklerAmount ??
         Number.parseFloat(
@@ -170,7 +168,6 @@ const ProjectNumbers = () => {
               },
             },
           ]);
-          console.log(values);
         }}
       >
         {({ handleSubmit, values }) => (
@@ -194,7 +191,6 @@ const ProjectNumbers = () => {
                 backIcon={IconObject.euro}
                 onInputChange={(kaufpreis) => {
                   calculatePrices(kaufpreis as unknown as number, values.modernisierungskosten, values.eigenkapital);
-                  console.log('values', values, 'calculations', calculations);
                 }}
               />
               <HInputField
@@ -347,7 +343,6 @@ const ProjectNumbers = () => {
                 frontIcon={IconObject.minus}
                 backIcon={IconObject.euro}
                 onInputChange={(eigenkapital) => {
-                  console.log('eigenkapital', eigenkapital);
                   calculatePrices(values.kaufpreis, values.modernisierungskosten, eigenkapital as unknown as number);
                 }}
               />

@@ -70,7 +70,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     await validationSchema.validate(dataToSend);
 
     const queryString = populateQueryString(flattenObject(req.body));
-    // console.log(queryString);
     await excuteQuery({
       query: queryString,
     });
@@ -82,19 +81,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     };
 
     // send the data to the API endpoint using axios
-    const response = await axios.post('https://leads.versicherungstarife.info/api/v1/lead/save', dataToSendToSecondDB, {
+    await axios.post('https://leads.versicherungstarife.info/api/v1/lead/save', dataToSendToSecondDB, {
       headers: {
         Authorization: 'Bearer NUzLjq6bRfyuhdyFAnuua6I6Jsun33bMVDuqqmohpDLQ2u5LWfocxRjzunkZ',
         'Content-Type': 'application/json',
       },
     });
 
-    console.log('after api call');
-    // console.log(response.data);
-
     res.status(200).json('Success');
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     res.status(500).json('Submission Failed');
   }
 }

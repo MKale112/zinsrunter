@@ -44,8 +44,6 @@ const Formular = () => {
     router.push(`${formSteps[step[0]]}${step[0] === 7 ? '?thankyou=1' : ''}`);
   }, [step]);
 
-  console.log(step);
-
   return (
     <>
       <FullWidthContainer bg={'gray.100'}>

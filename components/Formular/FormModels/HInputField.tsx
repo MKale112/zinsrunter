@@ -31,7 +31,6 @@ const HInputField: FC<FieldHookConfig<string> & CustomHInputProps> = (props) => 
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     helpers.setValue(e.target.value);
-    console.log('value: ', e.target.value);
     if (onInputChange) {
       onInputChange((e.target as HTMLInputElement).value);
     }

@@ -129,10 +129,8 @@ const Offer = () => {
             { gclid_field: isGclidValid ? gclid.value : '' },
           );
 
-          console.log(`${process.env.NEXT_PUBLIC_WEBSITE_URL}/api/formular`);
           const response = await axios.post(`/api/formular`, fullData);
           if (response.status === 200) {
-            console.log(response.data);
             dataLayer.push({
               event: 'formSubmissionSuccess',
               eventCategory: 'formSubmission',
