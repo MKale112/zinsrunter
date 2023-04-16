@@ -44,12 +44,12 @@ export default function Document() {
         />
       </Head>
       <body>
-        {/* <noscript
+        <noscript
           dangerouslySetInnerHTML={{
             __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KS3CG9R"
               height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
           }}
-        /> */}
+        />
         <ColorModeScript initialColorMode={customTheme.config.initialColorMode} />
         <Main />
         <NextScript />
