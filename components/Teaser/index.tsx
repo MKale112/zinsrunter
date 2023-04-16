@@ -30,7 +30,7 @@ const Teaser = () => {
         var baufilead_tippgeber_id = &quot;TQJ25&quot;;
       </Script>
 
-      <ReactReveal.Fade right>
+      <ReactReveal.Fade duration={1000} right>
         <VStack
           h='full'
           justifyContent='center'

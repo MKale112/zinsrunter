@@ -17,6 +17,19 @@ export default function Document() {
         ></script>
         <script type='text/javascript'> function OptanonWrapper() {} </script>
         {/* OneTrust-Cookie-Einwilligungshinweis – Ende für www.zins-runter.de */}
+
+        {/* Google Analytics gtag.js script */}
+        <script async src='https://www.googletagmanager.com/gtag/js?id=AW-1067567060'></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'AW-1067567060');
+              `,
+          }}
+        />
       </Head>
       <body>
         <noscript>

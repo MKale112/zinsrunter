@@ -32,7 +32,7 @@ const Highlights = () => {
   return (
     <FullWidthContainer id='section-steps' py={[10, 16]} bg='gray.100'>
       <ResponsiveContainer>
-        <ReactReveal.Fade bottom>
+        <ReactReveal.Fade duration={1000} bottom>
           <VStack spacing={[6, 12]}>
             <Heading as='h2' fontSize={['xl', '3xl']} textAlign='center' w='80%'>
               Ihre Baufinanzierung mit uns in nur 5 Schritten

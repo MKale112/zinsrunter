@@ -9,7 +9,7 @@ export const Financing = () => {
   return (
     <FullWidthContainer id='section-finanzierungen' py={[10, 16]} bgColor='gray.100'>
       <ResponsiveContainer>
-        <ReactReveal.Fade bottom>
+        <ReactReveal.Fade duration={1000} bottom>
           <VStack spacing={[10, 20]}>
             <ReactReveal.Fade bottom>
               <VStack spacing={10} alignItems='center'>

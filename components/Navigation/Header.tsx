@@ -136,7 +136,7 @@ const Header = () => {
         {isTablet && (
           <Flex py={1}>
             <Text as='b' fontSize={['sm', 'lg', 'lg', 'xl']} color='secondaryFontColor'>
-              Das ist kein Versprechen - sondern unsere Motivation!
+              Kein Versprechen - sondern unsere Motivation!
             </Text>
           </Flex>
         )}

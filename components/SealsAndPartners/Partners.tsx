@@ -21,7 +21,7 @@ const Partners = ({ cards = true }: PartnersProps) => {
   return (
     <FullWidthContainer id='section-partners' py={[10, 16]}>
       <ResponsiveContainer>
-        <ReactReveal.Fade bottom>
+        <ReactReveal.Fade duration={1000} bottom>
           <VStack spacing={[6, 12]}>
             <Heading as='h2' fontSize={['xl', '3xl']}>
               Unsere Partner
@@ -54,14 +54,17 @@ const Partners = ({ cards = true }: PartnersProps) => {
                       </Heading>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
                         <strong>Annuitätendarlehen</strong>
+                        <br />
+                        Der Klassiker mit festem Zins und fester Rate.
                       </Text>
-                      <Text>Der Klassiker mit festem Zins und fester Rate.</Text>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
-                        <strong>Volltilger-Darlehen</strong>{' '}
+                        <strong>Volltilger-Darlehen</strong>
+                        <br />
+                        Schneller schuldenfrei mit hoher Tilgung.
                       </Text>
-                      <Text> Schneller schuldenfrei mit hoher Tilgung.</Text>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
-                        <strong>Konstant-Darlehen</strong> <br />
+                        <strong>Konstant-Darlehen</strong>
+                        <br />
                         Feste Rate und fester Zins bis zur kompletten Darlehensrückzahlung.
                       </Text>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
@@ -82,7 +85,8 @@ const Partners = ({ cards = true }: PartnersProps) => {
                         DARLEHEN MIT VERÄNDERLICHEM SOLLZINSSATZ — grosse Flexibilität
                       </Heading>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
-                        <strong>Flex-Darlehen</strong> <br />
+                        <strong>Flex-Darlehen</strong>
+                        <br />
                         Variable Zinsen und eine 100%-Sondertilgungsoption.
                       </Text>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
