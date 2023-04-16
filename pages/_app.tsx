@@ -41,24 +41,6 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   }, []);
 
-  useEffect(() => {
-    // Google Tag Manager event
-    if (process.env.NODE_ENV === 'production') {
-      const handleRouteChange = (url: string) => {
-        window.dataLayer.push({
-          event: 'pageview',
-          pagePath: url,
-        });
-      };
-
-      router.events.on('routeChangeComplete', handleRouteChange);
-
-      return () => {
-        router.events.off('routeChangeComplete', handleRouteChange);
-      };
-    }
-  }, [router.events]);
-
   return (
     <ChakraProvider theme={customTheme}>
       <Layout>
