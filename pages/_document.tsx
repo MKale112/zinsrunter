@@ -47,7 +47,7 @@ export default function Document() {
         <noscript>
           <iframe
             height='0'
-            src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}`}
+            src={`https://www.googletagmanager.com/ns.html?id=GTM-KS3CG9R`}
             style={{
               display: 'none',
               visibility: 'hidden',
