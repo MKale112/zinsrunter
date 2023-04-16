@@ -55,7 +55,12 @@ const Footer = () => {
               <HStack justify='space-evenly' align='flex-start'>
                 <VStack w='40%' h='full' justifyContent='space-between'>
                   <HStack pb={8} spacing={8} justifyContent='center' alignItems='center' textAlign='center'>
-                    {items}
+                    {items}{' '}
+                    <a href='/sitemap.xml' target='_self' rel='noreferrer'>
+                      <Button variant='link' fontWeight='normal' fontSize='sm'>
+                        Sitemap
+                      </Button>
+                    </a>
                   </HStack>
                   <Image src='/brands/geotrust-secured.png' alt='certificate-image' width={150} height={100} />
                 </VStack>

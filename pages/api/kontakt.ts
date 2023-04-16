@@ -1,5 +1,4 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { FormValues } from '@/components/Formular/types';
 import { InitialDBInput } from '@/core/types';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import excuteQuery from '../../lib/db';
@@ -11,7 +10,7 @@ const validationSchema = yup.object({
   vorname: yup.string().required(),
   name: yup.string().required(),
   strasse: yup.string().required(),
-  hausnummer: yup.number().required(),
+  hausnummer: yup.string().required(),
   ort: yup.string().required(),
   telefon: yup.string().required(),
   email: yup.string().email().required(),

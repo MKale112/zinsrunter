@@ -89,7 +89,7 @@ const Header = () => {
             </ChakraLink>
             {!isTablet && (
               <Text fontSize={['xs', 'md', 'lg', 'lg', 'xl', '2xl']} color='secondaryFontColor'>
-                Das ist kein Versprechen - sondern unsere Motivation!
+                Kein Versprechen - sondern unsere Motivation!
               </Text>
             )}
           </HStack>

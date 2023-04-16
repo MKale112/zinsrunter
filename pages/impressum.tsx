@@ -21,7 +21,7 @@ const AGB = () => {
               81377 München
             </Text>
             <Text>
-              Tel.: 0000000000000
+              Tel.: 0800 36 40000
               <br />
               Fax: 089 - 23 54 61 97
             </Text>
@@ -56,7 +56,10 @@ const AGB = () => {
               <br />
               Max-Joseph-Str. 2, 80333 München
               <br />
-              Registernummer: D-PE7E-PSNZP-43
+              Registernummer:{' '}
+              <Link href='https://vermittlerregister.info/recherche?a=suche&zeige=VVR&registernummer=D-PE7E-PSNZP-43'>
+                D-PE7E-PSNZP-43
+              </Link>
             </Text>
             <Text>
               <strong>Gewerberegistrierung nach § 34i</strong> vorhanden und erteilt durch IHK Industrie- und
@@ -64,7 +67,10 @@ const AGB = () => {
               <br />
               Max-Joseph-Str. 2, 80333 München
               <br />
-              Registernummer: D-W-155-4BMB-08
+              Registernummer:{' '}
+              <Link href='https://vermittlerregister.info/recherche?a=suche&zeige=VVR&registernummer=D-W-155-4BMB-08'>
+                D-W-155-4BMB-08
+              </Link>
             </Text>
             <Text>
               <strong>Gemeinsame Stelle gem. §11</strong> a Abs der Gewerbeordnung: <br />
@@ -112,16 +118,8 @@ const AGB = () => {
               53117 Bonn
             </Text>
             <Text>
-              Außerdem bedanken wir uns für die Unterstützung unserer Fotoauswahl bei PhotoCase.de, Fotolia.com (
-              <Link
-                color='primary.blue'
-                fontWeight='semibold'
-                _hover={{ textDecoration: 'underline' }}
-                href='https://versicherungstarife.info/foto.htm'
-              >
-                Fotografen
-              </Link>
-              ), BigStockPhoto.com sowie Pixelquelle.de
+              Außerdem bedanken wir uns für die Unterstützung unserer Fotoauswahl bei PhotoCase.de, Fotolia.com,
+              BigStockPhoto.com sowie Pixelquelle.de
             </Text>
           </VStack>
 

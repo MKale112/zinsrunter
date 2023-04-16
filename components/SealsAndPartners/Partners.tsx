@@ -1,4 +1,4 @@
-import { VStack, Heading, HStack, Text, useMediaQuery, Button, SimpleGrid } from '@chakra-ui/react';
+import { VStack, Heading, Text, useMediaQuery, Button, SimpleGrid } from '@chakra-ui/react';
 import React from 'react';
 import Image from 'next/image';
 import { FullWidthContainer, ResponsiveContainer } from '../Containers';
@@ -19,7 +19,7 @@ const Partners = ({ cards = true }: PartnersProps) => {
   ));
 
   return (
-    <FullWidthContainer id='section-partners' py={[16, 24]}>
+    <FullWidthContainer id='section-partners' py={[10, 16]}>
       <ResponsiveContainer>
         <ReactReveal.Fade bottom>
           <VStack spacing={[6, 12]}>
@@ -48,64 +48,80 @@ const Partners = ({ cards = true }: PartnersProps) => {
               (isMobile ? (
                 <VStack spacing={10}>
                   <ReactReveal.Fade bottom w='30%'>
-                    <VStack bg='gray.200' p={6} borderRadius='2xl' h='full' boxShadow='lg'>
+                    <VStack alignItems='flex-start' bg='gray.200' p={6} borderRadius='2xl' h='full' boxShadow='lg'>
                       <Heading mb={4} as='h3' fontSize={['lg', 'xl']} color='primary.blue' overflowWrap='break-word'>
-                        DARLEHEN MIT GEBUNDENEM SOLLZINSSATZ — MAXIMALE KALKULATIONSSICHERHEIT
+                        DARLEHEN MIT GEBUNDENEM SOLLZINSSATZ — maximale Kalkulationssicherheit
                       </Heading>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
-                        <strong>Annuitätendarlehen</strong> — Der Klassiker mit festem Zins und fester Rate.
+                        <strong>Annuitätendarlehen</strong>
+                      </Text>
+                      <Text>Der Klassiker mit festem Zins und fester Rate.</Text>
+                      <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
+                        <strong>Volltilger-Darlehen</strong>{' '}
+                      </Text>
+                      <Text> Schneller schuldenfrei mit hoher Tilgung.</Text>
+                      <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
+                        <strong>Konstant-Darlehen</strong> <br />
+                        Feste Rate und fester Zins bis zur kompletten Darlehensrückzahlung.
                       </Text>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
-                        <strong>Volltilger-Darlehen</strong> — Schneller schuldenfrei mit hoher Tilgung.
+                        <strong>Zinszahlungsdarlehen (Tilgungsaussetzung)</strong>
+                        <br />
+                        Steueroptimierung für Kapitalanleger.
                       </Text>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
-                        <strong>Konstant-Darlehen</strong> — Feste Rate und fester Zins bis zur kompletten
-                        Darlehensrückzahlung.
-                      </Text>
-                      <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
-                        <strong>Zinszahlungsdarlehen (Tilgungsaussetzung)</strong> — Steueroptimierung für
-                        Kapitalanleger.
-                      </Text>
-                      <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
-                        <strong>Forward-Darlehen</strong> — Die Zinsen von heute für die Anschlussfinanzierung sichern.
+                        <strong>Forward-Darlehen</strong>
+                        <br />
+                        Die Zinsen von heute für die Anschlussfinanzierung sichern.
                       </Text>
                     </VStack>
                   </ReactReveal.Fade>
                   <ReactReveal.Fade bottom w='30%'>
-                    <VStack bg='gray.200' p={6} borderRadius='2xl' h='full' boxShadow='lg'>
+                    <VStack alignItems='flex-start' bg='gray.200' p={6} borderRadius='2xl' h='full' boxShadow='lg'>
                       <Heading mb={4} as='h3' fontSize={['lg', 'xl']} color='primary.blue' overflowWrap='break-word'>
-                        DARLEHEN MIT VERÄNDERLICHEM SOLLZINSSATZ — GROSSE FLEXIBILITÄT
+                        DARLEHEN MIT VERÄNDERLICHEM SOLLZINSSATZ — grosse Flexibilität
                       </Heading>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
-                        <strong>Flex-Darlehen</strong> — Variable Zinsen und eine 100%-Sondertilgungsoption.
+                        <strong>Flex-Darlehen</strong> <br />
+                        Variable Zinsen und eine 100%-Sondertilgungsoption.
                       </Text>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
-                        <strong>Kombi-Darlehen</strong> — Feste Sollzinsbindung mit variablem Darlehensteil kombiniert.
+                        <strong>Kombi-Darlehen</strong>
+                        <br />
+                        Feste Sollzinsbindung mit variablem Darlehensteil kombiniert.
                       </Text>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
-                        <strong>Cap-Darlehen</strong> — Variable Darlehen mit Zinsobergrenze.
+                        <strong>Cap-Darlehen</strong>
+                        <br />
+                        Variable Darlehen mit Zinsobergrenze.
                       </Text>
                     </VStack>
                   </ReactReveal.Fade>
                   <ReactReveal.Fade bottom w='30%'>
-                    <VStack bg='gray.200' p={6} borderRadius='2xl' h='full' boxShadow='lg'>
+                    <VStack alignItems='flex-start' bg='gray.200' p={6} borderRadius='2xl' h='full' boxShadow='lg'>
                       <Heading mb={4} as='h3' fontSize={['lg', 'xl']} color='primary.blue' overflowWrap='break-word'>
-                        FÖRDERMITTEL, BAUSPAREN UND WOHN-RIESTER — UNTERSTÜTZUNG VON &quot;VATER STAAT&quot; FÜR DIE
-                        IMMOBILIENFINANZIERUNG
+                        FÖRDERMITTEL, BAUSPAREN UND WOHN-RIESTER — Unterstützung durch &quot&quot;Vater Staat&quot;quot;
+                        bei der Immobilienfinanzierung
                       </Heading>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
-                        <strong>Wohn-Riester-Annuitätendarlehen</strong> — Riester-Förderung für die
-                        Immobilienfinanzierung.
+                        <strong>Wohn-Riester-Annuitätendarlehen</strong>
+                        <br />
+                        Riester-Förderung für die Immobilienfinanzierung.
                       </Text>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
-                        <strong>Fördermittel der KfW</strong> — Zinsgünstige Förderdarlehen vom Bund.
+                        <strong>Fördermittel der KfW</strong>
+                        <br />
+                        Zinsgünstige Förderdarlehen vom Bund.
                       </Text>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
-                        <strong>Fördermittel der Bundesländer</strong> — Zinsgünstige Förderdarlehen von den
-                        Bundesländern.
+                        <strong>Fördermittel der Bundesländer</strong>
+                        <br />
+                        Zinsgünstige Förderdarlehen von den Bundesländern.
                       </Text>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
-                        <strong>Bausparen</strong> — Günstige Zinsen schon lange im Voraus sichern.
+                        <strong>Bausparen</strong>
+                        <br />
+                        Günstige Zinsen schon lange im Voraus sichern.
                       </Text>
                     </VStack>
                   </ReactReveal.Fade>
@@ -113,64 +129,108 @@ const Partners = ({ cards = true }: PartnersProps) => {
               ) : (
                 <SimpleGrid columns={3} gap={10} justifyContent='space-around' alignItems='flex-start'>
                   <ReactReveal.Fade bottom w='30%'>
-                    <VStack bg='gray.100' p={10} borderRadius='2xl' h='full' minH={650} boxShadow='2xl'>
+                    <VStack
+                      alignItems='flex-start'
+                      bg='gray.100'
+                      p={10}
+                      borderRadius='2xl'
+                      h='full'
+                      minH={650}
+                      boxShadow='2xl'
+                    >
                       <Heading mb={4} as='h3' fontSize={['lg', '2xl']} color='primary.blue' overflowWrap='break-word'>
-                        DARLEHEN MIT GEBUNDENEM SOLLZINSSATZ — MAXIMALE KALKULATIONSSICHERHEIT
+                        DARLEHEN MIT GEBUNDENEM SOLLZINSSATZ — maximale Kalkulationssicherheit
                       </Heading>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
-                        <strong>Annuitätendarlehen</strong> — Der Klassiker mit festem Zins und fester Rate.
+                        <strong>Annuitätendarlehen</strong>
+                        <br />
+                        Der Klassiker mit festem Zins und fester Rate.
                       </Text>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
-                        <strong>Volltilger-Darlehen</strong> — Schneller schuldenfrei mit hoher Tilgung.
+                        <strong>Volltilger-Darlehen</strong>
+                        <br />
+                        Schneller schuldenfrei mit hoher Tilgung.
                       </Text>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
-                        <strong>Konstant-Darlehen</strong> — Feste Rate und fester Zins bis zur kompletten
-                        Darlehensrückzahlung.
+                        <strong>Konstant-Darlehen</strong>
+                        <br />
+                        Feste Rate und fester Zins bis zur kompletten Darlehensrückzahlung.
                       </Text>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
-                        <strong>Zinszahlungsdarlehen (Tilgungsaussetzung)</strong> — Steueroptimierung für
-                        Kapitalanleger.
+                        <strong>Zinszahlungsdarlehen (Tilgungsaussetzung)</strong>
+                        <br />
+                        Steueroptimierung für Kapitalanleger.
                       </Text>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
-                        <strong>Forward-Darlehen</strong> — Die Zinsen von heute für die Anschlussfinanzierung sichern.
+                        <strong>Forward-Darlehen</strong>
+                        <br />
+                        Die Zinsen von heute für die Anschlussfinanzierung sichern.
                       </Text>
                     </VStack>
                   </ReactReveal.Fade>
                   <ReactReveal.Fade bottom w='30%'>
-                    <VStack bg='gray.100' p={10} borderRadius='2xl' h='full' minH={650} boxShadow='2xl'>
+                    <VStack
+                      alignItems='flex-start'
+                      bg='gray.100'
+                      p={10}
+                      borderRadius='2xl'
+                      h='full'
+                      minH={650}
+                      boxShadow='2xl'
+                    >
                       <Heading mb={4} as='h3' fontSize={['lg', '2xl']} color='primary.blue' overflowWrap='break-word'>
-                        DARLEHEN MIT VERÄNDERLICHEM SOLLZINSSATZ — GROSSE FLEXIBILITÄT
+                        DARLEHEN MIT VERÄNDERLICHEM SOLLZINSSATZ — grosse Flexibilität
                       </Heading>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
-                        <strong>Flex-Darlehen</strong> — Variable Zinsen und eine 100%-Sondertilgungsoption.
+                        <strong>Flex-Darlehen</strong>
+                        <br />
+                        Variable Zinsen und eine 100%-Sondertilgungsoption.
                       </Text>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
-                        <strong>Kombi-Darlehen</strong> — Feste Sollzinsbindung mit variablem Darlehensteil kombiniert.
+                        <strong>Kombi-Darlehen</strong>
+                        <br />
+                        Feste Sollzinsbindung mit variablem Darlehensteil kombiniert.
                       </Text>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
-                        <strong>Cap-Darlehen</strong> — Variable Darlehen mit Zinsobergrenze.
+                        <strong>Cap-Darlehen</strong>
+                        <br />
+                        Variable Darlehen mit Zinsobergrenze.
                       </Text>
                     </VStack>
                   </ReactReveal.Fade>
                   <ReactReveal.Fade bottom w='30%'>
-                    <VStack bg='gray.100' p={10} borderRadius='2xl' h='full' minH={650} boxShadow='2xl'>
+                    <VStack
+                      alignItems='flex-start'
+                      bg='gray.100'
+                      p={10}
+                      borderRadius='2xl'
+                      h='full'
+                      minH={650}
+                      boxShadow='2xl'
+                    >
                       <Heading mb={4} as='h3' fontSize={['lg', '2xl']} color='primary.blue' overflowWrap='break-word'>
-                        FÖRDERMITTEL, BAUSPAREN UND WOHN-RIESTER — UNTERSTÜTZUNG VON &quot;VATER STAAT&quot; FÜR DIE
-                        IMMOBILIENFINANZIERUNG
+                        FÖRDERMITTEL, BAUSPAREN UND WOHN-RIESTER — Unterstützung durch &quot;Vater Staat&quot; bei der
+                        Immobilienfinanzierung
                       </Heading>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
-                        <strong>Wohn-Riester-Annuitätendarlehen</strong> — Riester-Förderung für die
-                        Immobilienfinanzierung.
+                        <strong>Wohn-Riester-Annuitätendarlehen</strong>
+                        <br />
+                        Riester-Förderung für die Immobilienfinanzierung.
                       </Text>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
-                        <strong>Fördermittel der KfW</strong> — Zinsgünstige Förderdarlehen vom Bund.
+                        <strong>Fördermittel der KfW</strong>
+                        <br />
+                        Zinsgünstige Förderdarlehen vom Bund.
                       </Text>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
-                        <strong>Fördermittel der Bundesländer</strong> — Zinsgünstige Förderdarlehen von den
-                        Bundesländern.
+                        <strong>Fördermittel der Bundesländer</strong>
+                        <br />
+                        Zinsgünstige Förderdarlehen von den Bundesländern.
                       </Text>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
-                        <strong>Bausparen</strong> — Günstige Zinsen schon lange im Voraus sichern.
+                        <strong>Bausparen</strong>
+                        <br />
+                        Günstige Zinsen schon lange im Voraus sichern.
                       </Text>
                     </VStack>
                   </ReactReveal.Fade>

@@ -29,7 +29,7 @@ export const finanzierungszweck = {
     {
       key: 'followUpFinance',
       icon: '/icons/follow-up-financing.webp',
-      text: 'Anschluss­finanzierung',
+      text: 'Anschlussfinanzierung',
     },
     {
       key: 'modernize',
@@ -39,7 +39,7 @@ export const finanzierungszweck = {
     {
       key: 'raisingCapital',
       icon: '/icons/raising-capital.webp',
-      text: 'Kapital­beschaffung',
+      text: 'Kapitalbeschaffung',
     },
   ],
 };

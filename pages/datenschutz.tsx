@@ -62,7 +62,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               81377 München
               <br />
               <br />
-              Tel.: 00000000000000
+              Tel.: 0800 36 40000
               <br />
               Fax: 089 - 23 54 61 97
               <br />
@@ -697,7 +697,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               <br />
               Sie haben selbstverständlich die Möglichkeit, Ihr Einverständnis jederzeit zu widerrufen. Den Widerruf
               können Sie schriftlich an die Adresse SIGURON GmbH Fürstenrieder Str. 279a 81377 München (Zins-runter.de)
-              richten. Es genügt jedoch auch eine E-Mail an
+              richten. Es genügt jedoch auch eine E-Mail an{' '}
               <Link href='mailto: service@zins-runter.de'>service@zins-runter.de</Link>. Für den Fall, dass Sie Ihr
               Einverständnis widerrufen, bitten wir um Verständnis dafür, dass wir bestimmte Dienste nicht oder nicht
               vollständig oder nicht störungsfrei erbringen können.

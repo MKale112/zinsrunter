@@ -39,6 +39,8 @@ const Erstinformation = () => {
                   §34i Absatz 1 der Gewerbeordnung GewO
                 </strong>
                 . Zuständige Aufsichtsbehörde: Industrie- und Handelskammer für München und Oberbayern.
+                <br />
+                <br />
               </Text>
               <Text>
                 <strong>Gewerbezulassung nach § 34c</strong> vorhanden und erteilt durch die Landeshauptstadt München,

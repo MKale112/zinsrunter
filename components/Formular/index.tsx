@@ -14,7 +14,6 @@ import { Region } from './Region';
 import { useRecoilState } from 'recoil';
 import { stepState } from '@/core/atoms';
 import { toTitleCase } from '@/core/utils';
-import Head from 'next/head';
 
 // const ReactReveal = require('react-reveal');
 
@@ -36,6 +35,7 @@ const Formular = () => {
   const stepByUrl = formSteps.indexOf(formStep || 'finanzierungszweck');
 
   const [step, _setStep] = useRecoilState(stepState);
+  console.log(step);
 
   const numberOfSteps = formSteps.length;
   const progress = ((stepByUrl + 1) / numberOfSteps) * 100;

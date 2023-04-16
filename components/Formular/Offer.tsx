@@ -12,6 +12,7 @@ import {
   useToast,
   useMediaQuery,
   Stack,
+  Spinner,
 } from '@chakra-ui/react';
 import { errorMessages } from 'data/errorMessages';
 import { Formik, Form, Field } from 'formik';
@@ -62,9 +63,9 @@ const Offer = () => {
     email: yup.string().email(errorMessages.invalidEmail),
     erreichbarkeit: yup.string().required(errorMessages.fieldRequired),
     bemerkung: yup.string(),
-    videoberatung: yup.string(),
+    videoberatung: yup.string().required(errorMessages.fieldRequired),
     newsletter: yup.boolean(),
-    agb: yup.boolean().oneOf([true], errorMessages.termsAndConditions).required(errorMessages.fieldRequired),
+    agb: yup.boolean().oneOf([true], errorMessages.termsAndConditions).required(errorMessages.agbRequired),
   });
   const initialValues: OfferData = {
     anrede: step[1].offer?.anrede || '',
@@ -96,7 +97,7 @@ const Offer = () => {
         validationSchema={validationSchema}
         validateOnChange={true}
         validateOnBlur={false}
-        onSubmit={async (values) => {
+        onSubmit={async (values, { resetForm }) => {
           // setStep((currValue) => [7, { ...currValue[1], offer: values }]);
 
           const currDate = new Date().getTime();
@@ -131,6 +132,7 @@ const Offer = () => {
 
           const response = await axios.post(`/api/formular`, fullData);
           if (response.status === 200) {
+            resetForm();
             dataLayer.push({
               event: 'formSubmissionSuccess',
               eventCategory: 'formSubmission',
@@ -217,8 +219,8 @@ const Offer = () => {
                   type='date'
                   label='Geburtsdatum'
                   placeholder='Bitte eingeben'
-                  maxDate='9999-12-31'
-                  minDate='1900-01-01'
+                  maxDate={`${new Date().getFullYear() + 100}-12-31`}
+                  minDate={`${new Date().getFullYear() - 100}-01-01`}
                 />
 
                 <HStack alignItems='flex-end'>
@@ -277,7 +279,7 @@ const Offer = () => {
                   Ihre Privatsphäre ist uns wichtig!
                 </Text>
                 <Text>
-                  Auch wir mögen keine Werbemails und -anrufe! Deshalb garantieren wir Ihnen, dass wir Ihre Daten auf
+                  Auch wir mögen keine Werbemails und Anrufe. Deshalb garantieren wir Ihnen, dass wir Ihre Daten auf
                   keinen Fall an unbeteiligte Dritte weitergeben.
                 </Text>
               </Stack>
@@ -399,9 +401,13 @@ const Offer = () => {
               <VStack>
                 <Text fontSize={20}>Stimmt so alles?</Text>
 
-                <Button variant='accent' type='submit' padding={6} fontSize={20} disabled={isSubmitting}>
-                  Jetzt Angebot anfordern
-                </Button>
+                {isSubmitting ? (
+                  <Spinner size='xl' thickness='7px' speed='0.65s' color='primary.acid' />
+                ) : (
+                  <Button variant='accent' type='submit' padding={6} fontSize={20} disabled={isSubmitting}>
+                    Jetzt Angebot anfordern
+                  </Button>
+                )}
               </VStack>
             </VStack>
           </Form>

@@ -11,10 +11,11 @@ import {
   HStack,
   Link,
   useToast,
+  Spinner,
 } from '@chakra-ui/react';
 import { Field, Form, Formik } from 'formik';
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import kontaktData from '../data/kontakt.json';
 import * as yup from 'yup';
 import { errorMessages } from 'data/errorMessages';
@@ -22,11 +23,13 @@ import InputField from '@/components/Formular/FormModels/InputField';
 import SelectField from '@/components/Formular/FormModels/SelectField';
 import TextAreaField from '@/components/Formular/FormModels/TextAreaField';
 import CheckboxField from '@/components/Formular/FormModels/CheckboxField';
-import ChakraLink from '@/components/Link/ChakraLink';
 import axios from 'axios';
+import Popup from '@/components/Popups';
 
 const Kontakt = () => {
   const [isMobile] = useMediaQuery('(max-width: 640px)');
+  const [isOpen, setIsOpen] = useState(false);
+  const [popupContent, setPopupContent] = useState('');
   const toast = useToast();
   const kontaktCards = kontaktData.kontakt.map((entry) => (
     <Center key={entry.id} h='full'>
@@ -73,12 +76,16 @@ const Kontakt = () => {
     vorname: yup.string().required(errorMessages.fieldRequired),
     name: yup.string().required(errorMessages.fieldRequired),
     strasse: yup.string().required(errorMessages.fieldRequired),
-    hausnummer: yup.string().matches(houseNumberRegex, errorMessages),
+    hausnummer: yup.string().when('strasse', {
+      is: (val: string) => !val || val.trim() === '',
+      then: yup.string().required('\u00a0'),
+      otherwise: yup.string().matches(houseNumberRegex, errorMessages.invalidInput),
+    }),
     ort: yup.string().required(errorMessages.fieldRequired),
     telefon: yup.string().matches(phoneRegex).typeError(errorMessages.isNum).required(errorMessages.fieldRequired),
     email: yup.string().required(errorMessages.fieldRequired),
     bemerkung: yup.string(),
-    agb: yup.boolean().oneOf([true], errorMessages.termsAndConditions).required(errorMessages.fieldRequired),
+    agb: yup.boolean().oneOf([true], errorMessages.termsAndConditions).required(errorMessages.agbRequired),
   });
 
   const initialValues = {
@@ -123,9 +130,10 @@ const Kontakt = () => {
               validationSchema={validationSchema}
               validateOnChange={true}
               validateOnBlur={false}
-              onSubmit={async (values) => {
-                const response = await axios.post(`${process.env.WEBSITE_URL}/api/kontakt`, values);
+              onSubmit={async (values, { resetForm }) => {
+                const response = await axios.post(`${process.env.NEXT_PUBLIC_WEBSITE_URL}/api/kontakt`, values);
                 if (response.status === 200) {
+                  resetForm();
                   toast({
                     title: 'Einreichung erfolgreich',
                     status: 'success',
@@ -142,7 +150,7 @@ const Kontakt = () => {
                 }
               }}
             >
-              {({ handleSubmit, values }) => (
+              {({ handleSubmit, values, isSubmitting }) => (
                 <Form onSubmit={handleSubmit}>
                   <VStack
                     minWidth={isMobile ? '90vw' : '50vw'}
@@ -234,27 +242,46 @@ const Kontakt = () => {
                         name='agb'
                         label={
                           <Text color='secondaryFontColor'>
-                            <ChakraLink _hover={{ textDecoration: 'underline' }} href='/datenschutz'>
+                            <Link
+                              _hover={{ textDecoration: 'underline' }}
+                              color='primary.linkBlue'
+                              onClick={() => {
+                                setIsOpen(true);
+                                setPopupContent('Datenschutz');
+                              }}
+                            >
                               Datenschutz
-                            </ChakraLink>{' '}
+                            </Link>{' '}
                             und{' '}
-                            <ChakraLink _hover={{ textDecoration: 'underline' }} href='/agb'>
+                            <Link
+                              _hover={{ textDecoration: 'underline' }}
+                              color='primary.linkBlue'
+                              onClick={() => {
+                                setIsOpen(true);
+                                setPopupContent('AGB');
+                              }}
+                            >
                               AGB
-                            </ChakraLink>{' '}
+                            </Link>{' '}
                             akzeptiert
                           </Text>
                         }
                       />
                     </HStack>
+                    <Popup isOpen={isOpen} onClose={() => setIsOpen(false)} popupContent={popupContent} />
 
                     <HStack alignItems='center' spacing={4} py={4}>
                       <Image src='/ssl-icon.png' alt='Übermittlung über Sicherheitsserver' height={30} width={30} />
                       <Text>Alle Ihre Daten werden sicher SSL-verschlüsselt übertragen!</Text>
                     </HStack>
 
-                    <Button variant='accent' type='submit' padding={6} fontSize={20}>
-                      Absenden
-                    </Button>
+                    {isSubmitting ? (
+                      <Spinner size='xl' thickness='7px' speed='0.65s' color='primary.acid' />
+                    ) : (
+                      <Button variant='accent' type='submit' padding={6} fontSize={20}>
+                        Absenden
+                      </Button>
+                    )}
                   </VStack>
                 </Form>
               )}

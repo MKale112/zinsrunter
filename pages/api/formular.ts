@@ -21,7 +21,7 @@ const validationSchema = yup.object({
   name: yup.string().required(),
   geburtsdatum: yup.string().required(),
   strasse: yup.string().required(),
-  hausnummer: yup.number().required(),
+  hausnummer: yup.string().required(),
   familienstand: yup.string().required(),
   staatsangehorigkeit: yup.string().required(),
   plz: yup.string().required(),

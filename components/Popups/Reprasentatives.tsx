@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { VStack, Text, Divider, Tr, Td, Table, Tbody } from '@chakra-ui/react';
+import { VStack, Text, Tr, Td, Table, Tbody, Spinner } from '@chakra-ui/react';
 import Script from 'next/script';
 
 const Reprasentatives = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
     const script = document.createElement('script');
-    script.src = 'https://baufi-lead.de/baufilead/partner/PkGvpMTcO4DxDy0gEBGuq9c2NYTZ1Q/imports.js';
+    script.src = 'https://www.baufi-lead.de/baufilead/partner/PkGvpMTcO4DxDy0gEBGuq9c2NYTZ1Q/imports.js';
     script.async = true;
     script.onload = () => {
       setIsLoaded(true);
@@ -17,13 +18,14 @@ const Reprasentatives = () => {
       document.body.removeChild(script);
     };
   }, []);
+  console.log(isLoaded);
 
   return isLoaded ? (
     <>
       <Script
         id='baufi-lead-script-1'
         type='text/javascript'
-        src='https://baufi-lead.de/baufilead/partner/PkGvpMTcO4DxDy0gEBGuq9c2NYTZ1Q/imports.js'
+        src='https://www.baufi-lead.de/baufilead/partner/PkGvpMTcO4DxDy0gEBGuq9c2NYTZ1Q/imports.js'
       />
       <Script id='baufi-lead-script-2' type='text/javascript'>
         var baufilead_kampagne = &quot;Zins-runter.de Europace Formulare&quot;;
@@ -174,7 +176,9 @@ const Reprasentatives = () => {
       </VStack>
     </>
   ) : (
-    <></>
+    <>
+      <Spinner size='xl' thickness='7px' speed='0.65s' color='primary.acid' />
+    </>
   );
 };
 

@@ -19,7 +19,7 @@ export const ThankYou = () => {
     >
       <CheckCircleIcon color='primary.acid' boxSize={isMobile ? 16 : 24} />
       <Heading as='h3' fontSize={['xl', '2xl', '2xl', '3xl']} textAlign='center'>
-        Ihre Angaben wurden vollständig übermittelt - Wie geht es weiter?
+        Ihre Angaben wurden vollständig übermittelt <br />- Wie geht es weiter?
       </Heading>
       <OrderedList listStylePosition='inside' spacing={4} color='primaryFontColor'>
         <ListItem>

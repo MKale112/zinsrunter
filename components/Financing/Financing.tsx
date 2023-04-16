@@ -7,7 +7,7 @@ const ReactReveal = require('react-reveal');
 
 export const Financing = () => {
   return (
-    <FullWidthContainer id='section-finanzierungen' py={[16, 24]} bgColor='gray.100'>
+    <FullWidthContainer id='section-finanzierungen' py={[10, 16]} bgColor='gray.100'>
       <ResponsiveContainer>
         <ReactReveal.Fade bottom>
           <VStack spacing={[10, 20]}>
@@ -19,9 +19,13 @@ export const Financing = () => {
                   fontSize={['md', 'xl']}
                   color='secondaryFontColor'
                 >
-                  Der Bau oder Kauf einer Immobilie ist ein bedeutender Schritt. Die Frage nach der Finanzierung ist
-                  dabei ein wesentlicher Faktor. Als unabhängiger Baufinanzierungs­berater ist Zins-runter.de Ihr
-                  Partner bei der Immobilien­finanzierung.
+                  Der Bau oder Kauf eine Immobilie ist ein bedeutender Schritt. Die Frage nach der Finanzierung ist
+                  dabei ein wesentlicher Faktor.{' '}
+                  <strong>
+                    Als unabhängiger Baufinanzierungsberater ist Zins-runter.de Ihr Partner bei der
+                    Immobilienfinanzierung
+                  </strong>
+                  .
                 </Text>
                 <Text
                   textAlign='center'
@@ -56,7 +60,7 @@ export const Financing = () => {
                     <ListIcon mt={1.5} as={CheckCircleIcon} color='primary.blue' />
                     <Text>
                       Alle Finanzierungsvorhaben (Kauf einer bestehenden Immobilie, Eigenes Bauvorhaben, Kauf eines
-                      Neubaus, Anschlussfinanzierung/Modernisierung, Kapitalbeschaffungen für andere Zwecke)
+                      Neubaus, Anschlussfinanzierung, Modernisierung, Kapitalbeschaffungen für andere Zwecke)
                     </Text>
                   </HStack>
                   <HStack alignItems='flex-start' fontSize={['md', 'xl']} color='secondaryFontColor'>
@@ -68,7 +72,7 @@ export const Financing = () => {
                     <Text>
                       Mehrfamilienhäuser (
                       <Link
-                        href='https://ehyp.de/ehyp/b2b/PH_Investorenfinanzierungen.pdf'
+                        href='/pdf/ZR_Investorenfinanzierungen.pdf'
                         target='_blank'
                         rel='noreferrer'
                         color='primary.blue'
@@ -85,7 +89,7 @@ export const Financing = () => {
                     <Text>
                       Teilgewerblich genutzte Objekte (max. 50%,{' '}
                       <Link
-                        href='https://ehyp.de/ehyp/b2b/PH_Investorenfinanzierungen.pdf'
+                        href='/pdf/ZR_Investorenfinanzierungen.pdf'
                         target='_blank'
                         rel='noreferrer'
                         color='primary.blue'

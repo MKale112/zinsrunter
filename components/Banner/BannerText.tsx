@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, Heading, VStack, Text, useMediaQuery } from '@chakra-ui/react';
 import ChakraLink from '../Link/ChakraLink';
-const ReactReveal = require('react-reveal');
 
 export const BannerText = () => {
   const [isMobile] = useMediaQuery('(max-width: 640px)');
@@ -20,12 +19,10 @@ export const BannerText = () => {
         Baufinanzierung vergleichen - einfach & sicher
       </Heading>
       <Text fontSize={{ base: 'sm', md: 'sm', lg: '2xl' }} color='white'>
-        In nur 3 Minuten zur kostenlosen
-        <br />
-        Finanzierungsanfrage - Individuell. Fair. Kostenfrei.
+        In nur 3 Min. zur kostenlosen Finanzierungsanfrage
       </Text>
       <Text fontSize={{ base: 'sm', md: 'sm', lg: '2xl' }} color='white'>
-        Finanzierungskonditionen von über 500 Banken im Vergleich
+        Finanzierungskonditionen von über 500 Finanzierungsgebern
       </Text>
       <Text fontSize={{ base: 'sm', md: 'sm', lg: '2xl' }} color='white'>
         Personliche Beratung digital oder per Telefon
@@ -36,6 +33,9 @@ export const BannerText = () => {
           Unverbindlich Anfragen
         </Button>
       </ChakraLink>
+      <Text alignSelf='center' fontSize={{ base: 'sm', md: 'sm', lg: 'md' }} color='white'>
+        Individuell. Fair. Kostenfrei.
+      </Text>
     </VStack>
   );
 };

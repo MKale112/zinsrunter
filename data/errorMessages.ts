@@ -1,5 +1,6 @@
 export const errorMessages = {
   fieldRequired: 'Dieses Feld ist erforderlich',
+  agbRequired: 'Der Datenschutz und die AGB müssen akzeptiert werden',
   notNegative: 'Dieses Feld darf keine negativen Werte haben',
   isNum: 'Dieses Feld muss eine Zahl sein',
   invalidPhone: 'Diese Telefonnummer hat ein ungültiges Format',

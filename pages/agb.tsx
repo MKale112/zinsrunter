@@ -298,7 +298,7 @@ const AGB = ({ isPopup = false }: Props) => {
                   color='primary.blue'
                   fontWeight='semibold'
                   _hover={{ textDecoration: 'underline' }}
-                  href='zins-runter.de/datenschutz'
+                  href='/datenschutz'
                 >
                   zins-runter.de/datenschutz
                 </Link>
