@@ -8,16 +8,6 @@ export default function Document() {
   return (
     <Html lang='de'>
       <Head>
-        {/* Cookie-Einwilligungshinweis – Anfang für www.zins-runter.de  */}
-        <meta charSet='UTF-8' />
-        <script
-          src='https://cdn.cookielaw.org/scripttemplates/otSDKStub.js'
-          type='text/javascript'
-          data-domain-script='ff52141d-d698-45fb-8b48-5bf7cd1623d7'
-        ></script>
-        <script type='text/javascript'> function OptanonWrapper() {} </script>
-        {/* OneTrust-Cookie-Einwilligungshinweis – Ende für www.zins-runter.de */}
-
         <Script
           id='gtm'
           strategy='afterInteractive'
@@ -29,6 +19,16 @@ export default function Document() {
         })(window,document,'script','dataLayer','GTM-KS3CG9R'});`,
           }}
         />
+
+        {/* Cookie-Einwilligungshinweis – Anfang für www.zins-runter.de  */}
+        <meta charSet='UTF-8' />
+        <script
+          src='https://cdn.cookielaw.org/scripttemplates/otSDKStub.js'
+          type='text/javascript'
+          data-domain-script='ff52141d-d698-45fb-8b48-5bf7cd1623d7'
+        ></script>
+        <script type='text/javascript'> function OptanonWrapper() {} </script>
+        {/* OneTrust-Cookie-Einwilligungshinweis – Ende für www.zins-runter.de */}
 
         {/* Google Analytics gtag.js script */}
         <script async src='https://www.googletagmanager.com/gtag/js?id=AW-1067567060'></script>
@@ -44,17 +44,12 @@ export default function Document() {
         />
       </Head>
       <body>
-        <noscript>
-          <iframe
-            height='0'
-            src={`https://www.googletagmanager.com/ns.html?id=GTM-KS3CG9R`}
-            style={{
-              display: 'none',
-              visibility: 'hidden',
-            }}
-            width='0'
-          />
-        </noscript>
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KS3CG9R"
+              height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+          }}
+        />
         <ColorModeScript initialColorMode={customTheme.config.initialColorMode} />
         <Main />
         <NextScript />

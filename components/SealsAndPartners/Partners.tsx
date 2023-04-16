@@ -104,8 +104,8 @@ const Partners = ({ cards = true }: PartnersProps) => {
                   <ReactReveal.Fade bottom w='30%'>
                     <VStack alignItems='flex-start' bg='gray.200' p={6} borderRadius='2xl' h='full' boxShadow='lg'>
                       <Heading mb={4} as='h3' fontSize={['lg', 'xl']} color='primary.blue' overflowWrap='break-word'>
-                        FÖRDERMITTEL, BAUSPAREN UND WOHN-RIESTER — Unterstützung durch &quot&quot;Vater Staat&quot;quot;
-                        bei der Immobilienfinanzierung
+                        FÖRDERMITTEL, BAUSPAREN UND WOHN-RIESTER — Unterstützung durch &quot;Vater Staat&quot; bei der
+                        Immobilienfinanzierung
                       </Heading>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
                         <strong>Wohn-Riester-Annuitätendarlehen</strong>
