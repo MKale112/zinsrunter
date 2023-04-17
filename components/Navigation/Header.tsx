@@ -50,7 +50,6 @@ const Tabs = ({ color = 'primary.blue', hoverObj = { color: 'primary.mutedBlue' 
 
 const Header = () => {
   const [isMobile] = useMediaQuery('(max-width: 640px)');
-  const [isTablet] = useMediaQuery('(max-width: 1000px)');
   const { isOpen, onOpen, onClose } = useDisclosure();
   const willRenderNav = useRouter();
 
@@ -87,67 +86,75 @@ const Header = () => {
             <ChakraLink href='/'>
               <Image src='/logo.webp' alt='Logo Image' height={isMobile ? 100 : 125} width={isMobile ? 120 : 150} />
             </ChakraLink>
-            {!isTablet && (
-              <Text fontSize={['xs', 'md', 'lg', 'lg', 'xl', '2xl']} color='secondaryFontColor'>
-                Kein Versprechen - sondern unsere Motivation!
-              </Text>
-            )}
-          </HStack>
-          {isTablet ? (
-            <>
-              {willRenderNav.pathname === '/' && (
-                <HamburgerIcon
-                  onClick={onOpen}
-                  boxSize='12'
-                  border='1px'
-                  borderRadius='lg'
-                  borderColor={'gray.300'}
-                  padding={2}
-                />
-              )}
-              <Drawer isOpen={isOpen} placement='right' onClose={onClose} size={{ base: 'xs', sm: 'md' }}>
-                <DrawerOverlay />
-                <DrawerContent overflowY='scroll'>
-                  <DrawerCloseButton size='lg' top={4} />
-                  <DrawerHeader></DrawerHeader>
 
-                  <DrawerBody>
-                    <VStack h='100%' justifyContent='center'>
-                      <VStack h='50%'>
-                        <Tabs closeDrawer={onClose} hoverObj={{ color: 'primary.acid' }} />
-                      </VStack>
-                      <VStack>{links}</VStack>
-                    </VStack>
-                  </DrawerBody>
-
-                  <DrawerFooter justifyContent='center'>
-                    {new Date().getFullYear()} ©{' '}
-                    <ChakraLink href='/'>
-                      <Button variant='link'>Zins-runter.de</Button>
-                    </ChakraLink>
-                  </DrawerFooter>
-                </DrawerContent>
-              </Drawer>
-            </>
-          ) : (
-            <HStack spacing={8}>{links}</HStack>
-          )}
-        </HStack>
-        {isTablet && (
-          <Flex py={1}>
-            <Text as='b' fontSize={['sm', 'lg', 'lg', 'xl']} color='secondaryFontColor'>
+            <Text
+              display={{ base: 'none', lg: 'block' }}
+              fontSize={['xs', 'md', 'lg', 'lg', 'xl', '2xl']}
+              color='secondaryFontColor'
+            >
               Kein Versprechen - sondern unsere Motivation!
             </Text>
-          </Flex>
-        )}
-      </ResponsiveContainer>
-      {!isTablet && (
-        <Flex bgColor='primary.blue' direction='row' justifyContent='center' alignItems='center'>
-          <ResponsiveContainer display='flex' flexDirection='row' justifyContent='center' alignItems='center'>
-            {willRenderNav.pathname === '/' && <Tabs color='primary.white' hoverObj={{ color: 'primary.acid' }} />}
-          </ResponsiveContainer>
+          </HStack>
+
+          {!willRenderNav.pathname.includes('forumlar') && (
+            <HamburgerIcon
+              display={{ lg: 'none' }}
+              color={'primary.blue'}
+              onClick={onOpen}
+              boxSize='12'
+              border='2px'
+              borderRadius='lg'
+              borderColor={'primary.blue'}
+              padding={2}
+            />
+          )}
+          <HStack display={{ base: 'none', sm: 'flex' }} spacing={8}>
+            {links}
+          </HStack>
+
+          <Drawer isOpen={isOpen} placement='right' onClose={onClose} size={{ base: 'xs', sm: 'md' }}>
+            <DrawerOverlay />
+            <DrawerContent overflowY='scroll'>
+              <DrawerCloseButton color={'primary.blue'} border='2px' borderColor={'primary.blue'} size='lg' top={4} />
+              <DrawerHeader></DrawerHeader>
+
+              <DrawerBody>
+                <VStack h='100%' justifyContent='center'>
+                  <VStack h='50%'>
+                    <Tabs closeDrawer={onClose} hoverObj={{ color: 'primary.acid' }} />
+                  </VStack>
+                  <VStack>{links}</VStack>
+                </VStack>
+              </DrawerBody>
+
+              <DrawerFooter color='secondaryFontColor' justifyContent='center'>
+                {new Date().getFullYear()} ©{' '}
+                <ChakraLink href='/'>
+                  <Button variant='link'>Zins-runter.de</Button>
+                </ChakraLink>
+              </DrawerFooter>
+            </DrawerContent>
+          </Drawer>
+        </HStack>
+
+        <Flex py={1} display={{ base: 'block', sm: 'none' }}>
+          <Text as='b' fontSize={['sm', 'lg', 'lg', 'xl']} color='secondaryFontColor'>
+            Kein Versprechen - sondern unsere Motivation!
+          </Text>
         </Flex>
-      )}
+      </ResponsiveContainer>
+
+      <Flex
+        display={{ base: 'none', lg: 'block' }}
+        bgColor='primary.blue'
+        direction='row'
+        justifyContent='center'
+        alignItems='center'
+      >
+        <ResponsiveContainer display='flex' flexDirection='row' justifyContent='center' alignItems='center'>
+          {willRenderNav.pathname === '/' && <Tabs color='primary.white' hoverObj={{ color: 'primary.acid' }} />}
+        </ResponsiveContainer>
+      </Flex>
     </FullWidthContainer>
   );
 };

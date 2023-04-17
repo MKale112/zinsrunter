@@ -15,18 +15,30 @@ export const HeroBanner = (props: HeroBannerProps) => {
   const { heroImage = defaultHeroBannerImage } = props;
 
   return (
-    <FullWidthContainer bgImgUrl={heroImage} bgImgRepeat={'no-repeat'} bgImgSize='cover' h={['36rem', '45rem']}>
-      <ResponsiveContainer h='full' w='full' display='flex' justifyContent='space-around' alignItems='center'>
+    <FullWidthContainer
+      bgImgUrl={heroImage}
+      bgImgRepeat={'no-repeat'}
+      bgImgSize='cover'
+      h={{ base: '24rem', md: '45rem' }}
+    >
+      <ResponsiveContainer
+        h='full'
+        w='full'
+        display='flex'
+        justifyContent={'space-around'}
+        alignItems={{ base: 'flex-start', md: 'center' }}
+      >
         <Stack
           w='full'
-          direction={isMobile ? 'column' : 'row'}
-          justifyContent={isMobile ? 'center' : 'space-around'}
-          spacing={isMobile ? 3 : 10}
-          backdropFilter={'blur(2px)'}
-          backgroundColor={isMobile ? 'blackAlpha.400' : 'blackAlpha.500'}
+          mt={{ base: 5, md: 0 }}
+          direction={{ base: 'column', sm: 'row' }}
+          justifyContent={{ base: 'center', sm: 'space-around' }}
+          spacing={{ base: 3, sm: 10 }}
+          backdropFilter={'blur(1px)'}
+          backgroundColor={{ base: 'blackAlpha.400', sm: 'rgba(0, 0, 0, 0.30)' }}
         >
           <Teaser />
-          <BannerText />
+          {!isMobile && <BannerText />}
         </Stack>
       </ResponsiveContainer>
     </FullWidthContainer>

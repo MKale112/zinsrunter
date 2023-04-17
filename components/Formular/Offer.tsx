@@ -35,6 +35,7 @@ import { dataLayer, formatDate } from '@/core/utils';
 
 const Offer = () => {
   const [step, setStep] = useRecoilState(stepState);
+
   const toast = useToast();
   const [isOpen, setIsOpen] = useState(false);
   const [popupContent, setPopupContent] = useState('');
@@ -132,6 +133,7 @@ const Offer = () => {
           const response = await axios.post(`/api/formular`, fullData);
           if (response.status === 200) {
             resetForm();
+
             dataLayer.push({
               event: 'formSubmissionSuccess',
               eventCategory: 'formSubmission',

@@ -37,10 +37,10 @@ const Reprasentatives = () => {
       <VStack alignItems='flex-start' spacing={6}>
         <VStack alignItems='flex-start'>
           <Text>
-            Repräsentatives Zins-BeispielUnsere Top-Konditionen mit einer 10 Jahre Sollzinsbindung stellen das Beste
-            dar, was wir Ihnen tagesaktuell anbieten können. Wir sind dabei anbieterunabhängig und haben Zugriff auf
-            mehr als 500 Finanzierungspartner. Unsere Top-Konditionen sind nur ein kleiner Ausschnitt aus unserem
-            Angebot, und dienen folglich nur als erste Indikation für Ihre Finanzierung.
+            Unsere Top-Konditionen mit einer 10 Jahre Sollzinsbindung stellen das Beste dar, was wir Ihnen tagesaktuell
+            anbieten können. Wir sind dabei anbieterunabhängig und haben Zugriff auf mehr als 500 Finanzierungspartner.
+            Unsere Top-Konditionen sind nur ein kleiner Ausschnitt aus unserem Angebot, und dienen folglich nur als
+            erste Indikation für Ihre Finanzierung.
           </Text>
         </VStack>
         <VStack>
@@ -176,9 +176,9 @@ const Reprasentatives = () => {
       </VStack>
     </>
   ) : (
-    <>
+    <VStack>
       <Spinner size='xl' thickness='7px' speed='0.65s' color='primary.acid' />
-    </>
+    </VStack>
   );
 };
 

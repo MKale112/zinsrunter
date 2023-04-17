@@ -13,6 +13,7 @@ import {
   useToast,
   Spinner,
 } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 import { Field, Form, Formik } from 'formik';
 import Image from 'next/image';
 import React, { useState } from 'react';
@@ -25,9 +26,11 @@ import TextAreaField from '@/components/Formular/FormModels/TextAreaField';
 import CheckboxField from '@/components/Formular/FormModels/CheckboxField';
 import axios from 'axios';
 import Popup from '@/components/Popups';
+import { ThankYou } from '@/components/Formular/ThankYou';
 
 const Kontakt = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { query } = useRouter();
   const [popupContent, setPopupContent] = useState('');
   const toast = useToast();
   const kontaktCards = kontaktData.kontakt.map((entry) => (
@@ -104,189 +107,190 @@ const Kontakt = () => {
     <FullWidthContainer bgColor={'gray.100'}>
       <Box h={10} bgColor='primary.blue' />
       <ResponsiveContainer py={[16, 24]}>
-        <VStack spacing={16}>
-          <VStack spacing={{ base: 4, md: 8 }}>
-            <Heading as='h1' fontSize={{ base: '3xl', md: '4xl' }}>
-              Kontakt
-            </Heading>
-            <Heading as='h2' fontSize={{ base: 'xl', md: '2xl' }} color={'secondaryFontColor'}>
-              Wie können wir Ihnen helfen?
-            </Heading>
+        {query.thankYou === '2' ? (
+          <VStack>
+            <ThankYou />
           </VStack>
-          <SimpleGrid columns={{ base: 1, sm: 2 }} gap={8}>
-            {kontaktCards}
-          </SimpleGrid>
+        ) : (
+          <VStack spacing={16}>
+            <VStack spacing={{ base: 4, md: 8 }}>
+              <Heading as='h1' fontSize={{ base: '3xl', md: '4xl' }}>
+                Kontakt
+              </Heading>
+              <Heading as='h2' fontSize={{ base: 'xl', md: '2xl' }} color={'secondaryFontColor'}>
+                Wie können wir Ihnen helfen?
+              </Heading>
+            </VStack>
+            <SimpleGrid columns={{ base: 1, sm: 2 }} gap={8}>
+              {kontaktCards}
+            </SimpleGrid>
 
-          <Box h={2} bgColor='primary.blue' w='40%' rounded='lg' />
+            <Box h={2} bgColor='primary.blue' w='40%' rounded='lg' />
 
-          <VStack id='kontakt-form' spacing={{ base: 4, md: 8 }}>
-            <Heading as='h2' fontSize={{ base: '2xl', md: '3xl' }} color={'secondaryFontColor'}>
-              Kontaktieren Sie uns unten
-            </Heading>
-            <Formik
-              // eslint-disable-next-line
-              initialValues={initialValues}
-              validationSchema={validationSchema}
-              validateOnChange={true}
-              validateOnBlur={false}
-              onSubmit={async (values, { resetForm }) => {
-                const response = await axios.post(`${process.env.NEXT_PUBLIC_WEBSITE_URL}/api/kontakt`, values);
-                if (response.status === 200) {
-                  resetForm();
-                  toast({
-                    title: 'Einreichung erfolgreich',
-                    status: 'success',
-                    duration: 5000,
-                    isClosable: false,
-                  });
-                } else {
-                  toast({
-                    title: 'Fehler beim Senden Ihrer Anfrage',
-                    status: 'error',
-                    duration: 5000,
-                    isClosable: false,
-                  });
-                }
-              }}
-            >
-              {({ handleSubmit, values, isSubmitting }) => (
-                <Form onSubmit={handleSubmit}>
-                  <VStack
-                    minWidth={{ base: '90vw', sm: '50vw' }}
-                    bgColor='white'
-                    p={10}
-                    boxShadow='2xl'
-                    borderRadius='lg'
-                    border='1px'
-                    borderColor='gray.200'
-                    spacing={4}
-                    width='full'
-                  >
-                    <Field
-                      component={SelectField}
-                      name='anrede'
-                      type='select'
-                      label='Anrede'
-                      default='No'
-                      options={['Herr', 'Frau']}
-                      placeholder='Bitte auswählen'
-                    />
-
-                    <SimpleGrid width='full' columns={{ base: 1, sm: 2 }} spacing={6}>
+            <VStack id='kontakt-form' spacing={{ base: 4, md: 8 }}>
+              <Heading as='h2' fontSize={{ base: '2xl', md: '3xl' }} color={'secondaryFontColor'}>
+                Kontaktieren Sie uns unten
+              </Heading>
+              <Formik
+                // eslint-disable-next-line
+                initialValues={initialValues}
+                validationSchema={validationSchema}
+                validateOnChange={true}
+                validateOnBlur={false}
+                onSubmit={async (values, { resetForm }) => {
+                  const response = await axios.post(`${process.env.NEXT_PUBLIC_WEBSITE_URL}/api/kontakt`, values);
+                  if (response.status === 200) {
+                    resetForm();
+                    location.href = '/kontakt?thankYou=2';
+                  } else {
+                    toast({
+                      title: 'Fehler beim Senden Ihrer Anfrage',
+                      status: 'error',
+                      duration: 3000,
+                      isClosable: false,
+                    });
+                  }
+                }}
+              >
+                {({ handleSubmit, values, isSubmitting }) => (
+                  <Form onSubmit={handleSubmit}>
+                    <VStack
+                      minWidth={{ base: '90vw', sm: '50vw' }}
+                      bgColor='white'
+                      p={10}
+                      boxShadow='2xl'
+                      borderRadius='lg'
+                      border='1px'
+                      borderColor='gray.200'
+                      spacing={4}
+                      width='full'
+                    >
                       <Field
-                        component={InputField}
-                        name='vorname'
-                        type='text'
-                        label='Vorname'
-                        placeholder='Bitte eingeben'
+                        component={SelectField}
+                        name='anrede'
+                        type='select'
+                        label='Anrede'
+                        default='No'
+                        options={['Herr', 'Frau']}
+                        placeholder='Bitte auswählen'
                       />
 
-                      <Field
-                        component={InputField}
-                        name='name'
-                        type='text'
-                        label='Nachname'
-                        placeholder='Bitte eingeben'
-                      />
-
-                      <HStack alignItems='flex-end'>
+                      <SimpleGrid width='full' columns={{ base: 1, sm: 2 }} spacing={6}>
                         <Field
                           component={InputField}
-                          name='strasse'
+                          name='vorname'
                           type='text'
-                          label='Straße/Hausnummer'
+                          label='Vorname'
                           placeholder='Bitte eingeben'
-                          width='75%'
+                        />
+
+                        <Field
+                          component={InputField}
+                          name='name'
+                          type='text'
+                          label='Nachname'
+                          placeholder='Bitte eingeben'
+                        />
+
+                        <HStack alignItems='flex-end'>
+                          <Field
+                            component={InputField}
+                            name='strasse'
+                            type='text'
+                            label='Straße/Hausnummer'
+                            placeholder='Bitte eingeben'
+                            width='75%'
+                          />
+                          <Field
+                            component={InputField}
+                            name='hausnummer'
+                            type='number'
+                            label=''
+                            placeholder='...'
+                            width='25%'
+                          />
+                        </HStack>
+
+                        <Field component={InputField} name='ort' type='text' label='Ort' placeholder='Bitte eingeben' />
+
+                        <Field
+                          component={InputField}
+                          name='telefon'
+                          type='text'
+                          label='Telefon- / Mobilnr.'
+                          placeholder='Bitte eingeben'
                         />
                         <Field
                           component={InputField}
-                          name='hausnummer'
-                          type='number'
-                          label=''
-                          placeholder='...'
-                          width='25%'
+                          name='email'
+                          type='text'
+                          label='Email'
+                          placeholder='Bitte eingeben'
+                        />
+                      </SimpleGrid>
+
+                      <Field
+                        component={TextAreaField}
+                        name='bemerkung'
+                        type='text'
+                        label='Anmerkungen'
+                        placeholder='Werden absolut Vertraulich behandelt'
+                      />
+
+                      <HStack width='full' justifyContent='flex-start'>
+                        <Field
+                          component={CheckboxField}
+                          value={values.agb}
+                          name='agb'
+                          label={
+                            <Text color='secondaryFontColor'>
+                              <Link
+                                _hover={{ textDecoration: 'underline' }}
+                                color='primary.linkBlue'
+                                onClick={() => {
+                                  setIsOpen(true);
+                                  setPopupContent('Datenschutz');
+                                }}
+                              >
+                                Datenschutz
+                              </Link>{' '}
+                              und{' '}
+                              <Link
+                                _hover={{ textDecoration: 'underline' }}
+                                color='primary.linkBlue'
+                                onClick={() => {
+                                  setIsOpen(true);
+                                  setPopupContent('AGB');
+                                }}
+                              >
+                                AGB
+                              </Link>{' '}
+                              akzeptiert
+                            </Text>
+                          }
                         />
                       </HStack>
+                      <Popup isOpen={isOpen} onClose={() => setIsOpen(false)} popupContent={popupContent} />
 
-                      <Field component={InputField} name='ort' type='text' label='Ort' placeholder='Bitte eingeben' />
+                      <HStack alignItems='center' spacing={4} py={4}>
+                        <Image src='/ssl-icon.png' alt='Übermittlung über Sicherheitsserver' height={30} width={30} />
+                        <Text>Alle Ihre Daten werden sicher SSL-verschlüsselt übertragen!</Text>
+                      </HStack>
 
-                      <Field
-                        component={InputField}
-                        name='telefon'
-                        type='text'
-                        label='Telefon- / Mobilnr.'
-                        placeholder='Bitte eingeben'
-                      />
-                      <Field
-                        component={InputField}
-                        name='email'
-                        type='text'
-                        label='Email'
-                        placeholder='Bitte eingeben'
-                      />
-                    </SimpleGrid>
-
-                    <Field
-                      component={TextAreaField}
-                      name='bemerkung'
-                      type='text'
-                      label='Anmerkungen'
-                      placeholder='Werden absolut Vertraulich behandelt'
-                    />
-
-                    <HStack width='full' justifyContent='flex-start'>
-                      <Field
-                        component={CheckboxField}
-                        value={values.agb}
-                        name='agb'
-                        label={
-                          <Text color='secondaryFontColor'>
-                            <Link
-                              _hover={{ textDecoration: 'underline' }}
-                              color='primary.linkBlue'
-                              onClick={() => {
-                                setIsOpen(true);
-                                setPopupContent('Datenschutz');
-                              }}
-                            >
-                              Datenschutz
-                            </Link>{' '}
-                            und{' '}
-                            <Link
-                              _hover={{ textDecoration: 'underline' }}
-                              color='primary.linkBlue'
-                              onClick={() => {
-                                setIsOpen(true);
-                                setPopupContent('AGB');
-                              }}
-                            >
-                              AGB
-                            </Link>{' '}
-                            akzeptiert
-                          </Text>
-                        }
-                      />
-                    </HStack>
-                    <Popup isOpen={isOpen} onClose={() => setIsOpen(false)} popupContent={popupContent} />
-
-                    <HStack alignItems='center' spacing={4} py={4}>
-                      <Image src='/ssl-icon.png' alt='Übermittlung über Sicherheitsserver' height={30} width={30} />
-                      <Text>Alle Ihre Daten werden sicher SSL-verschlüsselt übertragen!</Text>
-                    </HStack>
-
-                    {isSubmitting ? (
-                      <Spinner size='xl' thickness='7px' speed='0.65s' color='primary.acid' />
-                    ) : (
-                      <Button variant='accent' type='submit' padding={6} fontSize={20}>
-                        Absenden
-                      </Button>
-                    )}
-                  </VStack>
-                </Form>
-              )}
-            </Formik>
+                      {isSubmitting ? (
+                        <Spinner size='xl' thickness='7px' speed='0.65s' color='primary.acid' />
+                      ) : (
+                        <Button variant='accent' type='submit' padding={6} fontSize={20}>
+                          Absenden
+                        </Button>
+                      )}
+                    </VStack>
+                  </Form>
+                )}
+              </Formik>
+            </VStack>
           </VStack>
-        </VStack>
+        )}
       </ResponsiveContainer>
       <Box h={10} bgColor='primary.acid' />
     </FullWidthContainer>

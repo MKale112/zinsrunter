@@ -25,7 +25,7 @@ const formSteps = [
   'schufa',
   'projektnummern',
   'angebot',
-  'dankbarkeit',
+  'lead',
 ];
 const form = [FinanceOffer, Estate, PropertyUse, Region, NegativeSCHUFA, ProjectNumbers, Offer, ThankYou];
 

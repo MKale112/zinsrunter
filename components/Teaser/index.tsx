@@ -35,11 +35,12 @@ const Teaser = () => {
           h='full'
           justifyContent='center'
           spacing={2}
-          color='white'
           padding={[4, 6, 10]}
           fontSize={{ base: 'xl', md: 'xl', lg: '2xl' }}
+          textShadow='0px 1px 3px rgba(0,0,0,0.3)'
+          color='gray.200'
         >
-          <Text color='primary.acid' fontWeight='bold' textShadow={'2px 1px black'} pb={[1, 1, 4]}>
+          <Text color='primary.acid' fontWeight='bold' textShadow={'0px 1px 3px rgba(0,0,0,0.8)'} pb={[1, 0]}>
             Top -Zins
           </Text>
           <HStack
@@ -47,7 +48,7 @@ const Teaser = () => {
             alignItems='center'
             fontSize={{ base: '2xl', md: '2xl', lg: '4xl' }}
             fontWeight='bold'
-            textShadow={'2px 1px black'}
+            textShadow={'0px 1px 3px rgba(0,0,0,0.8)'}
             color='primary.acid'
           >
             <Text>ab</Text>
@@ -58,7 +59,7 @@ const Teaser = () => {
             <Text>Stand heute {formattedDate}</Text>
           </HStack>
           <HStack justifyContent='center' alignItems='center' fontSize={{ base: 'sm', md: 'md', lg: 'lg' }}>
-            <Text textDecoration='underline' onClick={() => setIsOpen(true)} cursor='pointer'>
+            <Text textDecoration='underline' onClick={() => setIsOpen(true)} cursor='pointer' fontWeight='bold'>
               Repräsentatives Beispiel anzeigen
             </Text>
           </HStack>

@@ -16,18 +16,18 @@ export default function Document() {
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-KS3CG9R'});`,
+        })(window,document,'script','dataLayer','GTM-N36RXZ7');`,
           }}
         />
 
         {/* Cookie-Einwilligungshinweis – Anfang für www.zins-runter.de  */}
-        <meta charSet='UTF-8' />
+        {/* <meta charSet='UTF-8' />
         <script
           src='https://cdn.cookielaw.org/scripttemplates/otSDKStub.js'
           type='text/javascript'
           data-domain-script='ff52141d-d698-45fb-8b48-5bf7cd1623d7'
         ></script>
-        <script type='text/javascript'> function OptanonWrapper() {} </script>
+        <script type='text/javascript'> function OptanonWrapper() {} </script> */}
         {/* OneTrust-Cookie-Einwilligungshinweis – Ende für www.zins-runter.de */}
 
         {/* Google Analytics gtag.js script */}
@@ -46,7 +46,7 @@ export default function Document() {
       <body>
         <noscript
           dangerouslySetInnerHTML={{
-            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KS3CG9R"
+            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N36RXZ7"
               height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
           }}
         />
