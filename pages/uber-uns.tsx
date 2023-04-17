@@ -10,7 +10,7 @@ const UberUns = () => {
   const cards = uberUns.cards.map((entry) => (
     <Center key={entry.id} h='full' w='full'>
       <Box
-        minH={isMobile ? 150 : 200}
+        minH={{ base: 150, sm: 200 }}
         w='full'
         h='full'
         bg='white'
@@ -24,7 +24,7 @@ const UberUns = () => {
             <Heading fontSize={['xl', 'xl', '2xl']} fontWeight={500} fontFamily={'body'}>
               {entry.title}
             </Heading>
-            <Stack direction={isMobile ? 'column' : 'row'} alignItems={'center'} spacing={8}>
+            <Stack direction={{ base: 'column', sm: 'row' }} alignItems={'center'} spacing={8}>
               <Image src={entry.src} alt={entry.alt} height={100} width={100} />
               <Text color={'gray.500'}>{entry.text}</Text>
             </Stack>
@@ -72,7 +72,7 @@ const UberUns = () => {
             <Heading as='h3' fontSize={['lg', 'lg', 'lg', 'xl']}>
               Stets innovativ auf dem neuersten Stand der Technik über die Jahre
             </Heading>
-            <SimpleGrid gap={8} columns={isMobile ? 1 : 2}>
+            <SimpleGrid gap={8} columns={{ base: 1, sm: 2 }}>
               {cards}
             </SimpleGrid>
           </VStack>
@@ -83,7 +83,7 @@ const UberUns = () => {
                 2020 Kundenverwaltung und APP
               </Heading>
             </Link>
-            <Stack direction={isMobile ? 'column' : 'row'} alignItems='center' spacing={8} pt={[8, 8, 8, 10]}>
+            <Stack direction={{ base: 'column', sm: 'row' }} alignItems='center' spacing={8} pt={[8, 8, 8, 10]}>
               <Image
                 src='/unter-uns/simplr.webp'
                 alt='Versicherungstarife.info 2020 Kundenlogin'
@@ -117,7 +117,7 @@ const UberUns = () => {
             <Heading as='h3' fontSize={['md', 'lg', 'lg', 'xl']}>
               2023 Zins-runter.de – Das Fachportal zum Thema Immobilienfinanzierung und Kredite
             </Heading>
-            <Stack direction={isMobile ? 'column' : 'row'} spacing={8}>
+            <Stack direction={{ base: 'column', sm: 'row' }} spacing={8}>
               <Image
                 src='/unter-uns/zinsrunter-de.webp'
                 alt='Versicherungstarife.info 2020 Kundenlogin'
@@ -189,7 +189,7 @@ const UberUns = () => {
             <Heading as='h3' fontSize={['md', 'lg', 'lg', 'xl']}>
               Das liegt uns am Herzen
             </Heading>
-            <Stack direction={isMobile ? 'column' : 'row'} alignItems='flex-start' spacing={8}>
+            <Stack direction={{ base: 'column', sm: 'row' }} alignItems='flex-start' spacing={8}>
               <Link href='https://menschenfuermenschen.de/'>
                 <Image src='/unter-uns/menschen.webp' alt='Menschen für Menschen' height={200} width={200} />
               </Link>

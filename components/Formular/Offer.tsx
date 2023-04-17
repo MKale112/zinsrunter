@@ -34,7 +34,6 @@ import { LocalStorageGCLID, SubscribeBody } from '@/core/types';
 import { dataLayer, formatDate } from '@/core/utils';
 
 const Offer = () => {
-  const [isMobile] = useMediaQuery('(max-width: 640px)');
   const [step, setStep] = useRecoilState(stepState);
   const toast = useToast();
   const [isOpen, setIsOpen] = useState(false);
@@ -274,8 +273,8 @@ const Offer = () => {
               </SimpleGrid>
               <Divider />
 
-              <Stack direction={isMobile ? 'column' : 'row'} fontSize={['sm']}>
-                <Text fontWeight='bold' w={isMobile ? 'full' : '60%'}>
+              <Stack direction={{ base: 'column', sm: 'row' }} fontSize={['sm']}>
+                <Text fontWeight='bold' w={{ base: 'full', sm: '60%' }}>
                   Ihre Privatsphäre ist uns wichtig!
                 </Text>
                 <Text>
@@ -377,7 +376,7 @@ const Offer = () => {
 
               <Box bgColor='gray.400' w='100%' h='1px' />
 
-              <VStack spacing={6} fontSize={['xs', 'sm']} alignItems={isMobile ? 'flex-start' : 'center'}>
+              <VStack spacing={6} fontSize={['xs', 'sm']} alignItems={{ base: 'flex-start', sm: 'center' }}>
                 <HStack alignItems='center' spacing={4}>
                   <Image src='/ssl-icon.png' alt='Übermittlung über Sicherheitsserver' height={30} width={30} />
                   <Text>Alle Ihre Daten werden sicher SSL-verschlüsselt übertragen!</Text>

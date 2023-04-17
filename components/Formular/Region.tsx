@@ -19,7 +19,6 @@ import { finanzierungszweck, nutzung } from 'data/form';
 import { formatNumber } from '@/core/utils';
 
 export const Region = () => {
-  const [isMobile] = useMediaQuery('(max-width: 640px)');
   const [step, setStep] = useRecoilState(stepState);
   const [input, setInput] = useState<string>('');
   const [options, setOptions] = useState<AutocompleteMapEntry[]>([]);
@@ -124,7 +123,7 @@ export const Region = () => {
               borderColor='gray.200'
               spacing={6}
             >
-              <SimpleGrid w='full' columns={isMobile ? 1 : 2} spacing={6}>
+              <SimpleGrid w='full' columns={{ base: 1, sm: 2 }} spacing={6}>
                 <AutocompleteField
                   name='standort_plz'
                   label='Postleitzahl des Vorhabens'
@@ -146,7 +145,7 @@ export const Region = () => {
                 />
               </SimpleGrid>
 
-              <SimpleGrid w='full' columns={isMobile ? 1 : 2} spacing={6}>
+              <SimpleGrid w='full' columns={{ base: 1, sm: 2 }} spacing={6}>
                 <Field
                   component={SelectField}
                   options={['Ledig', 'Verheiratet', 'Getrennt lebend', 'Geschieden', 'Verwitwet']}
@@ -196,8 +195,8 @@ export const Region = () => {
                 />
               )}
 
-              <SimpleGrid spacing={6} columns={isMobile || isRental ? 1 : 2}>
-                <VStack w={isMobile ? 'full' : !isRental ? 'full' : '50%'} alignItems='flex-start'>
+              <SimpleGrid spacing={6} columns={{ base: 1, sm: isRental ? 1 : 2 }}>
+                <VStack w={{ base: 'full', sm: !isRental ? 'full' : '50%' }} alignItems='flex-start'>
                   <Field
                     component={NumberInput}
                     name='haushaltseinkommen'

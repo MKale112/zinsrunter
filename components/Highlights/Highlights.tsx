@@ -16,7 +16,6 @@ import { FullWidthContainer, ResponsiveContainer } from '../Containers';
 const ReactReveal = require('react-reveal');
 
 const Highlights = () => {
-  const [isMobile] = useMediaQuery('(max-width: 640px)');
   const movement = keyframes`
   0% {
 		opacity: 0;
@@ -58,19 +57,18 @@ const Highlights = () => {
                     py={[4, 6, 8]}
                     borderRadius='3xl'
                     bgColor='white'
-                    _hover={
-                      isMobile
-                        ? { backgroundColor: 'white', color: 'base' }
-                        : { backgroundColor: 'primary.acid', color: 'white' }
-                    }
+                    _hover={{
+                      base: { backgroundColor: 'white', color: 'base' },
+                      sm: { backgroundColor: 'primary.acid', color: 'white' },
+                    }}
                     _expanded={{ backgroundColor: 'primary.acid', color: 'white' }}
                   >
-                    <Box flex='1' textAlign='left' ml={isMobile ? 2 : 4}>
+                    <Box flex='1' textAlign='left' ml={{ base: 2, sm: 4 }}>
                       <Heading as='h2' fontSize={['sm', '2xl']}>
                         Anfrage starten & Anbieter vergleichen
                       </Heading>
                     </Box>
-                    <AccordionIcon boxSize={isMobile ? 8 : 10} />
+                    <AccordionIcon boxSize={{ base: 8, sm: 10 }} />
                   </AccordionButton>
                 </Heading>
 
@@ -93,19 +91,18 @@ const Highlights = () => {
                     py={[4, 6, 8]}
                     borderRadius='3xl'
                     bgColor='white'
-                    _hover={
-                      isMobile
-                        ? { backgroundColor: 'white', color: 'base' }
-                        : { backgroundColor: 'primary.acid', color: 'white' }
-                    }
+                    _hover={{
+                      base: { backgroundColor: 'white', color: 'base' },
+                      sm: { backgroundColor: 'primary.acid', color: 'white' },
+                    }}
                     _expanded={{ backgroundColor: 'primary.acid', color: 'white' }}
                   >
-                    <Box flex='1' textAlign='left' ml={isMobile ? 2 : 4}>
+                    <Box flex='1' textAlign='left' ml={{ base: 2, sm: 4 }}>
                       <Heading as='h2' fontSize={['sm', '2xl']}>
                         Vorabeinschätzung durch unsere Experten
                       </Heading>
                     </Box>
-                    <AccordionIcon boxSize={isMobile ? 8 : 10} />
+                    <AccordionIcon boxSize={{ base: 8, sm: 10 }} />
                   </AccordionButton>
                 </Heading>
 
@@ -131,19 +128,18 @@ const Highlights = () => {
                     py={[4, 6, 8]}
                     borderRadius='3xl'
                     bgColor='white'
-                    _hover={
-                      isMobile
-                        ? { backgroundColor: 'white', color: 'base' }
-                        : { backgroundColor: 'primary.acid', color: 'white' }
-                    }
+                    _hover={{
+                      base: { backgroundColor: 'white', color: 'base' },
+                      sm: { backgroundColor: 'primary.acid', color: 'white' },
+                    }}
                     _expanded={{ backgroundColor: 'primary.acid', color: 'white' }}
                   >
-                    <Box flex='1' textAlign='left' ml={isMobile ? 2 : 4}>
+                    <Box flex='1' textAlign='left' ml={{ base: 2, sm: 4 }}>
                       <Heading as='h2' fontSize={['sm', '2xl']}>
                         Individuellen Finanzierungsvorschlag erhalten
                       </Heading>
                     </Box>
-                    <AccordionIcon boxSize={isMobile ? 8 : 10} />
+                    <AccordionIcon boxSize={{ base: 8, sm: 10 }} />
                   </AccordionButton>
                 </Heading>
 
@@ -166,19 +162,18 @@ const Highlights = () => {
                     py={[4, 6, 8]}
                     borderRadius='3xl'
                     bgColor='white'
-                    _hover={
-                      isMobile
-                        ? { backgroundColor: 'white', color: 'base' }
-                        : { backgroundColor: 'primary.acid', color: 'white' }
-                    }
+                    _hover={{
+                      base: { backgroundColor: 'white', color: 'base' },
+                      sm: { backgroundColor: 'primary.acid', color: 'white' },
+                    }}
                     _expanded={{ backgroundColor: 'primary.acid', color: 'white' }}
                   >
-                    <Box flex='1' textAlign='left' ml={isMobile ? 2 : 4}>
+                    <Box flex='1' textAlign='left' ml={{ base: 2, sm: 4 }}>
                       <Heading as='h2' fontSize={['sm', '2xl']}>
                         Alle erforderlichen Unterlagen vervollständigen
                       </Heading>
                     </Box>
-                    <AccordionIcon boxSize={isMobile ? 8 : 10} />
+                    <AccordionIcon boxSize={{ base: 8, sm: 10 }} />
                   </AccordionButton>
                 </Heading>
 
@@ -202,19 +197,18 @@ const Highlights = () => {
                     py={[4, 6, 8]}
                     borderRadius='3xl'
                     bgColor='white'
-                    _hover={
-                      isMobile
-                        ? { backgroundColor: 'white', color: 'base' }
-                        : { backgroundColor: 'primary.acid', color: 'white' }
-                    }
+                    _hover={{
+                      base: { backgroundColor: 'white', color: 'base' },
+                      sm: { backgroundColor: 'primary.acid', color: 'white' },
+                    }}
                     _expanded={{ backgroundColor: 'primary.acid', color: 'white' }}
                   >
-                    <Box flex='1' textAlign='left' ml={isMobile ? 2 : 4}>
+                    <Box flex='1' textAlign='left' ml={{ base: 2, sm: 4 }}>
                       <Heading as='h2' fontSize={['sm', '2xl']}>
                         Finanzierungszusage & Baufinanzierung abschließen
                       </Heading>
                     </Box>
-                    <AccordionIcon boxSize={isMobile ? 8 : 10} />
+                    <AccordionIcon boxSize={{ base: 8, sm: 10 }} />
                   </AccordionButton>
                 </Heading>
 

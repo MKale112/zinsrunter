@@ -4,8 +4,6 @@ import { CheckCircleIcon } from '@chakra-ui/icons';
 import React from 'react';
 
 export const ThankYou = () => {
-  const [isMobile] = useMediaQuery('(max-width: 640px)');
-
   return (
     <VStack
       bgColor='white'
@@ -17,7 +15,7 @@ export const ThankYou = () => {
       spacing={6}
       w={['95%', '95%', '80%', '70%']}
     >
-      <CheckCircleIcon color='primary.acid' boxSize={isMobile ? 16 : 24} />
+      <CheckCircleIcon color='primary.acid' boxSize={{ base: 16, sm: 24 }} />
       <Heading as='h3' fontSize={['xl', '2xl', '2xl', '3xl']} textAlign='center'>
         Ihre Angaben wurden vollständig übermittelt <br />- Wie geht es weiter?
       </Heading>

@@ -16,7 +16,6 @@ interface CustomHInputProps {
 }
 
 const HInputField: FC<FieldHookConfig<string> & CustomHInputProps> = (props) => {
-  const [isMobile] = useMediaQuery('(max-width: 640px)');
   const [field, meta, helpers] = useField(props);
 
   const formControlRef = useRef<HTMLDivElement>(null);
@@ -38,9 +37,9 @@ const HInputField: FC<FieldHookConfig<string> & CustomHInputProps> = (props) => 
 
   return (
     <FormControl ref={formControlRef} isInvalid={meta.touched && !!meta.error}>
-      <HStack justifyContent='space-between' alignItems={isMobile ? 'flex-start' : 'center'}>
+      <HStack justifyContent='space-between' alignItems={{ base: 'flex-start', sm: 'center' }}>
         <Box w='5%'>{frontIcon && React.createElement(frontIcon)}</Box>
-        <Stack direction={isMobile ? 'column' : 'row'} justifyContent='space-between' w='full' alignItems='center'>
+        <Stack direction={{ base: 'column', sm: 'row' }} justifyContent='space-between' w='full' alignItems='center'>
           <FormLabel fontSize={14} mb={0} mx={0} width='full'>
             {label}
           </FormLabel>

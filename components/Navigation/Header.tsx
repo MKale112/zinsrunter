@@ -55,7 +55,7 @@ const Header = () => {
   const willRenderNav = useRouter();
 
   const links = navigationJSON.topNav.map((entry) => (
-    <ChakraLink key={entry.id} href={entry.href} rel='noreferrer' w={isMobile ? '100%' : 'fit-content'}>
+    <ChakraLink key={entry.id} href={entry.href} rel='noreferrer' w={{ base: '100%', sm: 'fit-content' }}>
       <Button
         variant='outline'
         borderRadius='2xl'
@@ -105,7 +105,7 @@ const Header = () => {
                   padding={2}
                 />
               )}
-              <Drawer isOpen={isOpen} placement='right' onClose={onClose} size={isMobile ? 'xs' : 'md'}>
+              <Drawer isOpen={isOpen} placement='right' onClose={onClose} size={{ base: 'xs', sm: 'md' }}>
                 <DrawerOverlay />
                 <DrawerContent overflowY='scroll'>
                   <DrawerCloseButton size='lg' top={4} />

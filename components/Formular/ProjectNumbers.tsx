@@ -41,7 +41,6 @@ const regionSelectOptions = grunderAndMaklerData.map((entry) => (
 ));
 
 const ProjectNumbers = () => {
-  const [isMobile] = useMediaQuery('(max-width: 640px)');
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [step, setStep] = useRecoilState(stepState);
   const [location, setLocation] = useState(step[1].region.bundesland!);
@@ -210,7 +209,7 @@ const ProjectNumbers = () => {
                 <Box w='5%' alignSelf='flex-start'>
                   <AddIcon />
                 </Box>
-                <Stack direction={isMobile ? 'column' : 'row'} justifyContent='space-between' w={'full'}>
+                <Stack direction={{ base: 'column', sm: 'row' }} justifyContent='space-between' w={'full'}>
                   <HStack>
                     <Text fontSize={14} mb={0}>
                       Notar & Grundbuch
@@ -231,11 +230,11 @@ const ProjectNumbers = () => {
                 </Stack>
               </HStack>
 
-              <HStack w='full' alignItems={isMobile ? 'flex-start' : 'center'}>
+              <HStack w='full' alignItems={{ base: 'flex-start', sm: 'center' }}>
                 <Box w='5%' alignSelf='flex-start'>
                   <AddIcon />
                 </Box>
-                <Stack direction={isMobile ? 'column' : 'row'} justifyContent='space-between' w={'full'}>
+                <Stack direction={{ base: 'column', sm: 'row' }} justifyContent='space-between' w={'full'}>
                   <HStack>
                     <Text fontSize={14} mb={0}>
                       Grunderwerbsteuer
@@ -377,7 +376,7 @@ const ProjectNumbers = () => {
                 <Box w='5%' alignSelf='flex-start'>
                   <EqualsIcon />
                 </Box>
-                <Stack direction={isMobile ? 'column' : 'row'} justifyContent='space-between' w={'full'}>
+                <Stack direction={{ base: 'column', sm: 'row' }} justifyContent='space-between' w={'full'}>
                   <Text>Darlehensbetrag</Text>
                   <HStack alignSelf='flex-end'>
                     <Text>

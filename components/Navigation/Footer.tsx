@@ -27,9 +27,9 @@ const Footer = () => {
         <Stack
           py={[4, 8, 10]}
           direction={'row'}
-          justifyContent={isMobile ? 'space-evenly' : 'center'}
+          justifyContent={{ base: 'space-evenly', sm: 'center' }}
           alignItems={'center'}
-          spacing={isMobile ? 4 : 12}
+          spacing={{ base: 4, sm: 12 }}
           wrap='wrap'
         >
           {brands}

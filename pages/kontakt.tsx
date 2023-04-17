@@ -27,7 +27,6 @@ import axios from 'axios';
 import Popup from '@/components/Popups';
 
 const Kontakt = () => {
-  const [isMobile] = useMediaQuery('(max-width: 640px)');
   const [isOpen, setIsOpen] = useState(false);
   const [popupContent, setPopupContent] = useState('');
   const toast = useToast();
@@ -35,7 +34,7 @@ const Kontakt = () => {
     <Center key={entry.id} h='full'>
       <Box
         maxW={400}
-        minH={isMobile ? 200 : 250}
+        minH={{ base: 200, sm: 250 }}
         h='full'
         w='full'
         bg='white'
@@ -114,7 +113,7 @@ const Kontakt = () => {
               Wie können wir Ihnen helfen?
             </Heading>
           </VStack>
-          <SimpleGrid columns={isMobile ? 1 : 2} gap={8}>
+          <SimpleGrid columns={{ base: 1, sm: 2 }} gap={8}>
             {kontaktCards}
           </SimpleGrid>
 
@@ -153,7 +152,7 @@ const Kontakt = () => {
               {({ handleSubmit, values, isSubmitting }) => (
                 <Form onSubmit={handleSubmit}>
                   <VStack
-                    minWidth={isMobile ? '90vw' : '50vw'}
+                    minWidth={{ base: '90vw', sm: '50vw' }}
                     bgColor='white'
                     p={10}
                     boxShadow='2xl'
@@ -173,7 +172,7 @@ const Kontakt = () => {
                       placeholder='Bitte auswählen'
                     />
 
-                    <SimpleGrid width='full' columns={isMobile ? 1 : 2} spacing={6}>
+                    <SimpleGrid width='full' columns={{ base: 1, sm: 2 }} spacing={6}>
                       <Field
                         component={InputField}
                         name='vorname'

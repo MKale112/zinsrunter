@@ -31,7 +31,7 @@ const Seals = () => {
           <Center h='full'>
             <Box
               maxW={450}
-              minH={isMobile ? 250 : 300}
+              minH={{ base: 250, sm: 300 }}
               h='full'
               w='full'
               bg={useColorModeValue('white', 'gray.800')}
