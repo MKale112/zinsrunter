@@ -111,7 +111,7 @@ const Kontakt = () => {
     <FullWidthContainer bgColor={'gray.100'}>
       <Box h={10} bgColor='primary.blue' />
       <ResponsiveContainer py={[16, 24]}>
-        {query.thankYou === '2' ? (
+        {query.thankyou === '2' ? (
           <VStack>
             <ThankYou />
           </VStack>
@@ -145,7 +145,7 @@ const Kontakt = () => {
                   const response = await axios.post('/api/kontakt', values);
                   if (response.status === 200) {
                     resetForm();
-                    location.href = '/kontakt?thankYou=2';
+                    location.href = '/kontakt?thankyou=2';
                   } else {
                     toast({
                       title: 'Fehler beim Senden Ihrer Anfrage',

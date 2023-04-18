@@ -43,6 +43,7 @@ export default function Document() {
           }}
         />
       </Head>
+      {/* console.log(dataLayer); */}
       <body>
         {/* <noscript
           dangerouslySetInnerHTML={{
