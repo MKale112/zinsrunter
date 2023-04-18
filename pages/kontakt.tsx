@@ -142,7 +142,7 @@ const Kontakt = () => {
                 validateOnChange={true}
                 validateOnBlur={false}
                 onSubmit={async (values, { resetForm }) => {
-                  const response = await axios.post(`${process.env.NEXT_PUBLIC_WEBSITE_URL}/api/kontakt`, values);
+                  const response = await axios.post('/api/kontakt', values);
                   if (response.status === 200) {
                     resetForm();
                     location.href = '/kontakt?thankYou=2';
