@@ -41,7 +41,7 @@ export default function Document() {
                 gtag('config', 'AW-1067567060');
               `,
           }}
-        />
+        ></script>
       </Head>
       {/* console.log(dataLayer); */}
       <body>

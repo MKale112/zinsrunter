@@ -1,11 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const clientId = process.env.CLEVERREACH_CLIENT_ID;
-  const clientSecret = process.env.CLEVERREACH_CLIENT_SECRET;
+  const clientId = process.env.NEXT_PUBLIC_CLEVERREACH_CLIENT_ID;
+  const clientSecret = process.env.NEXT_PUBLIC_CLEVERREACH_CLIENT_SECRET;
   const tokenUrl = 'https://rest.cleverreach.com/oauth/token.php';
-  const groupUrl = 'https://rest.cleverreach.com/v3/groups.json/621700/receivers';
-  const formUrl = 'https://rest.cleverreach.com/v3/forms.json/232507/send/activate';
+  const groupUrl = 'https://rest.cleverreach.com/v3/groups.json/687299/receivers';
+  const formUrl = 'https://rest.cleverreach.com/v3/forms.json/354499/send/activate';
 
   const requestOptions = {
     method: 'POST',

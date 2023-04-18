@@ -31,7 +31,7 @@ import { houseNumberRegex, zipcodeRegex, phoneRegex } from '@/core/utils';
 
 const Kontakt = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { query } = useRouter();
+  const router = useRouter();
   const [popupContent, setPopupContent] = useState('');
   const toast = useToast();
   const kontaktCards = kontaktData.kontakt.map((entry) => (
@@ -111,7 +111,7 @@ const Kontakt = () => {
     <FullWidthContainer bgColor={'gray.100'}>
       <Box h={10} bgColor='primary.blue' />
       <ResponsiveContainer py={[16, 24]}>
-        {query.thankyou === '2' ? (
+        {router.query.thankyou === '2' ? (
           <VStack>
             <ThankYou />
           </VStack>
@@ -145,7 +145,11 @@ const Kontakt = () => {
                   const response = await axios.post('/api/kontakt', values);
                   if (response.status === 200) {
                     resetForm();
-                    location.href = '/kontakt?thankyou=2';
+                    const query = { thankyou: 2 };
+                    router.push({
+                      pathname: router.pathname,
+                      query: { ...router.query, ...query },
+                    });
                   } else {
                     toast({
                       title: 'Fehler beim Senden Ihrer Anfrage',

@@ -131,13 +131,6 @@ const Offer = () => {
           const response = await axios.post(`/api/formular`, fullData);
           if (response.status === 200) {
             resetForm();
-
-            dataLayer.push({
-              event: 'formSubmissionSuccess',
-              eventCategory: 'formSubmission',
-              email: values.email,
-              telefon: values.telefon,
-            });
             toast({
               title: 'Einreichung erfolgreich',
               status: 'success',
