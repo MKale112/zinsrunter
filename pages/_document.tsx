@@ -21,13 +21,13 @@ export default function Document() {
         />
 
         {/* Cookie-Einwilligungshinweis – Anfang für www.zins-runter.de  */}
-        {/* <meta charSet='UTF-8' />
+        <meta charSet='UTF-8' />
         <script
           src='https://cdn.cookielaw.org/scripttemplates/otSDKStub.js'
           type='text/javascript'
           data-domain-script='ff52141d-d698-45fb-8b48-5bf7cd1623d7'
         ></script>
-        <script type='text/javascript'> function OptanonWrapper() {} </script> */}
+        <script type='text/javascript'> function OptanonWrapper() {} </script>
         {/* OneTrust-Cookie-Einwilligungshinweis – Ende für www.zins-runter.de */}
 
         {/* Google Analytics gtag.js script */}
