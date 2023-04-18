@@ -74,3 +74,7 @@ export type DataLayerItem = {
 };
 
 export const dataLayer: DataLayerItem[] = [];
+
+export const phoneRegex = /^[+]?[\d-]+$/;
+export const houseNumberRegex = /^[\d]+[a-zA-Z]*\s*[a-zA-Z]*$/;
+export const zipcodeRegex = /^[0-9]{1,6}$/;

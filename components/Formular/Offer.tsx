@@ -10,7 +10,6 @@ import {
   HStack,
   Divider,
   useToast,
-  useMediaQuery,
   Stack,
   Spinner,
 } from '@chakra-ui/react';
@@ -31,7 +30,7 @@ import { countries } from 'data/countries';
 import axios from 'axios';
 import Popup from '../Popups';
 import { LocalStorageGCLID, SubscribeBody } from '@/core/types';
-import { dataLayer, formatDate } from '@/core/utils';
+import { dataLayer, formatDate, houseNumberRegex, phoneRegex, zipcodeRegex } from '@/core/utils';
 
 const Offer = () => {
   const [step, setStep] = useRecoilState(stepState);
@@ -39,10 +38,6 @@ const Offer = () => {
   const toast = useToast();
   const [isOpen, setIsOpen] = useState(false);
   const [popupContent, setPopupContent] = useState('');
-
-  const phoneRegex = /^[+]?[\d-]+$/;
-  const zipcodeRegex = /^[0-9]{1,6}$/;
-  const houseNumberRegex = /^[\d]+[a-zA-Z]*\s*[a-zA-Z]*$/;
 
   const validationSchema = yup.object().shape({
     anrede: yup.string().required(errorMessages.fieldRequired),
@@ -59,7 +54,7 @@ const Offer = () => {
     plz: yup.string().matches(zipcodeRegex, errorMessages.zipcodeInvalidInput).required(errorMessages.fieldRequired),
     ort: yup.string().required(errorMessages.fieldRequired),
     staatsangehorigkeit: yup.string().required(errorMessages.fieldRequired),
-    telefon: yup.string().matches(phoneRegex).required(errorMessages.fieldRequired),
+    telefon: yup.string().matches(phoneRegex, errorMessages.invalidPhone).required(errorMessages.fieldRequired),
     email: yup.string().email(errorMessages.invalidEmail),
     erreichbarkeit: yup.string().required(errorMessages.fieldRequired),
     bemerkung: yup.string(),

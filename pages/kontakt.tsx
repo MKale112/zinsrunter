@@ -27,6 +27,7 @@ import CheckboxField from '@/components/Formular/FormModels/CheckboxField';
 import axios from 'axios';
 import Popup from '@/components/Popups';
 import { ThankYou } from '@/components/Formular/ThankYou';
+import { houseNumberRegex, zipcodeRegex, phoneRegex } from '@/core/utils';
 
 const Kontakt = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -70,9 +71,6 @@ const Kontakt = () => {
     </Center>
   ));
 
-  const phoneRegex = /^[+]?[\d-]+$/;
-  const houseNumberRegex = /^[\d]+[a-zA-Z]*\s*[a-zA-Z]*$/;
-
   const validationSchema = yup.object().shape({
     anrede: yup.string(),
     vorname: yup.string().required(errorMessages.fieldRequired),
@@ -83,8 +81,13 @@ const Kontakt = () => {
       then: yup.string().required('\u00a0'),
       otherwise: yup.string().matches(houseNumberRegex, errorMessages.invalidInput),
     }),
+    plz: yup.string().matches(zipcodeRegex, errorMessages.zipcodeInvalidInput).required(errorMessages.fieldRequired),
     ort: yup.string().required(errorMessages.fieldRequired),
-    telefon: yup.string().matches(phoneRegex).typeError(errorMessages.isNum).required(errorMessages.fieldRequired),
+    telefon: yup
+      .string()
+      .matches(phoneRegex, errorMessages.invalidPhone)
+      .typeError(errorMessages.isNum)
+      .required(errorMessages.fieldRequired),
     email: yup.string().required(errorMessages.fieldRequired),
     bemerkung: yup.string(),
     agb: yup.boolean().oneOf([true], errorMessages.termsAndConditions).required(errorMessages.agbRequired),
@@ -96,6 +99,7 @@ const Kontakt = () => {
     name: '',
     strasse: '',
     hausnummer: undefined,
+    plz: '',
     ort: '',
     telefon: null,
     email: '',
@@ -211,7 +215,22 @@ const Kontakt = () => {
                           />
                         </HStack>
 
-                        <Field component={InputField} name='ort' type='text' label='Ort' placeholder='Bitte eingeben' />
+                        <HStack>
+                          <Field
+                            component={InputField}
+                            name='plz'
+                            type='text'
+                            label='PLZ'
+                            placeholder='Bitte eingeben'
+                          />
+                          <Field
+                            component={InputField}
+                            name='ort'
+                            type='text'
+                            label='Ort'
+                            placeholder='Bitte eingeben'
+                          />
+                        </HStack>
 
                         <Field
                           component={InputField}
