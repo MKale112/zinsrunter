@@ -8,7 +8,7 @@ export default function Document() {
   return (
     <Html lang='de'>
       <Head>
-        <Script
+        {/* <Script
           id='gtm'
           strategy='afterInteractive'
           dangerouslySetInnerHTML={{
@@ -18,7 +18,7 @@ export default function Document() {
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-N36RXZ7');`,
           }}
-        />
+        /> */}
 
         {/* Cookie-Einwilligungshinweis – Anfang für www.zins-runter.de  */}
         <meta charSet='UTF-8' />
@@ -44,12 +44,12 @@ export default function Document() {
         />
       </Head>
       <body>
-        <noscript
+        {/* <noscript
           dangerouslySetInnerHTML={{
             __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N36RXZ7"
               height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
           }}
-        />
+        /> */}
         <ColorModeScript initialColorMode={customTheme.config.initialColorMode} />
         <Main />
         <NextScript />
