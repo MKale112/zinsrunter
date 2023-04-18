@@ -12,7 +12,7 @@ const Footer = () => {
   const router = useRouter();
   const isOnForm = router.asPath.includes('/formular');
   const items = footerItems.links.map((entry) => (
-    <Link color='primary.blue' key={`${entry.label}${entry.id}`} href={entry.href} target='_self' rel='noreferrer'>
+    <Link key={`${entry.label}${entry.id}`} href={entry.href} target='_self' rel='noreferrer'>
       <Button variant='link' fontWeight='normal' fontSize='sm'>
         {entry.label}
       </Button>
@@ -48,6 +48,17 @@ const Footer = () => {
                   textAlign='center'
                 >
                   {items}
+                  <Button
+                    as={'a'}
+                    href='/sitemap.xml'
+                    target='_self'
+                    rel='noreferrer'
+                    variant='link'
+                    fontWeight='normal'
+                    fontSize='sm'
+                  >
+                    Sitemap
+                  </Button>
                 </SimpleGrid>
                 <Image src='/brands/geotrust-secured.png' alt='certificate-image' width={150} height={100} />
               </VStack>
@@ -56,11 +67,17 @@ const Footer = () => {
                 <VStack w='40%' h='full' justifyContent='space-between'>
                   <HStack pb={8} spacing={8} justifyContent='center' alignItems='center' textAlign='center'>
                     {items}{' '}
-                    <a href='/sitemap.xml' target='_self' rel='noreferrer'>
-                      <Button variant='link' fontWeight='normal' fontSize='sm'>
-                        Sitemap
-                      </Button>
-                    </a>
+                    <Button
+                      as={'a'}
+                      href='/sitemap.xml'
+                      target='_self'
+                      rel='noreferrer'
+                      variant='link'
+                      fontWeight='normal'
+                      fontSize='sm'
+                    >
+                      Sitemap
+                    </Button>
                   </HStack>
                   <Image src='/brands/geotrust-secured.png' alt='certificate-image' width={150} height={100} />
                 </VStack>

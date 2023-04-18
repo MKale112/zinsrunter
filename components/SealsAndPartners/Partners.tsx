@@ -13,7 +13,7 @@ interface PartnersProps {
 const Partners = ({ cards = true }: PartnersProps) => {
   const [isMobile] = useMediaQuery('(max-width: 640px)');
   const partners = partnerData.partners.map((entry, index) => (
-    <ReactReveal.Fade bottom delay={index * 100} key={entry.id}>
+    <ReactReveal.Fade bottom delay={index * 80} key={entry.id}>
       <Image src={entry.path} alt={entry.id} width={isMobile ? 120 : 150} height={100} />
     </ReactReveal.Fade>
   ));
@@ -21,7 +21,7 @@ const Partners = ({ cards = true }: PartnersProps) => {
   return (
     <FullWidthContainer id='section-partners' py={[10, 16]}>
       <ResponsiveContainer>
-        <ReactReveal.Fade duration={1000} bottom>
+        <ReactReveal.Fade duration={700} bottom>
           <VStack spacing={[6, 12]}>
             <Heading as='h2' fontSize={['xl', '3xl']}>
               Unsere Partner

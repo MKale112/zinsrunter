@@ -1,5 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { InitialDBInput } from '@/core/types';
+import { InitialDBInput, InitialSecondDBInput } from '@/core/types';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import excuteQuery from '../../lib/db';
 import * as yup from 'yup';
@@ -68,6 +68,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const dataToSend = flattenObject(req.body);
     await validationSchema.validate(dataToSend);
+    console.log({ ...InitialSecondDBInput, ...dataToSend });
 
     const queryString = populateQueryString(flattenObject(req.body));
     await excuteQuery({
@@ -76,6 +77,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const dataToSendToSecondDB = {
       data: {
+        ...InitialSecondDBInput,
         ...dataToSend,
       },
     };
@@ -90,7 +92,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     res.status(200).json('Success');
   } catch (error) {
-    // console.log(error);
+    console.log(error);
     res.status(500).json('Submission Failed');
   }
 }
