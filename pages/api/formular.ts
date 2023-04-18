@@ -68,7 +68,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const dataToSend = flattenObject(req.body);
     await validationSchema.validate(dataToSend);
-    console.log({ ...InitialSecondDBInput, ...dataToSend });
 
     const queryString = populateQueryString(flattenObject(req.body));
     await excuteQuery({

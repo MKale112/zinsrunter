@@ -1,5 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { InitialDBInput } from '@/core/types';
+import { InitialDBInput, InitialSecondDBInput } from '@/core/types';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import excuteQuery from '../../lib/db';
 import * as yup from 'yup';
@@ -57,6 +57,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const dataToSendToSecondDB = {
       data: {
+        ...InitialSecondDBInput,
         ...dataToSend,
       },
     };
