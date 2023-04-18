@@ -31,6 +31,7 @@ const form = [FinanceOffer, Estate, PropertyUse, Region, NegativeSCHUFA, Project
 
 const Formular = () => {
   const router = useRouter();
+
   const formStep = router.query.step?.toString();
   const stepByUrl = formSteps.indexOf(formStep || 'finanzierungszweck');
 
