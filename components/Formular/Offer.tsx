@@ -44,7 +44,10 @@ const Offer = () => {
     titel: yup.string(),
     vorname: yup.string().required(errorMessages.fieldRequired),
     name: yup.string().required(errorMessages.fieldRequired),
-    geburtsdatum: yup.date().required(errorMessages.fieldRequired),
+    geburtsdatum: yup
+      .date()
+      .max(new Date(), `Max-Datum ist 31.12.${new Date().getFullYear()}`)
+      .required(errorMessages.fieldRequired),
     strasse: yup.string().required(errorMessages.fieldRequired),
     hausnummer: yup.string().when('strasse', {
       is: (val: string) => !val || val.trim() === '',
