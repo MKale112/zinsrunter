@@ -51,7 +51,7 @@ const Offer = () => {
     strasse: yup.string().required(errorMessages.fieldRequired),
     hausnummer: yup.string().when('strasse', {
       is: (val: string) => !val || val.trim() === '',
-      then: yup.string().required('\u00a0'),
+      then: yup.string().matches(houseNumberRegex, errorMessages.invalidInput).required('\u00a0'),
       otherwise: yup.string().matches(houseNumberRegex, errorMessages.invalidInput),
     }),
     plz: yup.string().matches(zipcodeRegex, errorMessages.zipcodeInvalidInput).required(errorMessages.fieldRequired),

@@ -1,3 +1,5 @@
+import { InitialDBInput } from './types';
+
 export const formatNumber = (v?: number) => {
   if (!v) return undefined;
   return Math.round(Number(v.toString().replaceAll('.', '').replaceAll(',', '.')));
@@ -18,7 +20,6 @@ function addToStorage(key: string, value: string): void {
 
 function storeGclid(): void {
   const gclidParam = getParam('gclid');
-  // console.log(gclidParam);
   if (gclidParam) {
     addToStorage('gclid', gclidParam);
   }
@@ -48,12 +49,20 @@ export function formatDate(date: Date | string, field: string): string {
     date = new Date(date);
   }
 
-  const day = date.getDate().toString().padStart(2, '0');
-  const month = (date.getMonth() + 1).toString().padStart(2, '0');
-  const year = date.getFullYear().toString();
-  const hour = date.getHours().toString().padStart(2, '0');
-  const minute = date.getMinutes().toString().padStart(2, '0');
-  const second = date.getSeconds().toString().padStart(2, '0');
+  const options = { timeZone: 'Europe/Berlin' };
+  const day = date.toLocaleString('en', { ...options, day: '2-digit' });
+  const month = date.toLocaleString('en', { ...options, month: '2-digit' });
+  const year = date.toLocaleString('en', { ...options, year: 'numeric' });
+  const hour = date.toLocaleString('en', { ...options, hour: '2-digit', hour12: false });
+  const minute = date.toLocaleString('en', { ...options, minute: '2-digit' });
+  const second = date.toLocaleString('en', { ...options, second: '2-digit' });
+
+  // const day = date.getDate().toString().padStart(2, '0');
+  // const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  // const year = date.getFullYear().toString();
+  // const hour = date.getHours().toString().padStart(2, '0');
+  // const minute = date.getMinutes().toString().padStart(2, '0');
+  // const second = date.getSeconds().toString().padStart(2, '0');
 
   switch (field) {
     case 'bearbeitet_am':
@@ -78,3 +87,31 @@ export const dataLayer: DataLayerItem[] = [];
 export const phoneRegex = /^[+]?[\d-]+$/;
 export const houseNumberRegex = /^[\d]+[a-zA-Z]*\s*[a-zA-Z]*$/;
 export const zipcodeRegex = /^[0-9]{1,6}$/;
+
+export const populateQueryString = (flattenedData: Record<any, any>): string => {
+  const columnString = Object.keys(InitialDBInput).join(', ');
+  let values = '';
+  Object.keys(InitialDBInput).forEach((key, index) => {
+    values += `${flattenedData[key] ? `"${flattenedData[key]}"` : InitialDBInput[key as keyof typeof InitialDBInput]}${
+      index === Object.keys(InitialDBInput).length - 1 ? '' : ','
+    }`;
+  });
+  const queryString = `INSERT INTO adressen(${columnString}) VALUES (${values})`;
+
+  return queryString;
+};
+
+export const flattenObject = (obj: Record<string, any>): Record<string, any> => {
+  const flattened = {} as Record<string, any>;
+
+  for (const [key, value] of Object.entries(obj)) {
+    if (typeof value === 'object' && value !== null) {
+      // recursively flatten nested objects
+      Object.assign(flattened, flattenObject(value));
+    } else {
+      flattened[key] = value;
+    }
+  }
+
+  return flattened;
+};

@@ -1,9 +1,10 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { InitialDBInput, InitialSecondDBInput } from '@/core/types';
+import { InitialSecondDBInput } from '@/core/types';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import excuteQuery from '../../lib/db';
 import * as yup from 'yup';
 import axios from 'axios';
+import { flattenObject, populateQueryString } from '@/core/utils';
 
 const validationSchema = yup.object({
   finanzierungszweck: yup.string().required(),
@@ -36,40 +37,12 @@ const validationSchema = yup.object({
   agb: yup.boolean().required(),
 });
 
-const flattenObject = (obj: Record<string, any>): Record<string, any> => {
-  const flattened = {} as Record<string, any>;
-
-  for (const [key, value] of Object.entries(obj)) {
-    if (typeof value === 'object' && value !== null) {
-      // recursively flatten nested objects
-      Object.assign(flattened, flattenObject(value));
-    } else {
-      flattened[key] = value;
-    }
-  }
-
-  return flattened;
-};
-
-const populateQueryString = (flattenedData: Record<any, any>): string => {
-  const columnString = Object.keys(InitialDBInput).join(', ');
-  let values = '';
-  Object.keys(InitialDBInput).forEach((key, index) => {
-    values += `${flattenedData[key] ? `"${flattenedData[key]}"` : InitialDBInput[key as keyof typeof InitialDBInput]}${
-      index === Object.keys(InitialDBInput).length - 1 ? '' : ','
-    }`;
-  });
-  const queryString = `INSERT INTO adressen(${columnString}) VALUES (${values})`;
-
-  return queryString;
-};
-
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     const dataToSend = flattenObject(req.body);
-    await validationSchema.validate(dataToSend);
+    // await validationSchema.validate(dataToSend);
 
-    const queryString = populateQueryString(flattenObject(req.body));
+    const queryString = populateQueryString(dataToSend);
     await excuteQuery({
       query: queryString,
     });
