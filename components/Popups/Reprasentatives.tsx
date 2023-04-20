@@ -19,7 +19,7 @@ const Reprasentatives = ({ isOpen }: { isOpen: boolean }) => {
     };
   }, [isOpen]);
 
-  return isLoaded ? (
+  return isOpen ? (
     <>
       <Script
         id='baufi-lead-script-1'
