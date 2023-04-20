@@ -41,7 +41,7 @@ const Teaser = () => {
           color='gray.200'
         >
           <Text color='primary.acid' fontWeight='bold' textShadow={'0px 1px 3px rgba(0,0,0,0.8)'} pb={[1, 0]}>
-            Top -Zins
+            Top-Zins
           </Text>
           <HStack
             justifyContent='center'

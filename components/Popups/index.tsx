@@ -34,7 +34,7 @@ const Popup = ({ isOpen, onClose, popupContent }: Props) => {
       displayed = <Newsletter />;
       break;
     case 'Repräsentatives Zins-Beispiel':
-      displayed = <Reprasentatives />;
+      displayed = <Reprasentatives isOpen={isOpen} />;
       break;
     default:
       displayed = null;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { VStack, Button, Text, HStack, SimpleGrid, useMediaQuery, Box } from '@chakra-ui/react';
+import { VStack, Button, Text, SimpleGrid } from '@chakra-ui/react';
 import { errorMessages } from 'data/errorMessages';
 import { Formik, Form, Field } from 'formik';
 import countryData from '../../data/formular/zipcodes.json';
@@ -15,7 +15,7 @@ import NumberInput from './FormModels/NumberInput';
 import { useRecoilState } from 'recoil';
 import { stepState } from '@/core/atoms';
 import { AutocompleteMapEntry, ZipcodeEntry } from '@/core/types';
-import { finanzierungszweck, nutzung } from 'data/form';
+import { nutzung } from 'data/form';
 import { formatNumber } from '@/core/utils';
 
 export const Region = () => {
@@ -25,7 +25,11 @@ export const Region = () => {
   const [bundesland, setBundesland] = useState(step[1]?.region?.bundesland);
 
   const isRental = step[1].nutzung === nutzung.data[0].text;
-  const alreadyDecided = finanzierungszweck.data.some((element) => element.text === step[1].finanzierungszweck);
+  const alreadyDecided = ['Anschlussfinanzierung', 'Modernisieren', 'Kapitalbeschaffung'].includes(
+    step[1].finanzierungszweck,
+  );
+
+  console.log(alreadyDecided);
 
   const handleSelectedOption = (value: AutocompleteMapEntry) => {
     setBundesland(value.entry ? value.entry.region : '');

@@ -66,6 +66,7 @@ const Header = () => {
         fontSize={['md', 'lg']}
         w='full'
         p={6}
+        onClick={onClose}
       >
         {entry.label}
       </Button>

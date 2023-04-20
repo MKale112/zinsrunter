@@ -1,17 +1,11 @@
 import React from 'react';
-import { Button, Heading, VStack, Text, useMediaQuery, List, ListIcon, ListItem, HStack } from '@chakra-ui/react';
+import { Button, Heading, VStack, Text, List, ListIcon, ListItem, HStack } from '@chakra-ui/react';
 import { CheckIcon } from '@chakra-ui/icons';
 import ChakraLink from '../Link/ChakraLink';
 
 export const BannerText = () => {
-  const [isMobile] = useMediaQuery('(max-width: 640px)');
-
   return (
     <VStack
-      sx={{
-        base: { textShadow: 'unset', mb: 10 },
-        sm: { textShadow: '0px 1px 3px rgba(0,0,0,0.3)' },
-      }}
       fontWeight={'bold'}
       padding={[4, 6, 10]}
       alignItems='center'
@@ -19,6 +13,8 @@ export const BannerText = () => {
       width={['100%', '100%', '50%']}
       ml='auto'
       textAlign='center'
+      textShadow={{ base: 'unset', sm: '0px 1px 3px rgba(0,0,0,0.3)' }}
+      mb={{ base: 10, sm: 0 }}
     >
       <Heading
         as={'h2'}

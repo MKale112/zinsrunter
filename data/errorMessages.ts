@@ -8,5 +8,5 @@ export const errorMessages = {
   invalidInput: 'Ungültige Eingabe',
   zipcodeInvalidInput: 'Die Postleitzahl darf nur 6 Ziffern enthalten',
   hausnummerInvalidInput: 'Falsche Eingabe der Hausnummer',
-  termsAndConditions: 'Du musst die Geschäftsbedingungen akzeptieren',
+  termsAndConditions: 'Der Datenschutz und die AGB müssen akzeptiert werden',
 };

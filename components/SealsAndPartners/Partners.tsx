@@ -82,7 +82,7 @@ const Partners = ({ cards = true }: PartnersProps) => {
                   <ReactReveal.Fade bottom w='30%'>
                     <VStack alignItems='flex-start' bg='gray.200' p={6} borderRadius='2xl' h='full' boxShadow='lg'>
                       <Heading mb={4} as='h3' fontSize={['lg', 'xl']} color='primary.blue' overflowWrap='break-word'>
-                        DARLEHEN MIT VERÄNDERLICHEM SOLLZINSSATZ — grosse Flexibilität
+                        DARLEHEN MIT VERÄNDERLICHEM SOLLZINSSATZ — große Flexibilität
                       </Heading>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
                         <strong>Flex-Darlehen</strong>
@@ -183,7 +183,7 @@ const Partners = ({ cards = true }: PartnersProps) => {
                       boxShadow='2xl'
                     >
                       <Heading mb={4} as='h3' fontSize={['lg', '2xl']} color='primary.blue' overflowWrap='break-word'>
-                        DARLEHEN MIT VERÄNDERLICHEM SOLLZINSSATZ — grosse Flexibilität
+                        DARLEHEN MIT VERÄNDERLICHEM SOLLZINSSATZ — große Flexibilität
                       </Heading>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
                         <strong>Flex-Darlehen</strong>

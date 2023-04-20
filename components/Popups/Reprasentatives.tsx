@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { VStack, Text, Tr, Td, Table, Tbody, Spinner } from '@chakra-ui/react';
 import Script from 'next/script';
 
-const Reprasentatives = () => {
+const Reprasentatives = ({ isOpen }: { isOpen: boolean }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -12,13 +12,12 @@ const Reprasentatives = () => {
     script.onload = () => {
       setIsLoaded(true);
     };
-    document.body.appendChild(script);
+    isOpen && document.body.appendChild(script);
 
     return () => {
-      document.body.removeChild(script);
+      !isOpen && document.body.removeChild(script);
     };
-  }, []);
-  console.log(isLoaded);
+  }, [isOpen]);
 
   return isLoaded ? (
     <>

@@ -4,7 +4,6 @@ import {
   Center,
   Heading,
   SimpleGrid,
-  useMediaQuery,
   VStack,
   Text,
   Button,
@@ -88,7 +87,7 @@ const Kontakt = () => {
       .matches(phoneRegex, errorMessages.invalidPhone)
       .typeError(errorMessages.isNum)
       .required(errorMessages.fieldRequired),
-    email: yup.string().required(errorMessages.fieldRequired),
+    email: yup.string().email(errorMessages.invalidEmail).required(errorMessages.fieldRequired),
     bemerkung: yup.string(),
     agb: yup.boolean().oneOf([true], errorMessages.termsAndConditions).required(errorMessages.agbRequired),
   });
