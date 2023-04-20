@@ -6,11 +6,11 @@ import axios from 'axios';
 import { flattenObject, populateQueryString } from '@/core/utils';
 
 const validationSchema = yup.object({
-  anrede: yup.string().required(),
+  anrede: yup.string(),
   vorname: yup.string().required(),
   name: yup.string().required(),
   strasse: yup.string().required(),
-  hausnummer: yup.string().required(),
+  hausnummer: yup.string(),
   plz: yup.string().required(),
   ort: yup.string().required(),
   telefon: yup.string().required(),

@@ -1,11 +1,12 @@
 import React from 'react';
-import Head from 'next/head';
 import { Footer, Header } from '../Navigation';
+import TopButton from '../Anchor';
 
 const Layout = ({ children }: React.PropsWithChildren<any>) => (
   <>
     <Header />
     <main>{children}</main>
+    <TopButton />
     <Footer />
   </>
 );

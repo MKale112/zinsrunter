@@ -26,7 +26,7 @@ const Newsletter = () => {
           <br />
           Tel.: 0800 36 40000
           <br />
-          E-Mail:<Link href='mailto:service@zins-runter.de'>service@zins-runter.de</Link>
+          E-Mail: <Link href='mailto:service@zins-runter.de'>service@zins-runter.de</Link>
         </Text>
         <Text>
           mir per Email Informationen und Angebote zu weiteren Finanz- und Versicherungsprodukten, insbesondere auch von
