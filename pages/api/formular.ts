@@ -40,7 +40,7 @@ const validationSchema = yup.object({
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     const dataToSend = flattenObject(req.body);
-    // await validationSchema.validate(dataToSend);
+    await validationSchema.validate(dataToSend);
 
     const queryString = populateQueryString(dataToSend);
     await excuteQuery({

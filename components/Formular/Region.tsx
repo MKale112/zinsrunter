@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { VStack, Button, Text, SimpleGrid } from '@chakra-ui/react';
 import { errorMessages } from 'data/errorMessages';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, useFormikContext } from 'formik';
 import countryData from '../../data/formular/zipcodes.json';
 
 import { RegionData } from './types';
@@ -24,12 +24,22 @@ export const Region = () => {
   const [options, setOptions] = useState<AutocompleteMapEntry[]>([]);
   const [bundesland, setBundesland] = useState(step[1]?.region?.bundesland);
 
+  // const { isValidating, errors } = useFormikContext();
+
+  // useEffect(() => {
+  //   if (!isValidating && Object.keys(errors).length > 0) {
+  //     const firstErrorField = Object.keys(errors)[0];
+  //     const errorFieldElement = document.getElementsByName(firstErrorField)[0];
+  //     if (errorFieldElement) {
+  //       errorFieldElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  //     }
+  //   }
+  // }, [isValidating, errors]);
+
   const isRental = step[1].nutzung === nutzung.data[0].text;
   const alreadyDecided = ['Anschlussfinanzierung', 'Modernisieren', 'Kapitalbeschaffung'].includes(
     step[1].finanzierungszweck,
   );
-
-  console.log(alreadyDecided);
 
   const handleSelectedOption = (value: AutocompleteMapEntry) => {
     setBundesland(value.entry ? value.entry.region : '');

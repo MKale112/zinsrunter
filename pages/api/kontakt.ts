@@ -21,8 +21,10 @@ const validationSchema = yup.object({
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
+    const startTime = new Date().getTime();
+
+    await validationSchema.validate(req.body);
     const dataToSend = flattenObject(req.body);
-    await validationSchema.validate(dataToSend);
 
     const queryString = populateQueryString(dataToSend);
     await excuteQuery({
@@ -43,6 +45,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         'Content-Type': 'application/json',
       },
     });
+
+    const endTime = new Date().getTime();
+    const elapsedTime = endTime - startTime;
+
+    // Log the elapsed time
+    console.log(`Elapsed time: ${elapsedTime * 1000} s`);
 
     res.status(200).json('Success');
   } catch (error) {
