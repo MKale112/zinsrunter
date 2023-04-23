@@ -127,8 +127,15 @@ const Offer = () => {
             { offer: { ...values, geburtsdatum: formattedDate } },
             { gclid_field: isGclidValid ? gclid.value : '' },
           );
+          const startTime = new Date().getTime();
 
           const response = await axios.post(`/api/formular`, fullData);
+
+          const endTime = new Date().getTime();
+          const elapsedTime = endTime - startTime;
+          // Log the elapsed time
+          console.log(`Elapsed time big form: ${elapsedTime * 1000} s`);
+
           if (response.status === 200) {
             resetForm();
             toast({

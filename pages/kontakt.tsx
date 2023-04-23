@@ -141,7 +141,12 @@ const Kontakt = () => {
                 validateOnChange={true}
                 validateOnBlur={false}
                 onSubmit={async (values, { resetForm }) => {
+                  const startTime = new Date().getTime();
                   const response = await axios.post('/api/kontakt', values);
+                  const endTime = new Date().getTime();
+                  const elapsedTime = endTime - startTime;
+                  // Log the elapsed time
+                  console.log(`Elapsed time big form: ${elapsedTime * 1000} s`);
                   if (response.status === 200) {
                     resetForm();
                     const query = { thankyou: 2 };
