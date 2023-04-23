@@ -154,7 +154,7 @@ const AGB = () => {
                   color='primary.blue'
                   fontWeight='semibold'
                   _hover={{ textDecoration: 'underline' }}
-                  href='http://tools.google.com/dlpage/gaoptout?hl=de'
+                  href='https://tools.google.com/dlpage/gaoptout?hl=de'
                 >
                   jederzeit mit Wirkung für die Zukunft widersprochen werden
                 </Link>
@@ -210,9 +210,9 @@ const AGB = () => {
                   color='primary.blue'
                   fontWeight='semibold'
                   _hover={{ textDecoration: 'underline' }}
-                  href='http://www.facebook.com/policy.php'
+                  href='https://www.facebook.com/policy.php'
                 >
-                  http://www.facebook.com/policy.php
+                  https://www.facebook.com/policy.php
                 </Link>
                 .
               </Text>
@@ -244,9 +244,9 @@ const AGB = () => {
                   color='primary.blue'
                   fontWeight='semibold'
                   _hover={{ textDecoration: 'underline' }}
-                  href='twitter.com/privacy'
+                  href='https://twitter.com/de/privacy'
                 >
-                  twitter.com/privacy
+                  https://twitter.com/de/privacy
                 </Link>
                 .
               </Text>
@@ -256,9 +256,9 @@ const AGB = () => {
                   color='primary.blue'
                   fontWeight='semibold'
                   _hover={{ textDecoration: 'underline' }}
-                  href='twitter.com/account/settings'
+                  href='https://twitter.com/account/settings'
                 >
-                  twitter.com/account/settings
+                  https://twitter.com/account/settings
                 </Link>{' '}
                 ändern.
               </Text>

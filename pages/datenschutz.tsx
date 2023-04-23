@@ -904,7 +904,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               <br />
               <br />
               Weitere Informationen hierzu finden sich in der Datenschutzerklärung von Twitter unter
-              <Link href='http://twitter.com/privacy'>http://twitter.com/privacy</Link>.
+              <Link href='https://twitter.com/de/privacy'>https://twitter.com/de/privacy</Link>.
             </Text>
             <Text>
               <strong>i) Yandex</strong> <br />
