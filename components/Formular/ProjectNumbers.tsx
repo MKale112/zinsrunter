@@ -144,7 +144,7 @@ const ProjectNumbers = () => {
     modernisierungskosten: step[1].projectNumbers?.modernisierungskosten,
     maklerprovision: step[1].projectNumbers?.maklerprovision,
     eigenkapital: step[1].projectNumbers?.eigenkapital,
-    immobilienbesitz: step[1].projectNumbers?.immobilienbesitz || undefined,
+    immobilienbesitz: step[1].projectNumbers?.immobilienbesitz,
     kreditsumme: 0,
   };
   return (

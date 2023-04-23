@@ -1,6 +1,6 @@
 import { FormControl, FormLabel } from '@chakra-ui/react';
-import { Field, FieldProps, FormikValues } from 'formik';
-import React, { FC } from 'react';
+import { Field, FieldProps, FormikValues, useFormikContext } from 'formik';
+import React, { FC, useEffect } from 'react';
 import CustomErrorMessage from './CustomErrorMessage';
 import { Select as ReactSelect, GroupBase, OptionsOrGroups, ChakraStylesConfig } from 'chakra-react-select';
 import { AutocompleteMapEntry } from '@/core/types';
@@ -51,12 +51,21 @@ const AutocompleteField: FC<Props> = ({
       },
     }),
   };
-
   const handleSelectOption = (newValue: AutocompleteMapEntry) => {
     onSelectOption(newValue);
   };
-
   const customNoOptionsMessage = () => ''; // return null to remove the message
+
+  const formik = useFormikContext();
+  useEffect(() => {
+    if (!formik?.isValidating && formik?.errors && Object.keys(formik?.errors).length > 0) {
+      const firstErrorField = Object.keys(formik?.errors)[0];
+      const errorFieldElement = document.getElementsByName(firstErrorField)[0];
+      if (errorFieldElement) {
+        errorFieldElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+  }, [formik?.isValidating, formik?.errors]);
 
   return (
     <Field name={name}>

@@ -1,5 +1,5 @@
-import { Box, FormControl, FormLabel, HStack, Input, Stack, useMediaQuery } from '@chakra-ui/react';
-import { FieldHookConfig, useField } from 'formik';
+import { Box, FormControl, FormLabel, HStack, Input, Stack } from '@chakra-ui/react';
+import { FieldHookConfig, useField, useFormikContext } from 'formik';
 import React, { FC, useEffect, useRef } from 'react';
 import { NumericFormat } from 'react-number-format';
 import CustomErrorMessage from './CustomErrorMessage';
@@ -20,11 +20,16 @@ const HInputField: FC<FieldHookConfig<string> & CustomHInputProps> = (props) => 
 
   const formControlRef = useRef<HTMLDivElement>(null);
 
+  const formik = useFormikContext();
   useEffect(() => {
-    if (meta.touched && !!meta.error && formControlRef.current) {
-      formControlRef.current.scrollIntoView({ behavior: 'smooth' });
+    if (!formik?.isValidating && formik?.errors && Object.keys(formik?.errors).length > 0) {
+      const firstErrorField = Object.keys(formik?.errors)[0];
+      const errorFieldElement = document.getElementsByName(firstErrorField)[0];
+      if (errorFieldElement) {
+        errorFieldElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
     }
-  }, [meta.error, meta.touched]);
+  }, [formik?.isValidating, formik?.errors]);
 
   const { name, label, placeholder = '', width, onInputChange, frontIcon, backIcon, value } = props;
 

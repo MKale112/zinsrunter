@@ -31,30 +31,31 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       query: queryString,
     });
 
-    const dataToSendToSecondDB = {
-      data: {
-        ...InitialSecondDBInput,
-        ...dataToSend,
-      },
-    };
+    // const dataToSendToSecondDB = {
+    //   data: {
+    //     ...InitialSecondDBInput,
+    //     ...dataToSend,
+    //   },
+    // };
 
-    // send the data to the API endpoint using axios
-    await axios.post('https://leads.versicherungstarife.info/api/v1/lead/save', dataToSendToSecondDB, {
-      headers: {
-        Authorization: 'Bearer NUzLjq6bRfyuhdyFAnuua6I6Jsun33bMVDuqqmohpDLQ2u5LWfocxRjzunkZ',
-        'Content-Type': 'application/json',
-      },
-    });
+    // // send the data to the API endpoint using axios (DO NOT AWAIT IT)
+    // async () =>
+    //   await axios.post('https://leads.versicherungstarife.info/api/v1/lead/save', dataToSendToSecondDB, {
+    //     headers: {
+    //       Authorization: 'Bearer NUzLjq6bRfyuhdyFAnuua6I6Jsun33bMVDuqqmohpDLQ2u5LWfocxRjzunkZ',
+    //       'Content-Type': 'application/json',
+    //     },
+    //   });
 
     const endTime = new Date().getTime();
     const elapsedTime = endTime - startTime;
 
     // Log the elapsed time
-    console.log(`Elapsed time: ${elapsedTime * 1000} s`);
+    console.log(`Elapsed time: ${elapsedTime / 1000} s`);
 
     res.status(200).json('Success');
   } catch (error) {
-    // console.log(error);
+    console.log(error);
     res.status(500).json('Submission Failed');
   }
 }

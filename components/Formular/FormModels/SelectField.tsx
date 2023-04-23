@@ -1,5 +1,5 @@
 import { FormControl, FormLabel, Select } from '@chakra-ui/react';
-import { FieldProps, useField } from 'formik';
+import { FieldProps, useField, useFormikContext } from 'formik';
 import React, { FC, useEffect, useRef } from 'react';
 import CustomErrorMessage from './CustomErrorMessage';
 
@@ -13,11 +13,16 @@ const SelectField: FC<Props> = ({ label, options, placeholder = 'Please select o
   const [_formikField, meta] = useField(field);
   const formControlRef = useRef<HTMLDivElement>(null);
 
+  const formik = useFormikContext();
   useEffect(() => {
-    if (meta.touched && !!meta.error && formControlRef.current) {
-      formControlRef.current.scrollIntoView({ behavior: 'smooth' });
+    if (!formik?.isValidating && formik?.errors && Object.keys(formik?.errors).length > 0) {
+      const firstErrorField = Object.keys(formik?.errors)[0];
+      const errorFieldElement = document.getElementsByName(firstErrorField)[0];
+      if (errorFieldElement) {
+        errorFieldElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
     }
-  }, [meta.error, meta.touched]);
+  }, [formik?.isValidating, formik?.errors]);
 
   return (
     <FormControl ref={formControlRef} isInvalid={meta.touched && !!meta.error}>

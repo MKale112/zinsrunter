@@ -80,7 +80,7 @@ const Offer = () => {
     email: step[1].offer?.email || '',
     erreichbarkeit: step[1].offer?.erreichbarkeit || '',
     bemerkung: step[1].offer?.bemerkung || '',
-    videoberatung: step[1].offer?.videoberatung || 'Ja',
+    videoberatung: step[1].offer?.videoberatung,
     newsletter: step[1].offer?.newsletter || false,
     agb: step[1].offer?.agb || false,
   };
@@ -127,14 +127,8 @@ const Offer = () => {
             { offer: { ...values, geburtsdatum: formattedDate } },
             { gclid_field: isGclidValid ? gclid.value : '' },
           );
-          const startTime = new Date().getTime();
 
           const response = await axios.post(`/api/formular`, fullData);
-
-          const endTime = new Date().getTime();
-          const elapsedTime = endTime - startTime;
-          // Log the elapsed time
-          console.log(`Elapsed time big form: ${elapsedTime * 1000} s`);
 
           if (response.status === 200) {
             resetForm();
@@ -145,6 +139,7 @@ const Offer = () => {
               isClosable: false,
             });
             setStep((currValue) => [7, { ...currValue[1], offer: values }]);
+            await axios.post(`/api/backup`, fullData);
           } else {
             toast({
               title: 'Fehler beim Senden Ihrer Anfrage',
