@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import BannerText from './BannerText';
 import { FullWidthContainer, ResponsiveContainer } from '../Containers';
 import Teaser from '../Teaser';

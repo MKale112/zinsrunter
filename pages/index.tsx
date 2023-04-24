@@ -21,6 +21,7 @@ export default function Home() {
   return (
     <>
       <Script
+        async
         type='text/javascript'
         src='https://www.baufi-lead.de/baufilead/partner/PkGvpMTcO4DxDy0gEBGuq9c2NYTZ1Q/imports.js'
       />

@@ -3,15 +3,11 @@ import { VStack, Text, Tr, Td, Table, Tbody, Spinner } from '@chakra-ui/react';
 import Script from 'next/script';
 
 const Reprasentatives = ({ isOpen }: { isOpen: boolean }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-
   useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://www.baufi-lead.de/baufilead/partner/PkGvpMTcO4DxDy0gEBGuq9c2NYTZ1Q/imports.js';
     script.async = true;
-    script.onload = () => {
-      setIsLoaded(true);
-    };
+
     isOpen && document.body.appendChild(script);
 
     return () => {
@@ -22,14 +18,15 @@ const Reprasentatives = ({ isOpen }: { isOpen: boolean }) => {
   return isOpen ? (
     <>
       <Script
+        async
         id='baufi-lead-script-1'
         type='text/javascript'
         src='https://www.baufi-lead.de/baufilead/partner/PkGvpMTcO4DxDy0gEBGuq9c2NYTZ1Q/imports.js'
       />
-      <Script id='baufi-lead-script-2' type='text/javascript'>
+      <Script async id='baufi-lead-script-2' type='text/javascript'>
         var baufilead_kampagne = &quot;Zins-runter.de Europace Formulare&quot;;
       </Script>
-      <Script id='baufi-lead-script-3' type='text/javascript'>
+      <Script async id='baufi-lead-script-3' type='text/javascript'>
         var baufilead_tippgeber_id = &quot;TQJ25&quot;;
       </Script>
 
