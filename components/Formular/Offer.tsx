@@ -30,7 +30,7 @@ import { countries } from 'data/countries';
 import axios from 'axios';
 import Popup from '../Popups';
 import { LocalStorageGCLID, SubscribeBody } from '@/core/types';
-import { dataLayer, formatDate, houseNumberRegex, phoneRegex, zipcodeRegex } from '@/core/utils';
+import { formatDate, houseNumberRegex, phoneRegex, zipcodeRegex } from '@/core/utils';
 
 const Offer = () => {
   const [step, setStep] = useRecoilState(stepState);
@@ -230,7 +230,7 @@ const Offer = () => {
                     component={InputField}
                     name='hausnummer'
                     value={values.hausnummer}
-                    type='number'
+                    type='text'
                     label=''
                     placeholder=''
                     width={'25%'}

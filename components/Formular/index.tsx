@@ -17,16 +17,7 @@ import { toTitleCase } from '@/core/utils';
 
 // const ReactReveal = require('react-reveal');
 
-const formSteps = [
-  'finanzierungszweck',
-  'immobilientyp',
-  'nutzung',
-  'region',
-  'schufa',
-  'projektnummern',
-  'angebot',
-  'lead',
-];
+const formSteps = ['finanzierungszweck', 'immobilientyp', 'nutzung', 'region', 'schufa', 'zahlen', 'angebot', 'lead'];
 const form = [FinanceOffer, Estate, PropertyUse, Region, NegativeSCHUFA, ProjectNumbers, Offer, ThankYou];
 
 const Formular = () => {

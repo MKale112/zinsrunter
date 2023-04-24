@@ -9,7 +9,6 @@ import {
   AccordionPanel,
   Box,
   keyframes,
-  useMediaQuery,
 } from '@chakra-ui/react';
 import React from 'react';
 import { FullWidthContainer, ResponsiveContainer } from '../Containers';
@@ -29,7 +28,7 @@ const Highlights = () => {
   `;
 
   return (
-    <FullWidthContainer id='section-steps' py={[10, 16]} bg='gray.100'>
+    <FullWidthContainer id='so-funktioniert' py={[10, 16]} bg='gray.100'>
       <ResponsiveContainer>
         <ReactReveal.Fade duration={1000} bottom>
           <VStack spacing={[6, 12]}>

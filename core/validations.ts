@@ -16,7 +16,7 @@ export const validationSchemaFormular = yup.object({
   name: yup.string().required(),
   geburtsdatum: yup.string().required(),
   strasse: yup.string().required(),
-  hausnummer: yup.string().required(),
+  hausnummer: yup.string(),
   familienstand: yup.string().required(),
   staatsangehorigkeit: yup.string().required(),
   plz: yup.string().required(),

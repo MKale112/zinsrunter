@@ -4,7 +4,7 @@ export enum FormState {
   nutzung = 'Sie möchten…',
   region = 'Wo findet das Finanzierungsvorhaben statt?',
   schufa = 'Gibt oder gab es bei Ihnen negative SCHUFA Einträge?',
-  projektnummern = 'Die Finanzierung in Zahlen',
+  zahlen = 'Die Finanzierung in Zahlen',
   angebot = 'Persönliche Angaben',
 }
 

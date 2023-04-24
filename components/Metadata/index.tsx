@@ -8,15 +8,51 @@ const generateMetaText = (asPath: string): MetaTags => {
     desc: 'Zins-runter.de - Baufinanzierung unabhängig vergleichen. Unsere Experten vergleichen aus über 500 Finanzierungspartnern. Kostenlosen Finanzierungsvorschlag hier anfordern',
     image: '/hero-image.webp',
   };
-  switch (asPath.split('/')[1]) {
-    case 'formular':
-      metaTags.title = 'Baufinanzierung - kostenloses Angebot anfordern bei Zins-runter.de';
+  switch (asPath.substring(1)) {
+    case 'formular/finanzierungszweck':
+      metaTags.title = 'Finanzierungszweck - Anfrage Baufinanzierung';
+      return metaTags;
+    case 'formular/immobilientyp':
+      metaTags.title = 'Immobilientyp - Anfrage Baufinanzierung';
+      return metaTags;
+    case 'formular/nutzung':
+      metaTags.title = 'Nutzung - Anfrage Baufinanzierung';
+      return metaTags;
+    case 'formular/region':
+      metaTags.title = 'Region - Anfrage Baufinanzierung';
+      return metaTags;
+    case 'formular/schufa':
+      metaTags.title = 'Schufa - Anfrage Baufinanzierung';
+      return metaTags;
+    case 'formular/zahlen':
+      metaTags.title = 'Zahlen - Anfrage Baufinanzierung';
+      return metaTags;
+    case 'formular/angebot':
+      metaTags.title = 'Angebot - Anfrage Baufinanzierung';
+      return metaTags;
+    case 'formular/lead?thankyou=1':
+      metaTags.title = 'Danke für Ihre Anfrage - Anfrage Baufinanzierung';
       return metaTags;
     case 'uber-uns':
-      metaTags.title = 'Uber uns';
+      metaTags.title = 'Über uns - Baufinanzierung bei Zins-runter.de';
       return metaTags;
     case 'kontakt':
       metaTags.title = 'Kontakt zu Zins-runter.de';
+      return metaTags;
+    case 'kontakt?thankyou=2':
+      metaTags.title = 'Danke für Ihre Kontaktanfrage - Kontakt Zins-runter.de';
+      return metaTags;
+    case 'datenschutz':
+      metaTags.title = 'Datenschutz - Baufinanzierung bei Zins-runter.de';
+      return metaTags;
+    case 'agb':
+      metaTags.title = 'AGB - Baufinanzierung bei Zins-runter.de';
+      return metaTags;
+    case 'erstinformation':
+      metaTags.title = 'Erstinformation - Baufinanzierung bei Zins-runter.de';
+      return metaTags;
+    case 'impressum':
+      metaTags.title = 'Impressum - Baufinanzierung bei Zins-runter.de';
       return metaTags;
     default:
       metaTags.title = 'Siguron GmbH - Baufinanzierung bei Zins-runter.de';
@@ -32,7 +68,7 @@ export const Metadata = ({ asPath }: { asPath: string }) => {
       <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
       <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0' />
 
-      <title>&#9655; {metaText.title}</title>
+      <title>{metaText.title}</title>
       <meta name='page-topic' content='Kredit, Zinsen, Finanzen, Finanzierung' />
       <meta name='Language' content='de' />
       <meta name='page-type' content='Dienstleistung' />

@@ -86,7 +86,8 @@ export const dataLayer: DataLayerItem[] = [];
 
 // export const phoneRegex = /^[+]?[\d-]+$/;
 export const phoneRegex = /^[+]?[()0-9\s-]+$/;
-export const houseNumberRegex = /^[\d]+[a-zA-Z]*\s*[a-zA-Z]*$/;
+// export const houseNumberRegex = /^[\d]+[a-zA-Z]*\s*[a-zA-Z]*$/;
+export const houseNumberRegex = /^[\d]+[\s-]*[\w\s-]*$/;
 export const zipcodeRegex = /^[0-9]{1,6}$/;
 
 export const populateQueryString = (flattenedData: Record<any, any>): string => {

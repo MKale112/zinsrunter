@@ -58,7 +58,7 @@ const Seals = () => {
   });
 
   return (
-    <FullWidthContainer id='section-mehrwert' py={[10, 16]} bg='primary.mutedBlue'>
+    <FullWidthContainer id='mehrwert' py={[10, 16]} bg='primary.mutedBlue'>
       <ResponsiveContainer>
         <ReactReveal.Fade duration={1000} bottom>
           <VStack spacing={[12, 16]}>

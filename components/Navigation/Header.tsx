@@ -22,6 +22,7 @@ import { FullWidthContainer, ResponsiveContainer } from '../Containers';
 import ChakraLink from '../Link/ChakraLink';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import { Url } from 'url';
 
 interface TabsInterface {
   color?: string;
@@ -30,8 +31,9 @@ interface TabsInterface {
 }
 
 const Tabs = ({ color = 'primary.blue', hoverObj = { color: 'primary.mutedBlue' }, closeDrawer }: TabsInterface) => {
+  const router = useRouter();
   const tabs = navigationJSON.subNav.map((entry) => (
-    <ChakraLink key={entry.id} href={entry.href} onClick={closeDrawer}>
+    <ChakraLink key={entry.id} href={router.asPath === '/' ? entry.href : `/${entry.href}`} onClick={closeDrawer}>
       <Button
         variant='link'
         px={[4, 8, 12, 16]}
@@ -53,25 +55,27 @@ const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const willRenderNav = useRouter();
 
-  const links = navigationJSON.topNav.map((entry) => (
-    <ChakraLink key={entry.id} href={entry.href} rel='noreferrer' w={{ base: '100%', sm: 'fit-content' }}>
-      <Button
-        variant='outline'
-        borderRadius='2xl'
-        borderWidth='medium'
-        borderColor='primary.acid'
-        color='primary.acid'
-        _hover={{ bgColor: 'primary.acid', color: 'white' }}
-        fontWeight='bold'
-        fontSize={['md', 'lg']}
-        w='full'
-        p={6}
-        onClick={onClose}
-      >
-        {entry.label}
-      </Button>
-    </ChakraLink>
-  ));
+  const links = navigationJSON.topNav.map((entry) => {
+    return (
+      <ChakraLink key={entry.id} href={entry.href} rel='noreferrer' w={{ base: '100%', sm: 'fit-content' }}>
+        <Button
+          variant='outline'
+          borderRadius='2xl'
+          borderWidth='medium'
+          borderColor='primary.acid'
+          color='primary.acid'
+          _hover={{ bgColor: 'primary.acid', color: 'white' }}
+          fontWeight='bold'
+          fontSize={['md', 'lg']}
+          w='full'
+          p={6}
+          onClick={onClose}
+        >
+          {entry.label}
+        </Button>
+      </ChakraLink>
+    );
+  });
 
   return (
     <FullWidthContainer>

@@ -19,7 +19,7 @@ const Partners = ({ cards = true }: PartnersProps) => {
   ));
 
   return (
-    <FullWidthContainer id='section-partners' py={[10, 16]}>
+    <FullWidthContainer id='partners' py={[10, 16]}>
       <ResponsiveContainer>
         <ReactReveal.Fade duration={700} bottom>
           <VStack spacing={[6, 12]}>

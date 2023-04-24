@@ -10,7 +10,7 @@ export const Financing = () => {
   const [isMobile] = useMediaQuery('(max-width: 640px)');
 
   return (
-    <FullWidthContainer id='section-finanzierungen' py={[10, 16]} bgColor='gray.100'>
+    <FullWidthContainer id='finanzierungen' py={[10, 16]} bgColor='gray.100'>
       <ResponsiveContainer>
         <ReactReveal.Fade duration={1000} bottom>
           <>

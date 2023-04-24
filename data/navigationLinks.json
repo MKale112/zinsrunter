@@ -7,22 +7,22 @@
     {
       "id": "navbar-finanzierungen",
       "label": "FINANZIERUNGEN",
-      "href": "#section-finanzierungen"
+      "href": "#finanzierungen"
     },
     {
       "id": "navbar-partners",
       "label": "PARTNER",
-      "href": "#section-partners"
+      "href": "#partners"
     },
     {
       "id": "navbar-steps",
       "label": "SO FUNKTIONIERT'S",
-      "href": "#section-steps"
+      "href": "#so-funktioniert"
     },
     {
       "id": "navbar-mehrwert",
       "label": "UNSER MEHRWERT",
-      "href": "#section-mehrwert"
+      "href": "#mehrwert"
     },
     {
       "id": "navbar-our-site",
