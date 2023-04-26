@@ -26,6 +26,7 @@ const Reprasentatives = ({ isOpen }: { isOpen: boolean }) => {
       <Script async id='baufi-lead-script-2' type='text/javascript'>
         var baufilead_kampagne = &quot;Zins-runter.de Europace Formulare&quot;;
       </Script>
+
       <Script async id='baufi-lead-script-3' type='text/javascript'>
         var baufilead_tippgeber_id = &quot;TQJ25&quot;;
       </Script>
