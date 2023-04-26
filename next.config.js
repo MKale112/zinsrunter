@@ -3,11 +3,7 @@ const buildDate = new Date().toLocaleString();
 
 const nextConfig = {
   reactStrictMode: true,
-  // env: {
-  //   WEBSITE_URL: 'http://localhost:3000',
-  //   CLEVERREACH_CLIENT_ID: 'QJsMXiIASk',
-  //   CLEVERREACH_CLIENT_SECRET: 'RaEsg1RDtO5MkEf07zDFhSJycksAdhp3',
-  // },
+  compress: false,
   swcMinify: true,
   webpack(config) {
     config.module.rules.push({
