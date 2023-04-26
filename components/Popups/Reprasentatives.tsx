@@ -17,12 +17,12 @@ const Reprasentatives = ({ isOpen }: { isOpen: boolean }) => {
 
   return isOpen ? (
     <>
-      <Script
+      {/* <Script
         async
         id='baufi-lead-script-1'
         type='text/javascript'
         src='https://www.baufi-lead.de/baufilead/partner/PkGvpMTcO4DxDy0gEBGuq9c2NYTZ1Q/imports.js'
-      />
+      /> */}
       <Script async id='baufi-lead-script-2' type='text/javascript'>
         var baufilead_kampagne = &quot;Zins-runter.de Europace Formulare&quot;;
       </Script>
