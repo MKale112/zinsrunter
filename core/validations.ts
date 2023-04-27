@@ -18,7 +18,7 @@ export const validationSchemaFormular = yup.object({
   strasse: yup.string().required(),
   hausnummer: yup.string(),
   familienstand: yup.string().required(),
-  staatsangehorigkeit: yup.string().required(),
+  staatsangehorigkeit: yup.string(),
   plz: yup.string().required(),
   ort: yup.string().required(),
   telefon: yup.string().required(),
@@ -32,7 +32,7 @@ export const validationSchemaFormular = yup.object({
 });
 
 export const validationSchemaKontakt = yup.object({
-  anrede: yup.string(),
+  anrede: yup.string().required(),
   vorname: yup.string().required(),
   name: yup.string().required(),
   strasse: yup.string().required(),

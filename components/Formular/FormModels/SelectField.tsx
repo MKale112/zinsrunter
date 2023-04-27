@@ -7,9 +7,11 @@ export interface Props extends FieldProps {
   label: string;
   options?: string[];
   placeholder?: string;
+  defaultValue?: string;
+  value?: string;
 }
 
-const SelectField: FC<Props> = ({ label, options, placeholder = 'Please select one', field }) => {
+const SelectField: FC<Props> = ({ label, options, value, placeholder = 'Please select one', defaultValue, field }) => {
   const [_formikField, meta] = useField(field);
   const formControlRef = useRef<HTMLDivElement>(null);
 
@@ -33,6 +35,7 @@ const SelectField: FC<Props> = ({ label, options, placeholder = 'Please select o
       {options && (
         <Select
           {...field}
+          value={value}
           placeholder={placeholder}
           borderColor={meta.touched && !!meta.error ? 'red.500' : 'primary.acid'}
           border='2px'

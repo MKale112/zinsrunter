@@ -71,7 +71,7 @@ const Kontakt = () => {
   ));
 
   const validationSchema = yup.object().shape({
-    anrede: yup.string(),
+    anrede: yup.string().required(errorMessages.fieldRequired),
     vorname: yup.string().required(errorMessages.fieldRequired),
     name: yup.string().required(errorMessages.fieldRequired),
     strasse: yup.string().required(errorMessages.fieldRequired),

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import HeroBanner from '@/components/Banner/HeroBanner';
-import { Heading, VisuallyHidden, useMediaQuery } from '@chakra-ui/react';
+import { Box, Heading, VisuallyHidden, useMediaQuery } from '@chakra-ui/react';
 import Partners from '@/components/SealsAndPartners/Partners';
 import Seals from '@/components/SealsAndPartners/Seals';
 import Highlights from '@/components/Highlights/Highlights';
@@ -19,12 +19,14 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-      <Script
-        async
-        type='text/javascript'
-        src='https://www.baufi-lead.de/baufilead/partner/PkGvpMTcO4DxDy0gEBGuq9c2NYTZ1Q/imports.js'
-      />
+    <Box pointerEvents={'auto'}>
+      {/* <Script async id='baufi-lead-script-2' type='text/javascript'>
+        var baufilead_kampagne = &quot;Zins-runter.de Europace Formulare&quot;;
+      </Script>
+
+      <Script async id='baufi-lead-script-3' type='text/javascript'>
+        var baufilead_tippgeber_id = &quot;TQJ25&quot;;
+      </Script> */}
       <VisuallyHidden>
         <Heading as='h1'>Zins-Runter</Heading>
       </VisuallyHidden>
@@ -33,6 +35,6 @@ export default function Home() {
       <Partners cards={true} />
       <Highlights />
       <Seals />
-    </>
+    </Box>
   );
 }

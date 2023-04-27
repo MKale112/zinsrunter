@@ -20,9 +20,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const tokenResponse = await fetch(tokenUrl, requestOptions);
     const tokenData = await tokenResponse.json();
 
-    // console.log('tokens: ');
-    // console.log(tokenUrl, requestOptions, tokenResponse, tokenData);
-
     if (!tokenData.access_token) {
       throw new Error('Failed to get CleverReach access token');
     }
@@ -64,7 +61,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       body: JSON.stringify(newUser),
     };
 
-    // console.log('groupRequestOptions', JSON.parse(groupRequestOptions.body));
     const groupResponse = await fetch(groupUrl, groupRequestOptions);
     const groupData = await groupResponse.json();
 
@@ -87,8 +83,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         },
       }),
     };
-
-    // console.log('formRequestOptions: ', JSON.parse(formRequestOptions.body));
 
     const formResponse = await fetch(formUrl, formRequestOptions);
     const formData = await formResponse.json();

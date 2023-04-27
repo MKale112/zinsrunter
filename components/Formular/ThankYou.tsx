@@ -53,7 +53,6 @@ const thankYouData = {
 
 export const ThankYou = () => {
   const { query } = useRouter();
-  console.log(query.thankyou);
   const data = thankYouData[query.thankyou as keyof typeof thankYouData].map((entry) => (
     <ListItem key={entry.title}>
       <Text as='b' dangerouslySetInnerHTML={{ __html: entry.title }} />

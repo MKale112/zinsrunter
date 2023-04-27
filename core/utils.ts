@@ -27,11 +27,6 @@ function storeGclid(): void {
 
 export function addGclid(): void {
   storeGclid(); // store gclid param to localstorage
-  // const currDate = new Date().getTime();
-  // const gclsrcParam = getParam('gclsrc');
-  // const isGclsrcValid = !gclsrcParam || gclsrcParam.indexOf('aw') !== -1;
-  // const gclid = JSON.parse(localStorage.getItem('gclid') || '{}');
-  // const isGclidValid = gclid && currDate < gclid.expiryDate;
 }
 
 export function toTitleCase(string: string) {
@@ -44,10 +39,8 @@ export function toTitleCase(string: string) {
   });
 }
 
-export function formatDate(date: Date | string, field: string): string {
-  if (typeof date === 'string') {
-    date = new Date(date);
-  }
+export function formatDate(field: string, passedDate?: Date): string {
+  const date = passedDate ?? new Date();
 
   const options = { timeZone: 'Europe/Berlin' };
   const day = date.toLocaleString('en', { ...options, day: '2-digit' });
@@ -56,13 +49,6 @@ export function formatDate(date: Date | string, field: string): string {
   const hour = date.toLocaleString('en', { ...options, hour: '2-digit', hour12: false });
   const minute = date.toLocaleString('en', { ...options, minute: '2-digit' });
   const second = date.toLocaleString('en', { ...options, second: '2-digit' });
-
-  // const day = date.getDate().toString().padStart(2, '0');
-  // const month = (date.getMonth() + 1).toString().padStart(2, '0');
-  // const year = date.getFullYear().toString();
-  // const hour = date.getHours().toString().padStart(2, '0');
-  // const minute = date.getMinutes().toString().padStart(2, '0');
-  // const second = date.getSeconds().toString().padStart(2, '0');
 
   switch (field) {
     case 'bearbeitet_am':
@@ -84,19 +70,18 @@ export type DataLayerItem = {
 
 export const dataLayer: DataLayerItem[] = [];
 
-// export const phoneRegex = /^[+]?[\d-]+$/;
-export const phoneRegex = /^[+]?[()0-9\s-]+$/;
-// export const houseNumberRegex = /^[\d]+[a-zA-Z]*\s*[a-zA-Z]*$/;
+export const phoneRegex = /^[+]?[()/0-9\s-]*[0-9][()/0-9\s-]*$/;
 export const houseNumberRegex = /^[\d]+[\s-]*[\w\s-]*$/;
 export const zipcodeRegex = /^[0-9]{1,6}$/;
 
 export const populateQueryString = (flattenedData: Record<any, any>): string => {
-  const columnString = Object.keys(InitialDBInput).join(', ');
+  const InitialDBInputObj = InitialDBInput();
+  const columnString = Object.keys(InitialDBInputObj).join(', ');
   let values = '';
-  Object.keys(InitialDBInput).forEach((key, index) => {
-    values += `${flattenedData[key] ? `"${flattenedData[key]}"` : InitialDBInput[key as keyof typeof InitialDBInput]}${
-      index === Object.keys(InitialDBInput).length - 1 ? '' : ','
-    }`;
+  Object.keys(InitialDBInputObj).forEach((key, index) => {
+    values += `${
+      flattenedData[key] ? `"${flattenedData[key]}"` : InitialDBInputObj[key as keyof typeof InitialDBInputObj]
+    }${index === Object.keys(InitialDBInputObj).length - 1 ? '' : ','}`;
   });
   const queryString = `INSERT INTO adressen(${columnString}) VALUES (${values})`;
 

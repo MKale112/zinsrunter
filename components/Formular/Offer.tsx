@@ -56,7 +56,7 @@ const Offer = () => {
     }),
     plz: yup.string().matches(zipcodeRegex, errorMessages.zipcodeInvalidInput).required(errorMessages.fieldRequired),
     ort: yup.string().required(errorMessages.fieldRequired),
-    staatsangehorigkeit: yup.string().required(errorMessages.fieldRequired),
+    staatsangehorigkeit: yup.string(),
     telefon: yup.string().matches(phoneRegex, errorMessages.invalidPhone).required(errorMessages.fieldRequired),
     email: yup.string().email(errorMessages.invalidEmail),
     erreichbarkeit: yup.string().required(errorMessages.fieldRequired),
@@ -73,7 +73,7 @@ const Offer = () => {
     geburtsdatum: step[1].offer?.geburtsdatum || '',
     strasse: step[1].offer?.strasse || '',
     hausnummer: step[1].offer?.hausnummer || '',
-    staatsangehorigkeit: step[1].offer?.staatsangehorigkeit || '',
+    staatsangehorigkeit: step[1].offer?.staatsangehorigkeit || 'Deutschland',
     plz: step[1].offer?.plz || '',
     ort: step[1].offer?.ort || '',
     telefon: step[1].offer?.telefon || '',
@@ -96,9 +96,8 @@ const Offer = () => {
         validateOnChange={true}
         validateOnBlur={false}
         onSubmit={async (values, { resetForm }) => {
-          // setStep((currValue) => [7, { ...currValue[1], offer: values }]);
-
           const currDate = new Date().getTime();
+
           const gclid = JSON.parse(localStorage.getItem('gclid') || '{}') as LocalStorageGCLID;
           const isGclidValid = gclid && currDate < gclid.expiryDate;
 
@@ -120,7 +119,7 @@ const Offer = () => {
               .catch((error) => console.log('Subscription was unsuccessful: ', error));
           }
 
-          const formattedDate = formatDate(new Date(values.geburtsdatum), 'geburtsdatum');
+          const formattedDate = formatDate('geburtsdatum', new Date(values.geburtsdatum));
           Object.assign(
             fullData,
             step[1],
@@ -168,7 +167,7 @@ const Offer = () => {
                   value={values.anrede}
                   type='select'
                   label='Anrede'
-                  default='No'
+                  default=''
                   options={['Herr', 'Frau']}
                   placeholder='Bitte auswählen'
                 />
@@ -261,6 +260,8 @@ const Offer = () => {
                   name='staatsangehorigkeit'
                   type='text'
                   label='Staatsangehörigkeit'
+                  defaultValue='Deutschland'
+                  value={values.staatsangehorigkeit}
                   placeholder='Bitte auswählen'
                 />
 

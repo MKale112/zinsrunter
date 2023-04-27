@@ -7,13 +7,14 @@ import { validationSchemaFormular, validationSchemaKontakt } from '@/core/valida
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     const dataToSend = flattenObject(req.body);
+    const InitialSecondDBInputObj = InitialSecondDBInput();
     !req.body.offer
       ? await validationSchemaKontakt.validate(req.body)
       : await validationSchemaFormular.validate(dataToSend);
 
     const dataToSendToSecondDB = {
       data: {
-        ...InitialSecondDBInput,
+        ...InitialSecondDBInputObj,
         ...dataToSend,
       },
     };

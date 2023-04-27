@@ -14,7 +14,6 @@ import {
   DrawerOverlay,
   useDisclosure,
   Select,
-  useMediaQuery,
   Stack,
 } from '@chakra-ui/react';
 import { errorMessages } from 'data/errorMessages';
@@ -57,10 +56,6 @@ const ProjectNumbers = () => {
     const { grunder, maklerprovision } = findGrunderAndMakler(location);
     setVariables({ grunder: grunder!, maklerprovision: maklerprovision! });
   }, []);
-
-  // useEffect(() => {
-  //   console.log('calculations');
-  // }, [calculations]);
 
   useEffect(() => {
     const { grunder, maklerprovision } = findGrunderAndMakler(location);

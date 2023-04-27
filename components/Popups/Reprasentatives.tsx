@@ -1,37 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { VStack, Text, Tr, Td, Table, Tbody, Spinner } from '@chakra-ui/react';
-// import Script from 'next/script';
+import Script from 'next/script';
 
 const Reprasentatives = ({ isOpen }: { isOpen: boolean }) => {
-  // useEffect(() => {
-  //   const script = document.createElement('script');
-  //   script.src = 'https://www.baufi-lead.de/baufilead/partner/PkGvpMTcO4DxDy0gEBGuq9c2NYTZ1Q/imports.js';
-  //   script.async = true;
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://www.baufi-lead.de/baufilead/partner/PkGvpMTcO4DxDy0gEBGuq9c2NYTZ1Q/imports.js';
+    script.async = true;
 
-  //   isOpen && document.body.appendChild(script);
+    isOpen && document.body.appendChild(script);
 
-  //   return () => {
-  //     !isOpen && document.body.removeChild(script);
-  //   };
-  // }, [isOpen]);
+    return () => {
+      !isOpen && document.body.removeChild(script);
+    };
+  }, [isOpen]);
 
   return isOpen ? (
     <>
       {/* remove this */}
-      {/* <Script
+      <Script
         async
         id='baufi-lead-script-1'
         type='text/javascript'
         src='https://www.baufi-lead.de/baufilead/partner/PkGvpMTcO4DxDy0gEBGuq9c2NYTZ1Q/imports.js'
-      /> */}
+      />
 
-      {/* <Script async id='baufi-lead-script-2' type='text/javascript'>
+      <Script async id='baufi-lead-script-2' type='text/javascript'>
         var baufilead_kampagne = &quot;Zins-runter.de Europace Formulare&quot;;
       </Script>
 
       <Script async id='baufi-lead-script-3' type='text/javascript'>
         var baufilead_tippgeber_id = &quot;TQJ25&quot;;
-      </Script> */}
+      </Script>
 
       <VStack alignItems='flex-start' spacing={6}>
         <VStack alignItems='flex-start'>

@@ -28,12 +28,6 @@ const InputField: FC<Props> = ({
   const [_formikField, meta] = useField(field);
   const formControlRef = useRef<HTMLDivElement>(null);
 
-  // useEffect(() => {
-  //   if (meta.touched && !!meta.error && formControlRef.current) {
-  //     formControlRef.current.scrollIntoView({ behavior: 'smooth' });
-  //   }
-  // }, [meta.error, meta.touched]);
-
   const formik = useFormikContext();
 
   useEffect(() => {
