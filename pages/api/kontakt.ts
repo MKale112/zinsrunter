@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import excuteQuery from '../../lib/db';
 import { flattenObject, populateQueryString } from '@/core/utils';
 import { validationSchemaKontakt } from '@/core/validations';
+import mail from '@/core/mail';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
@@ -21,6 +22,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Log the elapsed time
     console.log(`Elapsed time: ${elapsedTime / 1000} s`);
 
+    await mail(process.env.EMAIL_TO!, {
+      type: 'KONTAKT',
+      vorname: req.body.vorname,
+      name: req.body.name,
+      timestamp: new Date().toLocaleDateString('de') + ', ' + new Date().toLocaleTimeString('de'),
+    });
     res.status(200).json('Success');
   } catch (error) {
     console.log(error);

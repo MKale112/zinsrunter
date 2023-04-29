@@ -43,6 +43,13 @@ export interface LocalStorageGCLID {
   expiryDate: number;
 }
 
+export interface MailData {
+  type: 'FORMULAR' | 'KONTAKT';
+  vorname: string;
+  name: string;
+  timestamp: string;
+}
+
 export interface DBInput {
   anrede: string;
   vorname: string;
