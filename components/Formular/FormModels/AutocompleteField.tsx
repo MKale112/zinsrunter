@@ -1,6 +1,6 @@
 import { FormControl, FormLabel } from '@chakra-ui/react';
-import { Field, FieldProps, FormikValues, useFormikContext } from 'formik';
-import React, { FC, useEffect } from 'react';
+import { Field, FieldProps, FormikValues, useField, useFormikContext } from 'formik';
+import React, { FC, useEffect, useRef } from 'react';
 import CustomErrorMessage from './CustomErrorMessage';
 import { Select as ReactSelect, GroupBase, OptionsOrGroups, ChakraStylesConfig } from 'chakra-react-select';
 import { AutocompleteMapEntry } from '@/core/types';
@@ -24,6 +24,9 @@ const AutocompleteField: FC<Props> = ({
   onSelectOption,
   value,
 }) => {
+  const [_formikField, meta] = useField(name);
+  const formControlRef = useRef<HTMLDivElement>(null);
+
   const chakraStyles: ChakraStylesConfig = {
     clearIndicator: (provided) => ({
       ...provided,
@@ -36,7 +39,7 @@ const AutocompleteField: FC<Props> = ({
     valueContainer: (base) => ({
       ...base,
       border: '2px solid',
-      borderColor: 'primary.acid',
+      borderColor: meta.touched && !!meta.error ? 'red.500' : 'primary.acid',
       borderRadius: 'md',
     }),
     dropdownIndicator: (provided) => ({
@@ -46,6 +49,7 @@ const AutocompleteField: FC<Props> = ({
     control: (provided) => ({
       ...provided,
       border: 'none', // remove the default control border
+
       '&:hover': {
         borderColor: 'black', // change border color on hover
       },
@@ -59,10 +63,8 @@ const AutocompleteField: FC<Props> = ({
   const formik = useFormikContext();
   useEffect(() => {
     if (!formik?.isValidating && formik?.errors && Object.keys(formik?.errors).length > 0) {
-      const firstErrorField = Object.keys(formik?.errors)[0];
-      const errorFieldElement = document.getElementsByName(firstErrorField)[0];
-      if (errorFieldElement) {
-        errorFieldElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (Object.keys(formik.errors).includes(name)) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
   }, [formik?.isValidating, formik?.errors]);
@@ -75,7 +77,7 @@ const AutocompleteField: FC<Props> = ({
           handleSelectOption(option);
         };
         return (
-          <FormControl>
+          <FormControl ref={formControlRef} isInvalid={meta.touched && !!meta.error}>
             <FormLabel fontSize={14} mb={0}>
               {label}
             </FormLabel>
