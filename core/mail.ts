@@ -16,13 +16,19 @@ export default async (to: string, data: MailData) => {
     const info = await transporter.sendMail({
       from: process.env.EMAIL,
       to,
-      subject: `Incoming form submission from ${data.type}`,
+      subject: `Eingehende Formularübermittlung von ${data.type}`,
       html: `
-        <h3>Form Filled from ${data.type}</h3>
-        <br/>
-        <p><strong>Vorname:</strong>${data.vorname}</p>
-        <p><strong>Name:</strong>${data.name}</p>
-        <p><strong>At:</strong>${data.timestamp}</p>
+      <h3>Formular ausgefüllt von ${data.type}</h3> 
+      <br/> 
+      <p>
+        <strong>Vorname: </strong>${data.vorname}
+      </p>
+      <p>
+        <strong>Name: </strong>${data.name}
+      </p> 
+      <p>
+        <strong>Zeitpunkt: </strong>${data.timestamp}
+      </p>
       `,
     });
 
