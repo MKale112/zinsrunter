@@ -1,6 +1,7 @@
 import { FullWidthContainer, ResponsiveContainer } from '@/components/Containers';
 import {
   Box,
+  Button,
   Heading,
   Link,
   ListItem,
@@ -10,6 +11,7 @@ import {
   Td,
   Text,
   Th,
+  Thead,
   Tr,
   UnorderedList,
   VStack,
@@ -225,7 +227,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
             </Text>
           </VStack>
 
-          <VStack alignItems='flex-start'>
+          <VStack alignItems='flex-start' width='100%'>
             <Heading as='h2' pt={8} fontSize={['md', 'lg', 'lg', 'xl']}>
               4. Personenbezogene Daten, die Sie Zins-runter.de (Siguron GmbH) für die Bearbeitung der
               Finanzierungsanfrage übermitteln.
@@ -708,14 +710,23 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               Im Folgenden haben wir für Sie noch einmal vereinfacht beschrieben, wie wir Ihre Daten verarbeiten:
             </Text>
             <TableContainer>
-              <Table borderWidth='1px' borderColor='gray.200' bg='white'>
-                <Tbody>
-                  <Tr borderTop='1px solid' borderColor='gray.200'>
+              <Table
+                width='100%'
+                overflow='scroll'
+                variant='unstyled'
+                borderWidth='1px'
+                borderColor='gray.200'
+                bg='white'
+              >
+                <Thead>
+                  <Tr>
                     <Th>Zweck</Th>
                     <Th>Datenkategorien</Th>
                     <Th>Rechtsgrundlage</Th>
                     <Th>Empfänger</Th>
                   </Tr>
+                </Thead>
+                <Tbody>
                   <Tr>
                     <Td borderTop='1px solid' borderColor='gray.200'>
                       <UnorderedList>
@@ -1255,14 +1266,14 @@ const Datenschutz = ({ isPopup = false }: Props) => {
             </Text>
           </VStack>
 
-          <VStack alignItems='flex-start'>
+          <VStack alignItems='flex-start' width='100%'>
             <Heading as='h2' pt={8} fontSize={['md', 'lg', 'lg', 'xl']}>
               10. Welche internetspezifischen Datenverarbeitungen anfallen
             </Heading>
             <Text>Individuelle Einstellungen</Text>{' '}
-            <button id='ot-sdk-btn' className='ot-sdk-show-settings'>
+            <Button id='ot-sdk-btn' className='ot-sdk-show-settings'>
               Individuelle Einstellungen
-            </button>
+            </Button>
             <Text>
               <strong>a) Hinweise zu Cookies</strong>
               <br />
@@ -1319,11 +1330,8 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               Facebook finden Sie in den Datenschutzhinweisen von Facebook unter{' '}
               <Link href='https://facebook.com/policy.php'>https://facebook.com/policy.php</Link>. Wenn Sie der Nutzung
               von Facebook Website Custom Audiences widersprechen möchten, können Sie die entsprechenden Einstellungen
-              in Ihrem Facebook Nutzerkonto vornehmen unter:
-              <Link href='https://facebook.com/ads/website_custom_audiences/'>
-                https://facebook.com/ads/website_custom_audiences/
-              </Link>
-              .
+              in Ihrem Facebook Nutzerkonto vornehmen unter:{' '}
+              <Link href='https://facebook.com/ads/website_custom_audiences/'>facebook.com custom_audiences</Link>
             </Text>
             <br />
             <Text>
@@ -1395,7 +1403,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               <br />
               <br />
               Sie können die Installation der Cookies durch eine entsprechende Einstellung Ihrer Browser-Software oder
-              mittels der Installation eines Browser-Add-ons (abrufbar unter:
+              mittels der Installation eines Browser-Add-ons (abrufbar unter:{' '}
               <Link href='https://tools.google.com/dlpage/gaoptout?hl=de'>
                 https://tools.google.com/dlpage/gaoptout?hl=de
               </Link>
@@ -1462,7 +1470,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               Buttons genutzt.
               <br />
               <br />
-              Weitere Informationen hierzu finden sich in der Datenschutzerklärung von Twitter unter
+              Weitere Informationen hierzu finden sich in der Datenschutzerklärung von Twitter unter{' '}
               <Link href='https://twitter.com/de/privacy'>https://twitter.com/de/privacy</Link>.
             </Text>
             <Text>
@@ -1475,9 +1483,9 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               <br />
               Sie können der Erhebung und Speicherung der Daten durch Yandex widersprechen, indem Sie in Ihrem Browser
               die entsprechenden Einstellungen zum Blockieren von Cookies vornehmen. Zudem können Sie das Yandex
-              Browser-Add-On installieren. Das Add-on ist abrufbar unter:
+              Browser-Add-On installieren. Das Add-on ist abrufbar unter:{' '}
               <Link href='https://yandex.com/support/metrica/general/opt-out.xml'>
-                https://yandex.com/support/metrica/general/opt-out.xml
+                yandex.com/support/metrica/general/opt-out.xml
               </Link>
               .
             </Text>
