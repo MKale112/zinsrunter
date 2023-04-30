@@ -9,7 +9,6 @@ import { RecoilRoot } from 'recoil';
 import { useRouter } from 'next/router';
 import { Metadata } from '@/components/Metadata';
 import TagManager from 'react-gtm-module';
-import Script from 'next/script';
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -20,18 +19,6 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <Script
-        id='baufi-lead-script-1'
-        type='text/javascript'
-        src='https://www.baufi-lead.de/baufilead/partner/PkGvpMTcO4DxDy0gEBGuq9c2NYTZ1Q/imports.js'
-      />
-      <Script id='baufi-lead-script-2' type='text/javascript'>
-        var baufilead_kampagne = &quot;Zins-runter.de Europace Formulare&quot;;
-      </Script>
-      <Script id='baufi-lead-script-3' type='text/javascript'>
-        var baufilead_tippgeber_id = &quot;TQJ25&quot;;
-      </Script>
-
       <ChakraProvider theme={customTheme}>
         <Layout>
           <RecoilRoot>

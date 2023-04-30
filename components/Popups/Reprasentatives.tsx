@@ -1,30 +1,14 @@
 import React, { useEffect } from 'react';
 import { VStack, Text, Tr, Td, Table, Tbody, Spinner } from '@chakra-ui/react';
-import Script from 'next/script';
+import { applyInnerHTML } from '@/core/script';
 
 const Reprasentatives = ({ isOpen }: { isOpen: boolean }) => {
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://www.baufi-lead.de/baufilead/partner/PkGvpMTcO4DxDy0gEBGuq9c2NYTZ1Q/imports.js';
-    script.async = true;
-
-    isOpen && document.body.appendChild(script);
-
-    return () => {
-      !isOpen && document.body.removeChild(script);
-    };
+    isOpen && applyInnerHTML();
   }, [isOpen]);
 
   return isOpen ? (
     <>
-      <Script async id='baufi-lead-script-2' type='text/javascript'>
-        var baufilead_kampagne = &quot;Zins-runter.de Europace Formulare&quot;;
-      </Script>
-
-      <Script async id='baufi-lead-script-3' type='text/javascript'>
-        var baufilead_tippgeber_id = &quot;TQJ25&quot;;
-      </Script>
-
       <VStack alignItems='flex-start' spacing={6}>
         <VStack alignItems='flex-start'>
           <Text>
@@ -42,7 +26,7 @@ const Reprasentatives = ({ isOpen }: { isOpen: boolean }) => {
                   fester Sollzins:
                 </Td>
                 <Td px={4} w='50%' ml='auto'>
-                  <div className='baufilead_beste_kondition_sollzins' />
+                  <div id='sollzins' />
                 </Td>
               </Tr>
               <Tr>
@@ -50,7 +34,7 @@ const Reprasentatives = ({ isOpen }: { isOpen: boolean }) => {
                   effektiver Jahreszins:
                 </Td>
                 <Td px={4} w='50%' ml='auto'>
-                  <div className='baufilead_beste_kondition_effektivzins' />
+                  <div id='effektivzins' />
                 </Td>
               </Tr>
               <Tr>
@@ -58,7 +42,7 @@ const Reprasentatives = ({ isOpen }: { isOpen: boolean }) => {
                   Zinsbindung:
                 </Td>
                 <Td px={4} w='50%' ml='auto'>
-                  <div className='baufilead_beste_kondition_zinsbindung' />
+                  <div id='zinsbindung' />
                 </Td>
               </Tr>
               <Tr>
@@ -66,7 +50,7 @@ const Reprasentatives = ({ isOpen }: { isOpen: boolean }) => {
                   monatliche Rate:
                 </Td>
                 <Td px={4} w='50%' ml='auto'>
-                  <div className='baufilead_beste_kondition_monatliche_rate' />
+                  <div id='monatliche_rate' />
                 </Td>
               </Tr>
               <Tr>
@@ -74,7 +58,7 @@ const Reprasentatives = ({ isOpen }: { isOpen: boolean }) => {
                   Restschuld am Ende der Zinsbindung:
                 </Td>
                 <Td px={4} w='50%' ml='auto'>
-                  <div className='baufilead_beste_kondition_restschuld' />
+                  <div id='restschuld' />
                 </Td>
               </Tr>
               <Tr>
@@ -82,7 +66,7 @@ const Reprasentatives = ({ isOpen }: { isOpen: boolean }) => {
                   Nettodarlehensbetrag:
                 </Td>
                 <Td px={4} w='50%' ml='auto'>
-                  <div className='baufilead_beste_kondition_nettodarlehensbetrag' />
+                  <div id='nettodarlehensbetrag' />
                 </Td>
               </Tr>
               <Tr>
@@ -90,7 +74,7 @@ const Reprasentatives = ({ isOpen }: { isOpen: boolean }) => {
                   Kosten der Immobilie:
                 </Td>
                 <Td px={4} w='50%' ml='auto'>
-                  <div className='baufilead_beste_kondition_immobilienkosten' />
+                  <div id='immobilienkosten' />
                 </Td>
               </Tr>
               <Tr>
@@ -98,7 +82,7 @@ const Reprasentatives = ({ isOpen }: { isOpen: boolean }) => {
                   Summe der Zahlungen:
                 </Td>
                 <Td px={4} w='50%' ml='auto'>
-                  <div className='baufilead_beste_kondition_summe_zahlungen' />
+                  <div id='summe_zahlungen' />
                 </Td>
               </Tr>
               <Tr>
@@ -106,7 +90,7 @@ const Reprasentatives = ({ isOpen }: { isOpen: boolean }) => {
                   Grundbuchkosten:
                 </Td>
                 <Td px={4} w='50%' ml='auto'>
-                  <div className='baufilead_beste_kondition_grundbuchkosten' />
+                  <div id='grundbuchkosten' />
                 </Td>
               </Tr>
               <Tr>
@@ -114,7 +98,7 @@ const Reprasentatives = ({ isOpen }: { isOpen: boolean }) => {
                   Anzahl der Raten:
                 </Td>
                 <Td px={4} w='50%' ml='auto'>
-                  <div className='baufilead_beste_kondition_ratenanzahl' />
+                  <div id='ratenanzahl' />
                 </Td>
               </Tr>
               <Tr>
@@ -122,7 +106,7 @@ const Reprasentatives = ({ isOpen }: { isOpen: boolean }) => {
                   Rückzahlungslaufzeit in vollen Jahren und restlichen Monaten:
                 </Td>
                 <Td px={4} w='50%' ml='auto'>
-                  <div className='baufilead_beste_kondition_rueckzahlungslaufzeit' />
+                  <div id='rueckzahlungslaufzeit' />
                 </Td>
               </Tr>
               <Tr>
@@ -130,7 +114,7 @@ const Reprasentatives = ({ isOpen }: { isOpen: boolean }) => {
                   Datum der Konditionsermittlung:
                 </Td>
                 <Td px={4} w='50%' ml='auto'>
-                  <div className='baufilead_beste_kondition_datum' />
+                  <div id='datum' />
                 </Td>
               </Tr>
             </Tbody>
