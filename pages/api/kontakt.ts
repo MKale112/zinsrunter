@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import excuteQuery from '../../lib/db';
-import { flattenObject, populateQueryString } from '@/core/utils';
+import { flattenObject, formatDate, populateQueryString } from '@/core/utils';
 import { validationSchemaKontakt } from '@/core/validations';
 import mail from '@/core/mail';
 
@@ -26,7 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       type: 'KONTAKT',
       vorname: req.body.vorname,
       name: req.body.name,
-      timestamp: new Date().toLocaleDateString('de') + ', ' + new Date().toLocaleTimeString('de'),
+      timestamp: formatDate('bearbeitet_am'),
     });
     res.status(200).json('Success');
   } catch (error) {

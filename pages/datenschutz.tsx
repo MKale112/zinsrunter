@@ -1,7 +1,6 @@
 import { FullWidthContainer, ResponsiveContainer } from '@/components/Containers';
 import {
   Box,
-  Button,
   Heading,
   Link,
   ListItem,
@@ -1271,9 +1270,9 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               10. Welche internetspezifischen Datenverarbeitungen anfallen
             </Heading>
             <Text>Individuelle Einstellungen</Text>{' '}
-            <Button id='ot-sdk-btn' className='ot-sdk-show-settings'>
+            <button id='ot-sdk-btn' className='ot-sdk-show-settings'>
               Individuelle Einstellungen
-            </Button>
+            </button>
             <Text>
               <strong>a) Hinweise zu Cookies</strong>
               <br />
