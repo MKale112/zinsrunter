@@ -81,6 +81,10 @@ export const Metadata = ({ asPath }: { asPath: string }) => {
         name='keywords'
         content=' Baufinanzierung, Immobilienfinanzierung, Darlehen, Ratenkredite, Dienstleistung, Finanzierungsvermittler, Vergleich, Kredit'
       />
+      <meta
+        name='norton-safeweb-site-verification'
+        content='o5e410xm4w9hjlw17v301m881labk5hqkfchl1xmfgqgn04tuo3yrnieion5071pxw2hmiqvsd30jpznh2ysg3ltupu8iw8exltrnzu6weow6ri2mr9lmvahv06sky7m'
+      />
 
       <meta name='description' content={metaText.desc} />
       <meta name='Copyright' content='Siguron GmbH, M&uuml;nchen' />

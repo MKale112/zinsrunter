@@ -18,15 +18,33 @@ export default function Home() {
     };
   }, []);
 
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://www.baufi-lead.de/baufilead/partner/PkGvpMTcO4DxDy0gEBGuq9c2NYTZ1Q/imports.js';
+    script.async = true;
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   return (
     <Box pointerEvents={'auto'}>
-      {/* <Script async id='baufi-lead-script-2' type='text/javascript'>
+      {/* <Script
+        async
+        id='baufi-lead-script-1'
+        type='text/javascript'
+        src='https://www.baufi-lead.de/baufilead/partner/PkGvpMTcO4DxDy0gEBGuq9c2NYTZ1Q/imports.js'
+      /> */}
+      <Script async id='baufi-lead-script-2' type='text/javascript'>
         var baufilead_kampagne = &quot;Zins-runter.de Europace Formulare&quot;;
       </Script>
 
       <Script async id='baufi-lead-script-3' type='text/javascript'>
         var baufilead_tippgeber_id = &quot;TQJ25&quot;;
-      </Script> */}
+      </Script>
       <VisuallyHidden>
         <Heading as='h1'>Zins-Runter</Heading>
       </VisuallyHidden>

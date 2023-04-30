@@ -257,7 +257,7 @@ const Kontakt = () => {
                         name='bemerkung'
                         type='text'
                         label='Anmerkungen'
-                        placeholder='Werden absolut Vertraulich behandelt'
+                        placeholder='Werden absolut vertraulich behandelt'
                       />
 
                       <HStack width='full' justifyContent='flex-start'>

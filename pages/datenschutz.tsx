@@ -1,7 +1,20 @@
 import { FullWidthContainer, ResponsiveContainer } from '@/components/Containers';
-import { Box, Heading, Link, ListItem, Text, UnorderedList, VStack } from '@chakra-ui/react';
+import {
+  Box,
+  Heading,
+  Link,
+  ListItem,
+  Table,
+  TableContainer,
+  Tbody,
+  Td,
+  Text,
+  Th,
+  Tr,
+  UnorderedList,
+  VStack,
+} from '@chakra-ui/react';
 import React from 'react';
-
 interface Props {
   isPopup?: boolean;
 }
@@ -28,12 +41,12 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               Nach dem Informations- und Kommunikationsdienstegesetz dürfen personenbezogene Daten nur mit Einwilligung
               der betreffenden Person gespeichert und weiterverarbeitet werden.
               <br />
-              Durch bestätigen der Eingaben mit &rdquo;Abschicken&rdquo; erklären Sie sich damit einverstanden.
+              Durch bestätigen der Eingaben mit ”Abschicken” bzw.“Anfordern“ erklären Sie sich damit einverstanden.
               <br />
               Diese Erklärung können Sie gemäß §3 Abs. 6 des Teledienstedatenschutz-Gesetzes (TDDSG) jederzeit
               widerrufen. Senden Sie dazu eine E-Mail an service@zins-runter.de
             </Text>
-            <Text>
+            <Text as='b'>
               Die Berechnung der Finanzierung, des Vergleichs, einer Analyse oder eines Angebotes ist für Sie in jedem
               Fall kostenlos und unverbindlich.
             </Text>
@@ -41,14 +54,14 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               Die von Ihnen uns freiwillig übermittelten Daten für den jeweiligen Finanzierungs/- Versicherungs/-
               Finanzvergleich werden von uns ggf. an unsere kompetenten, externen unabhängigen Finanzexperten (i.d.R.
               Finanzierungsvermittler, Finanzdienstleister bzw. Versicherungsmakler) übergeben. Diese nehmen Kontakt zu
-              Ihnen auf um die für Sie richtige Finanzierung oder Versicherung herauszufinden. Alle unsere Partner
-              verfügen über ein umfassendes Know-How die entsprechenden gewerberechtlichen Zulassungen und mehrjährige
+              Ihnen auf um die für Sie richtige Finanzierung oder Versicherung zu finden. Alle unsere Partner verfügen
+              über ein umfassendes Know-How die entsprechenden gewerberechtlichen Zulassungen und mehrjährige
               Berufserfahrung.
             </Text>
           </VStack>
 
           <VStack alignItems='flex-start'>
-            <Heading as='h2' fontSize={['md', 'lg', 'lg', 'xl']}>
+            <Heading as='h2' pt={8} fontSize={['md', 'lg', 'lg', 'xl']}>
               1. Verantwortliche Stelle für die Datenverarbeitungen
             </Heading>
             <Text>
@@ -66,14 +79,13 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               <br />
               Fax: 089 - 23 54 61 97
               <br />
-              <br />
               E-Mail: service@zins-runter.de
               <br />
             </Text>
           </VStack>
 
           <VStack alignItems='flex-start'>
-            <Heading as='h2' fontSize={['md', 'lg', 'lg', 'xl']}>
+            <Heading as='h2' pt={8} fontSize={['md', 'lg', 'lg', 'xl']}>
               2. Was personenbezogene Daten sind und woher wir sie erhalten
             </Heading>
             <Text>
@@ -85,7 +97,8 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               physiologischen, genetischen, psychischen, wirtschaftlichen, kulturellen oder sozialen Identität dieser
               natürlichen Person sind.
             </Text>
-            <Heading as='h3' fontSize={['md', 'lg', 'lg']}>
+
+            <Heading as='h3' pt={4} fontSize={['md', 'lg', 'lg']}>
               a) Daten, die beim Besuch der Internetseite anfallen
             </Heading>
             <Text>
@@ -94,12 +107,12 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               sind, den Namen Ihres Internet-Service-Providers, welche Websites Sie innerhalb unseres Internet-Angebots
               besucht haben sowie Datum und Dauer Ihres Besuches. Hierfür werden für die Dauer Ihres Besuches im
               Arbeitsspeicher Ihres Computers kleine Dateien (so genannte Cookies) abgelegt. Es handelt sich dabei um so
-              genannte temporäre Session-Cookies (zu permanenten Cookies siehe unten unter Ziffer 9). Die entsprechenden
-              Daten werden dabei auf Servern unseres Dienstleisters Host Europe GmbH Hansestrasse 111 - 51149 Köln
-              gespeichert. Die Session-Cookies werden automatisch gelöscht, sobald Sie Ihr Browser-Fenster schließen.
-              Wir erstellen mithilfe der Session-Cookies eine so genannte Session-ID für interne statistische Zwecke.
-              Die gewonnenen Daten sind vollständig anonymisiert, enthalten also keinerlei Möglichkeit Sie als Person zu
-              identifizieren.
+              genannte temporäre Session-Cookies (zu permanenten Cookies siehe unten unter Ziffer 10). Die
+              entsprechenden Daten werden dabei auf Servern unseres Dienstleisters Host Europe GmbH Hansestrasse 111 -
+              51149 Köln gespeichert. Die Session-Cookies werden automatisch gelöscht, sobald Sie Ihr Browser-Fenster
+              schließen. Wir erstellen mithilfe der Session-Cookies eine so genannte Session-ID für interne statistische
+              Zwecke. Die gewonnenen Daten sind vollständig anonymisiert, enthalten also keinerlei Möglichkeit Sie als
+              Person zu identifizieren.
               <br />
               <br />
               Ihre IP-Adresse sowie ein Time-Stamp werden aus Sicherheitsgründen gespeichert und lediglich für interne
@@ -110,65 +123,67 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               einen Zeitpunkt zuordnet. Der Zweck eines Zeitstempels ist es, für Menschen oder Computer deutlich zu
               machen, wann welche Ereignisse eingetreten sind.
             </Text>
-            <Heading as='h3' fontSize={['md', 'lg', 'lg']}>
+
+            <Heading as='h3' pt={4} fontSize={['md', 'lg', 'lg']}>
               b) Personenbezogene Daten, die Sie uns über ein Formular mitteilen
             </Heading>
             <Text>
               Wir erhalten Ihre personenbezogenen Daten, wenn Sie diese Daten in die Formulare (Vergleiche, Anfragen,
               Beratungen etc.) auf unserer Seite eingeben und uns so zur Verfügung stellen. Welche Daten dies genau sind
-              hängt davon ab, für welche Dienstleistung/Versicherung Sie sich genau interessieren.
+              hängt davon ab, für welche Dienstleistung/Finanzierung/Versicherung Sie sich genau interessieren.
               <br />
               <br />
-              Für Angebote, Vergleiche oder Beratungen in den Bereichen private Krankenversicherung,
-              Krankenzusatzversicherung, Berufsunfähigkeitsversicherung, Altersvorsorge (auch Riester, Rürup, Lebens-
-              und Rentenversicherung, bAV, Sofort Rente), gewerbliche Sachversicherung, Pflegeversicherung,
-              Sterbegeldversicherung, Risikolebensversicherung, Baufinanzierung, Bausparen, Kapitalanlage, Dread
-              Disease, Fonds, Investments erheben wir folgende Daten:
+              Für Angebote, Vergleiche oder Beratungen in den Bereichen Baufinanzierung, Bausparen, private
+              Krankenversicherung, Krankenzusatzversicherung, Berufsunfähigkeitsversicherung, Altersvorsorge (auch
+              Riester, Rürup, Lebens- und Rentenversicherung, bAV, Sofort Rente), gewerbliche Sachversicherung,
+              Pflegeversicherung, Sterbegeldversicherung, Risikolebensversicherung, Kapitalanlage, Dread Disease, Fonds,
+              Investments erheben wir folgende Daten:
             </Text>
             <UnorderedList listStylePosition='inside'>
-              <ListItem>Ihr Geschlecht,</ListItem>
-              <ListItem>Ihren vollständigen und richtigen Namen,</ListItem>
-              <ListItem>Ihre E-Mail-Adresse,</ListItem>
-              <ListItem>Ihre vollständige und richtige postalische Anschrift,</ListItem>
-              <ListItem>Ihre Telefonnummer,</ListItem>
-              <ListItem>Ihr Geburtsdatum,</ListItem>
-              <ListItem>Ihren Beruf,</ListItem>
-              <ListItem>Ihre Firma, Betriebsgröße, Branche (nur bei gewerblicher Sachversicherung),</ListItem>
+              <ListItem>Ihr Geschlecht</ListItem>
+              <ListItem>Ihren vollständigen und richtigen Namen</ListItem>
+              <ListItem>Ihre E-Mail-Adresse</ListItem>
+              <ListItem>Ihre vollständige und richtige postalische Anschrift</ListItem>
+              <ListItem>Ihre Telefonnummer</ListItem>
+              <ListItem>Ihr Geburtsdatum</ListItem>
+              <ListItem>Ihren Beruf bzw. den Berufsstand</ListItem>
+              <ListItem>Ihre Firma, Betriebsgröße, Branche (nur bei gewerblicher Sachversicherung)</ListItem>
               <ListItem>Gegebenenfalls weitere produktbezogene Daten</ListItem>
             </UnorderedList>
             <Text>
-              Bei dem Abschluss einer Versicherung in den Bereichen Privathaftpflicht, Tierhalterhaftpflicht, Hausrat,
+              Bei Abschluss einer Versicherung in den Bereichen Privathaftpflicht, Tierhalterhaftpflicht, Hausrat,
               Rechtsschutz, Unfallversicherung, Gebäudeversicherung, Bauherrenhaftpflicht, Grundbesitzerhaftpflicht,
               Photovoltaik-Versicherung, KFZ-Versicherung, Reiseversicherung, Au Pair Versicherung,
               Motorradversicherung, LKW-Versicherung, Anhängerversicherung, Mopedversicherung, Bootsversicherung,
               Wohnwagen- und Wohnmobilversicherung, erheben wir folgende Daten:
             </Text>
             <UnorderedList listStylePosition='inside'>
-              <ListItem>Ihr Geschlecht,</ListItem>
-              <ListItem>Ihren vollständigen und richtigen Namen,</ListItem>
-              <ListItem>Ihre E-Mail-Adresse,</ListItem>
-              <ListItem>Ihre vollständige und richtige postalische Anschrift,</ListItem>
-              <ListItem>Ihre Telefonnummer,</ListItem>
-              <ListItem>Ihr Geburtsdatum,</ListItem>
-              <ListItem>Ihren Beruf,</ListItem>
-              <ListItem>Ihre Staatsangehörigkeit,</ListItem>
-              <ListItem>Ihren Familienstand,</ListItem>
-              <ListItem>Ihre Kontoverbindungsdaten,</ListItem>
-              <ListItem>Informationen zu etwaigen Vorverträgen und deren Beendigung,</ListItem>
-              <ListItem>Name und Geburtsdatum von Lebenspartnern (nicht bei allen Versicherungen),</ListItem>
-              <ListItem>Gegebenenfalls weitere produktbezogene Daten</ListItem>
+              <ListItem> Ihr Geschlecht </ListItem>
+              <ListItem> Ihren vollständigen und richtigen Namen </ListItem>
+              <ListItem> Ihre E-Mail-Adresse </ListItem>
+              <ListItem> Ihre vollständige und richtige postalische Anschrift </ListItem>
+              <ListItem> Ihre Telefonnummer </ListItem>
+              <ListItem> Ihr Geburtsdatum </ListItem>
+              <ListItem> Ihren Beruf </ListItem>
+              <ListItem> Ihre Staatsangehörigkeit </ListItem>
+              <ListItem> Ihren Familienstand </ListItem>
+              <ListItem> Ihre Kontoverbindungsdaten </ListItem>
+              <ListItem> Informationen zu etwaigen Vorverträgen und deren Beendigung </ListItem>
+              <ListItem> Name und Geburtsdatum von Lebenspartnern (nicht bei allen Versicherungen) </ListItem>
+              <ListItem> Gegebenenfalls weitere produktbezogene Daten </ListItem>
             </UnorderedList>
           </VStack>
 
           <VStack alignItems='flex-start'>
-            <Heading as='h2' fontSize={['md', 'lg', 'lg', 'xl']}>
+            <Heading as='h2' pt={8} fontSize={['md', 'lg', 'lg', 'xl']}>
               3. Zu welchen Zwecken wir Ihre personenbezogenen Daten verwenden
             </Heading>
             <Text>
               Personenbezogene Daten dürfen von uns nur mit Ihrer oder einer gesetzlichen Erlaubnis aus der DS-GVO, dem
               BDSG oder einem anderen den Datenschutz regelnden Gesetzen verarbeitet werden.
             </Text>
-            <Heading as='h3' fontSize={['md', 'lg', 'lg']}>
+
+            <Heading as='h3' pt={4} fontSize={['md', 'lg', 'lg']}>
               a) Verarbeitung zur Erfüllung von vertraglichen Pflichten (Art. 6 Abs. 1 b) DS-GVO)
             </Heading>
             <Text>
@@ -181,7 +196,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               Haben Sie sich für einen E-Mail-Newsletter angemeldet, so verarbeiten wir Ihre Daten, um Ihnen in
               regelmäßigen Abständen Neuigkeiten über uns und unsere Produkte mitzuteilen.
             </Text>
-            <Heading as='h3' fontSize={['md', 'lg', 'lg']}>
+            <Heading as='h3' pt={4} fontSize={['md', 'lg', 'lg']}>
               b) Verarbeitung zur Wahrung von berechtigten Interessen (Art. 6 Abs. 1 f) DS-GVO)
             </Heading>
             <Text>
@@ -190,18 +205,18 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               Auskunfteien, um Aussagen über Ihre Bonität zu erhalten oder um die Übermittlung an Adress- und
               Telefonnummernverifikationsdienste, um die Gültigkeit Ihrer angegebenen Daten zu überprüfen. Einer dieser
               Anbieter ist die infoscore Consumer Data GmbH, Rheinstr. 99, 76532 Baden-Baden (s. zu den dort
-              durchgeführten Datenverarbeitungen für die Adressvalidierung und die Bonitätsprüfung auch unten 4 b).
-              Außerdem verarbeiten wir gewisse Daten die bei der Nutzung unserer Internetseite anfallen, um Ihnen zu
-              ermöglichen sie zu benutzen, oder die Sicherheit unserer IT-Systeme zu gewährleisten.
+              durchgeführten Datenverarbeitungen für die Adressvalidierung und die Bonitätsprüfung). Außerdem
+              verarbeiten wir gewisse Daten die bei der Nutzung unserer Internetseite anfallen, um Ihnen zu ermöglichen
+              sie zu benutzen, oder die Sicherheit unserer IT-Systeme zu gewährleisten.
             </Text>
-            <Heading as='h3' fontSize={['md', 'lg', 'lg']}>
+            <Heading as='h3' pt={4} fontSize={['md', 'lg', 'lg']}>
               c) Verarbeitung aufgrund Ihrer Einwilligung (Art. 6 Abs. 1 a) DS-GVO
             </Heading>
             <Text>
               Wir verarbeiten Ihre Daten aufgrund einer Einwilligung, wenn Sie nicht Kunde bei uns sind, sich aber
               dennoch für unseren E-Mail-Newsletter angemeldet haben.
             </Text>
-            <Heading as='h3' fontSize={['md', 'lg', 'lg']}>
+            <Heading as='h3' pt={4} fontSize={['md', 'lg', 'lg']}>
               d) Aufgrund gesetzlicher Vorgaben (Art. 6 Abs. 1 c) DS-GVO
             </Heading>
             <Text>
@@ -211,7 +226,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
           </VStack>
 
           <VStack alignItems='flex-start'>
-            <Heading as='h2' fontSize={['md', 'lg', 'lg', 'xl']}>
+            <Heading as='h2' pt={8} fontSize={['md', 'lg', 'lg', 'xl']}>
               4. Personenbezogene Daten, die Sie Zins-runter.de (Siguron GmbH) für die Bearbeitung der
               Finanzierungsanfrage übermitteln.
             </Heading>
@@ -219,9 +234,9 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               Sie vertrauen uns bereits mit Ihrer Baufinanzierungsanfrage persönliche Daten an. Im Zuge der Beratung und
               Beantragung kommen noch weitere sensible Daten dazu. Deswegen setzen wir alles daran, die Übertragung
               dieser Daten, die Speicherung und die Bearbeitung so sicher wie nur möglich zu gestalten. Als Ihr
-              persönlicher Baufinanzierungsberater sichern wir Ihnen zu, einen streng vertraulichen Umgang Ihrer Daten
-              zu gewährleisten. Im Folgenden erfahren Sie, wie wir Datensicherheit verstehen und wie wir mit Ihren
-              persönlichen Daten verfahren.
+              persönlicher Baufinanzierungsberater sichern wir sowie unsere Kooperationspartner Ihnen zu, einen streng
+              vertraulichen Umgang Ihrer Daten zu gewährleisten. Im Folgenden erfahren Sie, wie wir Datensicherheit
+              verstehen und wie wir mit Ihren persönlichen Daten verfahren.
             </Text>
             <Text>
               Elektronische Verarbeitung Ihrer Daten im Rahmen des EUROPACE Marktplatzes (Baufinanzierungsvermittlung)
@@ -238,7 +253,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               übrigen Beteiligten (z.B. Darlehensgebern) gelten können.
             </Text>
 
-            <Heading as='h3' fontSize={['md', 'lg', 'lg']}>
+            <Heading as='h3' pt={4} fontSize={['md', 'lg', 'lg']}>
               4.1.Was ist der EUROPACE-Marktplatz?
             </Heading>
             <Text>
@@ -247,7 +262,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               EUROPACE-Marktplatz haben, neben den angeschlossenen Darlehensgebern, nur registrierte Finanzvertriebe.
             </Text>
 
-            <Heading as='h3' fontSize={['md', 'lg', 'lg']}>
+            <Heading as='h3' pt={4} fontSize={['md', 'lg', 'lg']}>
               4.2. Wer ist für den EUROPACE-Marktplatz verantwortlich?
             </Heading>
             <Text>
@@ -270,11 +285,11 @@ const Datenschutz = ({ isPopup = false }: Props) => {
             </Text>
             <Text>
               Unabhängig davon liegt die Verantwortlichkeit für Datenverarbeitungen, die außerhalb des
-              EUROPACE-Marktplatzes oder unabhängig davon stattfinden, bei uns oder anderenan der Bearbeitung Ihres
+              EUROPACE-Marktplatzes oder unabhängig davon stattfinden, bei uns oder anderen an der Bearbeitung Ihres
               Finanzierungsantrags beteiligten Stellen (z.B. Darlehensgeber).
             </Text>
 
-            <Heading as='h3' fontSize={['md', 'lg', 'lg']}>
+            <Heading as='h3' pt={4} fontSize={['md', 'lg', 'lg']}>
               4.3. Datenschutzbeauftragter von EUROPACE
             </Heading>
             <Text>
@@ -286,7 +301,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               <ListItem>Hypoport Mortgage Market Ltd.: datenschutz@europace.ie</ListItem>
             </UnorderedList>
 
-            <Heading as='h3' fontSize={['md', 'lg', 'lg']}>
+            <Heading as='h3' pt={4} fontSize={['md', 'lg', 'lg']}>
               4.4. Zwecke der Datenverarbeitung durch EUROPACE
             </Heading>
             <Text>
@@ -361,7 +376,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               Ziffer 2 genannten Kontaktdaten.
             </Text>
 
-            <Heading as='h3' fontSize={['md', 'lg', 'lg']}>
+            <Heading as='h3' pt={4} fontSize={['md', 'lg', 'lg']}>
               4.5. Datenweitergabe durch EUROPACE.
             </Heading>
             <Text>
@@ -374,15 +389,15 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               gerichtliche Anordnung hierzu verpflichtet ist.
               <br />
               <br />
-              <strong>EUROPACE</strong> speichert und verarbeitet Ihre Daten grundsätzlich in Rechenzentren innerhalb
-              der Europäischen Union. EUROPACE hat seine Datenverarbeitungsvorgänge so ausgestaltet, dass Ihre Daten
-              nach Möglichkeit nicht außerhalb der Europäischen Union verarbeitet werden. Soweit für einzelne
-              Verarbeitungsschritte oder technische Unterstützungsleistungen die Einschaltung eines externen
-              Dienstleisters notwendig ist, kann eine Übermittlung Ihrer Daten an eine Stelle außerhalb der Europäischen
-              Union erforderlich sein. In jedem Fall stellt EUROPACE sicher, dass der jeweilige Dienstleister
-              vertraglich oder auf andere Weise ein dem europäischen Datenschutzniveau gleichwertiges Niveau garantiert.
-              Sie können über die unter Ziffer 2 genannten Kontaktdaten jederzeit eine Kopie dieser Garantien anfordern.
-              Zurzeit betrifft dies die folgenden Verarbeitungsschritte:
+              EUROPACE speichert und verarbeitet Ihre Daten grundsätzlich in Rechenzentren innerhalb der Europäischen
+              Union. EUROPACE hat seine Datenverarbeitungsvorgänge so ausgestaltet, dass Ihre Daten nach Möglichkeit
+              nicht außerhalb der Europäischen Union verarbeitet werden. Soweit für einzelne Verarbeitungsschritte oder
+              technische Unterstützungsleistungen die Einschaltung eines externen Dienstleisters notwendig ist, kann
+              eine Übermittlung Ihrer Daten an eine Stelle außerhalb der Europäischen Union erforderlich sein. In jedem
+              Fall stellt EUROPACE sicher, dass der jeweilige Dienstleister vertraglich oder auf andere Weise ein dem
+              europäischen Datenschutzniveau gleichwertiges Niveau garantiert. Sie können über die unter Ziffer 2
+              genannten Kontaktdaten jederzeit eine Kopie dieser Garantien anfordern. Zurzeit betrifft dies die
+              folgenden Verarbeitungsschritte:
               <br />
               <br />
               <strong>E-Mail-Versand:</strong>
@@ -409,7 +424,8 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               personenbezogenen Daten zu gewährleisten. Die IT-Infrastruktur und die internen Prozesse der Dienstleister
               unterliegen strengen Kontrollen und sie werden fortlaufend von unabhängiger Stelle zertifiziert.
             </Text>
-            <Heading as='h3' fontSize={['md', 'lg', 'lg']}>
+
+            <Heading as='h3' pt={4} fontSize={['md', 'lg', 'lg']}>
               4.6. Dauer der Datenspeicherung.
             </Heading>
             <Text>
@@ -427,7 +443,8 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               Interesse von EUROPACE beruht) oder Artikel 6 Abs. 1 c) DSGVO (sofern die Aufbewahrung zur Erfüllung
               gesetzlicher Pflichten erforderlich ist).
             </Text>
-            <Heading as='h3' fontSize={['md', 'lg', 'lg']}>
+
+            <Heading as='h3' pt={4} fontSize={['md', 'lg', 'lg']}>
               4.7. Ihre Rechte.
             </Heading>
             <Text>
@@ -465,18 +482,518 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               Sie können sich auch an die Datenschutzbehörde an Ihrem Wohnort wenden, die Ihr Anliegen dann an die
               jeweils zuständige Behörde weiterleiten wird.
             </Text>
-            <Heading as='h3' fontSize={['md', 'lg', 'lg']}>
-              4.7. Ihre Rechte.
+
+            <Heading as='h3' pt={4} fontSize={['md', 'lg', 'lg']}>
+              4.7.1. Sonstiges
             </Heading>
             <Text>
               Durch die Weiterentwicklung des EUROPACE-Marktplatzes und die damit verbundene Implementierung neuer
               Technologien oder zur Berücksichtigung neuer Funktionen können Änderungen dieser Datenschutzhinweise
               erforderlich werden. Über entsprechende Änderungen werden Sie von uns informiert werden.
             </Text>
+
+            <Heading as='h3' pt={4} fontSize={['md', 'lg', 'lg']}>
+              4.8. Finanzierungsplattform Prohyp
+            </Heading>
+            <Text>
+              Im Rahmen Ihrer Anfrage, Beratungstermin, Zinsvergleich oder Angebotsanforderung, werden Ihre Daten dabei
+              evtl. auch an die Finanzierungsplattform Prohyp GmbH, Domagkstraße 34, 80807 München weitergegeben. Die
+              Datenschutzerklärung der Prohyp GmbH finden Sie auch unter www.prohyp.de/datenschutz/
+              <br />
+              <br />
+              Datenschutzinformationen der Prohyp GmbH
+              <br />
+              <br />
+              Die folgenden Informationen erläutern Ihnen, wie wir, die Prohyp GmbH, Ihre personenbezogenen Daten
+              verarbeiten. Sie erfahren, zu welchen Zwecken und auf welcher Rechtsgrundlage wir Ihre personenbezogenen
+              Daten verarbeiten, wie lange wir diese speichern und welche Rechte Sie in Bezug auf Ihre Daten haben.
+              Außerdem informieren wir Sie darüber, mit wem wir Ihre Daten teilen und wie Sie uns bei Fragen
+              kontaktieren können. Sollte in einem konkreten Fall die Rechtsgrundlage für die Verarbeitung
+              personenbezogener Daten unwirksam oder nicht einschlägig sein, so behalten wir uns das Recht vor die
+              Verarbeitung auf eine andere Rechtsgrundlage zu stützen.
+            </Text>
+
+            <Heading as='h3' pt={4} fontSize={['md', 'lg', 'lg']}>
+              4.8.1. Wer ist für die Datenverarbeitung verantwortlich und an wen können Sie sich wenden? Wie erreichen
+              Sie den Datenschutzbeauftragten?
+            </Heading>
+            <Text>
+              Verantwortliche Stelle ist:
+              <br />
+              <br />
+              Prohyp GmbH
+              <br />
+              <br />
+              Domagkstraße 34
+              <br />
+              <br />
+              80807 München
+              <br />
+              <br />
+              E-Mail: info@prohyp.de
+              <br />
+              <br />
+              Sie erreichen unseren betrieblichen Datenschutzbeauftragten unter:
+              <br />
+              <br />
+              Prohyp GmbH
+              <br />
+              <br />
+              Datenschutzbeauftragter
+              <br />
+              <br />
+              Domagkstraße 34
+              <br />
+              <br />
+              80807 München
+              <br />
+              <br />
+              E-Mail: datenschutz@prohyp.de
+              <br />
+              <br />
+              &quot;Personenbezogene Daten&quot; im Sinne dieser Datenschutzinformationen, sind Informationen, die sich
+              auf eine identifizierte oder identifizierbare natürliche Person beziehen. <br />
+              <br />
+              &quot;Verarbeiten&quot; ist jeder mit oder ohne Hilfe automatisierter Verfahren ausgeführter Vorgang im
+              Zusammenhang mit personenbezogenen Daten wie z. B. das Erheben, die Speicherung, die Anpassung oder
+              Veränderung, die Verwendung oder die Offenlegung durch Übermittlung.
+            </Text>
+
+            <Heading as='h3' pt={4} fontSize={['md', 'lg', 'lg']}>
+              4.8.2. Wie verarbeiten wir personenbezogene Daten und aus welchen Quellen stammen sie?
+            </Heading>
+            <Text>
+              Wir verarbeiten personenbezogene Daten, die wir von Ihrem Vermittler erhalten, und auch solche, die wir
+              aus öffentlich zugänglichen Quellen (z. B. Grundbücher) zulässigerweise erhalten, soweit dies für die
+              Erbringung unserer Leistung erforderlich ist. Zusätzlich erhalten wir nach einer Finanzierungsanfrage bei
+              einem Kreditgeber möglicherweise von diesem personenbezogene Daten zu Ihrer Anfrage, wie
+              Bonitätsinformationen oder Informationen zu Darlehen. <br />
+              <br />
+              Konkret verarbeiten wir folgende personenbezogene Daten für folgende Zwecke:
+              <br />
+              <br />
+              a. Beim Besuch unserer Website
+              <br />
+              <br />
+              Wir nutzen auf unserer Website unter www.prohyp.de so genannte Cookies und ähnliche Technologien zur
+              Verfolgung Ihres Nutzungsverhaltens (nachfolgend zusammen &quot;Cookies&quot;). Was Cookies sind, wie Sie
+              unsere Nutzung von Cookies steuern können und welche Cookies wir wie nutzen, erfahren Sie in unseren
+              Cookie Informationen.
+              <br />
+              <br />
+              Wir verarbeiten außerdem die sogenannten Logfiles unseres Webservers. Diese Weblogs enthalten
+              Informationen zu Ihrer Nutzung der Website (Nutzungsdaten), u.a. Zugriffszeit, Name der abgerufenen
+              Website bzw. -datei, übertragene Datenmenge, Status des Abrufs, Browsertyp und -version, Betriebssystemtyp
+              und -version und IP-Adresse. Wir verarbeiten diese personenbezogenen Daten zum Betrieb der Website und zur
+              Gewährleistung der IT-Sicherheit.
+              <br />
+              <br />
+              Wir verarbeiten diese personenbezogenen Daten auf Basis von Art. 6 Abs.1 lit. f DSGVO
+              (Interessenabwägung), da wir ein Interesse daran haben, die Website funktionstüchtig und sicher zur
+              Verfügung zu stellen. Dies entspricht auch Ihren Interessen, die Seite optimal nutzen zu können, sodass
+              Ihre Interessen der Verarbeitung nicht entgegenstehen.
+              <br />
+              <br />
+              Wir löschen Ihre Nutzungsdaten, wenn sie nicht mehr zu Zwecken der IT-Sicherheit benötigt werden. Darüber
+              hinaus speichern wir Ihre Nutzungsdaten nur noch zur Erfüllung etwaiger gesetzlicher Aufbewahrungsfristen.
+              <br />
+              <br />
+              b. Im Rahmen der Vermittlung von Darlehen
+              <br />
+              <br />
+              Im Rahmen unserer Kerndienste - Vermittlung von Darlehen - verarbeiten wir die Informationen, die wir von
+              Ihrem Vermittler erhalten: Angaben/Unterlagen zur Person wie z. B. Name, Anschrift, E-Mail-Adresse,
+              Telefonnummern, Familienstand, Geburtsdaten, Beruf, persönliche Vermögensverhältnisse und
+              Verbindlichkeiten, Bankverbindung, Einkünfte und Ausgaben; Angaben/Unterlagen zum Finanzierungsobjekt bzw.
+              der Mittelverwendung des Darlehens; Angaben/Unterlagen zur Finanzierung und Abwicklung, wie z.B. Saldo,
+              Verzinsung, Laufzeit, Auszahlungsvoraussetzungen, Antragsstatus, Bearbeitungsstatus, Auszahlung; sowie
+              Angaben/Unterlagen zu Anschlussfinanzierungen, wie z.B. Laufzeit, Restsaldo, Rate, Zinssatz.
+              <br />
+              <br />
+              Zusätzlich erhalten wir nach einer Finanzierungsanfrage bei einem Kreditgeber möglicherweise von diesem
+              personenbezogene Daten zu Ihrer Anfrage, wie Bonitätsinformationen oder Informationen zu Darlehen. Im
+              Falle einer Verlängerung durch den Kreditgeber einer durch uns vermittelten Finanzierung übermittelt uns
+              der Kreditgeber möglicherweise den Stand der Finanzierung.
+              <br />
+              <br />
+              Im Rahmen der Abwicklung des Vertrages zwischen uns und Ihrem Vermittler werden Ihre personenbezogenen
+              Daten an uns als Prohyp weitergeleitet. Wir verarbeiten diese Daten auf Basis von Art. 6 Abs. 1 lit. b
+              DSGVO (Vertragserfüllung), im Rahmen unserer Vermittlungsleistung nur für die Durchführung des
+              Rahmenvertrags gegenüber Ihrem Vermittler, damit dieser für Sie als Kunden ein passendes
+              Produkt/Produktgeber vermitteln kann (inkl. Voranfragen bei Kreditgebern). Der Zweck der Datenverarbeitung
+              betrifft somit die Vermittlung eines Darlehens. Die konkreten Datenverarbeitungen richten sich in erster
+              Linie nach dem konkreten Produkt (z. B. Baufinanzierung, Bausparen, Konsumentenkredite).
+              <br />
+              Bitte teilen Sie im Rahmen der Darlehensvermittlung keine weiteren personenbezogenen Daten, die über das
+              erforderliche Maß hinausgehen, mit und schwärzen Sie Informationen, die für die Leistungserbringung durch
+              uns oder den Kreditgeber nicht notwendig sind (z. B. Passagen in Kontoauszügen zu nicht relevanten
+              Umsätzen). Diese Daten verarbeiten wir ansonsten nur auf Grundlage Ihrer vorherigen Einwilligung, welche -
+              wenn sie nicht anderweitig erklärt wird - darin liegt, dass Sie uns die entsprechenden Informationen über
+              Ihren Vermittler zusenden. Sie haben das Recht, eine erteilte Einwilligung jederzeit mit Wirkung für die
+              Zukunft zu widerrufen.
+              <br />
+              Wir verarbeiten Ihre personenbezogenen Daten für diesen Zweck nur so lange, wie wir sie zur
+              Vertragserfüllung und - abwicklung benötigen. Darüber hinaus speichern wir Ihre personenbezogenen Daten
+              nur noch zur Erfüllung etwaiger gesetzlicher Aufbewahrungspflichten oder bis relevante zivilrechtliche
+              Rechtsansprüche in Bezug auf die Darlehensvermittlung verjährt sind. Die im Handelsgesetzbuch (HGB) und
+              der Abgabenordnung (AO) vorgegebenen Fristen zur Aufbewahrung bzw. Dokumentation betragen z. B. sechs bis
+              zehn Jahre.
+            </Text>
+
+            <Heading as='h3' pt={4} fontSize={['md', 'lg', 'lg']}>
+              4.8.3. Wer bekommt Ihre Daten?
+            </Heading>
+            <Text>
+              a. Innerhalb der Prohyp
+              <br />
+              <br />
+              Innerhalb der Prohyp erhalten diejenigen Stellen Zugriff auf Ihre Daten, die diese zur Erfüllung unserer
+              Pflichten brauchen. Diese Übermittlung erfolgt zur Vertragserfüllung gegenüber Ihrem Vermittler (Art. 6
+              Abs.1 lit. b DSGVO).
+              <br />
+              <br />
+              b. Unsere Dienstleister
+              <br />
+              <br />
+              Wir übermitteln personenbezogene Daten an von uns eingesetzte Dienstleister und Erfüllungsgehilfen, die
+              uns bei den oben genannten Zwecken als Auftragsverarbeiter unterstützen. Dies sind Unternehmen in den
+              Bereichen IT-Dienstleistungen, Logistik, Telekommunikation, sowie Vertrieb.
+              <br />
+              <br />
+              Die Übermittlung erfolgt auf Basis einer Interessenabwägung (Art. 6 Abs.1 lit. f DSGVO). Unser Interesse
+              besteht hier vorwiegend darin, effektive und spezialisierte Dienstleister einzusetzen, die entsprechend
+              Art. 28 DSGVO strikt unseren Anweisungen unterworfen sind.
+              <br />
+              <br />
+              c. Dritte im Rahmen der Darlehensvermittlung
+              <br />
+              <br />
+              Wir übermitteln Ihre personenbezogenen Daten an Dritte außerhalb der Prohyp, wenn dies zur Erfüllung des
+              Vermittlungsvertrages gegenüber Ihrem Vermittler notwendig ist oder Sie eingewilligt haben. Solche
+              Empfänger personenbezogener Daten sind z.B.:
+              <br />
+              <br />
+              <UnorderedList listStylePosition='inside'>
+                <ListItem>
+                  Banken, Bausparkassen oder Versicherungen und Anstalten des öffentlichen Rechts oder vergleichbare
+                  Einrichtungen, an die wir zur Durchführung der Vermittlung personenbezogene Daten übermitteln;
+                </ListItem>
+                <ListItem>
+                  Im Falle von Konsumentenkrediten: weitere Vermittler, mit denen wir im Rahmen der Vermittlung
+                  zusammenarbeiten, u.a. die FinanzcheckPRO GmbH (deren Datenschutzinformationen finden Sie hier:
+                  www.finanzcheckpro.de/dsi)
+                </ListItem>
+                <ListItem>
+                  Sonstige Zahlungsverpflichtete oder Zahlungsempfänger zu Zwecken der Rechnungslegung; und
+                </ListItem>
+                <ListItem>
+                  Öffentliche Stellen und Institutionen, wie z. B. Finanzbehörden, Strafverfolgungsbehörden bei
+                  Vorliegen einer gesetzlichen oder behördlichen Verpflichtung.
+                </ListItem>
+              </UnorderedList>
+              <br />
+              <br />
+              Außerdem übermitteln wir Ihre personenbezogenen Daten an Behörden, Gerichte oder Organisationen, soweit
+              dies erforderlich ist zur Wahrung berechtigter Interessen von uns oder Dritten. Gründe hierfür können die
+              Geltendmachung rechtlicher Ansprüche und die Verteidigung bei rechtlichen Streitigkeiten, die
+              Gewährleistung der IT-Sicherheit und des IT-Betriebs der Prohyp oder die Verhinderung und Aufklärung von
+              Straftaten sein. Wir informieren Sie im Falle einer derartigen Übermittlung gesondert entsprechend den
+              datenschutzrechtlichen Vorgaben.
+            </Text>
+
+            <Heading as='h3' pt={4} fontSize={['md', 'lg', 'lg']}>
+              4.8.4. Überblick über unsere Datenverarbeitungen
+            </Heading>
+            <Text>
+              Im Folgenden haben wir für Sie noch einmal vereinfacht beschrieben, wie wir Ihre Daten verarbeiten:
+            </Text>
+            <TableContainer>
+              <Table borderWidth='1px' borderColor='gray.200' bg='white'>
+                <Tbody>
+                  <Tr borderTop='1px solid' borderColor='gray.200'>
+                    <Th>Zweck</Th>
+                    <Th>Datenkategorien</Th>
+                    <Th>Rechtsgrundlage</Th>
+                    <Th>Empfänger</Th>
+                  </Tr>
+                  <Tr>
+                    <Td borderTop='1px solid' borderColor='gray.200'>
+                      <UnorderedList>
+                        <ListItem>Websitebesuch</ListItem>
+                      </UnorderedList>
+                    </Td>
+                    <Td borderTop='1px solid' borderColor='gray.200'>
+                      <UnorderedList>
+                        <ListItem>Nutzungsdaten aus Logfiles</ListItem>
+                      </UnorderedList>
+                    </Td>
+                    <Td borderTop='1px solid' borderColor='gray.200'>
+                      <UnorderedList>
+                        <ListItem>Interessenabwägung; bei Cookies: ggf. Einwilligung</ListItem>
+                      </UnorderedList>
+                    </Td>
+                    <Td borderTop='1px solid' borderColor='gray.200'>
+                      <UnorderedList>
+                        <ListItem>Auftragsverarbeiter</ListItem>
+                      </UnorderedList>
+                    </Td>
+                  </Tr>
+                  <Tr>
+                    <Td borderTop='1px solid' borderColor='gray.200'>
+                      <UnorderedList>
+                        <ListItem>Vermittlung von Darlehen</ListItem>
+                      </UnorderedList>
+                    </Td>
+                    <Td borderTop='1px solid' borderColor='gray.200'>
+                      <UnorderedList>
+                        <ListItem>Name</ListItem>
+                        <ListItem>Kontaktdaten</ListItem>
+                        <ListItem>Finanzdaten</ListItem>
+                        <ListItem>Einkünfte</ListItem>
+                        <ListItem>Kaufinteressen</ListItem>
+                        <ListItem>Weitere relevante Informationen zum Vorhaben</ListItem>
+                      </UnorderedList>
+                    </Td>
+                    <Td borderTop='1px solid' borderColor='gray.200'>
+                      <UnorderedList>
+                        <ListItem>Vertragserfüllung</ListItem>
+                        <ListItem>Einwilligung nur soweit Informationen nicht relevant</ListItem>
+                      </UnorderedList>
+                    </Td>
+                    <Td borderTop='1px solid' borderColor='gray.200'>
+                      <UnorderedList>
+                        <ListItem>Banken</ListItem>
+                        <ListItem>Bausparkassen</ListItem>
+                        <ListItem>Versicherungen</ListItem>
+                        <ListItem>Weitere Vermittler bei Konsumentenkrediten</ListItem>
+                        <ListItem>Behörden</ListItem>
+                      </UnorderedList>
+                    </Td>
+                  </Tr>
+                </Tbody>
+              </Table>
+            </TableContainer>
+
+            <Heading as='h3' pt={4} fontSize={['md', 'lg', 'lg']}>
+              4.8.5. Werden Daten in ein Drittland oder an eine internationale Organisation übermittelt?
+            </Heading>
+            <Text>
+              Eine Datenübermittlung an Stellen in Staaten außerhalb der Europäischen Union (sogenannte Drittstaaten)
+              findet nicht statt. Ausnahme hiervon ist eine Datenübermittlung in den Fällen, in denen wir Cookies
+              nicht-europäischer Anbieter einsetzen. Hier stellen wir ein angemessenes Datenschutzniveau durch
+              entsprechende Garantien sicher, soweit dies gesetzlich erforderlich ist, z. B. EU-Standardvertragsklauseln
+              oder BCR-Zertifizierung. Wenn Sie weitere Informationen zu den von uns eingesetzten Garantien erhalten
+              möchten, kontaktieren Sie uns bitte unter info@prohyp.de.
+              <br />
+              <br />
+              Weitere Informationen zu Cookies finden Sie in unseren Cookie Informationen.
+            </Text>
+
+            <Heading as='h3' pt={4} fontSize={['md', 'lg', 'lg']}>
+              4.8.6. Welche Datenschutzrechte haben Sie?
+            </Heading>
+            <Text>
+              Als betroffene Person einer Datenverarbeitung haben Sie die folgenden Rechte (im Folgenden auch
+              &quot;Betroffenenrechte&quot; genannt), sofern die entsprechenden Voraussetzungen vorliegen. Bitte
+              kontaktieren Sie uns, wenn Sie diese Rechte geltend machen möchten. Beim Auskunftsrecht und beim
+              Löschungsrecht gelten die Einschränkungen nach §§ 34 und 35 BDSG.
+              <br />
+              <br />
+              a. Recht auf Auskunft (Art. 15 DSGVO)
+              <br />
+              <br />
+              Sie haben uns gegenüber das Recht, Auskunft darüber zu erhalten, welche Daten wir zu Ihrer Person
+              verarbeiten. Insbesondere können Sie Auskunft über die Verarbeitungszwecke, die Kategorien der
+              verarbeiteten Daten, etwaigen Empfängern der Daten und der geplanten Speicherdauer verlangen.
+              <br />
+              <br />
+              b. Recht auf Berichtigung (Art. 16 DSGVO)
+              <br />
+              <br />
+              Sollten die Sie betreffenden Daten nicht richtig oder unvollständig sein, so können Sie die Berichtigung
+              unrichtiger oder die Vervollständigung unvollständiger Angaben verlangen.
+              <br />
+              <br />
+              c. Recht auf Löschung personenbezogener Daten (Art. 17 DSGVO)
+              <br />
+              <br />
+              Sie können die Löschung Ihrer personenbezogenen Daten verlangen, soweit die Daten insbesondere für den
+              vorgesehenen Zweck nicht mehr erforderlich sind bzw. unrechtmäßig verarbeitet werden, oder Sie Ihre
+              Einwilligung widerrufen oder einen Widerspruch erklärt haben.
+              <br />
+              <br />
+              c. Recht auf Löschung personenbezogener Daten (Art. 17 DSGVO)
+              <br />
+              <br />
+              Sie können die Löschung Ihrer personenbezogenen Daten verlangen, soweit die Daten insbesondere für den
+              vorgesehenen Zweck nicht mehr erforderlich sind bzw. unrechtmäßig verarbeitet werden, oder Sie Ihre
+              Einwilligung widerrufen oder einen Widerspruch erklärt haben.
+              <br />
+              <br />
+              d. Recht auf Einschränkung der Datenverarbeitung (Art. 18 DSGVO)
+              <br />
+              <br />
+              Sie können die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten verlangen, solange und soweit
+              die Richtigkeit der Daten von Ihnen bestritten wird, die Verarbeitung unrechtmäßig ist, Sie aber deren
+              Löschung ablehnen oder wir die Daten nicht mehr benötigen, Sie jedoch diese zur Geltendmachung, Ausübung
+              oder Verteidigung von Rechtsansprüchen benötigen oder Sie gemäß Art. 21 DSGVO Widerspruch gegen die
+              Verarbeitung eingelegt haben.
+              <br />
+              <br />
+              e. Recht zum Widerspruch gegen bestimmte Datenverarbeitungen (Art. 21 DSGVO)
+              <br />
+              <br />
+              Im Fall einer Verarbeitung personenbezogener Daten zur Wahrnehmung berechtigter Interessen (Art. 6 Abs. 1
+              lit. f DSGVO), können Sie der Verarbeitung der Sie betreffenden personenbezogenen Daten jederzeit mit
+              Wirkung für die Zukunft widersprechen.
+              <br />
+              <br />
+              Im Fall des Widerspruchs haben wir jede weitere Verarbeitung Ihrer Daten zu den vorgenannten Zwecken zu
+              unterlassen.
+              <br />
+              <br />
+              f. Recht auf Widerruf der datenschutzrechtlichen Einwilligungserklärung
+              <br />
+              <br />
+              Sie haben das Recht, Ihre datenschutzrechtliche Einwilligungserklärung jederzeit mit Wirkung für die
+              Zukunft zu widerrufen. Durch den Widerruf der Einwilligung wird die Rechtmäßigkeit der aufgrund der
+              Einwilligung bis zum Widerruf erfolgten Verarbeitung nicht berührt.
+              <br />
+              <br />
+              g. Recht auf Beschwerde bei einer Aufsichtsbehörde
+              <br />
+              <br />
+              Wenn Sie der Ansicht sind, dass die Verarbeitung der Sie betreffenden personenbezogenen Daten durch uns
+              gegen die DSGVO verstößt, haben Sie das Recht auf Beschwerde beim Datenschutzbeauftragten sowie bei einer
+              Aufsichtsbehörde, insbesondere in dem Mitgliedstaat Ihres gewöhnlichen Aufenthaltsorts, Ihres
+              Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes.
+              <br />
+              <br />
+              h. Weitere Informationen zu Ihren Rechten
+              <br />
+              <br />
+              Weitere Informationen zu Ihren Rechten in Bezug auf Ihre personenbezogenen Daten finden Sie bspw. bei der
+              Europäischen Kommission unter
+              <br />
+              <br />
+              <Link href='https://ec.europa.eu/info/law/law-topic/data-protection/reform/rights-citizens_de'>
+                https://ec.europa.eu/info/law/law-topic/data-protection/reform/rights-citizens_de
+              </Link>
+            </Text>
+
+            <Heading as='h3' pt={4} fontSize={['md', 'lg', 'lg']}>
+              4.8.7. Besteht eine Pflicht zur Bereitstellung von Daten?
+            </Heading>
+            <Text>
+              Im Rahmen unserer Geschäftsbeziehung mit dem Vermittler ist es notwendig, dass Sie diejenigen
+              personenbezogenen Daten bereitstellen, die für die jeweilige Leistungserbringung erforderlich sind. Ohne
+              diese Daten werden wir in der Regel nicht in der Lage sein, den Vertrag mit Ihrem Vermittler auszuführen.
+            </Text>
+
+            <Heading as='h3' pt={4} fontSize={['md', 'lg', 'lg']}>
+              4.8.8. Gibt es eine automatisierte Entscheidungsfindung?
+            </Heading>
+            <Text>
+              Zur Erbringung unserer jeweiligen Leistungen nutzen wir keine automatisierte Entscheidungsfindung
+              einschließlich Profiling gemäß Art. 22 DSGVO.
+            </Text>
+
+            <Heading as='h3' pt={4} fontSize={['md', 'lg', 'lg']}>
+              4.8.9. Zinsrechner
+            </Heading>
+            <Text>
+              Wir geben Ihnen auf unserer Website die Möglichkeit, einen ersten beispielhaften Zinssatz für Ihre
+              Baufinanzierung zu berechnen. Dabei werden die von Ihnen in die Eingabemaske eingegebenen Daten an uns
+              übermittelt und gespeichert: Art des finanzierten Projekts, Art der Immobilie, Nutzungsart der Immobilie,
+              Kaufpreis, Modernisierungskosten, Eigenkapital, Postleitzahl der Immobilie, Postleitzahl Ihres aktuellen
+              Wohnortes, Maklergebühr, Darlehensrate, Tilgungssatz, Sollzinsbindungszeitraum.
+              <br />
+              <br />
+              Die Daten werden ausschließlich zur Berechnung des beispielhaften Baufinanzierungszinssatzes verwendet. Im
+              Rahmen der Zinssatzberechnung werden Ihre Daten dabei auch an die Prohyp GmbH, Domagkstraße 34, 80807
+              München weitergegeben. Die Datenschutzerklärung der Prohyp GmbH finden Sie entweder im Online-Angebot der
+              Prohyp GmbH unter www.prohyp.de/datenschutz/ oder auf dieser Website bei Aufruf des Onlineantrags unter
+              dem Button „Datenschutzerklärung der Prohyp GmbH“. Zusätzlich erfassen wir Ihre IP-Adresse und den
+              Zeitpunkt der Zinsberechnung.
+              <br />
+              <br />
+              Die Verarbeitung der vorstehenden personenbezogenen Daten dient allein zur Beantwortung Ihrer Anfrage.
+              <br />
+              <br />
+              Die Verarbeitung weiterer personenbezogener Daten, die durch die Verwendung des auf unserer Website
+              vorgehaltenen Zinsrechners anfallen, dient zur Verhinderung des Missbrauchs sowie zur Sicherstellung der
+              Sicherheit unserer informationstechnischen Systeme.
+              <br />
+              <br />
+              Hierin liegt auch unser berechtigtes Interesse an der Verarbeitung Ihrer personenbezogenen Daten. Soweit
+              Sie uns hierfür eine Einwilligung erteilt haben, ist Rechtsgrundlage für die Verarbeitung dieser Daten
+              Art. 6 Abs. 1 Satz 1 lit. a) DSGVO, im Übrigen ist Rechtsgrundlage für die Verarbeitung dieser Daten Art.
+              6 Abs. 1 Satz 1 lit. f) DSGVO.
+              <br />
+              <br />
+              Die Daten werden vorbehaltlich gesetzlicher Aufbewahrungsfristen gelöscht, sobald sie für die Erreichung
+              des Zwecks ihrer Erhebung nicht mehr erforderlich sind. Der Verarbeitung Ihrer personenbezogenen Daten
+              können Sie jederzeit widersprechen. Eine uns erteilte Einwilligung können Sie jederzeit widerrufen. Der
+              Verarbeitung Ihrer personenbezogenen Daten können Sie jederzeit widersprechen. Den Widerruf oder den
+              Widerspruch können Sie durch Übersendung einer E-Mail an unsere oben genannte E-Mail-Adresse erklären.
+            </Text>
+
+            <Heading as='h3' pt={4} fontSize={['md', 'lg', 'lg']}>
+              4.8.10 Onlineantrag
+            </Heading>
+            <Text>
+              Wir bieten Ihnen auf unserer Website die Möglichkeit, einen Onlineantrag zur Baufinanzierung zu stellen.
+              Dabei werden die von Ihnen in die Eingabemaske eingegebenen Daten an uns übermittelt und gespeichert:
+              Daten zum Finanzierungsvorhaben: Finanzierungsgrund, Immobilientyp, Immobiliennutzung, Postleitzahl der
+              Immobilie; Daten zu Ihrer Person: Beschäftigungsverhältnis, Haushaltsnettoeinkommen (Monat); Ihre
+              Kontaktdaten: Anrede, Titel, Vorname, Name, Postleitzahl, E-Mail, Telefonnummer (tagsüber).
+              <br />
+              <br />
+              Die Daten werden ausschließlich zur Bearbeitung Ihres Antrags verwendet. Diese Daten werden im Rahmen des
+              Onlineantrages auch an die Prohyp GmbH weitergegeben. Die Datenschutzerklärung der Prohyp GmbH finden Sie
+              entweder im Online-Angebot der Prohyp GmbH unter www.prohyp.de/datenschutz/ oder auf dieser Website im
+              Onlineantragsformular unter dem Button &quot;Datenschutzerklärung der Prohyp GmbH&quot;. Zusätzlich
+              erfassen wir Ihre IP-Adresse und den Zeitpunkt der Antragstellung.
+              <br />
+              <br />
+              Die Verarbeitung der vorstehenden personenbezogenen Daten dient allein zur Bearbeitung Ihres Antrags.
+              <br />
+              <br />
+              Die Verarbeitung weiterer personenbezogener Daten, die durch die Verwendung des auf unserer Website
+              vorgehaltenen Onlineantrags anfallen, dient zur Verhinderung des Missbrauchs sowie zur Sicherstellung der
+              Sicherheit unserer informationstechnischen Systeme.
+              <br />
+              <br />
+              Hierin liegt auch unser berechtigtes Interesse an der Verarbeitung Ihrer personenbezogenen Daten. Soweit
+              Sie hierfür eine Einwilligung erteilt haben, ist Rechtsgrundlage für die Verarbeitung dieser Daten Art. 6
+              Abs. 1 Satz 1 lit. a) DSGVO. Im Übrigen ist Rechtsgrundlage für die Verarbeitung dieser Daten Art. 6 Abs.
+              1 Satz 1 lit. f) DSGVO.
+              <br />
+              <br />
+              Die Daten werden vorbehaltlich gesetzlicher Aufbewahrungsfristen gelöscht, sobald sie für die Erreichung
+              des Zwecks ihrer Erhebung nicht mehr erforderlich sind. Für den Fall, dass es im Anschluss an den
+              Onlineantrag zum Abschluss eines Immobilienfinanzierungsvertrages kommt, werden die Daten zunächst
+              weiterhin gespeichert und in die Kundenakte überführt. Ansonsten endet das Antragsverfahren mit der
+              Ablehnung des Finanzierungsantrags. Die Daten werden in diesem Fall nach Ablauf der gesetzlichen
+              Aufbewahrungsfristen gelöscht. Eine Löschung erfolgt nicht, wenn eine weitere Verarbeitung und Speicherung
+              Ihrer personenbezogenen Daten im Einzelfall zur Geltendmachung, Ausübung oder Verteidigung von
+              Rechtsansprüchen erforderlich ist. In diesem Fall haben wir ein berechtigtes Interesse an der weiteren
+              Verarbeitung und Speicherung Ihrer personenbezogenen Daten. Rechtsgrundlage ist dann Art. 6 Abs. 1 Satz 1
+              lit. f) DSGVO.
+              <br />
+              <br />
+              Eine uns erteilte Einwilligung können sich jederzeit widerrufen. Der Verarbeitung Ihrer personenbezogenen
+              Daten können Sie jederzeit widersprechen. Insbesondere haben Sie jederzeit die Möglichkeit, Ihren
+              Finanzierungsantrag zurückzuziehen. Es besteht keine gesetzliche oder vertragliche Pflicht zur
+              Bereitstellung von Daten. Wir weisen Sie jedoch daraufhin, dass wir ohne diese Daten den
+              Finanzierungsantrag nicht bearbeiten und eine Baufinanzierung nicht vermitteln können. Selbiges gilt im
+              Fall eines gegen die Verarbeitung Ihrer Daten gerichteten Widerspruchs. Die über Sie gespeicherten Daten
+              können Sie jederzeit ändern lassen.
+            </Text>
           </VStack>
 
           <VStack alignItems='flex-start'>
-            <Heading as='h2' fontSize={['md', 'lg', 'lg', 'xl']}>
+            <Heading as='h2' pt={8} fontSize={['md', 'lg', 'lg', 'xl']}>
               5. Wer Ihre Daten empfängt und wann eine Übermittlung in Drittländer erfolgt
             </Heading>
             <Text>
@@ -489,58 +1006,93 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               Vermittlung entscheiden.
             </Text>
             <Text>
-              a) Interne Empfänger und allgemeine externe Dienstleister <br />
+              <strong>a) Interne Empfänger und allgemeine externe Dienstleister</strong> <br />
               <br />
               Intern haben wir Zugriff auf Ihre Daten, um die oben genannten Zwecke zu erfüllen. Zudem setzen wir
               externe Dienstleister ein, um die Daten zu diesen Zwecken zu verarbeiten. Diese externen Dienstleister
               sind vor allem Anbieter von IT-Dienstleistungen und Telekommunikation sowie Telefonnummern- und
-              Adressvalidierungsdienste. Außerdem setzen wir zum technischen Versand unseres E-Mail-Newsletters externe
-              Dienstleister ein.
-            </Text>
-            <Text>
-              b) Angebot, Vergleich oder Beratung in den Bereichen private Krankenversicherung,
-              Krankenzusatzversicherung, Berufsunfähigkeitsversicherung, Altersvorsorge (auch Riester, Rürup, Lebens-
-              und Rentenversicherung, bAV, Sofort Rente), gewerbliche Sachversicherung, Pflegeversicherung,
-              Sterbegeldversicherung, Risikolebensversicherung, Baufinanzierung, Bausparen, Kapitalanlage, Dread
-              Disease, Fonds, Investments <br />
+              Adressvalidierungsdienste. Außerdem setzen wir zum technischen Versand unseres E-Mail-Newsletters einen
+              externen Dienstleister (cleverreach) ein.
               <br />
+              CleverReach GmbH & Co. KG
+              <br />
+              <br />
+              Schafjückenweg 2<br />
+              <br />
+              26180 Rastede
+              <br />
+              <br />
+              Deutschland
+              <br />
+              <br />
+              Umsatzsteuer-Identnummer: DE230180364
+              <br />
+              <br />
+              Handelsregister: Amtsgericht Oldenburg / HRA 4020
+              <br />
+              <br />
+              Vertreten durch:
+              <br />
+              <br />
+              CRASH Verwaltungs GmbH | HRB 210079 Oldenburg (Oldb.)
+              <br />
+              <br />
+              Schafjückenweg 2<br />
+              <br />
+              26180 Rastede/Deutschland
+              <br />
+              <br />
+              Geschäftsführer: Sebastian Strzelecki, Jens Klibingat & Sebastian Schwarz
+              <br />
+              <br />
+              Aufsichtsrat: Rolf Hilchner & Heinz-Wilhelm Bogena
+              <br />
+              <br />
+              Tel.: +49 (0) 4402 97390-00
+              <br />
+              <br />
+              Fax: +49 (0) 4402 97390-99
+              <br />
+              <br />
+            </Text>
+            <Heading as='h2' pt={8} fontSize={['md', 'lg', 'lg', 'xl']}>
+              5.1. Ablauf der Anfrage über Rechner, Anfrage- oder Kontaktformular
+            </Heading>
+            <Text>
               Fordern Sie über eines unserer Formulare nähere Informationen oder ein Beratungsgespräch zu einer
               Versicherung, Finanzierung oder einer anderen Finanzdienstleistung an, so erbringen wir diese
               Dienstleistung nicht immer selbst. Da wir nicht deutschlandweit Vorort beraten können, übermitteln wir
-              Ihre personenbezogenen Daten um die von Ihnen gewünschte Vermittlungsleistung erbringen können, hierzu an
-              ausgewählte Partner. Entweder unmittelbar an einen geeigneten externen Experten oder Expertenpool oder an
-              ein Kooperationsunternehmen weiter, das den geeigneten Experten im Auftrag von Zins-runter.de auswählt.
-              Die Kooperationsunternehmen verwendet die übermittelten Daten, um Sie an einen zu Ihren Angaben passenden
-              Finanzierungs-, Versicherungs- oder Finanzexperten zu vermitteln und kontaktiert Sie per E-Mail um Ihnen
-              den vermittelten Experten vorzustellen. An welchen Experten eine Weitergabe der Daten erfolgt, lässt sich
-              vor oder bei Ihrer Anfrage noch nicht voraussagen. Allerdings steht fest, dass eine Weitergabe nur an
-              Personen erfolgt, die eine einschlägige Spezialisierung aufweisen und in der Regel in Ihrem
-              Postleitzahlenbereich tätig sind. Der Ihnen so zugeordnete Experte wird Sie daraufhin telefonisch oder auf
-              anderem Weg kontaktieren und beraten.
+              Ihre personenbezogenen Daten dann ggf. um die von Ihnen gewünschte Vermittlungs- Beratungsleistung
+              erbringen können, hierzu evtl. an ausgewählte Partner. Entweder unmittelbar an einen geeigneten externen
+              Experten/Expertenpool oder an ein Kooperationsunternehmen weiter, das den geeigneten Experten im Auftrag
+              von Zins-runter.de auswählt. Die Kooperationsunternehmen verwenden die übermittelten Daten, um Sie an
+              einen zu Ihren Angaben passenden Finanzierungs-, Versicherungs- oder Finanzexperten zu vermitteln und
+              kontaktiert Sie per E-Mail um Ihnen den vermittelten Experten vorzustellen. An welchen Experten eine
+              Weitergabe der Daten erfolgt, lässt sich vor oder bei Ihrer Anfrage noch nicht voraussagen. Allerdings
+              steht fest, dass eine Weitergabe nur an Personen erfolgt, die eine einschlägige Spezialisierung bzw. die
+              gewerberechtlichen Vorrausetzungen aufweisen und in der Regel in Ihrem Postleitzahlenbereich tätig sind.
+              Der Ihnen so zugeordnete Experte wird Sie daraufhin telefonisch oder auf anderem Weg kontaktieren und
+              beraten.
               <br />
               <br />
-              Bei Anfragen zur Baufinanzierung werden sich der ausgewählte Experte und der jeweils ausgewählte
-              Darlehensgeber Ihre Daten zum Zwecke der Voranfragen, zur Prüfung der Machbarkeit des
+              Bei Anfragen zur Baufinanzierung werden sich ihr persönlicher Finanzierungsberater und der jeweils
+              ausgewählte Finanzierungsgeber Ihre Daten zum Zwecke der Voranfragen, zur Prüfung der Machbarkeit des
               Finanzierungsvorhabens sowie zu Zwecken der Finanzberatung und Betreuung in Finanzfragen gegenseitig
               übermitteln.
               <br />
               <br />
-              Der oder die Experten werden mit Ihnen Kontakt aufnehmen und Ihnen dann Ihre individuelle Information
-              zukommen lassen. Sollten Sie aufgrund der Tätigkeit eines Experten Interesse am Vertragsschluss bei einem
-              konkreten Anbieter haben, übermittelt der Experte die Daten an die entsprechende Stelle bzw. einen
-              Maklerpool der den Experten unterstützt bei der Geschäftsabwicklung mit den Versicherungsgesellschaften.
-              <br />
-              <br />
-              Bei Anfragen zur privaten Krankenversicherung und zur Baufinanzierung übermitteln wir Ihre Daten
-              (insbesondere Name, Geburtsdatum und Anschrift) zum Zwecke der Bonitätsprüfung an die infoscore Consumer
-              Data GmbH, Rheinstr. 99, 76532 Baden-Baden. Detaillierte Informationen zu der Datenverarbeitung bei der
-              infoscore Consumer Date GmbH finden Sie unter: https://finance.arvato.com/icdinfoblatt.
-              <br />
-              <br />
+              Der oder die Finanzierungsberater werden mit Ihnen Kontakt aufnehmen und Ihnen dann Ihre individuelle
+              Information zukommen lassen. Sollten Sie aufgrund der Tätigkeit eines Finanzierungsberaters Interesse am
+              Vertragsschluss bei einem konkreten Anbieter haben, übermittelt der Experte die Daten an die entsprechende
+              Stelle bzw. Finanzierungsplattform, Prohyp, Europace oder Maklerpool der den Finanzierungsberater
+              unterstützt bei der Geschäftsabwicklung mit den Finanzierungsgebern, Banken oder
+              Versicherungsgesellschaften.
             </Text>
             <Text>
-              c) Abschluss einer Versicherung in den Bereichen KFZ-Versicherung, Motorradversicherung,
-              Reiseversicherung, Au-Pair Versicherung
+              <strong>
+                c) Abschluss einer Versicherung in den Bereichen KFZ-Versicherung, Motorradversicherung,
+                Reiseversicherung, Au-Pair Versicherung
+              </strong>{' '}
               <br />
               <br />
               Für die Versicherungsvermittlung der Sparten Kfz-Versicherung und Motorradversicherung ist die CHECK24
@@ -557,8 +1109,8 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               <br />
               Für die Versicherungsvermittlung der Sparte Au-Pair Versicherung, ist die Care Concept AG Am
               Herz-Jesu-Kloster 20 - 53229 Bonn Tel.: 0228 977 35 - 0 Fax: 0228 977 35 - 35 - zuständig.
-            </Text>
-            <Text>
+              <br />
+              <br />
               Abschluss einer Versicherung in den Bereichen Bauleistungsversicherung, Glasbruch, Hausrat, Photovoltaik,
               Rechtsschutz, Tier-OP-Versicherung, Unfallversicherung, Wohngebäude, Private Haftpflichtrisiken,
               Bauherrenhaftpflicht, Bootsversicherung, Gewässerschadenhaftpflicht, Haus- und Grundbesitzerhaftpflicht,
@@ -582,7 +1134,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
           </VStack>
 
           <VStack alignItems='flex-start'>
-            <Heading as='h2' fontSize={['md', 'lg', 'lg', 'xl']}>
+            <Heading as='h2' pt={8} fontSize={['md', 'lg', 'lg', 'xl']}>
               6. Wie lange Ihre Daten gespeichert werden
             </Heading>
             <Text>
@@ -590,10 +1142,8 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               <br />
               <br />
               Daten, die auf vertraglicher Grundlage gespeichert werden und einen einmaligen Leistungsaustausch zum
-              Gegenstand haben – wie unsere Vermittlungsleistungen – werden aufgrund der gesetzlichen Verjährungsfristen
+              Gegenstand haben - wie unsere Vermittlungsleistungen - werden aufgrund der gesetzlichen Verjährungsfristen
               für drei Jahre nach dem Schluss des Jahres aufbewahrt in dem der Vertrag abgeschlossen wurde.
-              <br />
-              <br />
               <br />
               <br />
               Haben Sie unseren E-Mail-Newsletter abonniert, sei es aufgrund Ihrer Einwilligung, oder weil Sie Kunde bei
@@ -614,7 +1164,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
           </VStack>
 
           <VStack alignItems='flex-start'>
-            <Heading as='h2' fontSize={['md', 'lg', 'lg', 'xl']}>
+            <Heading as='h2' pt={8} fontSize={['md', 'lg', 'lg', 'xl']}>
               7. Ihre Betroffenenrechte und Ihr Widerruf einer Einwilligun
             </Heading>
             <Text>
@@ -674,7 +1224,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
           </VStack>
 
           <VStack alignItems='flex-start'>
-            <Heading as='h2' fontSize={['md', 'lg', 'lg', 'xl']}>
+            <Heading as='h2' pt={8} fontSize={['md', 'lg', 'lg', 'xl']}>
               8. Ihre Pflicht zur Bereitstellung von personenbezogenen Daten
             </Heading>
             <Text>
@@ -685,7 +1235,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
           </VStack>
 
           <VStack alignItems='flex-start'>
-            <Heading as='h2' fontSize={['md', 'lg', 'lg', 'xl']}>
+            <Heading as='h2' pt={8} fontSize={['md', 'lg', 'lg', 'xl']}>
               9. Sicherheit
             </Heading>
             <Text>
@@ -693,7 +1243,8 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               persönlichen Daten vor Verlust, unrichtigen Veränderungen oder unberechtigten Zugriffen Dritter geschützt
               sind. In jedem Fall haben von unserer Seite nur berechtigte Personen Zutritt zu Ihren persönlichen Daten,
               und dies auch nur insoweit, als es im Rahmen der oben genannten Zwecke erforderlich ist. Die
-              Sicherheitsmaßnahmen werden ständig den verbesserten technischen Möglichkeiten angepasst. <br />
+              Sicherheitsmaßnahmen werden ständig den verbesserten technischen Möglichkeiten angepasst.
+              <br />
               <br />
               Sie haben selbstverständlich die Möglichkeit, Ihr Einverständnis jederzeit zu widerrufen. Den Widerruf
               können Sie schriftlich an die Adresse SIGURON GmbH Fürstenrieder Str. 279a 81377 München (Zins-runter.de)
@@ -705,7 +1256,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
           </VStack>
 
           <VStack alignItems='flex-start'>
-            <Heading as='h2' fontSize={['md', 'lg', 'lg', 'xl']}>
+            <Heading as='h2' pt={8} fontSize={['md', 'lg', 'lg', 'xl']}>
               10. Welche internetspezifischen Datenverarbeitungen anfallen
             </Heading>
             <Text>Individuelle Einstellungen</Text>{' '}
@@ -713,18 +1264,21 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               Individuelle Einstellungen
             </button>
             <Text>
-              <strong>a) Hinweise zu Cookies</strong> <br />
+              <strong>a) Hinweise zu Cookies</strong>
+              <br />
               Im Rahmen unserer Internetseiten verwenden wir so genannte Cookies. Hierbei handelt es sich um kleine
               Dateien, die auf Ihrer Festplatte gespeichert werden und durch welche uns bestimmte Informationen
               zufließen. Bei diesen Informationen handelt es sich insbesondere um den Login (Ihren Besuch), das Datum
               und die Zeit Ihres Besuches bei uns, die Cookie-Nummer sowie die URL der Website, von der aus Sie auf
               unsere Angebotsseiten gelangt sind. Die entsprechenden Daten werden dabei auf Servern unseres
-              Dienstleisters gespeichert. <br />
+              Dienstleisters gespeichert.
+              <br />
               <br />
               Der Einsatz von Cookies ermöglicht es uns zunächst, Sie zu erkennen. Darüber hinaus können wir durch die
               Cookies unser Angebot optimal an Ihre individuellen Bedürfnisse anpassen. Außerdem verwenden wir Cookies,
               um die statistische Häufigkeit der Aufrufe der verschiedenen Seiten unseres Internet-Angebots sowie die
-              allgemeine Navigation aufzuzeichnen. <br />
+              allgemeine Navigation aufzuzeichnen.
+              <br />
               <br />
               Falls Sie die Verwendung von Cookies jedoch unterbinden wollen, besteht dazu bei Ihrem Browser die
               Möglichkeit, die Annahme und Speicherung neuer Cookies zu verhindern. Unser Angebot können Sie auch in
@@ -735,7 +1289,8 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               wir uns ständig bemühen, in vollem Umfang zu Gute kommt.
             </Text>
             <Text>
-              <strong>b) Bing Ads</strong> <br />
+              <strong>b) Bing Ads</strong>
+              <br />
               Wir verwenden das Conversion Tracking “Bing Ads” der Microsoft Corporation, One Microsoft Way, Redmond, WA
               98052-6399, USA (“Microsoft”). Hierfür speichert Microsoft einen Cookie auf Ihrem Endgerät, wenn Sie über
               eine Microsoft Bing Anzeige zu uns gelangt sind. So können wir erkennen, dass jemand über eine Anzeige des
@@ -754,7 +1309,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               <strong>c) Facebook Pixel</strong> <br />
               Wir verwenden das Facebook-Pixel der Facebook Ireland Limited, 4 Grand Canal Square, Dublin 2, Irland auf
               unseren Seiten. Dieses bietet mehrere Funktionen an, von der wir die Funktion Custom Audiences benutzen.
-              Hiermit kann Ihnen – wenn Sie ein Nutzerkonto bei Facebook haben – auf Facebook gezielt unsere Werbung
+              Hiermit kann Ihnen - wenn Sie ein Nutzerkonto bei Facebook haben - auf Facebook gezielt unsere Werbung
               angezeigt werden. Das Facebook Pixel stellt hierzu eine direkte Verbindung ihrer Seite mit den
               Facebook-Servern her. Dabei werden Ihre Nutzungsdaten an Facebook zu Analyse- und Marketingzwecken
               übermittelt. Haben Sie ein Facebook-Konto, so können diese Daten Ihnen zugeordnet werden. Durch das
@@ -770,8 +1325,8 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               </Link>
               .
             </Text>
+            <br />
             <Text>
-              <strong></strong> <br />
               Dieses Angebot verwendet Social Plugins („Plugins“) des sozialen Netzwerkes facebook.com, welches von der
               Facebook Inc., 1601 S. California Ave, Palo Alto, CA 94304, USA betrieben wird („Facebook“). Die Plugins
               sind an einem der Facebook-Logos erkennbar (weißes „f“ auf blauer Kachel oder ein „Daumen hoch“-Zeichen)
@@ -814,7 +1369,8 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               mit dem „Facebook Blocker“.
             </Text>
             <Text>
-              <strong>e) Google Analytics</strong> <br />
+              <strong>e) Google Analytics</strong>
+              <br />
               Diese Website und weitere Online-Angebote von Siguron GmbH benutzen den Webanalysedienst Google Analytics
               und den Dienst Google Remarketing, beides Angebote der Google Inc. („Google“). Durch den Dienst Google
               Remarketing werden Nutzer, die unsere Internetseiten und Onlinedienste bereits besucht und sich für das
@@ -849,7 +1405,8 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               zu dem zuvor benannten Zweck einverstanden.
             </Text>
             <Text>
-              <strong>f) Google reCAPTCHA</strong> <br />
+              <strong>f) Google reCAPTCHA</strong>
+              <br />
               Wir verwenden den Google-Dienst reCaptcha, um festzustellen, ob ein Mensch oder ein Computer eine
               bestimmte Eingabe in unserem Kontakt- oder Newsletter-Formular macht. Google prüft anhand folgender Daten,
               ob Sie ein Mensch oder ein Computer sind: IP-Adresse des verwendeten Endgeräts, die Webseite, die Sie bei
@@ -862,7 +1419,8 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               (Angriffen) zu schützen.
             </Text>
             <Text>
-              <strong>g) Google AdWords</strong> <br />
+              <strong>g) Google AdWords</strong>
+              <br />
               Unsere Webseite nutzt AdWords, eine Technologie von Google.
               <br />
               <br />
@@ -886,7 +1444,8 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               vornehmen.
             </Text>
             <Text>
-              <strong>h) Twitter</strong> <br />
+              <strong>h) Twitter</strong>
+              <br />
               Dieses Angebot nutzt die Schaltflächen des Dienstes Twitter. Diese Schaltflächen werden angeboten durch
               die Twitter Inc., 795 Folsom St., Suite 600, San Francisco, CA 94107, USA. Sie sind an Begriffen wie
               „Twitter“ oder „Folge“, verbunden mit einem stilisierten blauen Vogel, erkennbar. Mit Hilfe der

@@ -23,8 +23,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     await mail(process.env.EMAIL_TO!, {
       type: 'FORMULAR',
-      vorname: req.body.vorname,
-      name: req.body.name,
+      vorname: dataToSend.vorname,
+      name: dataToSend.name,
       timestamp: new Date().toLocaleDateString('de') + ', ' + new Date().toLocaleTimeString('de'),
     });
     res.status(200).json('Success');
