@@ -13,6 +13,14 @@ import TagManager from 'react-gtm-module';
 // xaat-8a452859-5c53-4238-88f1-da18518cb1a8
 
 export { reportWebVitals } from 'next-axiom';
+import { withAxiomGetServerSideProps } from 'next-axiom';
+
+export const getServerSideProps = withAxiomGetServerSideProps(async ({ req, log }) => {
+  log.info('Hello, world!');
+  return {
+    props: {},
+  };
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
