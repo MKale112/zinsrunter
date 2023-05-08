@@ -11,6 +11,10 @@ import { Metadata } from '@/components/Metadata';
 import TagManager from 'react-gtm-module';
 import Script from 'next/script';
 
+// xaat-8a452859-5c53-4238-88f1-da18518cb1a8
+
+export { reportWebVitals } from 'next-axiom';
+
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
