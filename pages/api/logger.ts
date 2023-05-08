@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async function logger(_req: NextApiRequest, _res: NextApiResponse) {
+export default async function logger(_req: NextApiRequest, res: NextApiResponse) {
   //   const ipAddress = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
   //   const userAgent = req.headers['user-agent'];
   //   const referrer = req.headers['referer'] || '';
@@ -14,5 +14,5 @@ export default async function logger(_req: NextApiRequest, _res: NextApiResponse
   //   fs.appendFileSync(logFileName, logEntry);
   console.log({ message: 'Merry news! Log entry recorded.' });
 
-  //   res.status(200).json({ message: 'Log entry recorded' });
+  res.status(200);
 }
