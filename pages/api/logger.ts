@@ -17,5 +17,5 @@ export default async function logger(req: NextApiRequest, res: NextApiResponse) 
 
   !isAxiom && uploadLogs();
 
-  res.status(200).json({ logEntry });
+  res.status(200).json({ logEntry, timestamp });
 }
