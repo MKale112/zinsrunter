@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Box, HStack, Text, VStack } from '@chakra-ui/react';
-import Script from 'next/script';
 import { useRouter } from 'next/router';
 import Popup from '../Popups';
 const ReactReveal = require('react-reveal');
@@ -39,7 +38,7 @@ const Teaser = () => {
           color='primary.acid'
         >
           <Text>ab</Text>
-          <Box className='baufilead_beste_kondition_sollzins' />
+          <Box id='sollzins' />
           <Popup isOpen={isOpen} onClose={() => setIsOpen(false)} popupContent={'Repräsentatives Zins-Beispiel'} />
         </HStack>
         <HStack justifyContent='center' alignItems='center'>

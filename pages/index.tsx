@@ -1,17 +1,25 @@
 import React, { useEffect } from 'react';
 import HeroBanner from '@/components/Banner/HeroBanner';
-import { Box, Heading, VisuallyHidden, useMediaQuery } from '@chakra-ui/react';
+import { Box, Heading, VisuallyHidden, useMediaQuery, Portal } from '@chakra-ui/react';
 import Partners from '@/components/SealsAndPartners/Partners';
 import Seals from '@/components/SealsAndPartners/Seals';
 import Highlights from '@/components/Highlights/Highlights';
 import { Financing } from '@/components/Financing/Financing';
 import Script from 'next/script';
 import { addGclid } from '@/core/utils';
+import { applyInnerHTML, classList } from '@/core/script';
 
 export default function Home() {
   const [isMobile] = useMediaQuery('(max-width: 640px)');
 
   useEffect(() => {
+    const intervalId = setInterval(() => {
+      const element = document.getElementsByClassName(classList[0])[0];
+      if (element && element.innerHTML) {
+        clearInterval(intervalId);
+        applyInnerHTML();
+      }
+    }, 1000);
     window.addEventListener('load', addGclid);
     () => {
       window.removeEventListener('load', addGclid);
@@ -32,12 +40,6 @@ export default function Home() {
 
   return (
     <Box pointerEvents={'auto'}>
-      {/* <Script
-        async
-        id='baufi-lead-script-1'
-        type='text/javascript'
-        src='https://www.baufi-lead.de/baufilead/partner/PkGvpMTcO4DxDy0gEBGuq9c2NYTZ1Q/imports.js'
-      /> */}
       <Script async id='baufi-lead-script-2' type='text/javascript'>
         var baufilead_kampagne = &quot;Zins-runter.de Europace Formulare&quot;;
       </Script>
@@ -53,6 +55,13 @@ export default function Home() {
       <Partners cards={true} />
       <Highlights />
       <Seals />
+      <Portal>
+        <Box id='classListElements' display='none'>
+          {classList.map((className) => (
+            <Box key={className} className={className} />
+          ))}
+        </Box>
+      </Portal>
     </Box>
   );
 }
