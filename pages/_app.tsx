@@ -19,13 +19,15 @@ import axios from 'axios';
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
+
   const sendLog = async () => {
-    await axios.get('/api/logger?axiom=true');
+    await axios.get(`/api/logger?axiom=true&path=${router.asPath}`);
+    console.log(router);
   };
 
   useEffect(() => {
     sendLog();
-  }, []);
+  }, [router]);
 
   useEffect(() => {
     TagManager.initialize({ gtmId: process.env.NEXT_PUBLIC_GTM_ID! });
