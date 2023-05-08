@@ -7,7 +7,7 @@ const s3 = new AWS.S3({
   region: process.env.AWS_REGION,
 });
 
-async function uploadLogs() {
+export async function uploadLogs() {
   const date = new Date();
   const logFileName = `access_logs_${date.toISOString().substring(0, 10)}.txt`;
 
@@ -30,5 +30,3 @@ async function uploadLogs() {
     console.error('Error uploading logs:', err);
   }
 }
-
-uploadLogs();

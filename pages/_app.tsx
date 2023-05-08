@@ -14,16 +14,18 @@ import TagManager from 'react-gtm-module';
 
 export { reportWebVitals } from 'next-axiom';
 import { withAxiomGetServerSideProps } from 'next-axiom';
-
-export const getServerSideProps = withAxiomGetServerSideProps(async ({ req, log }) => {
-  log.info('Hello, world!');
-  return {
-    props: {},
-  };
-});
+import { GetServerSideProps } from 'next';
+import axios from 'axios';
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
+  const sendLog = async () => {
+    await axios.get('/api/logger?axiom=true');
+  };
+
+  useEffect(() => {
+    sendLog();
+  }, []);
 
   useEffect(() => {
     TagManager.initialize({ gtmId: process.env.NEXT_PUBLIC_GTM_ID! });
