@@ -15,7 +15,7 @@ export default async function logger(req: NextApiRequest, res: NextApiResponse) 
 
   const logEntry = `${ipAddress} - - [${timestamp}] "${method} ${path} HTTP/${httpVersion}" "${userAgent}" "${host}"`;
 
-  isAxiom ? !path.includes('[...step]') && log.debug('INFO', { logEntry }) : uploadLogs();
+  !isAxiom && uploadLogs();
 
-  res.status(200).json({});
+  res.status(200).json({ logEntry });
 }

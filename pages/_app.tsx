@@ -13,16 +13,15 @@ import TagManager from 'react-gtm-module';
 // xaat-8a452859-5c53-4238-88f1-da18518cb1a8
 
 // export { reportWebVitals } from 'next-axiom';
-import { withAxiomGetServerSideProps } from 'next-axiom';
-import { GetServerSideProps } from 'next';
+import { log } from 'next-axiom';
 import axios from 'axios';
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   const sendLog = async () => {
-    await axios.get(`/api/logger?axiom=true&path=${router.asPath}`);
-    console.log(router);
+    const res = await axios.get(`/api/logger?axiom=true&path=${router.asPath}`);
+    log.info(res.data.logEntry);
   };
 
   useEffect(() => {
