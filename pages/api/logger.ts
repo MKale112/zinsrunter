@@ -12,7 +12,7 @@ export default async function logger(_req: NextApiRequest, _res: NextApiResponse
 
   //   const logFileName = `access_logs_${new Date().toISOString().substring(0, 10)}.txt`;
   //   fs.appendFileSync(logFileName, logEntry);
-  console.log({ message: 'Log entry recorded' });
+  console.log({ message: 'Log entry recorded yay' });
 
   //   res.status(200).json({ message: 'Log entry recorded' });
 }
