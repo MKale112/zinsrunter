@@ -1,5 +1,5 @@
-const AWS = require('aws-sdk');
-const fs = require('fs');
+import AWS from 'aws-sdk';
+import fs from 'fs';
 
 const s3 = new AWS.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -14,10 +14,10 @@ async function uploadLogs() {
   const fileContent = fs.readFileSync(logFileName);
 
   const params = {
-    Bucket: process.env.AWS_S3_BUCKET_NAME,
+    Bucket: process.env.AWS_S3_BUCKET_NAME || '',
     Key: `access_logs/${logFileName}`,
     Body: fileContent,
-  };
+  } as AWS.S3.Types.PutObjectRequest;
 
   try {
     const result = await s3.upload(params).promise();
