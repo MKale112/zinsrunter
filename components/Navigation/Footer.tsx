@@ -42,23 +42,12 @@ const Footer = () => {
                   py={4}
                   spacingX={8}
                   spacing={3}
-                  columns={2}
+                  columns={3}
                   justifyContent='center'
                   alignItems='center'
                   textAlign='center'
                 >
                   {items}
-                  <Button
-                    as={'a'}
-                    href='/sitemap.xml'
-                    target='_self'
-                    rel='noreferrer'
-                    variant='link'
-                    fontWeight='normal'
-                    fontSize='sm'
-                  >
-                    Sitemap
-                  </Button>
                 </SimpleGrid>
                 <Image src='/brands/geotrust-secured.png' alt='certificate-image' width={150} height={100} />
               </VStack>
@@ -67,17 +56,6 @@ const Footer = () => {
                 <VStack w='40%' h='full' justifyContent='space-between'>
                   <HStack pb={8} spacing={8} justifyContent='center' alignItems='center' textAlign='center'>
                     {items}{' '}
-                    <Button
-                      as={'a'}
-                      href='/sitemap.xml'
-                      target='_self'
-                      rel='noreferrer'
-                      variant='link'
-                      fontWeight='normal'
-                      fontSize='sm'
-                    >
-                      Sitemap
-                    </Button>
                   </HStack>
                   <Image src='/brands/geotrust-secured.png' alt='certificate-image' width={150} height={100} />
                 </VStack>
