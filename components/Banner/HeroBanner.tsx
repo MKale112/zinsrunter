@@ -34,7 +34,7 @@ export const HeroBanner = (props: HeroBannerProps) => {
           direction={{ base: 'column', sm: 'row' }}
           justifyContent={{ base: 'center', sm: 'space-around' }}
           spacing={{ base: 3, sm: 10 }}
-          backdropFilter={'blur(1px)'}
+          //backdropFilter={'blur(1px)'}
           backgroundColor={{ base: 'blackAlpha.400', sm: 'rgba(0, 0, 0, 0.30)' }}
         >
           <Teaser />

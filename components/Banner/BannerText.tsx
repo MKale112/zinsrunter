@@ -2,8 +2,10 @@ import React from 'react';
 import { Button, Heading, VStack, Text, List, ListIcon, ListItem, HStack } from '@chakra-ui/react';
 import { CheckIcon } from '@chakra-ui/icons';
 import ChakraLink from '../Link/ChakraLink';
+import LinkButton from '../LinkButton';
 
 export const BannerText = () => {
+  const buttonText = 'Jetzt unverbindlich Anfragen';
   return (
     <VStack
       fontWeight={'bold'}
@@ -60,9 +62,7 @@ export const BannerText = () => {
       </List>
       <VStack alignSelf='center'>
         <ChakraLink href='/formular' alignSelf='center'>
-          <Button variant='accent' fontSize={{ base: 'xl', md: '2xl' }}>
-            Jetzt unverbindlich Anfragen
-          </Button>
+          <LinkButton buttonText={buttonText} />
         </ChakraLink>
         <Text
           alignSelf='center'

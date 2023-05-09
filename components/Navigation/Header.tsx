@@ -86,7 +86,7 @@ const Header = () => {
             Gebührenfreie Hotline: 0800 36 40000
           </Text>
         </HStack>
-        <HStack py={{ base: 2, lg: 4 }} justify='space-between'>
+        <HStack py={{ base: 2, lg: 2 }} justify='space-between'>
           <HStack spacing={6} alignItems='flex-end'>
             <ChakraLink href='/'>
               <Image src='/logo.webp' alt='Logo Image' height={isMobile ? 100 : 125} width={isMobile ? 120 : 150} />
