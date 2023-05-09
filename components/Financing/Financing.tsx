@@ -4,10 +4,12 @@ import React from 'react';
 import { FullWidthContainer, ResponsiveContainer } from '../Containers';
 import ChakraLink from '../Link/ChakraLink';
 import BannerText from '../Banner/BannerText';
+import LinkButton from '../LinkButton';
 const ReactReveal = require('react-reveal');
 
 export const Financing = () => {
   const [isMobile] = useMediaQuery('(max-width: 640px)');
+  const buttonText = 'Finanzierungvorschlag anfordern';
 
   return (
     <FullWidthContainer id='finanzierungen' py={[10, 16]} bgColor='gray.100'>
@@ -108,7 +110,7 @@ export const Financing = () => {
                     </HStack>
                   </List>
                   <ChakraLink href='/formular' mt={2}>
-                    <Button variant='accent'>Finanzierungvorschlag anfordern</Button>
+                    <LinkButton buttonText={buttonText} />
                   </ChakraLink>
                 </VStack>
               </ReactReveal.Fade>

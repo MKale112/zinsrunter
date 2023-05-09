@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { FullWidthContainer, ResponsiveContainer } from '../Containers';
 import partnerData from '../../data/partners.json';
 import ChakraLink from '../Link/ChakraLink';
+import LinkButton from '../LinkButton';
 const ReactReveal = require('react-reveal');
 
 interface PartnersProps {
@@ -12,6 +13,7 @@ interface PartnersProps {
 
 const Partners = ({ cards = true }: PartnersProps) => {
   const [isMobile] = useMediaQuery('(max-width: 640px)');
+  const buttonText = 'Jetzt unverbindlich anfragen!';
   const partners = partnerData.partners.map((entry, index) => (
     <ReactReveal.Fade bottom delay={index * 80} key={entry.id}>
       <Image src={entry.path} alt={entry.id} width={isMobile ? 120 : 150} height={100} />
@@ -242,7 +244,7 @@ const Partners = ({ cards = true }: PartnersProps) => {
               ))}
             {cards && (
               <ChakraLink href='/formular' mt={2}>
-                <Button variant='accent'>Jetzt unverbindlich anfragen!</Button>
+                <LinkButton buttonText={buttonText} />
               </ChakraLink>
             )}
           </VStack>

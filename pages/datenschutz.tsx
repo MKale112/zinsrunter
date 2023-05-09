@@ -62,7 +62,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
           </VStack>
 
           <VStack alignItems='flex-start'>
-            <Heading as='h2' pt={8} fontSize={['md', 'lg', 'lg', 'xl']}>
+            <Heading as='h2' pt={2} fontSize={['md', 'lg', 'lg', 'xl']}>
               1. Verantwortliche Stelle für die Datenverarbeitungen
             </Heading>
             <Text>
@@ -86,7 +86,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
           </VStack>
 
           <VStack alignItems='flex-start'>
-            <Heading as='h2' pt={8} fontSize={['md', 'lg', 'lg', 'xl']}>
+            <Heading as='h2' pt={2} fontSize={['md', 'lg', 'lg', 'xl']}>
               2. Was personenbezogene Daten sind und woher wir sie erhalten
             </Heading>
             <Text>
@@ -176,7 +176,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
           </VStack>
 
           <VStack alignItems='flex-start'>
-            <Heading as='h2' pt={8} fontSize={['md', 'lg', 'lg', 'xl']}>
+            <Heading as='h2' pt={2} fontSize={['md', 'lg', 'lg', 'xl']}>
               3. Zu welchen Zwecken wir Ihre personenbezogenen Daten verwenden
             </Heading>
             <Text>
@@ -227,7 +227,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
           </VStack>
 
           <VStack alignItems='flex-start' width='100%'>
-            <Heading as='h2' pt={8} fontSize={['md', 'lg', 'lg', 'xl']}>
+            <Heading as='h2' pt={2} fontSize={['md', 'lg', 'lg', 'xl']}>
               4. Personenbezogene Daten, die Sie Zins-runter.de (Siguron GmbH) für die Bearbeitung der
               Finanzierungsanfrage übermitteln.
             </Heading>
@@ -524,12 +524,9 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               <br />
               Prohyp GmbH
               <br />
-              <br />
               Domagkstraße 34
               <br />
-              <br />
               80807 München
-              <br />
               <br />
               E-Mail: info@prohyp.de
               <br />
@@ -539,15 +536,11 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               <br />
               Prohyp GmbH
               <br />
-              <br />
               Datenschutzbeauftragter
-              <br />
               <br />
               Domagkstraße 34
               <br />
-              <br />
               80807 München
-              <br />
               <br />
               E-Mail: datenschutz@prohyp.de
               <br />
@@ -1003,7 +996,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
           </VStack>
 
           <VStack alignItems='flex-start'>
-            <Heading as='h2' pt={8} fontSize={['md', 'lg', 'lg', 'xl']}>
+            <Heading as='h2' pt={2} fontSize={['md', 'lg', 'lg', 'xl']}>
               5. Wer Ihre Daten empfängt und wann eine Übermittlung in Drittländer erfolgt
             </Heading>
             <Text>
@@ -1027,15 +1020,14 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               CleverReach GmbH & Co. KG
               <br />
               <br />
-              Schafjückenweg 2<br />
+              Schafjückenweg 2
               <br />
               26180 Rastede
-              <br />
               <br />
               Deutschland
               <br />
               <br />
-              Umsatzsteuer-Identnummer: DE230180364
+              Umsatzsteuer-Identnummer: DE230180364pt={2}
               <br />
               <br />
               Handelsregister: Amtsgericht Oldenburg / HRA 4020
@@ -1047,9 +1039,11 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               CRASH Verwaltungs GmbH | HRB 210079 Oldenburg (Oldb.)
               <br />
               <br />
-              Schafjückenweg 2<br />
+              Schafjückenweg 2
               <br />
-              26180 Rastede/Deutschland
+              26180 Rastede
+              <br />
+              Deutschland
               <br />
               <br />
               Geschäftsführer: Sebastian Strzelecki, Jens Klibingat & Sebastian Schwarz
@@ -1060,12 +1054,10 @@ const Datenschutz = ({ isPopup = false }: Props) => {
               <br />
               Tel.: +49 (0) 4402 97390-00
               <br />
-              <br />
               Fax: +49 (0) 4402 97390-99
               <br />
-              <br />
             </Text>
-            <Heading as='h2' pt={8} fontSize={['md', 'lg', 'lg', 'xl']}>
+            <Heading as='h2' pt={2} fontSize={['md', 'lg', 'lg', 'xl']}>
               5.1. Ablauf der Anfrage über Rechner, Anfrage- oder Kontaktformular
             </Heading>
             <Text>
@@ -1144,7 +1136,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
           </VStack>
 
           <VStack alignItems='flex-start'>
-            <Heading as='h2' pt={8} fontSize={['md', 'lg', 'lg', 'xl']}>
+            <Heading as='h2' pt={2} fontSize={['md', 'lg', 'lg', 'xl']}>
               6. Wie lange Ihre Daten gespeichert werden
             </Heading>
             <Text>
@@ -1174,7 +1166,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
           </VStack>
 
           <VStack alignItems='flex-start'>
-            <Heading as='h2' pt={8} fontSize={['md', 'lg', 'lg', 'xl']}>
+            <Heading as='h2' pt={2} fontSize={['md', 'lg', 'lg', 'xl']}>
               7. Ihre Betroffenenrechte und Ihr Widerruf einer Einwilligun
             </Heading>
             <Text>
@@ -1234,7 +1226,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
           </VStack>
 
           <VStack alignItems='flex-start'>
-            <Heading as='h2' pt={8} fontSize={['md', 'lg', 'lg', 'xl']}>
+            <Heading as='h2' pt={2} fontSize={['md', 'lg', 'lg', 'xl']}>
               8. Ihre Pflicht zur Bereitstellung von personenbezogenen Daten
             </Heading>
             <Text>
@@ -1245,7 +1237,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
           </VStack>
 
           <VStack alignItems='flex-start'>
-            <Heading as='h2' pt={8} fontSize={['md', 'lg', 'lg', 'xl']}>
+            <Heading as='h2' pt={2} fontSize={['md', 'lg', 'lg', 'xl']}>
               9. Sicherheit
             </Heading>
             <Text>
@@ -1266,7 +1258,7 @@ const Datenschutz = ({ isPopup = false }: Props) => {
           </VStack>
 
           <VStack alignItems='flex-start' width='100%'>
-            <Heading as='h2' pt={8} fontSize={['md', 'lg', 'lg', 'xl']}>
+            <Heading as='h2' pt={2} fontSize={['md', 'lg', 'lg', 'xl']}>
               10. Welche internetspezifischen Datenverarbeitungen anfallen
             </Heading>
             <Text>Individuelle Einstellungen</Text>{' '}

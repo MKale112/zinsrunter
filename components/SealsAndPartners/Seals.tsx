@@ -16,10 +16,12 @@ import Tilt from 'react-parallax-tilt';
 import sealsData from '../../data/seals.json';
 import ChakraLink from '../Link/ChakraLink';
 import Image from 'next/image';
+import LinkButton from '../LinkButton';
 const ReactReveal = require('react-reveal');
 
 const Seals = () => {
   const [isMobile] = useMediaQuery('(max-width: 640px)');
+  const buttonText = 'Beratungstermin vereinbaren';
 
   const sealsAndHonors = sealsData.seals.map((entry, index) => {
     const images = entry.images.map((image, index) => (
@@ -81,7 +83,7 @@ const Seals = () => {
               </SimpleGrid>
             )}
             <ChakraLink href='/formular'>
-              <Button variant='accent'>Beratungstermin vereinbaren</Button>
+              <LinkButton buttonText={buttonText} />
             </ChakraLink>
           </VStack>
         </ReactReveal.Fade>

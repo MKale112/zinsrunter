@@ -19,7 +19,7 @@ export const HeroBanner = (props: HeroBannerProps) => {
       bgImgUrl={heroImage}
       bgImgRepeat={'no-repeat'}
       bgImgSize='cover'
-      h={{ base: '24rem', md: '45rem' }}
+      h={{ base: '24rem', md: '40rem' }}
     >
       <ResponsiveContainer
         h='full'
@@ -31,6 +31,9 @@ export const HeroBanner = (props: HeroBannerProps) => {
         <Stack
           w='full'
           mt={{ base: 5, md: 0 }}
+          padding={{ base: 5, sm: 0 }}
+          paddingTop={{ base: 5, md: 10 }}
+          paddingBottom={{ base: 5, md: 10 }}
           direction={{ base: 'column', sm: 'row' }}
           justifyContent={{ base: 'center', sm: 'space-around' }}
           spacing={{ base: 3, sm: 10 }}

@@ -9,14 +9,19 @@ export const BannerText = () => {
   return (
     <VStack
       fontWeight={'bold'}
-      padding={[4, 6, 10]}
+      padding={[4, 6, 8]}
+      mt={{ base: -5, sm: 0 }}
       alignItems='center'
-      spacing={{ base: 6, md: 10 }}
+      spacing={{ base: 6, md: 4 }}
       width={['100%', '100%', '50%']}
       ml='auto'
       textAlign='center'
       textShadow={{ base: 'unset', sm: '0px 1px 3px rgba(0,0,0,0.3)' }}
-      mb={{ base: 10, sm: 0 }}
+      mb={{ base: 5, sm: 0 }}
+      border='1px'
+      borderColor={{ base: 'rgba(200, 200, 200, 0.50)', sm: 'rgba(200, 200, 200, 0.50)' }}
+      borderRadius={'xl'}
+      backgroundColor={{ base: 'white', sm: 'rgba(0, 40, 60, 0.30)' }}
     >
       <Heading
         as={'h2'}
