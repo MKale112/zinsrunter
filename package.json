@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint:fix": "eslint --fix --ext '.js,.jsx,.ts,.tsx'",
-    "prettier:fix": "prettier '**/*.{js,jsx,ts,tsx,json,md}' --write",
+    "prettier:fix": "prettier \"**/*.{js,jsx,ts,tsx,json,md}\" --write",
     "prepare": "husky install"
   },
   "dependencies": {

@@ -103,6 +103,7 @@ const Kontakt = () => {
     telefon: null,
     email: '',
     bemerkung: '',
+    berufsstatus: 'Angestellte/r',
     agb: false,
   };
 

@@ -16,6 +16,8 @@ const TopButton = () => {
       bottom='40px'
       right='16px'
       fontSize='md'
+      border='1px'
+      borderColor={{ base: 'primary.darkAcid)', sm: 'primary.darkAcid' }}
       icon={<ArrowUpIcon boxSize={8} />}
       onClick={() =>
         window.scrollTo({
