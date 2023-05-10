@@ -10,9 +10,6 @@ import { useRouter } from 'next/router';
 import { Metadata } from '@/components/Metadata';
 import TagManager from 'react-gtm-module';
 
-// xaat-8a452859-5c53-4238-88f1-da18518cb1a8
-
-// export { reportWebVitals } from 'next-axiom';
 import { log } from 'next-axiom';
 import axios from 'axios';
 
