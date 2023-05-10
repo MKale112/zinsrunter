@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
-import { withAxiom } from 'next-axiom';
+
 const buildDate = new Date().toLocaleString();
 
-const nextConfig = withAxiom({
+const nextConfig = {
   reactStrictMode: true,
   compress: false,
   swcMinify: true,
@@ -36,6 +36,6 @@ const nextConfig = withAxiom({
       },
     ];
   },
-});
+};
 
 export default nextConfig;
