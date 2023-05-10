@@ -79,9 +79,15 @@ export const populateQueryString = (flattenedData: Record<any, any>): string => 
   const columnString = Object.keys(InitialDBInputObj).join(', ');
   let values = '';
   Object.keys(InitialDBInputObj).forEach((key, index) => {
-    values += `${
-      flattenedData[key] ? `"${flattenedData[key]}"` : InitialDBInputObj[key as keyof typeof InitialDBInputObj]
-    }${index === Object.keys(InitialDBInputObj).length - 1 ? '' : ','}`;
+    if (key === 'newsletter' && flattenedData[key] === true) {
+      values += `"on"${index === Object.keys(InitialDBInputObj).length - 1 ? '' : ','}`;
+    } else if (key === 'agb') {
+      values += `"on"${index === Object.keys(InitialDBInputObj).length - 1 ? '' : ','}`;
+    } else {
+      values += `${
+        flattenedData[key] ? `"${flattenedData[key]}"` : InitialDBInputObj[key as keyof typeof InitialDBInputObj]
+      }${index === Object.keys(InitialDBInputObj).length - 1 ? '' : ','}`;
+    }
   });
   const queryString = `INSERT INTO adressen(${columnString}) VALUES (${values})`;
 
