@@ -64,12 +64,12 @@ export const Region = () => {
       .string()
       .matches(zipcodeRegex, errorMessages.zipcodeInvalidInput)
       .required(errorMessages.fieldRequired),
-    // location: yup.string().required(errorMessages.fieldRequired),
     familienstand: yup.string().required(errorMessages.fieldRequired),
     berufsstatus: yup.string().required(errorMessages.fieldRequired),
     objektgefunden: alreadyDecided ? yup.string().nullable() : yup.string().required(errorMessages.fieldRequired),
     haushaltseinkommen: yup
       .number()
+      .integer()
       .transform((_, value) => formatNumber(value))
       .required(errorMessages.fieldRequired)
       .typeError(errorMessages.isNum),
@@ -110,8 +110,23 @@ export const Region = () => {
         validateOnChange={true}
         validateOnBlur={false}
         onSubmit={(values) => {
+          console.log('haushaltseinkommen: ', values.haushaltseinkommen);
+          console.log('haushaltseinkommen without dots: ', Math.round(formatNumber(values.haushaltseinkommen)!) || 0);
+          console.log('mieteinnahmen: ', values.mieteinnahmen);
+          console.log('mieteinnahmen without dots: ', Math.round(formatNumber(values.mieteinnahmen)!) || 0);
           setStep((currValue) => [4, { ...currValue[1], region: {} as RegionData }]);
-          setStep((currValue) => [4, { ...currValue[1], region: { ...values, bundesland } }]);
+          setStep((currValue) => [
+            4,
+            {
+              ...currValue[1],
+              region: {
+                ...values,
+                bundesland,
+                haushaltseinkommen: Math.round(formatNumber(values.haushaltseinkommen)!) || 0,
+                mieteinnahmen: Math.round(formatNumber(values.mieteinnahmen)!) || 0,
+              },
+            },
+          ]);
         }}
       >
         {({ handleSubmit, values }) => (

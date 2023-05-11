@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   const sendLog = async () => {
-    const res = await axios.get(`/api/logger?axiom=true&path=${router.asPath}`);
+    const res = await axios.get(`/api/logger?path=${router.asPath}`);
     const logger = log.with({ timestamp: res.data.timestamp });
     logger.info(res.data.logEntry);
   };

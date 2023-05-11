@@ -15,8 +15,8 @@ export interface RegionData {
   familienstand: string;
   berufsstatus: string;
   objektgefunden: string | undefined;
-  haushaltseinkommen: string;
-  mieteinnahmen?: string;
+  haushaltseinkommen: number;
+  mieteinnahmen?: number;
 }
 export interface ZipCodeData {
   standort_plz: number | string;

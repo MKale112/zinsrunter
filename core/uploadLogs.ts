@@ -17,10 +17,16 @@ export async function uploadLogs() {
 
   const params = {
     Bucket: process.env.AWS_S3_BUCKET_NAME || 'zins-runter-logs',
-    Key: `access_logs/${logFileName}`,
+    Key: `access_logs/${logFileName.replace(
+      '.txt',
+      `_${('0' + date.getHours()).slice(-2)}-${('0' + date.getMinutes()).slice(-2)}-${('0' + date.getSeconds()).slice(
+        -2,
+      )}.txt`,
+    )}`,
     Body: fileContent,
   } as AWS.S3.Types.PutObjectRequest;
 
+  new Date().getTime;
   try {
     const result = await s3.upload(params).promise();
     console.log('Logs uploaded successfully:', result);

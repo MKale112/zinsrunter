@@ -92,7 +92,7 @@ const ProjectNumbers = () => {
       const maklerAmount =
         formattedMaklerAmount ??
         Number.parseFloat(
-          ((formattedKaufpreis ?? 0) * (typeof maklerprovision === 'string' ? 0 : maklerprovision ?? 0)).toFixed(2),
+          ((formattedKaufpreis ?? 0) * (typeof maklerprovision === 'string' ? 0 : maklerprovision ?? 0)).toFixed(0),
         );
       const notarAndGrundbuchAmount = Number.parseFloat(((formattedKaufpreis ?? 0) * 0.02).toFixed(2));
       const kreditsumme =
@@ -118,9 +118,10 @@ const ProjectNumbers = () => {
       .integer(),
     modernisierungskosten: yup
       .number()
+      .integer()
       .transform((_, value) => formatNumber(value))
       .typeError(errorMessages.isNum)
-      .integer(),
+      .nullable(),
     maklerprovision: yup
       .number()
       .transform((_, value) => formatNumber(value))
@@ -157,7 +158,10 @@ const ProjectNumbers = () => {
               ...currValue[1],
               projectNumbers: {
                 ...values,
-                maklerprovision: calculations.maklerAmount,
+                kaufpreis: Math.round(formatNumber(values.kaufpreis)!) || 0,
+                eigenkapital: Math.round(formatNumber(values.eigenkapital)!) || 0,
+                modernisierungskosten: Math.round(formatNumber(values.modernisierungskosten)!) || 0,
+                maklerprovision: Math.round(Number(calculations.maklerAmount.toString().replace(',', '.'))),
                 kreditsumme: calculations.kreditsumme,
               },
             },
