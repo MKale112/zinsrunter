@@ -100,6 +100,7 @@ const Kontakt = () => {
     hausnummer: '',
     plz: '',
     ort: '',
+    land: 'Deutschland',
     telefon: null,
     email: '',
     bemerkung: '',
