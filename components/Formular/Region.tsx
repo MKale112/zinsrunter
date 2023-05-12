@@ -110,10 +110,6 @@ export const Region = () => {
         validateOnChange={true}
         validateOnBlur={false}
         onSubmit={(values) => {
-          console.log('haushaltseinkommen: ', values.haushaltseinkommen);
-          console.log('haushaltseinkommen without dots: ', Math.round(formatNumber(values.haushaltseinkommen)!) || 0);
-          console.log('mieteinnahmen: ', values.mieteinnahmen);
-          console.log('mieteinnahmen without dots: ', Math.round(formatNumber(values.mieteinnahmen)!) || 0);
           setStep((currValue) => [4, { ...currValue[1], region: {} as RegionData }]);
           setStep((currValue) => [
             4,

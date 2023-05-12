@@ -11,13 +11,14 @@ const s3 = new AWS.S3({
 export async function uploadLogs() {
   const date = new Date();
   const logsDir = path.join(process.cwd(), 'logs');
-  const logFileName = path.join(logsDir, `access_logs_${date.toISOString().substring(0, 10)}.txt`);
+  const fileName = `access_logs_${date.toISOString().substring(0, 10)}.txt`;
+  const logFileName = path.join(logsDir, fileName);
 
   const fileContent = fs.readFileSync(logFileName);
 
   const params = {
     Bucket: process.env.AWS_S3_BUCKET_NAME || 'zins-runter-logs',
-    Key: `access_logs/${logFileName.replace(
+    Key: `access_logs/${fileName.replace(
       '.txt',
       `_${('0' + date.getHours()).slice(-2)}-${('0' + date.getMinutes()).slice(-2)}-${('0' + date.getSeconds()).slice(
         -2,
