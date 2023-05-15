@@ -303,7 +303,18 @@ const Kontakt = () => {
                       </HStack>
 
                       {isSubmitting ? (
-                        <Spinner size='xl' thickness='7px' speed='0.65s' color='primary.acid' />
+                        <VStack fontSize={['xs', 'sm']} alignItems='center'>
+                          <HStack textAlign='center'>
+                            <Text>
+                              ...Daten werden übertragen.
+                              <br />
+                              Dieser Vorgang kann bis zu 3 Sekunden dauern...
+                            </Text>
+                          </HStack>
+                          <HStack alignItems='center' padding={6}>
+                            <Spinner size='xl' thickness='7px' speed='0.65s' color='primary.acid' />
+                          </HStack>
+                        </VStack>
                       ) : (
                         <Button variant='accent' type='submit' padding={6} fontSize={20}>
                           Absenden
