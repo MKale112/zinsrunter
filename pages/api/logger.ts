@@ -8,7 +8,7 @@ export default async function logger(req: NextApiRequest, res: NextApiResponse) 
   const urlPath = req.query.path || '/';
 
   if (sendLogs) {
-    uploadLogs();
+    await uploadLogs();
     res.status(200).json({});
   } else {
     const ipAddress = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
