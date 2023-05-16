@@ -1,6 +1,7 @@
 import AWS from 'aws-sdk';
 import fs from 'fs';
 import path from 'path';
+import { cwd } from 'process';
 
 const s3 = new AWS.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -12,6 +13,8 @@ export async function uploadLogs() {
   const date = new Date();
   const fileName = `access_logs_${date.toISOString().substring(0, 10)}.txt`;
   const logFileName = path.join('/tmp', fileName);
+
+  console.log(path, cwd);
 
   const fileContent = fs.readFileSync(logFileName);
 
