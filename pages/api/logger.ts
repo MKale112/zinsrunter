@@ -19,18 +19,18 @@ export default async function logger(req: NextApiRequest, res: NextApiResponse) 
 
     const logEntry = `${ipAddress} - - [${timestamp}] "${method} ${urlPath} HTTP/${httpVersion}" "${userAgent}" "${host}"\n`;
 
-    // Create the logs directory if it doesn't exist
-    const logsDir = path.join(process.cwd(), 'logs');
-    if (!fs.existsSync(logsDir)) {
-      fs.mkdirSync(logsDir);
+    if (!fs.existsSync('/tmp')) {
+      console.log('inside');
+      fs.mkdirSync('/tmp');
     }
 
     const logFileName = `access_logs_${new Date().toISOString().substring(0, 10)}.txt`;
 
     // Append the log entry to the access_logs.txt file
-    const logFilePath = path.join(logsDir, logFileName);
+    const logFilePath = path.join('/tmp', logFileName);
 
     fs.appendFileSync(logFilePath, logEntry);
+
     res.status(200).json({
       logEntry,
       timestamp: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }),

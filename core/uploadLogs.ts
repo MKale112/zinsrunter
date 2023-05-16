@@ -10,9 +10,8 @@ const s3 = new AWS.S3({
 
 export async function uploadLogs() {
   const date = new Date();
-  const logsDir = path.join(process.cwd(), 'logs');
   const fileName = `access_logs_${date.toISOString().substring(0, 10)}.txt`;
-  const logFileName = path.join(logsDir, fileName);
+  const logFileName = path.join('/tmp', fileName);
 
   const fileContent = fs.readFileSync(logFileName);
 
@@ -27,7 +26,8 @@ export async function uploadLogs() {
     Body: fileContent,
   } as AWS.S3.Types.PutObjectRequest;
 
-  new Date().getTime;
+  // Delete the file after uploading to the S3 bucket
+  fs.unlinkSync(logFileName);
   try {
     const result = await s3.upload(params).promise();
     console.log('Logs uploaded successfully:', result);
