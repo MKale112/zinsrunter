@@ -72,8 +72,8 @@ const Highlights = () => {
                 </Heading>
 
                 <AccordionPanel py={[2, 4]} ml={4} fontSize={['sm', 'xl']} color='secondaryFontColor'>
-                  Wählen Sie in unseren Anfrageformular Ihr Vorhaben, die Immobilienart die gewünschte Finanzierung etc.
-                  aus. Anschließend die wichtigsten Ihnen bereits vorliegenden Eckdaten wie etwa den Kaufpreis,
+                  Wählen Sie in unserem Anfrageformular Ihr Vorhaben, die Immobilienart die gewünschte Finanzierung etc.
+                  aus. Anschließend die wichtigsten, Ihnen bereits vorliegenden Eckdaten. Wie etwa den Kaufpreis,
                   mögliches Eigenkapital, mit oder ohne Maklerprovision sowie Angaben zu Ihnen als Kreditnehmer.{' '}
                   <strong>Nach etwa 2 Minuten – Anfrage gestartet</strong>.
                 </AccordionPanel>
@@ -107,7 +107,7 @@ const Highlights = () => {
 
                 <AccordionPanel py={[2, 4]} ml={4} fontSize={['sm', 'xl']} color='secondaryFontColor'>
                   Im ersten Kontakt per Telefon werden Sie mit einem Baufinanzierungsexperten Ihre
-                  Finanzierungsmöglichkeiten im Detail besprechen. So können gemeinsam die nächsten Schritte besprochen
+                  Finanzierungsmöglichkeiten im Detail besprechen. So können gemeinsam die nächsten Schritte geplant
                   werden und{' '}
                   <strong>
                     Sie erhalten eine erste Einschätzung wie Ihre ganz individuelle Finanzierung aussehen kann

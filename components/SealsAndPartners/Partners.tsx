@@ -89,7 +89,7 @@ const Partners = ({ cards = true }: PartnersProps) => {
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
                         <strong>Flex-Darlehen</strong>
                         <br />
-                        Variable Zinsen und eine 100%-Sondertilgungsoption.
+                        Variable Zinsen und eine 100% Sondertilgungsoption.
                       </Text>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
                         <strong>Kombi-Darlehen</strong>
@@ -190,7 +190,7 @@ const Partners = ({ cards = true }: PartnersProps) => {
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
                         <strong>Flex-Darlehen</strong>
                         <br />
-                        Variable Zinsen und eine 100%-Sondertilgungsoption.
+                        Variable Zinsen und eine 100% Sondertilgungsoption.
                       </Text>
                       <Text fontSize={['md', 'xl']} color='secondaryFontColor'>
                         <strong>Kombi-Darlehen</strong>

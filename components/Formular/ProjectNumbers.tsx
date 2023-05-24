@@ -427,7 +427,7 @@ const ProjectNumbers = () => {
                   Besteht von Seiten der Bank ein geringes finanzielles Risiko von Zahlungsausfällen, honoriert sie das
                   mit niedrigen Zinsen. Das bedeutet: <br />
                   <br />
-                  Je geringer das Risiko von Zahlungsausfällen, das heißt{' '}
+                  Je geringer das Risiko von Zahlungsausfällen, dass heißt{' '}
                   <strong>
                     je mehr Sicherheiten vorhanden sind, desto bessere Zinsen wird Ihnen die Bank anbieten.
                   </strong>

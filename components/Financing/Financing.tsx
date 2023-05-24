@@ -26,7 +26,7 @@ export const Financing = () => {
                     fontSize={['md', 'xl']}
                     color='secondaryFontColor'
                   >
-                    Der Bau oder Kauf eine Immobilie ist ein bedeutender Schritt. Die Frage nach der Finanzierung ist
+                    Der Kauf oder Bau einer Immobilie ist ein bedeutender Schritt. Die Frage nach der Finanzierung ist
                     dabei ein wesentlicher Faktor.{' '}
                     <strong>
                       Als unabhängiger Baufinanzierungsberater ist Zins-runter.de Ihr Partner bei der
@@ -66,7 +66,7 @@ export const Financing = () => {
                     <HStack alignItems='flex-start' fontSize={['md', 'xl']} color='secondaryFontColor'>
                       <ListIcon mt={1.5} as={CheckCircleIcon} color='primary.blue' />
                       <Text>
-                        Alle Finanzierungsvorhaben (Kauf einer bestehenden Immobilie, Eigenes Bauvorhaben, Kauf eines
+                        Alle Finanzierungsvorhaben (Kauf einer bestehenden Immobilie, eigenes Bauvorhaben, Kauf eines
                         Neubaus, Anschlussfinanzierung, Modernisierung, Kapitalbeschaffungen für andere Zwecke)
                       </Text>
                     </HStack>
