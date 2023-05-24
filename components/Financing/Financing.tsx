@@ -1,5 +1,5 @@
 import { CheckCircleIcon } from '@chakra-ui/icons';
-import { Button, Heading, HStack, Link, List, ListIcon, Text, useMediaQuery, VStack } from '@chakra-ui/react';
+import { Heading, HStack, Link, List, ListIcon, Text, useMediaQuery, VStack } from '@chakra-ui/react';
 import React from 'react';
 import { FullWidthContainer, ResponsiveContainer } from '../Containers';
 import ChakraLink from '../Link/ChakraLink';
