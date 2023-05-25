@@ -60,6 +60,7 @@ const ProjectNumbers = () => {
   useEffect(() => {
     const { grunder, maklerprovision } = findGrunderAndMakler(location);
     setVariables({ grunder: grunder!, maklerprovision: maklerprovision! });
+    console.log(step[1].projectNumbers);
     step[1].projectNumbers &&
       calculatePrices(
         step[1].projectNumbers.kaufpreis,
@@ -72,6 +73,8 @@ const ProjectNumbers = () => {
     const result = grunderAndMaklerData.find((entry) => entry.city === location);
     return { grunder: result!.grunderwerbsteuer, maklerprovision: result!.maklerprovision };
   };
+
+  const { grunder, maklerprovision } = findGrunderAndMakler(location);
 
   const calculatePrices = (
     kaufpreis?: number,
@@ -105,7 +108,13 @@ const ProjectNumbers = () => {
             +(formattedEigenkapital ?? 0)) /
             1000,
         ) * 1000;
-      setCalculations({ notarAndGrundbuchAmount, grunderAmount, maklerAmount, kreditsumme });
+      setCalculations((prevCalculations) => ({
+        ...prevCalculations,
+        notarAndGrundbuchAmount: notarAndGrundbuchAmount,
+        grunderAmount: grunderAmount,
+        maklerAmount: maklerAmount,
+        kreditsumme: kreditsumme,
+      }));
       kreditsumme > 50000 ? setEligible(true) : setEligible(false);
     }
   };
@@ -143,6 +152,7 @@ const ProjectNumbers = () => {
     immobilienbesitz: step[1].projectNumbers?.immobilienbesitz,
     kreditsumme: 0,
   };
+
   return (
     <VStack w={['95%', '95%', '80%', '50%']} spacing={8} alignItems='center'>
       <Formik
@@ -242,10 +252,16 @@ const ProjectNumbers = () => {
                   </HStack>
                   <HStack alignSelf='flex-end'>
                     <Text>
-                      {calculations.grunderAmount.toLocaleString('de-DE', {
+                      {Number.parseFloat(
+                        ((formatNumber(values.kaufpreis) ?? 0) * (grunder ?? 0)).toFixed(2),
+                      ).toLocaleString('de-DE', {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2,
                       })}
+                      {/* {calculations.grunderAmount.toLocaleString('de-DE', {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })} */}
                     </Text>
                     <Box w='fit-content'>
                       <EuroIcon />
