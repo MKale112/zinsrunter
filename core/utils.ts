@@ -47,7 +47,7 @@ export function formatDate(field: string, passedDate?: Date): string {
   const month = date.toLocaleString('en', { ...options, month: '2-digit' });
   const year = date.toLocaleString('en', { ...options, year: 'numeric' });
   const hour =
-    date.getUTCHours() >= 0 && date.getUTCHours() < 1
+    date.getHours() >= 0 && date.getHours() < 1
       ? '00'
       : date.toLocaleString('en', { ...options, hour: '2-digit', hour12: false });
   const minute = date.toLocaleString('en', { ...options, minute: '2-digit' }).padStart(2, '0');
