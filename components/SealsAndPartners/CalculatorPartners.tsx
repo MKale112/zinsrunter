@@ -1,4 +1,4 @@
-import { VStack, Heading, Text, useMediaQuery, Button, SimpleGrid, Box } from '@chakra-ui/react';
+import { VStack, Heading, Text, useMediaQuery, SimpleGrid } from '@chakra-ui/react';
 import React from 'react';
 import Image from 'next/image';
 import { FullWidthContainer, ResponsiveContainer } from '../Containers';
