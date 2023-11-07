@@ -17,6 +17,10 @@ const CalculatorIframeListener = () => {
             const calculatorFrame = document.getElementById('calculatorFrame') as HTMLIFrameElement | null;
             if (calculatorFrame) {
               calculatorFrame.height = splitData[0] + 'px';
+              const numberValue: number = +splitData[0];
+              const frameHeigth10 = 10;
+              const frameHeigth = numberValue + frameHeigth10;
+              calculatorFrame.height = frameHeigth + 'px';
             }
           }
         }
