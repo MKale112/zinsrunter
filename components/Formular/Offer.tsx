@@ -57,8 +57,12 @@ const Offer = () => {
     plz: yup.string().matches(zipcodeRegex, errorMessages.zipcodeInvalidInput).required(errorMessages.fieldRequired),
     ort: yup.string().required(errorMessages.fieldRequired),
     staatsangehorigkeit: yup.string(),
-    telefon: yup.string().matches(phoneRegex, errorMessages.invalidPhone).required(errorMessages.fieldRequired),
-    email: yup.string().email(errorMessages.invalidEmail),
+    telefon: yup
+      .string()
+      .matches(phoneRegex, errorMessages.invalidPhone)
+      .required(errorMessages.fieldRequired)
+      .min(5, 'Telefonnummer mindestens 5 Zahlen'),
+    email: yup.string().email(errorMessages.invalidEmail).required(errorMessages.fieldRequired),
     erreichbarkeit: yup.string().required(errorMessages.fieldRequired),
     bemerkung: yup.string(),
     videoberatung: yup.string().required(errorMessages.fieldRequired),
@@ -253,19 +257,6 @@ const Offer = () => {
                   label='Ort'
                   placeholder='Bitte eingeben'
                 />
-
-                <Field
-                  component={SelectField}
-                  options={countries}
-                  name='staatsangehorigkeit'
-                  type='text'
-                  label='Staatsangehörigkeit'
-                  defaultValue='Deutschland'
-                  value={values.staatsangehorigkeit}
-                  placeholder='Bitte auswählen'
-                />
-
-                <Field component={TextAreaField} name='bemerkung' label='Sonstige optionale Angaben' />
               </SimpleGrid>
               <Divider />
 

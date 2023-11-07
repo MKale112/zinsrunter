@@ -1,0 +1,44 @@
+{
+  "calculators": [
+    {
+      "id": "calculator-1",
+      "title": "Persönlicher Zinsrechner",
+      "alt": "Persönlicher Zinsrechner",
+      "text": "Eine erste Indikation wie Ihre Finanzierung aussehen könnte.",
+      "href": "/persoenlicher-zinsrechner",
+      "images": ["/calculators/persoenlicher-zinsrechner.webp"]
+    },
+    {
+      "id": "calculator-2",
+      "title": "Zins-Check",
+      "alt": "Zins-Check",
+      "text": "Mit welchen Zinsen ist bei Ihrem Vorhaben ungefähr zu rechnen.",
+      "href": "/zins-check",
+      "images": ["/calculators/zins-check.webp"]
+    },
+    {
+      "id": "calculator-3",
+      "title": "Budgetrechner",
+      "alt": "Budgetrechner",
+      "text": "Wieviel Kreditsumme können Sie mit Ihrem monatlichen Budget in etwa bedienen.",
+      "href": "/budgetrechner",
+      "images": ["/calculators/budgetrechner.webp"]
+    },
+    {
+      "id": "calculator-4",
+      "title": "Kauf-/Mietrechner",
+      "alt": "Kauf-/Mietrechner",
+      "text": "Was lohnt sich in Ihrem Fall - besser kaufen oder doch lieber mieten?",
+      "href": "/kauf-mietrechner",
+      "images": ["/calculators/kauf-mietrechner.webp"]
+    },
+    {
+      "id": "calculator-5",
+      "title": "Notar- & Grundbuchrechner",
+      "alt": "Notar- & Grundbuchrechner",
+      "text": "Was kosten der Notar und der Grundbuchbucheintrag bei einem Kauf.",
+      "href": "/notar-grundbuchrechner",
+      "images": ["/calculators/notar-grundbuchrechner.webp"]
+    }
+  ]
+}

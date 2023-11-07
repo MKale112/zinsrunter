@@ -5,6 +5,7 @@ import Partners from '@/components/SealsAndPartners/Partners';
 import Seals from '@/components/SealsAndPartners/Seals';
 import Highlights from '@/components/Highlights/Highlights';
 import { Financing } from '@/components/Financing/Financing';
+import Calculators from '@/components/Calculators/Calculators';
 import Script from 'next/script';
 import { addGclid } from '@/core/utils';
 import { applyInnerHTML, classList } from '@/core/script';
@@ -52,6 +53,7 @@ export default function Home() {
       </VisuallyHidden>
       <HeroBanner heroImage={isMobile ? '/hero-image-mobile.webp' : '/hero-image.webp'} />
       <Financing />
+      <Calculators />
       <Partners cards={true} />
       <Highlights />
       <Seals />

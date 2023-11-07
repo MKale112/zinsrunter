@@ -203,6 +203,7 @@ export const Region = () => {
                     'Interessantes Objekt gefunden',
                     'Entscheidung für Objekt ist gefallen',
                     'Notartermin wird geplant',
+                    'Möchte nur Konditionen abfragen',
                   ]}
                   placeholder='Bitte auswählen'
                 />

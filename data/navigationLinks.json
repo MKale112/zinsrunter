@@ -10,6 +10,11 @@
       "href": "#finanzierungen"
     },
     {
+      "id": "navbar-rechner",
+      "label": "RECHNER",
+      "href": "#rechner"
+    },
+    {
       "id": "navbar-partners",
       "label": "PARTNER",
       "href": "#partners"

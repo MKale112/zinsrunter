@@ -49,7 +49,18 @@ const Footer = () => {
                 >
                   {items}
                 </SimpleGrid>
-                <Image src='/brands/geotrust-secured.png' alt='certificate-image' width={150} height={100} />
+                <SimpleGrid
+                  py={4}
+                  spacingX={10}
+                  spacing={4}
+                  columns={2}
+                  justifyContent='center'
+                  alignItems='center'
+                  textAlign='center'
+                >
+                  <Image src='/brands/geotrust-secured.png' alt='certificate-image' width={150} height={100} />
+                  <Image src='/brands/nextGenerationEU.png' alt='nextGenerationEU' width={150} height={50} />
+                </SimpleGrid>
               </VStack>
             ) : (
               <HStack justify='space-evenly' align='flex-start'>
@@ -57,7 +68,10 @@ const Footer = () => {
                   <HStack pb={8} spacing={8} justifyContent='center' alignItems='center' textAlign='center'>
                     {items}{' '}
                   </HStack>
-                  <Image src='/brands/geotrust-secured.png' alt='certificate-image' width={150} height={100} />
+                  <HStack pb={8} spacing={8} justifyContent='center' alignItems='center' textAlign='center'>
+                    <Image src='/brands/geotrust-secured.png' alt='certificate-image' width={150} height={100} />
+                    <Image src='/brands/nextGenerationEU.png' alt='nextGenerationEU' width={256} height={61} />
+                  </HStack>
                 </VStack>
               </HStack>
             )}

@@ -157,7 +157,14 @@ const Header = () => {
         alignItems='center'
       >
         <ResponsiveContainer display='flex' flexDirection='row' justifyContent='center' alignItems='center'>
-          {willRenderNav.pathname === '/' && <Tabs color='primary.white' hoverObj={{ color: 'primary.acid' }} />}
+          {(willRenderNav.pathname === '/' ||
+            willRenderNav.pathname === '/persoenlicher-zinsrechner' ||
+            willRenderNav.pathname === '/zins-check' ||
+            willRenderNav.pathname === '/budgetrechner' ||
+            willRenderNav.pathname === '/kauf-mietrechner' ||
+            willRenderNav.pathname === '/notar-grundbuchrechner') && (
+            <Tabs color='primary.white' hoverObj={{ color: 'primary.acid' }} />
+          )}
         </ResponsiveContainer>
       </Flex>
     </FullWidthContainer>
