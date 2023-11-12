@@ -45,15 +45,17 @@ const Calculator = () => {
               overflow={'hidden'}
             >
               <Box p={6}>
-                <VStack spacing={2} align={'center'}>
-                  <HStack mb={6} spacing={6}>
-                    {images}
-                  </HStack>
-                  <Heading fontSize={['xl', 'xl', '2xl']} fontWeight={500} fontFamily={'body'}>
-                    <Link href={entry.href}>{entry.title}</Link>
-                  </Heading>
-                  <Text color={'gray.500'}>{entry.text}</Text>
-                </VStack>
+                <Link href={entry.href}>
+                  <VStack spacing={2} align={'center'}>
+                    <HStack mb={6} spacing={6}>
+                      {images}
+                    </HStack>
+                    <Heading fontSize={['xl', 'xl', '2xl']} fontWeight={500} fontFamily={'body'}>
+                      {entry.title}
+                    </Heading>
+                    <Text color={'gray.500'}>{entry.text}</Text>
+                  </VStack>
+                </Link>
               </Box>
             </Box>
           </Center>

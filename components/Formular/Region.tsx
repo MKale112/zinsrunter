@@ -199,11 +199,11 @@ export const Region = () => {
                   type='select'
                   label='Stand der Immobiliensuche'
                   options={[
+                    'Möchte nur Konditionen abfragen',
                     'Noch auf Objektsuche',
                     'Interessantes Objekt gefunden',
                     'Entscheidung für Objekt ist gefallen',
                     'Notartermin wird geplant',
-                    'Möchte nur Konditionen abfragen',
                   ]}
                   placeholder='Bitte auswählen'
                 />
