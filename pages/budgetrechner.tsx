@@ -1,9 +1,12 @@
 import { FullWidthContainer, ResponsiveContainer } from '@/components/Containers';
 import { Box, Heading, VStack, Text } from '@chakra-ui/react';
-import CalculatorPartners from '@/components/SealsAndPartners/CalculatorPartners';
+import LinkButton from '@/components/LinkButton';
+import ChakraLink from '@/components/Link/ChakraLink';
+import ResponsiveCarousel from '@/components/ResponsiveCarousel/ResponsiveCarousel';
 import React from 'react';
 import { useEffect } from 'react';
 const CalculatorIframeListener = () => {
+  const buttonText = 'Finanzierungvorschlag anfordern';
   useEffect(() => {
     const listener = (event: MessageEvent) => {
       if (event.origin !== 'https://www.ehyp.de') {
@@ -46,7 +49,8 @@ const CalculatorIframeListener = () => {
             </Text>
           </VStack>
         </VStack>
-        <VStack spacing={16} my={[5, 6]} px={[2, 5]} bgColor={'white'}>
+        <ResponsiveCarousel />
+        <VStack spacing={16} my={[5, 1]} px={[2, 5]} bgColor={'white'}>
           <iframe
             id='calculatorFrame'
             width={`100%`}
@@ -56,8 +60,13 @@ const CalculatorIframeListener = () => {
         </VStack>
       </ResponsiveContainer>
       <Box h={10} bgColor='gray.100' />
-      <CalculatorPartners cards={true} />
-      <Box h={10} bgColor='gray.100' />
+      <ResponsiveContainer py={[6, 6]}>
+        <VStack alignSelf='center'>
+          <ChakraLink href='/formular' alignSelf='center'>
+            <LinkButton buttonText={buttonText} />
+          </ChakraLink>
+        </VStack>
+      </ResponsiveContainer>
     </FullWidthContainer>
   );
 };
