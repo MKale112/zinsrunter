@@ -1,5 +1,5 @@
 import { FullWidthContainer, ResponsiveContainer } from '@/components/Containers';
-import { Box, Heading, VStack } from '@chakra-ui/react';
+import { Box, Heading, VStack, Text } from '@chakra-ui/react';
 import CalculatorPartners from '@/components/SealsAndPartners/CalculatorPartners';
 import React from 'react';
 import { useEffect } from 'react';
@@ -34,15 +34,20 @@ const CalculatorIframeListener = () => {
   }, []);
   return (
     <FullWidthContainer>
-      <ResponsiveContainer py={[16, 24]}>
+      <ResponsiveContainer py={[6, 6]}>
         <VStack spacing={16}>
-          <VStack spacing={{ base: 4, md: 8 }}>
+          <VStack spacing={{ base: 4, md: 6 }}>
             <Heading as='h1' fontSize={{ base: '3xl', md: '4xl' }}>
               Zins-Check
             </Heading>
+            <Text textAlign='center'>
+              In welchem Zinsrahmen können Sie Ihr Projekt realisieren? Dieser Zins-Check ermittelt nach nur wenigen
+              Angaben eine von-bis Zinsspanne an der Sie sich orientieren können. Über den Button oben rechts “Angebot
+              anfordern” erhalten Sie Ihren persönlichen und individuellen Vorschlag.
+            </Text>
           </VStack>
         </VStack>
-        <VStack spacing={16} my={[5, 10]} px={[2, 5]} bgColor={'white'}>
+        <VStack spacing={16} my={[5, 6]} px={[2, 5]} bgColor={'white'}>
           <iframe
             id='calculatorFrame'
             width={`100%`}

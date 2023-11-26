@@ -1,5 +1,5 @@
 import { FullWidthContainer, ResponsiveContainer } from '@/components/Containers';
-import { Box, Heading, VStack } from '@chakra-ui/react';
+import { Box, Heading, VStack, Text } from '@chakra-ui/react';
 import CalculatorPartners from '@/components/SealsAndPartners/CalculatorPartners';
 import React from 'react';
 import { useEffect } from 'react';
@@ -34,15 +34,19 @@ const CalculatorIframeListener = () => {
   }, []);
   return (
     <FullWidthContainer>
-      <ResponsiveContainer py={[16, 24]}>
+      <ResponsiveContainer py={[6, 6]}>
         <VStack spacing={16}>
-          <VStack spacing={{ base: 4, md: 8 }}>
+          <VStack spacing={{ base: 4, md: 6 }}>
             <Heading as='h1' fontSize={{ base: '3xl', md: '4xl' }}>
               Budgetrechner
             </Heading>
+            <Text textAlign='center'>
+              Was darf die Immobilie kosten? Wie viel Kaufsumme samt etwaiger Nebenkosten liegt in Ihrem Rahmen? Dieser
+              Budgetrechner rechnet Ihnen schnell aus, wie viel Kreditsumme möglich ist und was dies in etwa kostet.
+            </Text>
           </VStack>
         </VStack>
-        <VStack spacing={16} my={[5, 10]} px={[2, 5]} bgColor={'white'}>
+        <VStack spacing={16} my={[5, 6]} px={[2, 5]} bgColor={'white'}>
           <iframe
             id='calculatorFrame'
             width={`100%`}
