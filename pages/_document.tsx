@@ -12,18 +12,16 @@ export default function Document() {
         <meta charSet='UTF-8' />
         {process.env.NODE_ENV !== 'development' && (
           <>
+            <script src='https://web.cmp.usercentrics.eu/modules/autoblocker.js'></script>
             <script
+              id='usercentrics-cmp'
+              src='https://web.cmp.usercentrics.eu/ui/loader.js'
+              data-settings-id='jJZx-eoWYKcRPv'
               async
-              src='https://cdn.cookielaw.org/scripttemplates/otSDKStub.js'
-              type='text/javascript'
-              data-domain-script='ff52141d-d698-45fb-8b48-5bf7cd1623d7'
             ></script>
-            <script async type='text/javascript'>
-              function OptanonWrapper() {}
-            </script>
           </>
         )}
-        {/* OneTrust-Cookie-Einwilligungshinweis – Ende für www.zins-runter.de */}
+        {/* usercentrics-Cookie-Einwilligungshinweis – Ende für www.zins-runter.de */}
 
         {/* Google Analytics gtag.js script */}
         <script async src='https://www.googletagmanager.com/gtag/js?id=AW-1067567060'></script>
