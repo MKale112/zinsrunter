@@ -19,42 +19,41 @@ const Footer = () => {
   const [isMobile] = useMediaQuery('(max-width: 640px)');
   const router = useRouter();
   const isOnForm = router.asPath.includes('/formular');
-  const items = footerItems.links.map((entry) => (
-    <Link key={`${entry.label}${entry.id}`} href={entry.href} target='_self' rel='noreferrer'>
-      <Button variant='link' fontWeight='normal' fontSize='sm'>
-        {entry.label}
-      </Button>
-    </Link>
-  ));
+  const items = footerItems.links.map((entry) => {
+    if (entry.action === 'showConsentLayer') {
+      return (
+        <ChakraLink
+          key={entry.id}
+          href={entry.href}
+          onClick={(e) => {
+            e.preventDefault();
+            if (typeof window !== 'undefined' && window.__ucCmp) {
+              window.__ucCmp.showSecondLayer();
+            } else {
+              console.warn('UC CMP nicht verfügbar');
+            }
+          }}
+          target='_self'
+          rel='noreferrer'
+        >
+          <Button variant='link' fontWeight='normal' fontSize='sm'>
+            {entry.label}
+          </Button>
+        </ChakraLink>
+      );
+    }
+
+    return (
+      <Link key={entry.id} href={entry.href} target='_self' rel='noreferrer'>
+        <Button variant='link' fontWeight='normal' fontSize='sm'>
+          {entry.label}
+        </Button>
+      </Link>
+    );
+  });
   const brands = footerItems.brands.map((entry) => (
     <Image key={entry.id} src={entry.path} alt={entry.alt} width={isOnForm || isMobile ? 75 : 150} height={100} />
   ));
-
-  // Datenschutz-Einstellungen-Button
-  const consentButton = (
-    <ChakraLink
-      href='#'
-      target='_self'
-      rel='noreferrer'
-      onClick={(e) => {
-        e.preventDefault(); // verhindert das Springen nach oben
-        if (typeof window !== 'undefined' && window.__ucCmp) {
-          window.__ucCmp.showSecondLayer();
-        } else {
-          console.warn('UC CMP nicht verfügbar');
-        }
-      }}
-    >
-      <Button
-        type='button'
-        variant='link' // sieht aus wie ein normaler Link
-        fontWeight='normal'
-        fontSize='sm'
-      >
-        Datenschutz-Einstellungen
-      </Button>
-    </ChakraLink>
-  );
 
   return (
     <FullWidthContainer pt={[8, 0]} pb={[2, 4]} bgColor={router.pathname.includes('formular') ? 'gray.100' : 'white'}>
@@ -83,7 +82,6 @@ const Footer = () => {
                   textAlign='center'
                 >
                   {items}
-                  {consentButton}
                 </SimpleGrid>
                 <SimpleGrid
                   py={4}
@@ -103,7 +101,6 @@ const Footer = () => {
                 <VStack w='40%' h='full' justifyContent='space-between'>
                   <HStack pb={8} spacing={8} justifyContent='center' alignItems='center' textAlign='center'>
                     {items}
-                    {consentButton}
                   </HStack>
                   <HStack pb={8} spacing={8} justifyContent='center' alignItems='center' textAlign='center'>
                     <Image src='/brands/geotrust-secured.png' alt='certificate-image' width={150} height={100} />

@@ -16,6 +16,12 @@
       "href": "/datenschutz"
     },
     {
+      "id": "footer-datenschutz-einstellungen",
+      "label": "Datenschutz-Einstellungen",
+      "href": "#",
+      "action": "showConsentLayer"
+    },
+    {
       "id": "footer-uber-uns",
       "label": "Über uns",
       "href": "/uber-uns"
