@@ -1261,10 +1261,12 @@ const Datenschutz = ({ isPopup = false }: Props) => {
             <Heading as='h2' pt={2} fontSize={['md', 'lg', 'lg', 'xl']}>
               10. Welche internetspezifischen Datenverarbeitungen anfallen
             </Heading>
-            <Text>Individuelle Einstellungen</Text>{' '}
-            <button id='ot-sdk-btn' className='ot-sdk-show-settings'>
-              Individuelle Einstellungen
-            </button>
+            <Text>
+              Zins-Runter.de respektiert Ihr Recht auf Datenschutz. Aus diesem Grund stellen wir Ihnen ein
+              Cookie-Management-Tool zur Verfügung, das Sie bei der Verwaltung Ihrer Cookie-Präferenzen sowie beim
+              Erteilen und Widerrufen Ihrer Einwilligung unterstützt. Sie können dieses Tool jederzeit über das grüne
+              kreisförmige Symbol mit dem grünen Häkchen unten links auf der Seite öffnen.
+            </Text>
             <Text>
               <strong>a) Hinweise zu Cookies</strong>
               <br />
