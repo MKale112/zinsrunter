@@ -49,7 +49,7 @@ const Teaser = () => {
           textShadow={'0px 1px 3px rgba(0,0,0,0.8)'}
           color='primary.acid'
         >
-          <Text>ab</Text>
+          <Text>ab 3,31%</Text>
           <Box id='sollzins' />
           <Popup isOpen={isOpen} onClose={() => setIsOpen(false)} popupContent={'Repräsentatives Zins-Beispiel'} />
         </HStack>
