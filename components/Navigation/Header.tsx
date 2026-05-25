@@ -81,10 +81,11 @@ const Header = () => {
     <FullWidthContainer>
       <ResponsiveContainer>
         <HStack py={1} justifyContent='flex-end'>
-          <Image src='/icons/phone.webp' alt='Call us!' height={isMobile ? 15 : 25} width={isMobile ? 15 : 25} />
+          <Text>&nbsp;</Text>
+          {/*<Image src='/icons/phone.webp' alt='Call us!' height={isMobile ? 15 : 25} width={isMobile ? 15 : 25} />
           <Text as='b' color='primary.blue' fontSize={{ base: 'xs', md: 'sm' }}>
             Gebührenfreie Hotline: 0800 36 40000
-          </Text>
+          </Text>*/}
         </HStack>
         <HStack py={{ base: 2, lg: 2 }} justify='space-between'>
           <HStack spacing={6} alignItems='flex-end'>
