@@ -12,7 +12,7 @@ export default function Document() {
         <meta charSet='UTF-8' />
         {process.env.NODE_ENV !== 'development' && (
           <>
-            {/*<script src='https://web.cmp.usercentrics.eu/modules/autoblocker.js'></script>*/}
+            <script src='https://web.cmp.usercentrics.eu/modules/autoblocker.js'></script>
             <script
               id='usercentrics-cmp'
               src='https://web.cmp.usercentrics.eu/ui/loader.js'
